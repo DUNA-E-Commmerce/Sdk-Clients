@@ -29,4 +29,4 @@ jobs:
           aws codeartifact login --tool npm --repository ${{ secrets.ARTIFACT_REPOSITORY }} --domain ${{ secrets.ARTIFACT_DOMAIN }} --domain-owner ${{ secrets.DOMAIN_OWNER }} --region ${{ secrets.AWS_REGION }}
       - name: Publish package to CodeArtifact
         run: |
-          npm publish --registry=https://${{ secrets.ARTIFACT_DOMAIN }}-${{ secrets.ARTIFACT_REPOSITORY }}.d.codeartifact.${{ secrets.AWS_REGION }}.amazonaws.com/npm/${{ secrets.ARTIFACT_REPOSITORY }}/ --access public
+          npm publish ./javascript --registry=https://${{ secrets.ARTIFACT_DOMAIN }}-${{ secrets.ARTIFACT_REPOSITORY }}.d.codeartifact.${{ secrets.AWS_REGION }}.amazonaws.com/npm/${{ secrets.ARTIFACT_REPOSITORY }}/ --access private
