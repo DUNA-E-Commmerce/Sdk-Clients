@@ -19,21 +19,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ secrets.AWS_REGION }}
-
       - name: Install and configure AWS CLI
         run: |
           pip install awscli
-          aws configure set region ${{ secrets.AWS_REGION }}
-
-      - name: Install and authenticate with CodeArtifact
-        run: |
-          aws codeartifact login --tool npm --repository ${{ secrets.ARTIFACT_REPOSITORY }} --domain ${{ secrets.ARTIFACT_DOMAIN }} --domain-owner ${{ secrets.DOMAIN_OWNER }} --region ${{ secrets.AWS_REGION }}
-
       - name: Install dependencies
         run: |
           cd ./javascript
           npm install @babel/plugin-syntax-dynamic-import
           npm install
-      - name: Publish package to CodeArtifact
+      - name: Configure AWS and Publish package to CodeArtifact
         run: |
+          aws configure set region ${{ secrets.AWS_REGION }}    
+          aws codeartifact login --tool npm --repository ${{ secrets.ARTIFACT_REPOSITORY }} --domain ${{ secrets.ARTIFACT_DOMAIN }} --domain-owner ${{ secrets.DOMAIN_OWNER }} --region ${{ secrets.AWS_REGION }}
           npm publish ./javascript --registry=https://${{ secrets.ARTIFACT_DOMAIN }}-${{ secrets.ARTIFACT_REPOSITORY }}.d.codeartifact.${{ secrets.AWS_REGION }}.amazonaws.com/npm/${{ secrets.ARTIFACT_REPOSITORY }}/ --access restricted
