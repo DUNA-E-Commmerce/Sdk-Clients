@@ -1,6 +1,6 @@
 {
   "name": "apigw-sdk",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "API_Gateway",
   "license": "Unlicense",
   "main": "dist/index.js",
