@@ -32,7 +32,8 @@ jobs:
       - name: Install dependencies
         run: |
           cd ./javascript
-          npm install --production
+          npm install @babel/plugin-syntax-dynamic-import
+          npm install
       - name: Publish package to CodeArtifact
         run: |
           npm publish ./javascript --registry=https://${{ secrets.ARTIFACT_DOMAIN }}-${{ secrets.ARTIFACT_REPOSITORY }}.d.codeartifact.${{ secrets.AWS_REGION }}.amazonaws.com/npm/${{ secrets.ARTIFACT_REPOSITORY }}/ --access restricted
