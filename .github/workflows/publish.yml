@@ -1,9 +1,6 @@
 name: Upload to CodeArtifact
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 jobs:
   publish:
