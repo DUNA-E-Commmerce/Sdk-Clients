@@ -1,4 +1,4 @@
-## apigw-sdk@0.1.2
+## apigw-sdk@0.1.3
 
 This generator creates TypeScript/JavaScript client that utilizes fetch-api.
 
@@ -21,7 +21,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install apigw-sdk@0.1.2 --save
+npm install apigw-sdk@0.1.3 --save
 ```
 
 _unPublished (not recommended):_
