@@ -1,9 +1,6 @@
 name: Upload to CodeArtifact
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 jobs:
   publish:
@@ -24,7 +21,7 @@ jobs:
           pip install awscli
       - name: Install dependencies
         run: |
-          cd ./clients javascript
+          cd ./clients/javascript
           npm install @babel/plugin-syntax-dynamic-import
           npm install
       - name: Configure AWS and Publish package to CodeArtifact
