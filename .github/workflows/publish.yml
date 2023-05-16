@@ -7,7 +7,7 @@ permissions:
   contents: read    # This is required for actions/checkout
 
 env:
-  ROLE_TO_ASSUME : "arn:aws:iam::628469270878:role/RoleForGithubPushCodeArtifactAllService" ## Role to Assume WITH Policy
+  ROLE_TO_ASSUME : "arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService" ## Role to Assume WITH Policy
 jobs:
   publish:
     runs-on: ubuntu-latest
