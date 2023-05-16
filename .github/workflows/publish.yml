@@ -1,15 +1,15 @@
 name: Upload to CodeArtifact
-
-env:
-  ROLE_TO_ASSUME : "arn:aws:iam::628469270878:role/RoleForGithubPushCodeArtifactAllService" ## Role to Assume WITH Policy
 on:
   workflow_dispatch:
+env:
+  ROLE_TO_ASSUME : "arn:aws:iam::628469270878:role/RoleForGithubPushCodeArtifactAllService" ## Role to Assume WITH Policy
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
