@@ -13,68 +13,96 @@
 
 
 import ApiClient from './ApiClient';
-import InlineObject from './model/InlineObject';
-import InlineObject1 from './model/InlineObject1';
-import InlineObject2 from './model/InlineObject2';
-import InlineObject3 from './model/InlineObject3';
-import InlineObject4 from './model/InlineObject4';
-import InlineObject5 from './model/InlineObject5';
-import InlineObject6 from './model/InlineObject6';
-import InlineResponse200 from './model/InlineResponse200';
-import InlineResponse2001 from './model/InlineResponse2001';
-import InlineResponse2001Order from './model/InlineResponse2001Order';
-import InlineResponse2001OrderMetadata from './model/InlineResponse2001OrderMetadata';
-import InlineResponse2001OrderShippingAddress from './model/InlineResponse2001OrderShippingAddress';
-import InlineResponse2001OrderShippingOptions from './model/InlineResponse2001OrderShippingOptions';
-import InlineResponse2001OrderShippingOptionsDetails from './model/InlineResponse2001OrderShippingOptionsDetails';
-import InlineResponse2001OrderShippingOptionsDetailsAdditionalDetails from './model/InlineResponse2001OrderShippingOptionsDetailsAdditionalDetails';
-import InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates from './model/InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates';
-import InlineResponse2001OrderShippingOptionsDetailsContact from './model/InlineResponse2001OrderShippingOptionsDetailsContact';
-import InlineResponse2002 from './model/InlineResponse2002';
-import InlineResponse2002Order from './model/InlineResponse2002Order';
-import InlineResponse2002OrderShippingAddress from './model/InlineResponse2002OrderShippingAddress';
-import InlineResponse2002OrderShippingOptions from './model/InlineResponse2002OrderShippingOptions';
-import InlineResponse2002OrderShippingOptionsDetails from './model/InlineResponse2002OrderShippingOptionsDetails';
-import InlineResponse2003 from './model/InlineResponse2003';
-import InlineResponse2003Order from './model/InlineResponse2003Order';
-import InlineResponse2003OrderShippingOptions from './model/InlineResponse2003OrderShippingOptions';
-import InlineResponse2004 from './model/InlineResponse2004';
-import InlineResponse2004Order from './model/InlineResponse2004Order';
-import InlineResponse2004OrderShippingAddress from './model/InlineResponse2004OrderShippingAddress';
-import InlineResponse2004ShippingOption from './model/InlineResponse2004ShippingOption';
-import InlineResponse2005 from './model/InlineResponse2005';
-import InlineResponse2006 from './model/InlineResponse2006';
-import InlineResponse2007 from './model/InlineResponse2007';
-import InlineResponse2007Order from './model/InlineResponse2007Order';
-import InlineResponse2007OrderPayment from './model/InlineResponse2007OrderPayment';
-import InlineResponse2007OrderPaymentData from './model/InlineResponse2007OrderPaymentData';
-import InlineResponse2007OrderPaymentDataAmount from './model/InlineResponse2007OrderPaymentDataAmount';
-import InlineResponse2007OrderPaymentDataCustomer from './model/InlineResponse2007OrderPaymentDataCustomer';
-import InlineResponse2007OrderPaymentDataFromCard from './model/InlineResponse2007OrderPaymentDataFromCard';
-import InlineResponse2007OrderPaymentDataMerchant from './model/InlineResponse2007OrderPaymentDataMerchant';
-import InlineResponse2008 from './model/InlineResponse2008';
-import InlineResponse2009 from './model/InlineResponse2009';
-import InlineResponse200Order from './model/InlineResponse200Order';
-import InlineResponse200OrderMetadata from './model/InlineResponse200OrderMetadata';
-import InlineResponse200OrderShippingAddress from './model/InlineResponse200OrderShippingAddress';
-import InlineResponse200OrderShippingOptions from './model/InlineResponse200OrderShippingOptions';
-import InlineResponse200OrderShippingOptionsDetails from './model/InlineResponse200OrderShippingOptionsDetails';
-import InlineResponse200OrderShippingOptionsDetailsAdditionalDetails from './model/InlineResponse200OrderShippingOptionsDetailsAdditionalDetails';
-import InlineResponse200OrderShippingOptionsDetailsAddressCoordinates from './model/InlineResponse200OrderShippingOptionsDetailsAddressCoordinates';
-import InlineResponse200OrderShippingOptionsDetailsContact from './model/InlineResponse200OrderShippingOptionsDetailsContact';
-import MerchantsOrdersOrder from './model/MerchantsOrdersOrder';
-import MerchantsOrdersOrderShippingAddress from './model/MerchantsOrdersOrderShippingAddress';
-import MerchantsOrdersOrderShippingOptions from './model/MerchantsOrdersOrderShippingOptions';
-import MerchantsOrdersOrderShippingOptionsDetails from './model/MerchantsOrdersOrderShippingOptionsDetails';
-import MerchantsOrdersOrderShippingOptionsDetailsContact from './model/MerchantsOrdersOrderShippingOptionsDetailsContact';
-import MerchantsTransactionsPurchaseCreditCard from './model/MerchantsTransactionsPurchaseCreditCard';
-import MerchantsTransactionsPurchaseSpecificFields from './model/MerchantsTransactionsPurchaseSpecificFields';
+import MerchantsExternalOrdersOrderTokenCouponsPost200Response from './model/MerchantsExternalOrdersOrderTokenCouponsPost200Response';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrder from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrder';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInnerFreeShipping from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInnerFreeShipping';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInner from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInner';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTaxAmount from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTaxAmount';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTotalAmount from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTotalAmount';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerWeight from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerWeight';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptions from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptions';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetails from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetails';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates';
+import MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsContact from './model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsContact';
+import MerchantsExternalOrdersOrderTokenCouponsPostRequest from './model/MerchantsExternalOrdersOrderTokenCouponsPostRequest';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200Response from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200Response';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrder from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrder';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInner from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInner';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInnerFreeShipping from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInnerFreeShipping';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderGiftCardInner from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderGiftCardInner';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInner from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInner';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTaxAmount from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTaxAmount';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTotalAmount from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTotalAmount';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerWeight from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerWeight';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderMetadata from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderMetadata';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingAddress from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingAddress';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptions from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptions';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetails from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetails';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsContact from './model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsContact';
+import MerchantsExternalOrdersOrderTokenGiftCardsPostRequest from './model/MerchantsExternalOrdersOrderTokenGiftCardsPostRequest';
+import MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response from './model/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response';
+import MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrder from './model/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrder';
+import MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrderShippingOptions from './model/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrderShippingOptions';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response from './model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrder from './model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrder';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderDiscountsInner from './model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderDiscountsInner';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingAddress from './model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingAddress';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptions from './model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptions';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptionsDetails from './model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptionsDetails';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseShippingMethodsInner from './model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseShippingMethodsInner';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest from './model/MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200Response from './model/MerchantsExternalOrdersOrderTokenShippingRatePost200Response';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrder from './model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrder';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInner from './model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInner';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInnerFreeShipping from './model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInnerFreeShipping';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInner from './model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInner';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTaxAmount from './model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTaxAmount';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTotalAmount from './model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTotalAmount';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderShippingAddress from './model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderShippingAddress';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseShippingOption from './model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseShippingOption';
+import MerchantsExternalOrdersOrderTokenShippingRatePostRequest from './model/MerchantsExternalOrdersOrderTokenShippingRatePostRequest';
+import MerchantsOrdersOrderTokenPaymentsMethodsGet200Response from './model/MerchantsOrdersOrderTokenPaymentsMethodsGet200Response';
+import MerchantsOrdersOrderTokenPaymentsMethodsGet200ResponseDataInner from './model/MerchantsOrdersOrderTokenPaymentsMethodsGet200ResponseDataInner';
+import MerchantsOrdersOrderTokenTransactionsVerifyPost200Response from './model/MerchantsOrdersOrderTokenTransactionsVerifyPost200Response';
+import MerchantsOrdersOrderTokenTransactionsVerifyPostRequest from './model/MerchantsOrdersOrderTokenTransactionsVerifyPostRequest';
+import MerchantsOrdersPostRequest from './model/MerchantsOrdersPostRequest';
+import MerchantsOrdersPostRequestOrder from './model/MerchantsOrdersPostRequestOrder';
+import MerchantsOrdersPostRequestOrderDiscountsInner from './model/MerchantsOrdersPostRequestOrderDiscountsInner';
+import MerchantsOrdersPostRequestOrderItemsInner from './model/MerchantsOrdersPostRequestOrderItemsInner';
+import MerchantsOrdersPostRequestOrderItemsInnerTotalAmount from './model/MerchantsOrdersPostRequestOrderItemsInnerTotalAmount';
+import MerchantsOrdersPostRequestOrderShippingAddress from './model/MerchantsOrdersPostRequestOrderShippingAddress';
+import MerchantsOrdersPostRequestOrderShippingOptions from './model/MerchantsOrdersPostRequestOrderShippingOptions';
+import MerchantsOrdersPostRequestOrderShippingOptionsDetails from './model/MerchantsOrdersPostRequestOrderShippingOptionsDetails';
+import MerchantsOrdersPostRequestOrderShippingOptionsDetailsContact from './model/MerchantsOrdersPostRequestOrderShippingOptionsDetailsContact';
+import MerchantsTransactionsPurchasePost200Response from './model/MerchantsTransactionsPurchasePost200Response';
+import MerchantsTransactionsPurchasePost200ResponseOrder from './model/MerchantsTransactionsPurchasePost200ResponseOrder';
+import MerchantsTransactionsPurchasePost200ResponseOrderItemsInner from './model/MerchantsTransactionsPurchasePost200ResponseOrderItemsInner';
+import MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount from './model/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount';
+import MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount from './model/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount';
+import MerchantsTransactionsPurchasePost200ResponseOrderPayment from './model/MerchantsTransactionsPurchasePost200ResponseOrderPayment';
+import MerchantsTransactionsPurchasePost200ResponseOrderPaymentData from './model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentData';
+import MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataAmount from './model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataAmount';
+import MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataCustomer from './model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataCustomer';
+import MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataFromCard from './model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataFromCard';
+import MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataMerchant from './model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataMerchant';
+import MerchantsTransactionsPurchasePostRequest from './model/MerchantsTransactionsPurchasePostRequest';
+import MerchantsTransactionsPurchasePostRequestCreditCard from './model/MerchantsTransactionsPurchasePostRequestCreditCard';
+import MerchantsTransactionsPurchasePostRequestSpecificFields from './model/MerchantsTransactionsPurchasePostRequestSpecificFields';
+import UsersLoginDeviceFingerprintPost200Response from './model/UsersLoginDeviceFingerprintPost200Response';
+import UsersMeGet200Response from './model/UsersMeGet200Response';
+import UsersMeGet200ResponseIdentityProvidersInner from './model/UsersMeGet200ResponseIdentityProvidersInner';
 import ExternalMerchantAPIApi from './api/ExternalMerchantAPIApi';
 import UsersApi from './api/UsersApi';
 
 
 /**
-* API_Gateway.<br>
+* API Gateway.<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
@@ -112,340 +140,508 @@ export {
     ApiClient,
 
     /**
-     * The InlineObject model constructor.
-     * @property {module:model/InlineObject}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200Response model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200Response}
      */
-    InlineObject,
+    MerchantsExternalOrdersOrderTokenCouponsPost200Response,
 
     /**
-     * The InlineObject1 model constructor.
-     * @property {module:model/InlineObject1}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrder model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrder}
      */
-    InlineObject1,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrder,
 
     /**
-     * The InlineObject2 model constructor.
-     * @property {module:model/InlineObject2}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner}
      */
-    InlineObject2,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner,
 
     /**
-     * The InlineObject3 model constructor.
-     * @property {module:model/InlineObject3}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInnerFreeShipping model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInnerFreeShipping}
      */
-    InlineObject3,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInnerFreeShipping,
 
     /**
-     * The InlineObject4 model constructor.
-     * @property {module:model/InlineObject4}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInner model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInner}
      */
-    InlineObject4,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInner,
 
     /**
-     * The InlineObject5 model constructor.
-     * @property {module:model/InlineObject5}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTaxAmount model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTaxAmount}
      */
-    InlineObject5,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTaxAmount,
 
     /**
-     * The InlineObject6 model constructor.
-     * @property {module:model/InlineObject6}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTotalAmount model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTotalAmount}
      */
-    InlineObject6,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTotalAmount,
 
     /**
-     * The InlineResponse200 model constructor.
-     * @property {module:model/InlineResponse200}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerWeight model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerWeight}
      */
-    InlineResponse200,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerWeight,
 
     /**
-     * The InlineResponse2001 model constructor.
-     * @property {module:model/InlineResponse2001}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata}
      */
-    InlineResponse2001,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata,
 
     /**
-     * The InlineResponse2001Order model constructor.
-     * @property {module:model/InlineResponse2001Order}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress}
      */
-    InlineResponse2001Order,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress,
 
     /**
-     * The InlineResponse2001OrderMetadata model constructor.
-     * @property {module:model/InlineResponse2001OrderMetadata}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptions model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptions}
      */
-    InlineResponse2001OrderMetadata,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptions,
 
     /**
-     * The InlineResponse2001OrderShippingAddress model constructor.
-     * @property {module:model/InlineResponse2001OrderShippingAddress}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetails model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetails}
      */
-    InlineResponse2001OrderShippingAddress,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetails,
 
     /**
-     * The InlineResponse2001OrderShippingOptions model constructor.
-     * @property {module:model/InlineResponse2001OrderShippingOptions}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails}
      */
-    InlineResponse2001OrderShippingOptions,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails,
 
     /**
-     * The InlineResponse2001OrderShippingOptionsDetails model constructor.
-     * @property {module:model/InlineResponse2001OrderShippingOptionsDetails}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates}
      */
-    InlineResponse2001OrderShippingOptionsDetails,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates,
 
     /**
-     * The InlineResponse2001OrderShippingOptionsDetailsAdditionalDetails model constructor.
-     * @property {module:model/InlineResponse2001OrderShippingOptionsDetailsAdditionalDetails}
+     * The MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsContact model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsContact}
      */
-    InlineResponse2001OrderShippingOptionsDetailsAdditionalDetails,
+    MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsContact,
 
     /**
-     * The InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates model constructor.
-     * @property {module:model/InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates}
+     * The MerchantsExternalOrdersOrderTokenCouponsPostRequest model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenCouponsPostRequest}
      */
-    InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates,
+    MerchantsExternalOrdersOrderTokenCouponsPostRequest,
 
     /**
-     * The InlineResponse2001OrderShippingOptionsDetailsContact model constructor.
-     * @property {module:model/InlineResponse2001OrderShippingOptionsDetailsContact}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200Response model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200Response}
      */
-    InlineResponse2001OrderShippingOptionsDetailsContact,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200Response,
 
     /**
-     * The InlineResponse2002 model constructor.
-     * @property {module:model/InlineResponse2002}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrder model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrder}
      */
-    InlineResponse2002,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrder,
 
     /**
-     * The InlineResponse2002Order model constructor.
-     * @property {module:model/InlineResponse2002Order}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInner model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInner}
      */
-    InlineResponse2002Order,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInner,
 
     /**
-     * The InlineResponse2002OrderShippingAddress model constructor.
-     * @property {module:model/InlineResponse2002OrderShippingAddress}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInnerFreeShipping model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInnerFreeShipping}
      */
-    InlineResponse2002OrderShippingAddress,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInnerFreeShipping,
 
     /**
-     * The InlineResponse2002OrderShippingOptions model constructor.
-     * @property {module:model/InlineResponse2002OrderShippingOptions}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderGiftCardInner model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderGiftCardInner}
      */
-    InlineResponse2002OrderShippingOptions,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderGiftCardInner,
 
     /**
-     * The InlineResponse2002OrderShippingOptionsDetails model constructor.
-     * @property {module:model/InlineResponse2002OrderShippingOptionsDetails}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInner model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInner}
      */
-    InlineResponse2002OrderShippingOptionsDetails,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInner,
 
     /**
-     * The InlineResponse2003 model constructor.
-     * @property {module:model/InlineResponse2003}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTaxAmount model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTaxAmount}
      */
-    InlineResponse2003,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTaxAmount,
 
     /**
-     * The InlineResponse2003Order model constructor.
-     * @property {module:model/InlineResponse2003Order}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTotalAmount model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTotalAmount}
      */
-    InlineResponse2003Order,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTotalAmount,
 
     /**
-     * The InlineResponse2003OrderShippingOptions model constructor.
-     * @property {module:model/InlineResponse2003OrderShippingOptions}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerWeight model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerWeight}
      */
-    InlineResponse2003OrderShippingOptions,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerWeight,
 
     /**
-     * The InlineResponse2004 model constructor.
-     * @property {module:model/InlineResponse2004}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderMetadata model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderMetadata}
      */
-    InlineResponse2004,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderMetadata,
 
     /**
-     * The InlineResponse2004Order model constructor.
-     * @property {module:model/InlineResponse2004Order}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingAddress model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingAddress}
      */
-    InlineResponse2004Order,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingAddress,
 
     /**
-     * The InlineResponse2004OrderShippingAddress model constructor.
-     * @property {module:model/InlineResponse2004OrderShippingAddress}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptions model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptions}
      */
-    InlineResponse2004OrderShippingAddress,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptions,
 
     /**
-     * The InlineResponse2004ShippingOption model constructor.
-     * @property {module:model/InlineResponse2004ShippingOption}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetails model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetails}
      */
-    InlineResponse2004ShippingOption,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetails,
 
     /**
-     * The InlineResponse2005 model constructor.
-     * @property {module:model/InlineResponse2005}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails}
      */
-    InlineResponse2005,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails,
 
     /**
-     * The InlineResponse2006 model constructor.
-     * @property {module:model/InlineResponse2006}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates}
      */
-    InlineResponse2006,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates,
 
     /**
-     * The InlineResponse2007 model constructor.
-     * @property {module:model/InlineResponse2007}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsContact model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsContact}
      */
-    InlineResponse2007,
+    MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsContact,
 
     /**
-     * The InlineResponse2007Order model constructor.
-     * @property {module:model/InlineResponse2007Order}
+     * The MerchantsExternalOrdersOrderTokenGiftCardsPostRequest model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPostRequest}
      */
-    InlineResponse2007Order,
+    MerchantsExternalOrdersOrderTokenGiftCardsPostRequest,
 
     /**
-     * The InlineResponse2007OrderPayment model constructor.
-     * @property {module:model/InlineResponse2007OrderPayment}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response}
      */
-    InlineResponse2007OrderPayment,
+    MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response,
 
     /**
-     * The InlineResponse2007OrderPaymentData model constructor.
-     * @property {module:model/InlineResponse2007OrderPaymentData}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrder model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrder}
      */
-    InlineResponse2007OrderPaymentData,
+    MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrder,
 
     /**
-     * The InlineResponse2007OrderPaymentDataAmount model constructor.
-     * @property {module:model/InlineResponse2007OrderPaymentDataAmount}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrderShippingOptions model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrderShippingOptions}
      */
-    InlineResponse2007OrderPaymentDataAmount,
+    MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrderShippingOptions,
 
     /**
-     * The InlineResponse2007OrderPaymentDataCustomer model constructor.
-     * @property {module:model/InlineResponse2007OrderPaymentDataCustomer}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response}
      */
-    InlineResponse2007OrderPaymentDataCustomer,
+    MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response,
 
     /**
-     * The InlineResponse2007OrderPaymentDataFromCard model constructor.
-     * @property {module:model/InlineResponse2007OrderPaymentDataFromCard}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrder model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrder}
      */
-    InlineResponse2007OrderPaymentDataFromCard,
+    MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrder,
 
     /**
-     * The InlineResponse2007OrderPaymentDataMerchant model constructor.
-     * @property {module:model/InlineResponse2007OrderPaymentDataMerchant}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderDiscountsInner model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderDiscountsInner}
      */
-    InlineResponse2007OrderPaymentDataMerchant,
+    MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderDiscountsInner,
 
     /**
-     * The InlineResponse2008 model constructor.
-     * @property {module:model/InlineResponse2008}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingAddress model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingAddress}
      */
-    InlineResponse2008,
+    MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingAddress,
 
     /**
-     * The InlineResponse2009 model constructor.
-     * @property {module:model/InlineResponse2009}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptions model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptions}
      */
-    InlineResponse2009,
+    MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptions,
 
     /**
-     * The InlineResponse200Order model constructor.
-     * @property {module:model/InlineResponse200Order}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptionsDetails model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptionsDetails}
      */
-    InlineResponse200Order,
+    MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptionsDetails,
 
     /**
-     * The InlineResponse200OrderMetadata model constructor.
-     * @property {module:model/InlineResponse200OrderMetadata}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseShippingMethodsInner model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseShippingMethodsInner}
      */
-    InlineResponse200OrderMetadata,
+    MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseShippingMethodsInner,
 
     /**
-     * The InlineResponse200OrderShippingAddress model constructor.
-     * @property {module:model/InlineResponse200OrderShippingAddress}
+     * The MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest}
      */
-    InlineResponse200OrderShippingAddress,
+    MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest,
 
     /**
-     * The InlineResponse200OrderShippingOptions model constructor.
-     * @property {module:model/InlineResponse200OrderShippingOptions}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePost200Response model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200Response}
      */
-    InlineResponse200OrderShippingOptions,
+    MerchantsExternalOrdersOrderTokenShippingRatePost200Response,
 
     /**
-     * The InlineResponse200OrderShippingOptionsDetails model constructor.
-     * @property {module:model/InlineResponse200OrderShippingOptionsDetails}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrder model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrder}
      */
-    InlineResponse200OrderShippingOptionsDetails,
+    MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrder,
 
     /**
-     * The InlineResponse200OrderShippingOptionsDetailsAdditionalDetails model constructor.
-     * @property {module:model/InlineResponse200OrderShippingOptionsDetailsAdditionalDetails}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInner model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInner}
      */
-    InlineResponse200OrderShippingOptionsDetailsAdditionalDetails,
+    MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInner,
 
     /**
-     * The InlineResponse200OrderShippingOptionsDetailsAddressCoordinates model constructor.
-     * @property {module:model/InlineResponse200OrderShippingOptionsDetailsAddressCoordinates}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInnerFreeShipping model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInnerFreeShipping}
      */
-    InlineResponse200OrderShippingOptionsDetailsAddressCoordinates,
+    MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInnerFreeShipping,
 
     /**
-     * The InlineResponse200OrderShippingOptionsDetailsContact model constructor.
-     * @property {module:model/InlineResponse200OrderShippingOptionsDetailsContact}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInner model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInner}
      */
-    InlineResponse200OrderShippingOptionsDetailsContact,
+    MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInner,
 
     /**
-     * The MerchantsOrdersOrder model constructor.
-     * @property {module:model/MerchantsOrdersOrder}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTaxAmount model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTaxAmount}
      */
-    MerchantsOrdersOrder,
+    MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTaxAmount,
 
     /**
-     * The MerchantsOrdersOrderShippingAddress model constructor.
-     * @property {module:model/MerchantsOrdersOrderShippingAddress}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTotalAmount model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTotalAmount}
      */
-    MerchantsOrdersOrderShippingAddress,
+    MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTotalAmount,
 
     /**
-     * The MerchantsOrdersOrderShippingOptions model constructor.
-     * @property {module:model/MerchantsOrdersOrderShippingOptions}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderShippingAddress model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderShippingAddress}
      */
-    MerchantsOrdersOrderShippingOptions,
+    MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderShippingAddress,
 
     /**
-     * The MerchantsOrdersOrderShippingOptionsDetails model constructor.
-     * @property {module:model/MerchantsOrdersOrderShippingOptionsDetails}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseShippingOption model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseShippingOption}
      */
-    MerchantsOrdersOrderShippingOptionsDetails,
+    MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseShippingOption,
 
     /**
-     * The MerchantsOrdersOrderShippingOptionsDetailsContact model constructor.
-     * @property {module:model/MerchantsOrdersOrderShippingOptionsDetailsContact}
+     * The MerchantsExternalOrdersOrderTokenShippingRatePostRequest model constructor.
+     * @property {module:model/MerchantsExternalOrdersOrderTokenShippingRatePostRequest}
      */
-    MerchantsOrdersOrderShippingOptionsDetailsContact,
+    MerchantsExternalOrdersOrderTokenShippingRatePostRequest,
 
     /**
-     * The MerchantsTransactionsPurchaseCreditCard model constructor.
-     * @property {module:model/MerchantsTransactionsPurchaseCreditCard}
+     * The MerchantsOrdersOrderTokenPaymentsMethodsGet200Response model constructor.
+     * @property {module:model/MerchantsOrdersOrderTokenPaymentsMethodsGet200Response}
      */
-    MerchantsTransactionsPurchaseCreditCard,
+    MerchantsOrdersOrderTokenPaymentsMethodsGet200Response,
 
     /**
-     * The MerchantsTransactionsPurchaseSpecificFields model constructor.
-     * @property {module:model/MerchantsTransactionsPurchaseSpecificFields}
+     * The MerchantsOrdersOrderTokenPaymentsMethodsGet200ResponseDataInner model constructor.
+     * @property {module:model/MerchantsOrdersOrderTokenPaymentsMethodsGet200ResponseDataInner}
      */
-    MerchantsTransactionsPurchaseSpecificFields,
+    MerchantsOrdersOrderTokenPaymentsMethodsGet200ResponseDataInner,
+
+    /**
+     * The MerchantsOrdersOrderTokenTransactionsVerifyPost200Response model constructor.
+     * @property {module:model/MerchantsOrdersOrderTokenTransactionsVerifyPost200Response}
+     */
+    MerchantsOrdersOrderTokenTransactionsVerifyPost200Response,
+
+    /**
+     * The MerchantsOrdersOrderTokenTransactionsVerifyPostRequest model constructor.
+     * @property {module:model/MerchantsOrdersOrderTokenTransactionsVerifyPostRequest}
+     */
+    MerchantsOrdersOrderTokenTransactionsVerifyPostRequest,
+
+    /**
+     * The MerchantsOrdersPostRequest model constructor.
+     * @property {module:model/MerchantsOrdersPostRequest}
+     */
+    MerchantsOrdersPostRequest,
+
+    /**
+     * The MerchantsOrdersPostRequestOrder model constructor.
+     * @property {module:model/MerchantsOrdersPostRequestOrder}
+     */
+    MerchantsOrdersPostRequestOrder,
+
+    /**
+     * The MerchantsOrdersPostRequestOrderDiscountsInner model constructor.
+     * @property {module:model/MerchantsOrdersPostRequestOrderDiscountsInner}
+     */
+    MerchantsOrdersPostRequestOrderDiscountsInner,
+
+    /**
+     * The MerchantsOrdersPostRequestOrderItemsInner model constructor.
+     * @property {module:model/MerchantsOrdersPostRequestOrderItemsInner}
+     */
+    MerchantsOrdersPostRequestOrderItemsInner,
+
+    /**
+     * The MerchantsOrdersPostRequestOrderItemsInnerTotalAmount model constructor.
+     * @property {module:model/MerchantsOrdersPostRequestOrderItemsInnerTotalAmount}
+     */
+    MerchantsOrdersPostRequestOrderItemsInnerTotalAmount,
+
+    /**
+     * The MerchantsOrdersPostRequestOrderShippingAddress model constructor.
+     * @property {module:model/MerchantsOrdersPostRequestOrderShippingAddress}
+     */
+    MerchantsOrdersPostRequestOrderShippingAddress,
+
+    /**
+     * The MerchantsOrdersPostRequestOrderShippingOptions model constructor.
+     * @property {module:model/MerchantsOrdersPostRequestOrderShippingOptions}
+     */
+    MerchantsOrdersPostRequestOrderShippingOptions,
+
+    /**
+     * The MerchantsOrdersPostRequestOrderShippingOptionsDetails model constructor.
+     * @property {module:model/MerchantsOrdersPostRequestOrderShippingOptionsDetails}
+     */
+    MerchantsOrdersPostRequestOrderShippingOptionsDetails,
+
+    /**
+     * The MerchantsOrdersPostRequestOrderShippingOptionsDetailsContact model constructor.
+     * @property {module:model/MerchantsOrdersPostRequestOrderShippingOptionsDetailsContact}
+     */
+    MerchantsOrdersPostRequestOrderShippingOptionsDetailsContact,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200Response model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200Response}
+     */
+    MerchantsTransactionsPurchasePost200Response,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrder model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrder}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrder,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrderItemsInner model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrderItemsInner}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrderItemsInner,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrderPayment model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrderPayment}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrderPayment,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrderPaymentData model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentData}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrderPaymentData,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataAmount model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataAmount}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataAmount,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataCustomer model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataCustomer}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataCustomer,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataFromCard model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataFromCard}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataFromCard,
+
+    /**
+     * The MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataMerchant model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataMerchant}
+     */
+    MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataMerchant,
+
+    /**
+     * The MerchantsTransactionsPurchasePostRequest model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePostRequest}
+     */
+    MerchantsTransactionsPurchasePostRequest,
+
+    /**
+     * The MerchantsTransactionsPurchasePostRequestCreditCard model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePostRequestCreditCard}
+     */
+    MerchantsTransactionsPurchasePostRequestCreditCard,
+
+    /**
+     * The MerchantsTransactionsPurchasePostRequestSpecificFields model constructor.
+     * @property {module:model/MerchantsTransactionsPurchasePostRequestSpecificFields}
+     */
+    MerchantsTransactionsPurchasePostRequestSpecificFields,
+
+    /**
+     * The UsersLoginDeviceFingerprintPost200Response model constructor.
+     * @property {module:model/UsersLoginDeviceFingerprintPost200Response}
+     */
+    UsersLoginDeviceFingerprintPost200Response,
+
+    /**
+     * The UsersMeGet200Response model constructor.
+     * @property {module:model/UsersMeGet200Response}
+     */
+    UsersMeGet200Response,
+
+    /**
+     * The UsersMeGet200ResponseIdentityProvidersInner model constructor.
+     * @property {module:model/UsersMeGet200ResponseIdentityProvidersInner}
+     */
+    UsersMeGet200ResponseIdentityProvidersInner,
 
     /**
     * The ExternalMerchantAPIApi service constructor.

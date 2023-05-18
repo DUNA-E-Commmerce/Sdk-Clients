@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## usersLoginDeviceFingerprintPost
 
-> InlineResponse2008 usersLoginDeviceFingerprintPost(opts)
+> UsersLoginDeviceFingerprintPost200Response usersLoginDeviceFingerprintPost(opts)
 
 Login User
 
@@ -41,13 +41,12 @@ let opts = {
   'type': "type_example", // String | 
   'loadProfileData': "loadProfileData_example" // String | 
 };
-apiInstance.usersLoginDeviceFingerprintPost(opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.usersLoginDeviceFingerprintPost(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -65,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**UsersLoginDeviceFingerprintPost200Response**](UsersLoginDeviceFingerprintPost200Response.md)
 
 ### Authorization
 
@@ -79,7 +78,7 @@ Name | Type | Description  | Notes
 
 ## usersMeGet
 
-> InlineResponse2009 usersMeGet(opts)
+> UsersMeGet200Response usersMeGet(opts)
 
 Get User Information
 
@@ -106,13 +105,12 @@ let opts = {
   'xDeviceId': "xDeviceId_example", // String | 
   'authorization': "authorization_example" // String | 
 };
-apiInstance.usersMeGet(opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.usersMeGet(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -127,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**UsersMeGet200Response**](UsersMeGet200Response.md)
 
 ### Authorization
 

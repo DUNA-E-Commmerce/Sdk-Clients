@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## merchantsExternalOrdersOrderTokenCouponsCouponCodeDelete
 
-> InlineResponse200 merchantsExternalOrdersOrderTokenCouponsCouponCodeDelete(orderToken, couponCode, opts)
+> MerchantsExternalOrdersOrderTokenCouponsPost200Response merchantsExternalOrdersOrderTokenCouponsCouponCodeDelete(orderToken, couponCode, opts)
 
 Remove Coupon
 
@@ -44,13 +44,12 @@ let opts = {
   'xApiKey': "xApiKey_example", // String | 
   'authorization': "authorization_example" // String | 
 };
-apiInstance.merchantsExternalOrdersOrderTokenCouponsCouponCodeDelete(orderToken, couponCode, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsExternalOrdersOrderTokenCouponsCouponCodeDelete(orderToken, couponCode, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -65,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**MerchantsExternalOrdersOrderTokenCouponsPost200Response**](MerchantsExternalOrdersOrderTokenCouponsPost200Response.md)
 
 ### Authorization
 
@@ -79,7 +78,7 @@ Name | Type | Description  | Notes
 
 ## merchantsExternalOrdersOrderTokenCouponsPost
 
-> InlineResponse200 merchantsExternalOrdersOrderTokenCouponsPost(orderToken, opts)
+> MerchantsExternalOrdersOrderTokenCouponsPost200Response merchantsExternalOrdersOrderTokenCouponsPost(orderToken, opts)
 
 Apply Coupon
 
@@ -101,15 +100,14 @@ let orderToken = "orderToken_example"; // String |
 let opts = {
   'xApiKey': "xApiKey_example", // String | 
   'authorization': "authorization_example", // String | 
-  'inlineObject': new ApiGateway.InlineObject() // InlineObject | 
+  'merchantsExternalOrdersOrderTokenCouponsPostRequest': new ApiGateway.MerchantsExternalOrdersOrderTokenCouponsPostRequest() // MerchantsExternalOrdersOrderTokenCouponsPostRequest | 
 };
-apiInstance.merchantsExternalOrdersOrderTokenCouponsPost(orderToken, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsExternalOrdersOrderTokenCouponsPost(orderToken, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -120,11 +118,11 @@ Name | Type | Description  | Notes
  **orderToken** | **String**|  | 
  **xApiKey** | **String**|  | [optional] 
  **authorization** | **String**|  | [optional] 
- **inlineObject** | [**InlineObject**](InlineObject.md)|  | [optional] 
+ **merchantsExternalOrdersOrderTokenCouponsPostRequest** | [**MerchantsExternalOrdersOrderTokenCouponsPostRequest**](MerchantsExternalOrdersOrderTokenCouponsPostRequest.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**MerchantsExternalOrdersOrderTokenCouponsPost200Response**](MerchantsExternalOrdersOrderTokenCouponsPost200Response.md)
 
 ### Authorization
 
@@ -138,7 +136,7 @@ Name | Type | Description  | Notes
 
 ## merchantsExternalOrdersOrderTokenGiftCardsPost
 
-> InlineResponse2001 merchantsExternalOrdersOrderTokenGiftCardsPost(orderToken, opts)
+> MerchantsExternalOrdersOrderTokenGiftCardsPost200Response merchantsExternalOrdersOrderTokenGiftCardsPost(orderToken, opts)
 
 Apply Gift Card
 
@@ -160,15 +158,14 @@ let orderToken = "orderToken_example"; // String |
 let opts = {
   'xApiKey': "xApiKey_example", // String | 
   'authorization': "authorization_example", // String | 
-  'inlineObject1': new ApiGateway.InlineObject1() // InlineObject1 | 
+  'merchantsExternalOrdersOrderTokenGiftCardsPostRequest': new ApiGateway.MerchantsExternalOrdersOrderTokenGiftCardsPostRequest() // MerchantsExternalOrdersOrderTokenGiftCardsPostRequest | 
 };
-apiInstance.merchantsExternalOrdersOrderTokenGiftCardsPost(orderToken, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsExternalOrdersOrderTokenGiftCardsPost(orderToken, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -179,11 +176,11 @@ Name | Type | Description  | Notes
  **orderToken** | **String**|  | 
  **xApiKey** | **String**|  | [optional] 
  **authorization** | **String**|  | [optional] 
- **inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | [optional] 
+ **merchantsExternalOrdersOrderTokenGiftCardsPostRequest** | [**MerchantsExternalOrdersOrderTokenGiftCardsPostRequest**](MerchantsExternalOrdersOrderTokenGiftCardsPostRequest.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**MerchantsExternalOrdersOrderTokenGiftCardsPost200Response**](MerchantsExternalOrdersOrderTokenGiftCardsPost200Response.md)
 
 ### Authorization
 
@@ -197,7 +194,7 @@ Name | Type | Description  | Notes
 
 ## merchantsExternalOrdersOrderTokenShippingMethodsCodePatch
 
-> InlineResponse2003 merchantsExternalOrdersOrderTokenShippingMethodsCodePatch(orderToken, code, opts)
+> MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response merchantsExternalOrdersOrderTokenShippingMethodsCodePatch(orderToken, code, opts)
 
 Update the selected shipping method
 
@@ -221,13 +218,12 @@ let opts = {
   'xApiKey': "xApiKey_example", // String | 
   'authorization': "authorization_example" // String | 
 };
-apiInstance.merchantsExternalOrdersOrderTokenShippingMethodsCodePatch(orderToken, code, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsExternalOrdersOrderTokenShippingMethodsCodePatch(orderToken, code, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -242,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response**](MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response.md)
 
 ### Authorization
 
@@ -256,7 +252,7 @@ Name | Type | Description  | Notes
 
 ## merchantsExternalOrdersOrderTokenShippingMethodsPost
 
-> InlineResponse2002 merchantsExternalOrdersOrderTokenShippingMethodsPost(orderToken, opts)
+> MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response merchantsExternalOrdersOrderTokenShippingMethodsPost(orderToken, opts)
 
 Get shipping methods
 
@@ -278,15 +274,14 @@ let orderToken = "orderToken_example"; // String |
 let opts = {
   'xApiKey': "xApiKey_example", // String | 
   'authorization': "authorization_example", // String | 
-  'inlineObject2': new ApiGateway.InlineObject2() // InlineObject2 | 
+  'merchantsExternalOrdersOrderTokenShippingMethodsPostRequest': new ApiGateway.MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest() // MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest | 
 };
-apiInstance.merchantsExternalOrdersOrderTokenShippingMethodsPost(orderToken, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsExternalOrdersOrderTokenShippingMethodsPost(orderToken, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -297,11 +292,11 @@ Name | Type | Description  | Notes
  **orderToken** | **String**|  | 
  **xApiKey** | **String**|  | [optional] 
  **authorization** | **String**|  | [optional] 
- **inlineObject2** | [**InlineObject2**](InlineObject2.md)|  | [optional] 
+ **merchantsExternalOrdersOrderTokenShippingMethodsPostRequest** | [**MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest**](MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response**](MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response.md)
 
 ### Authorization
 
@@ -315,7 +310,7 @@ Name | Type | Description  | Notes
 
 ## merchantsExternalOrdersOrderTokenShippingRatePost
 
-> InlineResponse2004 merchantsExternalOrdersOrderTokenShippingRatePost(orderToken, opts)
+> MerchantsExternalOrdersOrderTokenShippingRatePost200Response merchantsExternalOrdersOrderTokenShippingRatePost(orderToken, opts)
 
 Shipping Rate
 
@@ -341,15 +336,14 @@ let opts = {
   'lon': "lon_example", // String | 
   'city': "city_example", // String | 
   'countryIso': "countryIso_example", // String | 
-  'inlineObject3': new ApiGateway.InlineObject3() // InlineObject3 | 
+  'merchantsExternalOrdersOrderTokenShippingRatePostRequest': new ApiGateway.MerchantsExternalOrdersOrderTokenShippingRatePostRequest() // MerchantsExternalOrdersOrderTokenShippingRatePostRequest | 
 };
-apiInstance.merchantsExternalOrdersOrderTokenShippingRatePost(orderToken, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsExternalOrdersOrderTokenShippingRatePost(orderToken, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -364,11 +358,11 @@ Name | Type | Description  | Notes
  **lon** | **String**|  | [optional] 
  **city** | **String**|  | [optional] 
  **countryIso** | **String**|  | [optional] 
- **inlineObject3** | [**InlineObject3**](InlineObject3.md)|  | [optional] 
+ **merchantsExternalOrdersOrderTokenShippingRatePostRequest** | [**MerchantsExternalOrdersOrderTokenShippingRatePostRequest**](MerchantsExternalOrdersOrderTokenShippingRatePostRequest.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**MerchantsExternalOrdersOrderTokenShippingRatePost200Response**](MerchantsExternalOrdersOrderTokenShippingRatePost200Response.md)
 
 ### Authorization
 
@@ -382,7 +376,7 @@ Name | Type | Description  | Notes
 
 ## merchantsOrdersOrderTokenGet
 
-> InlineResponse200 merchantsOrdersOrderTokenGet(orderToken, opts)
+> MerchantsExternalOrdersOrderTokenCouponsPost200Response merchantsOrdersOrderTokenGet(orderToken, opts)
 
 Get order
 
@@ -404,13 +398,12 @@ let orderToken = "orderToken_example"; // String |
 let opts = {
   'xApiKey': "xApiKey_example" // String | 
 };
-apiInstance.merchantsOrdersOrderTokenGet(orderToken, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsOrdersOrderTokenGet(orderToken, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -423,7 +416,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**MerchantsExternalOrdersOrderTokenCouponsPost200Response**](MerchantsExternalOrdersOrderTokenCouponsPost200Response.md)
 
 ### Authorization
 
@@ -437,7 +430,7 @@ Name | Type | Description  | Notes
 
 ## merchantsOrdersOrderTokenPaymentsMethodsGet
 
-> InlineResponse2005 merchantsOrdersOrderTokenPaymentsMethodsGet(orderToken, opts)
+> MerchantsOrdersOrderTokenPaymentsMethodsGet200Response merchantsOrdersOrderTokenPaymentsMethodsGet(orderToken, opts)
 
 Payment Methods
 
@@ -461,13 +454,12 @@ let opts = {
   'xApiKey': "xApiKey_example", // String | 
   'xStoreCode': "xStoreCode_example" // String | 
 };
-apiInstance.merchantsOrdersOrderTokenPaymentsMethodsGet(orderToken, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsOrdersOrderTokenPaymentsMethodsGet(orderToken, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -482,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**MerchantsOrdersOrderTokenPaymentsMethodsGet200Response**](MerchantsOrdersOrderTokenPaymentsMethodsGet200Response.md)
 
 ### Authorization
 
@@ -496,7 +488,7 @@ Name | Type | Description  | Notes
 
 ## merchantsOrdersOrderTokenTransactionsVerifyPost
 
-> InlineResponse2006 merchantsOrdersOrderTokenTransactionsVerifyPost(orderToken, opts)
+> MerchantsOrdersOrderTokenTransactionsVerifyPost200Response merchantsOrdersOrderTokenTransactionsVerifyPost(orderToken, opts)
 
 Verify OTP Dinners
 
@@ -523,15 +515,14 @@ let opts = {
   'xApiKey': "xApiKey_example", // String | 
   'xMerchantID': "xMerchantID_example", // String | 
   'xStoreCode': "xStoreCode_example", // String | 
-  'inlineObject5': new ApiGateway.InlineObject5() // InlineObject5 | 
+  'merchantsOrdersOrderTokenTransactionsVerifyPostRequest': new ApiGateway.MerchantsOrdersOrderTokenTransactionsVerifyPostRequest() // MerchantsOrdersOrderTokenTransactionsVerifyPostRequest | 
 };
-apiInstance.merchantsOrdersOrderTokenTransactionsVerifyPost(orderToken, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsOrdersOrderTokenTransactionsVerifyPost(orderToken, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -544,11 +535,11 @@ Name | Type | Description  | Notes
  **xApiKey** | **String**|  | [optional] 
  **xMerchantID** | **String**|  | [optional] 
  **xStoreCode** | **String**|  | [optional] 
- **inlineObject5** | [**InlineObject5**](InlineObject5.md)|  | [optional] 
+ **merchantsOrdersOrderTokenTransactionsVerifyPostRequest** | [**MerchantsOrdersOrderTokenTransactionsVerifyPostRequest**](MerchantsOrdersOrderTokenTransactionsVerifyPostRequest.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**MerchantsOrdersOrderTokenTransactionsVerifyPost200Response**](MerchantsOrdersOrderTokenTransactionsVerifyPost200Response.md)
 
 ### Authorization
 
@@ -562,7 +553,7 @@ Name | Type | Description  | Notes
 
 ## merchantsOrdersPost
 
-> InlineResponse200 merchantsOrdersPost(opts)
+> MerchantsExternalOrdersOrderTokenCouponsPost200Response merchantsOrdersPost(opts)
 
 Create Order
 
@@ -582,15 +573,14 @@ X-Api-Key.apiKey = 'YOUR API KEY';
 let apiInstance = new ApiGateway.ExternalMerchantAPIApi();
 let opts = {
   'xApiKey': "xApiKey_example", // String | 
-  'inlineObject4': new ApiGateway.InlineObject4() // InlineObject4 | 
+  'merchantsOrdersPostRequest': new ApiGateway.MerchantsOrdersPostRequest() // MerchantsOrdersPostRequest | 
 };
-apiInstance.merchantsOrdersPost(opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsOrdersPost(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -599,11 +589,11 @@ apiInstance.merchantsOrdersPost(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xApiKey** | **String**|  | [optional] 
- **inlineObject4** | [**InlineObject4**](InlineObject4.md)|  | [optional] 
+ **merchantsOrdersPostRequest** | [**MerchantsOrdersPostRequest**](MerchantsOrdersPostRequest.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**MerchantsExternalOrdersOrderTokenCouponsPost200Response**](MerchantsExternalOrdersOrderTokenCouponsPost200Response.md)
 
 ### Authorization
 
@@ -617,7 +607,7 @@ Name | Type | Description  | Notes
 
 ## merchantsTransactionsPurchasePost
 
-> InlineResponse2007 merchantsTransactionsPurchasePost(opts)
+> MerchantsTransactionsPurchasePost200Response merchantsTransactionsPurchasePost(opts)
 
 Purchase
 
@@ -646,15 +636,14 @@ let opts = {
   'xDeviceId': "xDeviceId_example", // String | 
   'xSessionId': "xSessionId_example", // String | 
   'userAgent': "userAgent_example", // String | 
-  'inlineObject6': new ApiGateway.InlineObject6() // InlineObject6 | 
+  'merchantsTransactionsPurchasePostRequest': new ApiGateway.MerchantsTransactionsPurchasePostRequest() // MerchantsTransactionsPurchasePostRequest | 
 };
-apiInstance.merchantsTransactionsPurchasePost(opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.merchantsTransactionsPurchasePost(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -669,11 +658,11 @@ Name | Type | Description  | Notes
  **xDeviceId** | **String**|  | [optional] 
  **xSessionId** | **String**|  | [optional] 
  **userAgent** | **String**|  | [optional] 
- **inlineObject6** | [**InlineObject6**](InlineObject6.md)|  | [optional] 
+ **merchantsTransactionsPurchasePostRequest** | [**MerchantsTransactionsPurchasePostRequest**](MerchantsTransactionsPurchasePostRequest.md)|  | [optional] 
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**MerchantsTransactionsPurchasePost200Response**](MerchantsTransactionsPurchasePost200Response.md)
 
 ### Authorization
 

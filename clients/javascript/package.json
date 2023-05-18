@@ -1,7 +1,7 @@
 {
-  "name": "apigw-sdk-js",
-  "version": "0.1.7",
-  "description": "API_Gateway",
+  "name": "apigw-sdk",
+  "version": "0.1.8",
+  "description": "API Gateway",
   "license": "Unlicense",
   "main": "dist/index.js",
   "scripts": {

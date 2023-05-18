@@ -13,8 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
-import InlineResponse2008 from '../model/InlineResponse2008';
-import InlineResponse2009 from '../model/InlineResponse2009';
+import UsersLoginDeviceFingerprintPost200Response from '../model/UsersLoginDeviceFingerprintPost200Response';
+import UsersMeGet200Response from '../model/UsersMeGet200Response';
 
 /**
 * Users service.
@@ -35,13 +35,6 @@ export default class UsersApi {
     }
 
 
-    /**
-     * Callback function to receive the result of the usersLoginDeviceFingerprintPost operation.
-     * @callback module:api/UsersApi~usersLoginDeviceFingerprintPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2008} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Login User
@@ -54,10 +47,9 @@ export default class UsersApi {
      * @param {String} opts.authorization 
      * @param {String} opts.type 
      * @param {String} opts.loadProfileData 
-     * @param {module:api/UsersApi~usersLoginDeviceFingerprintPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2008}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/UsersLoginDeviceFingerprintPost200Response} and HTTP response
      */
-    usersLoginDeviceFingerprintPost(opts, callback) {
+    usersLoginDeviceFingerprintPostWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = null;
 
@@ -80,21 +72,34 @@ export default class UsersApi {
       let authNames = ['Authorization', 'X-Api-Key'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2008;
+      let returnType = UsersLoginDeviceFingerprintPost200Response;
       return this.apiClient.callApi(
         '/users/login/device-fingerprint', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the usersMeGet operation.
-     * @callback module:api/UsersApi~usersMeGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2009} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Login User
+     * Login User
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.xMerchantId 
+     * @param {String} opts.xDeviceId 
+     * @param {String} opts.xSessionID 
+     * @param {String} opts.authorization 
+     * @param {String} opts.type 
+     * @param {String} opts.loadProfileData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UsersLoginDeviceFingerprintPost200Response}
      */
+    usersLoginDeviceFingerprintPost(opts) {
+      return this.usersLoginDeviceFingerprintPostWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Get User Information
@@ -104,10 +109,9 @@ export default class UsersApi {
      * @param {String} opts.xMerchantId 
      * @param {String} opts.xDeviceId 
      * @param {String} opts.authorization 
-     * @param {module:api/UsersApi~usersMeGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2009}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/UsersMeGet200Response} and HTTP response
      */
-    usersMeGet(opts, callback) {
+    usersMeGetWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = null;
 
@@ -127,12 +131,29 @@ export default class UsersApi {
       let authNames = ['Authorization', 'X-Api-Key'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2009;
+      let returnType = UsersMeGet200Response;
       return this.apiClient.callApi(
         '/users/me', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
+    }
+
+    /**
+     * Get User Information
+     * Get User Information
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.xMerchantId 
+     * @param {String} opts.xDeviceId 
+     * @param {String} opts.authorization 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UsersMeGet200Response}
+     */
+    usersMeGet(opts) {
+      return this.usersMeGetWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
 
 

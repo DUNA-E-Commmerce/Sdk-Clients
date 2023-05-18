@@ -13,21 +13,21 @@
 
 
 import ApiClient from "../ApiClient";
-import InlineObject from '../model/InlineObject';
-import InlineObject1 from '../model/InlineObject1';
-import InlineObject2 from '../model/InlineObject2';
-import InlineObject3 from '../model/InlineObject3';
-import InlineObject4 from '../model/InlineObject4';
-import InlineObject5 from '../model/InlineObject5';
-import InlineObject6 from '../model/InlineObject6';
-import InlineResponse200 from '../model/InlineResponse200';
-import InlineResponse2001 from '../model/InlineResponse2001';
-import InlineResponse2002 from '../model/InlineResponse2002';
-import InlineResponse2003 from '../model/InlineResponse2003';
-import InlineResponse2004 from '../model/InlineResponse2004';
-import InlineResponse2005 from '../model/InlineResponse2005';
-import InlineResponse2006 from '../model/InlineResponse2006';
-import InlineResponse2007 from '../model/InlineResponse2007';
+import MerchantsExternalOrdersOrderTokenCouponsPost200Response from '../model/MerchantsExternalOrdersOrderTokenCouponsPost200Response';
+import MerchantsExternalOrdersOrderTokenCouponsPostRequest from '../model/MerchantsExternalOrdersOrderTokenCouponsPostRequest';
+import MerchantsExternalOrdersOrderTokenGiftCardsPost200Response from '../model/MerchantsExternalOrdersOrderTokenGiftCardsPost200Response';
+import MerchantsExternalOrdersOrderTokenGiftCardsPostRequest from '../model/MerchantsExternalOrdersOrderTokenGiftCardsPostRequest';
+import MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response from '../model/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response from '../model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response';
+import MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest from '../model/MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest';
+import MerchantsExternalOrdersOrderTokenShippingRatePost200Response from '../model/MerchantsExternalOrdersOrderTokenShippingRatePost200Response';
+import MerchantsExternalOrdersOrderTokenShippingRatePostRequest from '../model/MerchantsExternalOrdersOrderTokenShippingRatePostRequest';
+import MerchantsOrdersOrderTokenPaymentsMethodsGet200Response from '../model/MerchantsOrdersOrderTokenPaymentsMethodsGet200Response';
+import MerchantsOrdersOrderTokenTransactionsVerifyPost200Response from '../model/MerchantsOrdersOrderTokenTransactionsVerifyPost200Response';
+import MerchantsOrdersOrderTokenTransactionsVerifyPostRequest from '../model/MerchantsOrdersOrderTokenTransactionsVerifyPostRequest';
+import MerchantsOrdersPostRequest from '../model/MerchantsOrdersPostRequest';
+import MerchantsTransactionsPurchasePost200Response from '../model/MerchantsTransactionsPurchasePost200Response';
+import MerchantsTransactionsPurchasePostRequest from '../model/MerchantsTransactionsPurchasePostRequest';
 
 /**
 * ExternalMerchantAPI service.
@@ -48,13 +48,6 @@ export default class ExternalMerchantAPIApi {
     }
 
 
-    /**
-     * Callback function to receive the result of the merchantsExternalOrdersOrderTokenCouponsCouponCodeDelete operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenCouponsCouponCodeDeleteCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse200} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Remove Coupon
@@ -64,10 +57,9 @@ export default class ExternalMerchantAPIApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.xApiKey 
      * @param {String} opts.authorization 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenCouponsCouponCodeDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse200}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsExternalOrdersOrderTokenCouponsPost200Response} and HTTP response
      */
-    merchantsExternalOrdersOrderTokenCouponsCouponCodeDelete(orderToken, couponCode, opts, callback) {
+    merchantsExternalOrdersOrderTokenCouponsCouponCodeDeleteWithHttpInfo(orderToken, couponCode, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'orderToken' is set
@@ -95,21 +87,31 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['X-Api-Key'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse200;
+      let returnType = MerchantsExternalOrdersOrderTokenCouponsPost200Response;
       return this.apiClient.callApi(
         '/merchants/external-orders/{order_token}/coupons/{coupon_code}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsExternalOrdersOrderTokenCouponsPost operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenCouponsPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse200} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Remove Coupon
+     * Remove coupon
+     * @param {String} orderToken 
+     * @param {String} couponCode 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.authorization 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsExternalOrdersOrderTokenCouponsPost200Response}
      */
+    merchantsExternalOrdersOrderTokenCouponsCouponCodeDelete(orderToken, couponCode, opts) {
+      return this.merchantsExternalOrdersOrderTokenCouponsCouponCodeDeleteWithHttpInfo(orderToken, couponCode, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Apply Coupon
@@ -118,13 +120,12 @@ export default class ExternalMerchantAPIApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.xApiKey 
      * @param {String} opts.authorization 
-     * @param {module:model/InlineObject} opts.inlineObject 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenCouponsPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse200}
+     * @param {module:model/MerchantsExternalOrdersOrderTokenCouponsPostRequest} opts.merchantsExternalOrdersOrderTokenCouponsPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsExternalOrdersOrderTokenCouponsPost200Response} and HTTP response
      */
-    merchantsExternalOrdersOrderTokenCouponsPost(orderToken, opts, callback) {
+    merchantsExternalOrdersOrderTokenCouponsPostWithHttpInfo(orderToken, opts) {
       opts = opts || {};
-      let postBody = opts['inlineObject'];
+      let postBody = opts['merchantsExternalOrdersOrderTokenCouponsPostRequest'];
       // verify the required parameter 'orderToken' is set
       if (orderToken === undefined || orderToken === null) {
         throw new Error("Missing the required parameter 'orderToken' when calling merchantsExternalOrdersOrderTokenCouponsPost");
@@ -145,21 +146,31 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['X-Api-Key'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse200;
+      let returnType = MerchantsExternalOrdersOrderTokenCouponsPost200Response;
       return this.apiClient.callApi(
         '/merchants/external-orders/{order_token}/coupons', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsExternalOrdersOrderTokenGiftCardsPost operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenGiftCardsPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2001} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Apply Coupon
+     * Apply coupon
+     * @param {String} orderToken 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.authorization 
+     * @param {module:model/MerchantsExternalOrdersOrderTokenCouponsPostRequest} opts.merchantsExternalOrdersOrderTokenCouponsPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsExternalOrdersOrderTokenCouponsPost200Response}
      */
+    merchantsExternalOrdersOrderTokenCouponsPost(orderToken, opts) {
+      return this.merchantsExternalOrdersOrderTokenCouponsPostWithHttpInfo(orderToken, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Apply Gift Card
@@ -168,13 +179,12 @@ export default class ExternalMerchantAPIApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.xApiKey 
      * @param {String} opts.authorization 
-     * @param {module:model/InlineObject1} opts.inlineObject1 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenGiftCardsPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2001}
+     * @param {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPostRequest} opts.merchantsExternalOrdersOrderTokenGiftCardsPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200Response} and HTTP response
      */
-    merchantsExternalOrdersOrderTokenGiftCardsPost(orderToken, opts, callback) {
+    merchantsExternalOrdersOrderTokenGiftCardsPostWithHttpInfo(orderToken, opts) {
       opts = opts || {};
-      let postBody = opts['inlineObject1'];
+      let postBody = opts['merchantsExternalOrdersOrderTokenGiftCardsPostRequest'];
       // verify the required parameter 'orderToken' is set
       if (orderToken === undefined || orderToken === null) {
         throw new Error("Missing the required parameter 'orderToken' when calling merchantsExternalOrdersOrderTokenGiftCardsPost");
@@ -195,21 +205,31 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['X-Api-Key'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2001;
+      let returnType = MerchantsExternalOrdersOrderTokenGiftCardsPost200Response;
       return this.apiClient.callApi(
         '/merchants/external-orders/{order_token}/gift-cards', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsExternalOrdersOrderTokenShippingMethodsCodePatch operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenShippingMethodsCodePatchCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2003} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Apply Gift Card
+     * Apply Gift Card
+     * @param {String} orderToken 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.authorization 
+     * @param {module:model/MerchantsExternalOrdersOrderTokenGiftCardsPostRequest} opts.merchantsExternalOrdersOrderTokenGiftCardsPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsExternalOrdersOrderTokenGiftCardsPost200Response}
      */
+    merchantsExternalOrdersOrderTokenGiftCardsPost(orderToken, opts) {
+      return this.merchantsExternalOrdersOrderTokenGiftCardsPostWithHttpInfo(orderToken, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Update the selected shipping method
@@ -219,10 +239,9 @@ export default class ExternalMerchantAPIApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.xApiKey 
      * @param {String} opts.authorization 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenShippingMethodsCodePatchCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2003}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response} and HTTP response
      */
-    merchantsExternalOrdersOrderTokenShippingMethodsCodePatch(orderToken, code, opts, callback) {
+    merchantsExternalOrdersOrderTokenShippingMethodsCodePatchWithHttpInfo(orderToken, code, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'orderToken' is set
@@ -250,21 +269,31 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['X-Api-Key'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2003;
+      let returnType = MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response;
       return this.apiClient.callApi(
         '/merchants/external-orders/{order_token}/shipping-methods/{code}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsExternalOrdersOrderTokenShippingMethodsPost operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenShippingMethodsPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2002} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Update the selected shipping method
+     * Update the selected shipping method
+     * @param {String} orderToken 
+     * @param {String} code 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.authorization 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response}
      */
+    merchantsExternalOrdersOrderTokenShippingMethodsCodePatch(orderToken, code, opts) {
+      return this.merchantsExternalOrdersOrderTokenShippingMethodsCodePatchWithHttpInfo(orderToken, code, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Get shipping methods
@@ -273,13 +302,12 @@ export default class ExternalMerchantAPIApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.xApiKey 
      * @param {String} opts.authorization 
-     * @param {module:model/InlineObject2} opts.inlineObject2 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenShippingMethodsPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2002}
+     * @param {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest} opts.merchantsExternalOrdersOrderTokenShippingMethodsPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response} and HTTP response
      */
-    merchantsExternalOrdersOrderTokenShippingMethodsPost(orderToken, opts, callback) {
+    merchantsExternalOrdersOrderTokenShippingMethodsPostWithHttpInfo(orderToken, opts) {
       opts = opts || {};
-      let postBody = opts['inlineObject2'];
+      let postBody = opts['merchantsExternalOrdersOrderTokenShippingMethodsPostRequest'];
       // verify the required parameter 'orderToken' is set
       if (orderToken === undefined || orderToken === null) {
         throw new Error("Missing the required parameter 'orderToken' when calling merchantsExternalOrdersOrderTokenShippingMethodsPost");
@@ -300,21 +328,31 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['X-Api-Key'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2002;
+      let returnType = MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response;
       return this.apiClient.callApi(
         '/merchants/external-orders/{order_token}/shipping-methods', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsExternalOrdersOrderTokenShippingRatePost operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenShippingRatePostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2004} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get shipping methods
+     * Get shipping methods
+     * @param {String} orderToken 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.authorization 
+     * @param {module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest} opts.merchantsExternalOrdersOrderTokenShippingMethodsPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response}
      */
+    merchantsExternalOrdersOrderTokenShippingMethodsPost(orderToken, opts) {
+      return this.merchantsExternalOrdersOrderTokenShippingMethodsPostWithHttpInfo(orderToken, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Shipping Rate
@@ -327,13 +365,12 @@ export default class ExternalMerchantAPIApi {
      * @param {String} opts.lon 
      * @param {String} opts.city 
      * @param {String} opts.countryIso 
-     * @param {module:model/InlineObject3} opts.inlineObject3 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsExternalOrdersOrderTokenShippingRatePostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2004}
+     * @param {module:model/MerchantsExternalOrdersOrderTokenShippingRatePostRequest} opts.merchantsExternalOrdersOrderTokenShippingRatePostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200Response} and HTTP response
      */
-    merchantsExternalOrdersOrderTokenShippingRatePost(orderToken, opts, callback) {
+    merchantsExternalOrdersOrderTokenShippingRatePostWithHttpInfo(orderToken, opts) {
       opts = opts || {};
-      let postBody = opts['inlineObject3'];
+      let postBody = opts['merchantsExternalOrdersOrderTokenShippingRatePostRequest'];
       // verify the required parameter 'orderToken' is set
       if (orderToken === undefined || orderToken === null) {
         throw new Error("Missing the required parameter 'orderToken' when calling merchantsExternalOrdersOrderTokenShippingRatePost");
@@ -358,21 +395,35 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['X-Api-Key'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2004;
+      let returnType = MerchantsExternalOrdersOrderTokenShippingRatePost200Response;
       return this.apiClient.callApi(
         '/merchants/external-orders/{order_token}/shipping-rate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsOrdersOrderTokenGet operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsOrdersOrderTokenGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse200} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Shipping Rate
+     * Get shipping rate
+     * @param {String} orderToken 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.authorization 
+     * @param {String} opts.lat 
+     * @param {String} opts.lon 
+     * @param {String} opts.city 
+     * @param {String} opts.countryIso 
+     * @param {module:model/MerchantsExternalOrdersOrderTokenShippingRatePostRequest} opts.merchantsExternalOrdersOrderTokenShippingRatePostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsExternalOrdersOrderTokenShippingRatePost200Response}
      */
+    merchantsExternalOrdersOrderTokenShippingRatePost(orderToken, opts) {
+      return this.merchantsExternalOrdersOrderTokenShippingRatePostWithHttpInfo(orderToken, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Get order
@@ -380,10 +431,9 @@ export default class ExternalMerchantAPIApi {
      * @param {String} orderToken 
      * @param {Object} opts Optional parameters
      * @param {String} opts.xApiKey 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsOrdersOrderTokenGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse200}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsExternalOrdersOrderTokenCouponsPost200Response} and HTTP response
      */
-    merchantsOrdersOrderTokenGet(orderToken, opts, callback) {
+    merchantsOrdersOrderTokenGetWithHttpInfo(orderToken, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'orderToken' is set
@@ -405,21 +455,29 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['X-Api-Key'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse200;
+      let returnType = MerchantsExternalOrdersOrderTokenCouponsPost200Response;
       return this.apiClient.callApi(
         '/merchants/orders/{order_token}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsOrdersOrderTokenPaymentsMethodsGet operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsOrdersOrderTokenPaymentsMethodsGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2005} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get order
+     * Get order by token
+     * @param {String} orderToken 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsExternalOrdersOrderTokenCouponsPost200Response}
      */
+    merchantsOrdersOrderTokenGet(orderToken, opts) {
+      return this.merchantsOrdersOrderTokenGetWithHttpInfo(orderToken, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Payment Methods
@@ -429,10 +487,9 @@ export default class ExternalMerchantAPIApi {
      * @param {String} opts.authorization 
      * @param {String} opts.xApiKey 
      * @param {String} opts.xStoreCode 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsOrdersOrderTokenPaymentsMethodsGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2005}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsOrdersOrderTokenPaymentsMethodsGet200Response} and HTTP response
      */
-    merchantsOrdersOrderTokenPaymentsMethodsGet(orderToken, opts, callback) {
+    merchantsOrdersOrderTokenPaymentsMethodsGetWithHttpInfo(orderToken, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'orderToken' is set
@@ -456,21 +513,31 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['X-Api-Key'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2005;
+      let returnType = MerchantsOrdersOrderTokenPaymentsMethodsGet200Response;
       return this.apiClient.callApi(
         '/merchants/orders/{order_token}/payments-methods', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsOrdersOrderTokenTransactionsVerifyPost operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsOrdersOrderTokenTransactionsVerifyPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2006} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Payment Methods
+     * Get payment methods
+     * @param {String} orderToken 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.authorization 
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.xStoreCode 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsOrdersOrderTokenPaymentsMethodsGet200Response}
      */
+    merchantsOrdersOrderTokenPaymentsMethodsGet(orderToken, opts) {
+      return this.merchantsOrdersOrderTokenPaymentsMethodsGetWithHttpInfo(orderToken, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Verify OTP Dinners
@@ -481,13 +548,12 @@ export default class ExternalMerchantAPIApi {
      * @param {String} opts.xApiKey 
      * @param {String} opts.xMerchantID 
      * @param {String} opts.xStoreCode 
-     * @param {module:model/InlineObject5} opts.inlineObject5 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsOrdersOrderTokenTransactionsVerifyPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2006}
+     * @param {module:model/MerchantsOrdersOrderTokenTransactionsVerifyPostRequest} opts.merchantsOrdersOrderTokenTransactionsVerifyPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsOrdersOrderTokenTransactionsVerifyPost200Response} and HTTP response
      */
-    merchantsOrdersOrderTokenTransactionsVerifyPost(orderToken, opts, callback) {
+    merchantsOrdersOrderTokenTransactionsVerifyPostWithHttpInfo(orderToken, opts) {
       opts = opts || {};
-      let postBody = opts['inlineObject5'];
+      let postBody = opts['merchantsOrdersOrderTokenTransactionsVerifyPostRequest'];
       // verify the required parameter 'orderToken' is set
       if (orderToken === undefined || orderToken === null) {
         throw new Error("Missing the required parameter 'orderToken' when calling merchantsOrdersOrderTokenTransactionsVerifyPost");
@@ -510,34 +576,45 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['Authorization', 'X-Api-Key'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2006;
+      let returnType = MerchantsOrdersOrderTokenTransactionsVerifyPost200Response;
       return this.apiClient.callApi(
         '/merchants/orders/{order_token}/transactions/verify', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsOrdersPost operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsOrdersPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse200} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Verify OTP Dinners
+     * Verify OTP Dinners
+     * @param {String} orderToken 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.authorization 
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.xMerchantID 
+     * @param {String} opts.xStoreCode 
+     * @param {module:model/MerchantsOrdersOrderTokenTransactionsVerifyPostRequest} opts.merchantsOrdersOrderTokenTransactionsVerifyPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsOrdersOrderTokenTransactionsVerifyPost200Response}
      */
+    merchantsOrdersOrderTokenTransactionsVerifyPost(orderToken, opts) {
+      return this.merchantsOrdersOrderTokenTransactionsVerifyPostWithHttpInfo(orderToken, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Create Order
      * Create order
      * @param {Object} opts Optional parameters
      * @param {String} opts.xApiKey 
-     * @param {module:model/InlineObject4} opts.inlineObject4 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsOrdersPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse200}
+     * @param {module:model/MerchantsOrdersPostRequest} opts.merchantsOrdersPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsExternalOrdersOrderTokenCouponsPost200Response} and HTTP response
      */
-    merchantsOrdersPost(opts, callback) {
+    merchantsOrdersPostWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['inlineObject4'];
+      let postBody = opts['merchantsOrdersPostRequest'];
 
       let pathParams = {
       };
@@ -552,21 +629,29 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['X-Api-Key'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse200;
+      let returnType = MerchantsExternalOrdersOrderTokenCouponsPost200Response;
       return this.apiClient.callApi(
         '/merchants/orders', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the merchantsTransactionsPurchasePost operation.
-     * @callback module:api/ExternalMerchantAPIApi~merchantsTransactionsPurchasePostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2007} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Create Order
+     * Create order
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.xApiKey 
+     * @param {module:model/MerchantsOrdersPostRequest} opts.merchantsOrdersPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsExternalOrdersOrderTokenCouponsPost200Response}
      */
+    merchantsOrdersPost(opts) {
+      return this.merchantsOrdersPostWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Purchase
@@ -579,13 +664,12 @@ export default class ExternalMerchantAPIApi {
      * @param {String} opts.xDeviceId 
      * @param {String} opts.xSessionId 
      * @param {String} opts.userAgent 
-     * @param {module:model/InlineObject6} opts.inlineObject6 
-     * @param {module:api/ExternalMerchantAPIApi~merchantsTransactionsPurchasePostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2007}
+     * @param {module:model/MerchantsTransactionsPurchasePostRequest} opts.merchantsTransactionsPurchasePostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/MerchantsTransactionsPurchasePost200Response} and HTTP response
      */
-    merchantsTransactionsPurchasePost(opts, callback) {
+    merchantsTransactionsPurchasePostWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['inlineObject6'];
+      let postBody = opts['merchantsTransactionsPurchasePostRequest'];
 
       let pathParams = {
       };
@@ -606,12 +690,33 @@ export default class ExternalMerchantAPIApi {
       let authNames = ['Authorization', 'X-Api-Key'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2007;
+      let returnType = MerchantsTransactionsPurchasePost200Response;
       return this.apiClient.callApi(
         '/merchants/transactions/purchase', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
+    }
+
+    /**
+     * Purchase
+     * Purchase
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.authorization 
+     * @param {String} opts.xApiKey 
+     * @param {String} opts.xMerchantID 
+     * @param {String} opts.xStoreCode 
+     * @param {String} opts.xDeviceId 
+     * @param {String} opts.xSessionId 
+     * @param {String} opts.userAgent 
+     * @param {module:model/MerchantsTransactionsPurchasePostRequest} opts.merchantsTransactionsPurchasePostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MerchantsTransactionsPurchasePost200Response}
+     */
+    merchantsTransactionsPurchasePost(opts) {
+      return this.merchantsTransactionsPurchasePostWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
 
 
