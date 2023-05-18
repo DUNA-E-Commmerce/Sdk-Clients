@@ -10,10 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2002OrderShippingAddress } from './InlineResponse2002OrderShippingAddress';
-import { InlineResponse2002OrderShippingOptions } from './InlineResponse2002OrderShippingOptions';
-import { Set } from './Set';
-import { HttpFile } from '../http/http';
+import {InlineResponse2002OrderShippingAddress} from './InlineResponse2002OrderShippingAddress';
+import {InlineResponse2002OrderShippingOptions} from './InlineResponse2002OrderShippingOptions';
 
 export class InlineResponse2002Order {
     'currency'?: string;

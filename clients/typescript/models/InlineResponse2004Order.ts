@@ -10,10 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2004OrderShippingAddress } from './InlineResponse2004OrderShippingAddress';
-import { InlineResponse200OrderMetadata } from './InlineResponse200OrderMetadata';
-import { Set } from './Set';
-import { HttpFile } from '../http/http';
+import {InlineResponse2004OrderShippingAddress} from './InlineResponse2004OrderShippingAddress';
+import {InlineResponse200OrderMetadata} from './InlineResponse200OrderMetadata';
 
 export class InlineResponse2004Order {
     'currency': string;

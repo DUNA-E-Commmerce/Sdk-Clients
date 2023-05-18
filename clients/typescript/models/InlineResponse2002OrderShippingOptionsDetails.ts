@@ -10,9 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates } from './InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates';
-import { InlineResponse2001OrderShippingOptionsDetailsContact } from './InlineResponse2001OrderShippingOptionsDetailsContact';
-import { HttpFile } from '../http/http';
+import {
+    InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates
+} from './InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates';
+import {
+    InlineResponse2001OrderShippingOptionsDetailsContact
+} from './InlineResponse2001OrderShippingOptionsDetailsContact';
 
 export class InlineResponse2002OrderShippingOptionsDetails {
     'additionalDetails'?: any;

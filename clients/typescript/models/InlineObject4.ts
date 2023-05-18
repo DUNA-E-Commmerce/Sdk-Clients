@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { MerchantsOrdersOrder } from './MerchantsOrdersOrder';
-import { HttpFile } from '../http/http';
+import {MerchantsOrdersOrder} from './MerchantsOrdersOrder';
 
 export class InlineObject4 {
     'order'?: MerchantsOrdersOrder;

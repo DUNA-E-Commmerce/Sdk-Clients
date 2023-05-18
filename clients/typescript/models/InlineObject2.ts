@@ -10,8 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
 export class InlineObject2 {
     'additionalDescription'?: string;
     'address1'?: string;

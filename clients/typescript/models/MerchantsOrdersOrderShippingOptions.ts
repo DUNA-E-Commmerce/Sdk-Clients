@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { MerchantsOrdersOrderShippingOptionsDetails } from './MerchantsOrdersOrderShippingOptionsDetails';
-import { HttpFile } from '../http/http';
+import {MerchantsOrdersOrderShippingOptionsDetails} from './MerchantsOrdersOrderShippingOptionsDetails';
 
 export class MerchantsOrdersOrderShippingOptions {
     'details': MerchantsOrdersOrderShippingOptionsDetails;

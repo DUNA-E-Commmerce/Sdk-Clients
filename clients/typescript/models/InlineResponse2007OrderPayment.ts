@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2007OrderPaymentData } from './InlineResponse2007OrderPaymentData';
-import { HttpFile } from '../http/http';
+import {InlineResponse2007OrderPaymentData} from './InlineResponse2007OrderPaymentData';
 
 export class InlineResponse2007OrderPayment {
     'data': InlineResponse2007OrderPaymentData;

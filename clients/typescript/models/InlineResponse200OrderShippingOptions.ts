@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse200OrderShippingOptionsDetails } from './InlineResponse200OrderShippingOptionsDetails';
-import { HttpFile } from '../http/http';
+import {InlineResponse200OrderShippingOptionsDetails} from './InlineResponse200OrderShippingOptionsDetails';
 
 export class InlineResponse200OrderShippingOptions {
     'details': InlineResponse200OrderShippingOptionsDetails;

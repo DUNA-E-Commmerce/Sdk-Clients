@@ -10,9 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { MerchantsTransactionsPurchaseCreditCard } from './MerchantsTransactionsPurchaseCreditCard';
-import { MerchantsTransactionsPurchaseSpecificFields } from './MerchantsTransactionsPurchaseSpecificFields';
-import { HttpFile } from '../http/http';
+import {MerchantsTransactionsPurchaseCreditCard} from './MerchantsTransactionsPurchaseCreditCard';
+import {MerchantsTransactionsPurchaseSpecificFields} from './MerchantsTransactionsPurchaseSpecificFields';
 
 export class InlineObject6 {
     'billingAddress'?: any;

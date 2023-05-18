@@ -10,9 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2004Order } from './InlineResponse2004Order';
-import { InlineResponse2004ShippingOption } from './InlineResponse2004ShippingOption';
-import { HttpFile } from '../http/http';
+import {InlineResponse2004Order} from './InlineResponse2004Order';
+import {InlineResponse2004ShippingOption} from './InlineResponse2004ShippingOption';
 
 export class InlineResponse2004 {
     'order'?: InlineResponse2004Order;

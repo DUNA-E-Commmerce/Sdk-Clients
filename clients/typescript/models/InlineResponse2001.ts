@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2001Order } from './InlineResponse2001Order';
-import { HttpFile } from '../http/http';
+import {InlineResponse2001Order} from './InlineResponse2001Order';
 
 export class InlineResponse2001 {
     'order'?: InlineResponse2001Order;

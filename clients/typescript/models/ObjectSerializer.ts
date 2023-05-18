@@ -55,62 +55,74 @@ export * from './MerchantsOrdersOrderShippingOptionsDetailsContact';
 export * from './MerchantsTransactionsPurchaseCreditCard';
 export * from './MerchantsTransactionsPurchaseSpecificFields';
 
-import { InlineObject } from './InlineObject';
-import { InlineObject1 } from './InlineObject1';
-import { InlineObject2 } from './InlineObject2';
-import { InlineObject3 } from './InlineObject3';
-import { InlineObject4 } from './InlineObject4';
-import { InlineObject5 } from './InlineObject5';
-import { InlineObject6 } from './InlineObject6';
-import { InlineResponse200 } from './InlineResponse200';
-import { InlineResponse2001 } from './InlineResponse2001';
-import { InlineResponse2001Order } from './InlineResponse2001Order';
-import { InlineResponse2001OrderMetadata } from './InlineResponse2001OrderMetadata';
-import { InlineResponse2001OrderShippingAddress } from './InlineResponse2001OrderShippingAddress';
-import { InlineResponse2001OrderShippingOptions } from './InlineResponse2001OrderShippingOptions';
-import { InlineResponse2001OrderShippingOptionsDetails } from './InlineResponse2001OrderShippingOptionsDetails';
-import { InlineResponse2001OrderShippingOptionsDetailsAdditionalDetails } from './InlineResponse2001OrderShippingOptionsDetailsAdditionalDetails';
-import { InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates } from './InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates';
-import { InlineResponse2001OrderShippingOptionsDetailsContact } from './InlineResponse2001OrderShippingOptionsDetailsContact';
-import { InlineResponse2002 } from './InlineResponse2002';
-import { InlineResponse2002Order } from './InlineResponse2002Order';
-import { InlineResponse2002OrderShippingAddress } from './InlineResponse2002OrderShippingAddress';
-import { InlineResponse2002OrderShippingOptions } from './InlineResponse2002OrderShippingOptions';
-import { InlineResponse2002OrderShippingOptionsDetails } from './InlineResponse2002OrderShippingOptionsDetails';
-import { InlineResponse2003 } from './InlineResponse2003';
-import { InlineResponse2003Order } from './InlineResponse2003Order';
-import { InlineResponse2003OrderShippingOptions } from './InlineResponse2003OrderShippingOptions';
-import { InlineResponse2004 } from './InlineResponse2004';
-import { InlineResponse2004Order } from './InlineResponse2004Order';
-import { InlineResponse2004OrderShippingAddress } from './InlineResponse2004OrderShippingAddress';
-import { InlineResponse2004ShippingOption } from './InlineResponse2004ShippingOption';
-import { InlineResponse2005 } from './InlineResponse2005';
-import { InlineResponse2006 } from './InlineResponse2006';
-import { InlineResponse2007 } from './InlineResponse2007';
-import { InlineResponse2007Order } from './InlineResponse2007Order';
-import { InlineResponse2007OrderPayment } from './InlineResponse2007OrderPayment';
-import { InlineResponse2007OrderPaymentData } from './InlineResponse2007OrderPaymentData';
-import { InlineResponse2007OrderPaymentDataAmount } from './InlineResponse2007OrderPaymentDataAmount';
-import { InlineResponse2007OrderPaymentDataCustomer } from './InlineResponse2007OrderPaymentDataCustomer';
-import { InlineResponse2007OrderPaymentDataFromCard } from './InlineResponse2007OrderPaymentDataFromCard';
-import { InlineResponse2007OrderPaymentDataMerchant } from './InlineResponse2007OrderPaymentDataMerchant';
-import { InlineResponse2008 } from './InlineResponse2008';
-import { InlineResponse2009 } from './InlineResponse2009';
-import { InlineResponse200Order } from './InlineResponse200Order';
-import { InlineResponse200OrderMetadata } from './InlineResponse200OrderMetadata';
-import { InlineResponse200OrderShippingAddress } from './InlineResponse200OrderShippingAddress';
-import { InlineResponse200OrderShippingOptions } from './InlineResponse200OrderShippingOptions';
-import { InlineResponse200OrderShippingOptionsDetails } from './InlineResponse200OrderShippingOptionsDetails';
-import { InlineResponse200OrderShippingOptionsDetailsAdditionalDetails } from './InlineResponse200OrderShippingOptionsDetailsAdditionalDetails';
-import { InlineResponse200OrderShippingOptionsDetailsAddressCoordinates } from './InlineResponse200OrderShippingOptionsDetailsAddressCoordinates';
-import { InlineResponse200OrderShippingOptionsDetailsContact } from './InlineResponse200OrderShippingOptionsDetailsContact';
-import { MerchantsOrdersOrder } from './MerchantsOrdersOrder';
-import { MerchantsOrdersOrderShippingAddress } from './MerchantsOrdersOrderShippingAddress';
-import { MerchantsOrdersOrderShippingOptions } from './MerchantsOrdersOrderShippingOptions';
-import { MerchantsOrdersOrderShippingOptionsDetails } from './MerchantsOrdersOrderShippingOptionsDetails';
-import { MerchantsOrdersOrderShippingOptionsDetailsContact } from './MerchantsOrdersOrderShippingOptionsDetailsContact';
-import { MerchantsTransactionsPurchaseCreditCard } from './MerchantsTransactionsPurchaseCreditCard';
-import { MerchantsTransactionsPurchaseSpecificFields } from './MerchantsTransactionsPurchaseSpecificFields';
+import {InlineObject} from './InlineObject';
+import {InlineObject1} from './InlineObject1';
+import {InlineObject2} from './InlineObject2';
+import {InlineObject3} from './InlineObject3';
+import {InlineObject4} from './InlineObject4';
+import {InlineObject5} from './InlineObject5';
+import {InlineObject6} from './InlineObject6';
+import {InlineResponse200} from './InlineResponse200';
+import {InlineResponse2001} from './InlineResponse2001';
+import {InlineResponse2001Order} from './InlineResponse2001Order';
+import {InlineResponse2001OrderMetadata} from './InlineResponse2001OrderMetadata';
+import {InlineResponse2001OrderShippingAddress} from './InlineResponse2001OrderShippingAddress';
+import {InlineResponse2001OrderShippingOptions} from './InlineResponse2001OrderShippingOptions';
+import {InlineResponse2001OrderShippingOptionsDetails} from './InlineResponse2001OrderShippingOptionsDetails';
+import {
+    InlineResponse2001OrderShippingOptionsDetailsAdditionalDetails
+} from './InlineResponse2001OrderShippingOptionsDetailsAdditionalDetails';
+import {
+    InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates
+} from './InlineResponse2001OrderShippingOptionsDetailsAddressCoordinates';
+import {
+    InlineResponse2001OrderShippingOptionsDetailsContact
+} from './InlineResponse2001OrderShippingOptionsDetailsContact';
+import {InlineResponse2002} from './InlineResponse2002';
+import {InlineResponse2002Order} from './InlineResponse2002Order';
+import {InlineResponse2002OrderShippingAddress} from './InlineResponse2002OrderShippingAddress';
+import {InlineResponse2002OrderShippingOptions} from './InlineResponse2002OrderShippingOptions';
+import {InlineResponse2002OrderShippingOptionsDetails} from './InlineResponse2002OrderShippingOptionsDetails';
+import {InlineResponse2003} from './InlineResponse2003';
+import {InlineResponse2003Order} from './InlineResponse2003Order';
+import {InlineResponse2003OrderShippingOptions} from './InlineResponse2003OrderShippingOptions';
+import {InlineResponse2004} from './InlineResponse2004';
+import {InlineResponse2004Order} from './InlineResponse2004Order';
+import {InlineResponse2004OrderShippingAddress} from './InlineResponse2004OrderShippingAddress';
+import {InlineResponse2004ShippingOption} from './InlineResponse2004ShippingOption';
+import {InlineResponse2005} from './InlineResponse2005';
+import {InlineResponse2006} from './InlineResponse2006';
+import {InlineResponse2007} from './InlineResponse2007';
+import {InlineResponse2007Order} from './InlineResponse2007Order';
+import {InlineResponse2007OrderPayment} from './InlineResponse2007OrderPayment';
+import {InlineResponse2007OrderPaymentData} from './InlineResponse2007OrderPaymentData';
+import {InlineResponse2007OrderPaymentDataAmount} from './InlineResponse2007OrderPaymentDataAmount';
+import {InlineResponse2007OrderPaymentDataCustomer} from './InlineResponse2007OrderPaymentDataCustomer';
+import {InlineResponse2007OrderPaymentDataFromCard} from './InlineResponse2007OrderPaymentDataFromCard';
+import {InlineResponse2007OrderPaymentDataMerchant} from './InlineResponse2007OrderPaymentDataMerchant';
+import {InlineResponse2008} from './InlineResponse2008';
+import {InlineResponse2009} from './InlineResponse2009';
+import {InlineResponse200Order} from './InlineResponse200Order';
+import {InlineResponse200OrderMetadata} from './InlineResponse200OrderMetadata';
+import {InlineResponse200OrderShippingAddress} from './InlineResponse200OrderShippingAddress';
+import {InlineResponse200OrderShippingOptions} from './InlineResponse200OrderShippingOptions';
+import {InlineResponse200OrderShippingOptionsDetails} from './InlineResponse200OrderShippingOptionsDetails';
+import {
+    InlineResponse200OrderShippingOptionsDetailsAdditionalDetails
+} from './InlineResponse200OrderShippingOptionsDetailsAdditionalDetails';
+import {
+    InlineResponse200OrderShippingOptionsDetailsAddressCoordinates
+} from './InlineResponse200OrderShippingOptionsDetailsAddressCoordinates';
+import {
+    InlineResponse200OrderShippingOptionsDetailsContact
+} from './InlineResponse200OrderShippingOptionsDetailsContact';
+import {MerchantsOrdersOrder} from './MerchantsOrdersOrder';
+import {MerchantsOrdersOrderShippingAddress} from './MerchantsOrdersOrderShippingAddress';
+import {MerchantsOrdersOrderShippingOptions} from './MerchantsOrdersOrderShippingOptions';
+import {MerchantsOrdersOrderShippingOptionsDetails} from './MerchantsOrdersOrderShippingOptionsDetails';
+import {MerchantsOrdersOrderShippingOptionsDetailsContact} from './MerchantsOrdersOrderShippingOptionsDetailsContact';
+import {MerchantsTransactionsPurchaseCreditCard} from './MerchantsTransactionsPurchaseCreditCard';
+import {MerchantsTransactionsPurchaseSpecificFields} from './MerchantsTransactionsPurchaseSpecificFields';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [

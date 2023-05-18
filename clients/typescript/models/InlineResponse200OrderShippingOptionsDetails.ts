@@ -10,10 +10,15 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse200OrderShippingOptionsDetailsAdditionalDetails } from './InlineResponse200OrderShippingOptionsDetailsAdditionalDetails';
-import { InlineResponse200OrderShippingOptionsDetailsAddressCoordinates } from './InlineResponse200OrderShippingOptionsDetailsAddressCoordinates';
-import { InlineResponse200OrderShippingOptionsDetailsContact } from './InlineResponse200OrderShippingOptionsDetailsContact';
-import { HttpFile } from '../http/http';
+import {
+    InlineResponse200OrderShippingOptionsDetailsAdditionalDetails
+} from './InlineResponse200OrderShippingOptionsDetailsAdditionalDetails';
+import {
+    InlineResponse200OrderShippingOptionsDetailsAddressCoordinates
+} from './InlineResponse200OrderShippingOptionsDetailsAddressCoordinates';
+import {
+    InlineResponse200OrderShippingOptionsDetailsContact
+} from './InlineResponse200OrderShippingOptionsDetailsContact';
 
 export class InlineResponse200OrderShippingOptionsDetails {
     'additionalDetails': InlineResponse200OrderShippingOptionsDetailsAdditionalDetails;

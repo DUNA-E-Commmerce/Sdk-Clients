@@ -10,9 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { Set } from './Set';
-import { HttpFile } from '../http/http';
-
 export class InlineResponse2005 {
     'data'?: Set<any>;
 

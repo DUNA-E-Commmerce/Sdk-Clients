@@ -10,11 +10,10 @@
  * Do not edit the class manually.
  */
 
-import { InlineResponse2007OrderPaymentDataAmount } from './InlineResponse2007OrderPaymentDataAmount';
-import { InlineResponse2007OrderPaymentDataCustomer } from './InlineResponse2007OrderPaymentDataCustomer';
-import { InlineResponse2007OrderPaymentDataFromCard } from './InlineResponse2007OrderPaymentDataFromCard';
-import { InlineResponse2007OrderPaymentDataMerchant } from './InlineResponse2007OrderPaymentDataMerchant';
-import { HttpFile } from '../http/http';
+import {InlineResponse2007OrderPaymentDataAmount} from './InlineResponse2007OrderPaymentDataAmount';
+import {InlineResponse2007OrderPaymentDataCustomer} from './InlineResponse2007OrderPaymentDataCustomer';
+import {InlineResponse2007OrderPaymentDataFromCard} from './InlineResponse2007OrderPaymentDataFromCard';
+import {InlineResponse2007OrderPaymentDataMerchant} from './InlineResponse2007OrderPaymentDataMerchant';
 
 export class InlineResponse2007OrderPaymentData {
     'amount': InlineResponse2007OrderPaymentDataAmount;
