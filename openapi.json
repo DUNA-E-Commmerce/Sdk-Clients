@@ -1,0 +1,1640 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "API Gateway",
+		"version": "1.0",
+		"description": "API Gateway",
+		"contact": {
+			"name": "IT",
+			"url": "https://www.deuna.com",
+			"email": "checkout@deuna.com"
+		}
+	},
+	"servers": [
+		{
+			"url": "https://staging-apigw.getduna.com:443"
+		},
+		{
+			"url": "https://apigw.getduna.com:443"
+		}
+	],
+	"paths": {
+		"/merchants/applications/validate": {
+			"get": {
+				"summary": "Validate Application",
+				"description": "Validate application",
+				"tags": [
+					"Merchant Application"
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"is_sandbox": {
+											"type": "boolean"
+										},
+										"key_type": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"merchant_id": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"name": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"status": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Api-Key"
+					}
+				]
+			},
+			"parameters": []
+		},
+		"/merchants/{merchant_id}/applications": {
+			"get": {
+				"summary": "Get Applications",
+				"description": "Get applications of merchant",
+				"tags": [
+					"Merchant Application"
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"data": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"id": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"is_sandbox": {
+														"type": "boolean"
+													},
+													"name": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"status": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"updated_at": {
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"is_sandbox",
+													"status",
+													"created_at",
+													"updated_at"
+												]
+											},
+											"minItems": 1,
+											"type": "array",
+											"uniqueItems": true
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"security": [
+					{
+						"Authorization": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "Authorization"
+					}
+				]
+			},
+			"parameters": [
+				{
+					"schema": {
+						"type": "string"
+					},
+					"in": "path",
+					"name": "merchant_id",
+					"required": true
+				}
+			],
+			"post": {
+				"summary": "Create Application",
+				"description": "Create application",
+				"tags": [
+					"Merchant Application"
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"description": "",
+								"properties": {
+									"expire_at": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"is_sandbox": {
+										"type": "boolean"
+									},
+									"name": {
+										"minLength": 1,
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"created_at": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"id": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"is_sandbox": {
+											"type": "boolean"
+										},
+										"name": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"private_key": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"public_key": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"signing_secret": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"status": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"updated_at": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"security": [
+					{
+						"Authorization": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "Authorization"
+					}
+				]
+			}
+		},
+		"/merchants/{merchant_id}/applications/{application_id}": {
+			"get": {
+				"summary": "Get Application",
+				"description": "Get application by ID",
+				"tags": [
+					"Merchant Application"
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"created_at": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"id": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"is_sandbox": {
+											"type": "boolean"
+										},
+										"name": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"private_key": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"public_key": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"signing_secret": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"status": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"updated_at": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"security": [
+					{
+						"Authorization": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "Authorization"
+					}
+				]
+			},
+			"parameters": [
+				{
+					"schema": {
+						"type": "string"
+					},
+					"in": "path",
+					"name": "merchant_id",
+					"required": true
+				},
+				{
+					"schema": {
+						"type": "string"
+					},
+					"in": "path",
+					"name": "application_id",
+					"required": true
+				}
+			]
+		},
+		"/payments-cards/users/{user_id}/cards": {
+			"get": {
+				"summary": "Get all user cards",
+				"description": "Get all user cards",
+				"tags": [
+					"Users"
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"items": {
+										"properties": {
+											"data": {
+												"description": "",
+												"properties": {
+													"card_holder": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"card_holder_dni": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"company": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"created_at": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"deleted_at": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"expiration_date": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"first_six": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"id": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"last_four\n": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"tokens": {
+														"description": "",
+														"items": {
+															"properties": {
+																"card_id": {
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"created_at": {
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"deleted_at": {
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"id": {
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"token": {
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"vault_name": {
+																	"minLength": 1,
+																	"type": "string"
+																}
+															}
+														},
+														"type": "array"
+													},
+													"updated_at": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"user_id": {
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										}
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "OK"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Unauthorized"
+					},
+					"403": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Response to a request with an invalid parameter"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "*"
+					}
+				]
+			},
+			"parameters": [
+				{
+					"schema": {
+						"type": "string"
+					},
+					"in": "path",
+					"name": "user_id",
+					"required": true
+				}
+			],
+			"post": {
+				"summary": "Get all user cards",
+				"description": "Get all user cards",
+				"tags": [
+					"Users"
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"description": "",
+								"properties": {
+									"address1": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"card_holder": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"card_holder_dni": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"card_number": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"city": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"country": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"expiry_month": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"expiry_year": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"phone": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"state": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"zip": {
+										"minLength": 1,
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"data": {
+											"description": "",
+											"properties": {
+												"card_holder": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"card_holder_dni": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"company": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"created_at": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"deleted_at": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"expiration_date": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"first_six": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"id": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"last_four\n": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"tokens": {
+													"description": "",
+													"items": {
+														"properties": {
+															"card_id": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"created_at": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"deleted_at": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"id": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"token": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"updated_at": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"vault_name": {
+																"minLength": 1,
+																"type": "string"
+															}
+														}
+													},
+													"type": "array"
+												},
+												"updated_at": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"user_id": {
+													"minLength": 1,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Unauthorized"
+					},
+					"403": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Response to a request with an invalid parameter"
+					},
+					"409": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Invalid or incorrect user token"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "*"
+					}
+				]
+			}
+		},
+		"/payments-cards/users/{user_id}/cards/{card_id}": {
+			"delete": {
+				"summary": "Get all user cards",
+				"description": "Get all user cards",
+				"tags": [
+					"Users"
+				],
+				"responses": {
+					"204": {
+						"description": "OK"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Invalid or incorrect user token"
+					},
+					"403": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Response to a request with an invalid parameter"
+					},
+					"409": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Invalid or incorrect user token"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "*"
+					}
+				]
+			},
+			"get": {
+				"summary": "Obtain a card by its identifier.",
+				"description": "Obtain a card by its identifier.",
+				"tags": [
+					"Users"
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"data": {
+											"description": "",
+											"properties": {
+												"card_holder": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"card_holder_dni": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"company": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"created_at": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"deleted_at": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"expiration_date": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"first_six": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"id": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"last_four\n": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"tokens": {
+													"description": "",
+													"items": {
+														"properties": {
+															"card_id": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"created_at": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"deleted_at": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"id": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"token": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"updated_at": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"vault_name": {
+																"minLength": 1,
+																"type": "string"
+															}
+														}
+													},
+													"type": "array"
+												},
+												"updated_at": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"user_id": {
+													"minLength": 1,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Invalid or incorrect user token"
+					},
+					"403": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Response to a request with an invalid parameter"
+					},
+					"409": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Invalid or incorrect user token"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "*"
+					}
+				]
+			},
+			"parameters": [
+				{
+					"schema": {
+						"type": "string"
+					},
+					"in": "path",
+					"name": "user_id",
+					"required": true
+				},
+				{
+					"schema": {
+						"type": "string"
+					},
+					"in": "path",
+					"name": "card_id",
+					"required": true
+				}
+			]
+		},
+		"/users/login": {
+			"parameters": [],
+			"post": {
+				"summary": "Allows logging in with the OTP code sent to the user's email or phone. This must be specified in the query param.",
+				"description": "Allows logging in with the OTP code sent to the user's email or phone. This must be specified in the query param.",
+				"tags": [
+					"Users"
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"email": {
+										"type": "string"
+									},
+									"otp": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"refresh_token": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"token": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					},
+					{
+						"Authorization": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Api-Key"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Merchant-Id"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Device-Id"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Session-ID"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "Authorization"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Recaptcha-Token"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "type"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "load_profile_data"
+					}
+				]
+			}
+		},
+		"/users/login/device-fingerprint": {
+			"parameters": [],
+			"post": {
+				"summary": "Login User",
+				"description": "Login User",
+				"tags": [
+					"Users"
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"refresh_token": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"token": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"user-deuna": {
+											"type": "boolean"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					},
+					{
+						"Authorization": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Api-Key"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Merchant-Id"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Device-Id"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Session-ID"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "Authorization"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "type"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "load_profile_data"
+					}
+				]
+			}
+		},
+		"/users/me": {
+			"get": {
+				"summary": "Get User Information",
+				"description": "Get User Information",
+				"tags": [
+					"Users"
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"created_at": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"deleted_at": {},
+										"email": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"first_name": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"id": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"identity_providers": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"deleted_at": {},
+													"id": {
+														"type": "number"
+													},
+													"provider_name": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"updated_at": {
+														"minLength": 1,
+														"type": "string"
+													}
+												}
+											},
+											"minItems": 1,
+											"type": "array",
+											"uniqueItems": true
+										},
+										"is_guest": {
+											"type": "boolean"
+										},
+										"is_phone_verified": {
+											"type": "boolean"
+										},
+										"last_name": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"merchant_id": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"phone": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"updated_at": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					},
+					{
+						"Authorization": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Api-Key"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Merchant-Id"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Device-Id"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "Authorization"
+					}
+				]
+			},
+			"parameters": []
+		},
+		"/users/register": {
+			"parameters": [],
+			"post": {
+				"summary": "Register User",
+				"description": "Register a user of your business, this user once registered will belong to the DEUNA Network.",
+				"tags": [
+					"Users"
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"description": "",
+								"properties": {
+									"email": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"first_name": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"identity_document": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"last_name": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"phone": {
+										"minLength": 1,
+										"type": "string"
+									}
+								},
+								"required": [
+									"email",
+									"first_name",
+									"last_name",
+									"phone"
+								],
+								"type": "object"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"token": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"user_id": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "OK"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "Response of an unauthorized request this problem is due to the invalid X-API-KEY or by the **Bearer-Auth",
+									"properties": {
+										"error": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Unauthorized"
+					},
+					"409": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"description": "",
+									"properties": {
+										"code": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"message": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							}
+						},
+						"description": "Conflict"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					},
+					{
+						"Authorization": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Api-Key"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Merchant-Id"
+					}
+				]
+			}
+		},
+		"/users/request-code": {
+			"parameters": [],
+			"post": {
+				"summary": "Allows logging in with the OTP code sent to the user's email or phone. This must be specified in the query param.",
+				"description": "Allows logging in with the OTP code sent to the user's email or phone. This must be specified in the query param.",
+				"tags": [
+					"Users"
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"security": [
+					{
+						"X-Api-Key": []
+					},
+					{
+						"Authorization": []
+					}
+				],
+				"parameters": [
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Api-Key"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Merchant-Id"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "X-Device-Id"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "header",
+						"name": "Authorization"
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "type"
+					}
+				]
+			}
+		}
+	},
+	"components": {
+		"schemas": {},
+		"securitySchemes": {
+			"Authorization": {
+				"scheme": "bearer",
+				"type": "http"
+			},
+			"X-Api-Key": {
+				"in": "header",
+				"name": "X-Api-Key",
+				"type": "apiKey"
+			}
+		}
+	},
+	"tags": [
+		{
+			"name": "External Merchant API"
+		},
+		{
+			"name": "Users"
+		}
+	]
+}
