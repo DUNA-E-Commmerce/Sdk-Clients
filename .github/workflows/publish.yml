@@ -24,9 +24,9 @@ jobs:
           pip install awscli
       - name: Install dependencies
         run: |
-          cd ./clients/javascript && npm install
+          cd ./clients/typescript && npm install
       - name: Configure AWS and Publish package to CodeArtifact
         run: |
           aws configure set region ${{ secrets.AWS_REGION }}    
           aws codeartifact login --tool npm --repository ${{ secrets.ARTIFACT_REPOSITORY }} --domain ${{ secrets.ARTIFACT_DOMAIN }} --domain-owner ${{ secrets.DOMAIN_OWNER }} --region ${{ secrets.AWS_REGION }}
-          npm publish ./clients/javascript
+          npm publish ./clients/typescript
