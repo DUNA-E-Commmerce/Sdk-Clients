@@ -29,4 +29,4 @@ jobs:
         run: |
           aws configure set region ${{ secrets.AWS_REGION }}    
           aws codeartifact login --tool npm --repository ${{ secrets.ARTIFACT_REPOSITORY }} --domain ${{ secrets.ARTIFACT_DOMAIN }} --domain-owner ${{ secrets.DOMAIN_OWNER }} --region ${{ secrets.AWS_REGION }}
-          npm publish ./clients/typescript
+          npm publish --dry-run ./clients/typescript
