@@ -16,91 +16,91 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface PaymentsCardsUsersUserIdCardsPostRequest
+ * @interface UsersUserIdCardsPostRequest
  */
-export interface PaymentsCardsUsersUserIdCardsPostRequest {
+export interface UsersUserIdCardsPostRequest {
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     address1?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     cardHolder?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     cardHolderDni?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     cardNumber?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     city?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     country?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     expiryMonth?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     expiryYear?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     phone?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     state?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsPostRequest
+     * @memberof UsersUserIdCardsPostRequest
      */
     zip?: string;
 }
 
 /**
- * Check if a given object implements the PaymentsCardsUsersUserIdCardsPostRequest interface.
+ * Check if a given object implements the UsersUserIdCardsPostRequest interface.
  */
-export function instanceOfPaymentsCardsUsersUserIdCardsPostRequest(value: object): boolean {
+export function instanceOfUsersUserIdCardsPostRequest(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function PaymentsCardsUsersUserIdCardsPostRequestFromJSON(json: any): PaymentsCardsUsersUserIdCardsPostRequest {
-    return PaymentsCardsUsersUserIdCardsPostRequestFromJSONTyped(json, false);
+export function UsersUserIdCardsPostRequestFromJSON(json: any): UsersUserIdCardsPostRequest {
+    return UsersUserIdCardsPostRequestFromJSONTyped(json, false);
 }
 
-export function PaymentsCardsUsersUserIdCardsPostRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PaymentsCardsUsersUserIdCardsPostRequest {
+export function UsersUserIdCardsPostRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): UsersUserIdCardsPostRequest {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -120,7 +120,7 @@ export function PaymentsCardsUsersUserIdCardsPostRequestFromJSONTyped(json: any,
     };
 }
 
-export function PaymentsCardsUsersUserIdCardsPostRequestToJSON(value?: PaymentsCardsUsersUserIdCardsPostRequest | null): any {
+export function UsersUserIdCardsPostRequestToJSON(value?: UsersUserIdCardsPostRequest | null): any {
     if (value === undefined) {
         return undefined;
     }

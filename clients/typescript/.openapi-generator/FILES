@@ -12,12 +12,7 @@ src/models/MerchantsMerchantIdApplicationsGet200Response.ts
 src/models/MerchantsMerchantIdApplicationsGet200ResponseDataInner.ts
 src/models/MerchantsMerchantIdApplicationsPost200Response.ts
 src/models/MerchantsMerchantIdApplicationsPostRequest.ts
-src/models/PaymentsCardsUsersUserIdCardsGet200ResponseInner.ts
-src/models/PaymentsCardsUsersUserIdCardsGet200ResponseInnerData.ts
-src/models/PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner.ts
-src/models/PaymentsCardsUsersUserIdCardsGet401Response.ts
-src/models/PaymentsCardsUsersUserIdCardsPost200Response.ts
-src/models/PaymentsCardsUsersUserIdCardsPostRequest.ts
+src/models/UsersGet401Response.ts
 src/models/UsersLoginDeviceFingerprintPost200Response.ts
 src/models/UsersLoginPost200Response.ts
 src/models/UsersLoginPostRequest.ts
@@ -27,6 +22,11 @@ src/models/UsersRegisterPost200Response.ts
 src/models/UsersRegisterPost401Response.ts
 src/models/UsersRegisterPostRequest.ts
 src/models/UsersRequestCodePostRequest.ts
+src/models/UsersUserIdCardsGet200ResponseInner.ts
+src/models/UsersUserIdCardsGet200ResponseInnerData.ts
+src/models/UsersUserIdCardsGet200ResponseInnerDataTokensInner.ts
+src/models/UsersUserIdCardsPost200Response.ts
+src/models/UsersUserIdCardsPostRequest.ts
 src/models/index.ts
 src/runtime.ts
 tsconfig.json

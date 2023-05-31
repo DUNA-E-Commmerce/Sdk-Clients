@@ -16,37 +16,37 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface PaymentsCardsUsersUserIdCardsGet401Response
+ * @interface UsersGet401Response
  */
-export interface PaymentsCardsUsersUserIdCardsGet401Response {
+export interface UsersGet401Response {
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsGet401Response
+     * @memberof UsersGet401Response
      */
     code?: string;
     /**
      * 
      * @type {string}
-     * @memberof PaymentsCardsUsersUserIdCardsGet401Response
+     * @memberof UsersGet401Response
      */
     message?: string;
 }
 
 /**
- * Check if a given object implements the PaymentsCardsUsersUserIdCardsGet401Response interface.
+ * Check if a given object implements the UsersGet401Response interface.
  */
-export function instanceOfPaymentsCardsUsersUserIdCardsGet401Response(value: object): boolean {
+export function instanceOfUsersGet401Response(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function PaymentsCardsUsersUserIdCardsGet401ResponseFromJSON(json: any): PaymentsCardsUsersUserIdCardsGet401Response {
-    return PaymentsCardsUsersUserIdCardsGet401ResponseFromJSONTyped(json, false);
+export function UsersGet401ResponseFromJSON(json: any): UsersGet401Response {
+    return UsersGet401ResponseFromJSONTyped(json, false);
 }
 
-export function PaymentsCardsUsersUserIdCardsGet401ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PaymentsCardsUsersUserIdCardsGet401Response {
+export function UsersGet401ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): UsersGet401Response {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -57,7 +57,7 @@ export function PaymentsCardsUsersUserIdCardsGet401ResponseFromJSONTyped(json: a
     };
 }
 
-export function PaymentsCardsUsersUserIdCardsGet401ResponseToJSON(value?: PaymentsCardsUsersUserIdCardsGet401Response | null): any {
+export function UsersGet401ResponseToJSON(value?: UsersGet401Response | null): any {
     if (value === undefined) {
         return undefined;
     }
