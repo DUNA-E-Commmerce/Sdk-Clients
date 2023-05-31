@@ -15,20 +15,28 @@
 
 import * as runtime from '../runtime';
 import type {
+  PaymentsCardsUsersUserIdCardsGet200ResponseInner,
+  PaymentsCardsUsersUserIdCardsGet401Response,
+  PaymentsCardsUsersUserIdCardsPost200Response,
+  PaymentsCardsUsersUserIdCardsPostRequest,
   UsersLoginDeviceFingerprintPost200Response,
   UsersLoginPost200Response,
   UsersLoginPostRequest,
   UsersMeGet200Response,
-  UsersMeGet401Response,
   UsersRegisterPost200Response,
   UsersRegisterPost401Response,
   UsersRegisterPostRequest,
   UsersRequestCodePostRequest,
-  UsersUserIdCardsGet200ResponseInner,
-  UsersUserIdCardsPost200Response,
-  UsersUserIdCardsPostRequest,
 } from '../models';
 import {
+    PaymentsCardsUsersUserIdCardsGet200ResponseInnerFromJSON,
+    PaymentsCardsUsersUserIdCardsGet200ResponseInnerToJSON,
+    PaymentsCardsUsersUserIdCardsGet401ResponseFromJSON,
+    PaymentsCardsUsersUserIdCardsGet401ResponseToJSON,
+    PaymentsCardsUsersUserIdCardsPost200ResponseFromJSON,
+    PaymentsCardsUsersUserIdCardsPost200ResponseToJSON,
+    PaymentsCardsUsersUserIdCardsPostRequestFromJSON,
+    PaymentsCardsUsersUserIdCardsPostRequestToJSON,
     UsersLoginDeviceFingerprintPost200ResponseFromJSON,
     UsersLoginDeviceFingerprintPost200ResponseToJSON,
     UsersLoginPost200ResponseFromJSON,
@@ -37,8 +45,6 @@ import {
     UsersLoginPostRequestToJSON,
     UsersMeGet200ResponseFromJSON,
     UsersMeGet200ResponseToJSON,
-    UsersMeGet401ResponseFromJSON,
-    UsersMeGet401ResponseToJSON,
     UsersRegisterPost200ResponseFromJSON,
     UsersRegisterPost200ResponseToJSON,
     UsersRegisterPost401ResponseFromJSON,
@@ -47,13 +53,38 @@ import {
     UsersRegisterPostRequestToJSON,
     UsersRequestCodePostRequestFromJSON,
     UsersRequestCodePostRequestToJSON,
-    UsersUserIdCardsGet200ResponseInnerFromJSON,
-    UsersUserIdCardsGet200ResponseInnerToJSON,
-    UsersUserIdCardsPost200ResponseFromJSON,
-    UsersUserIdCardsPost200ResponseToJSON,
-    UsersUserIdCardsPostRequestFromJSON,
-    UsersUserIdCardsPostRequestToJSON,
 } from '../models';
+
+export interface PaymentsCardsUsersUserIdCardsCardIdDeleteRequest {
+    userId: string;
+    cardId: string;
+    ?: string;
+}
+
+export interface PaymentsCardsUsersUserIdCardsCardIdGetRequest {
+    userId: string;
+    cardId: string;
+    ?: string;
+}
+
+export interface PaymentsCardsUsersUserIdCardsGetRequest {
+    userId: string;
+    ?: string;
+}
+
+export interface PaymentsCardsUsersUserIdCardsPostOperationRequest {
+    userId: string;
+    ?: string;
+    paymentsCardsUsersUserIdCardsPostRequest?: PaymentsCardsUsersUserIdCardsPostRequest;
+}
+
+export interface UsersGetRequest {
+    xApiKey?: string;
+    xMerchantId?: string;
+    xDeviceId?: string;
+    authorization?: string;
+    email?: string;
+}
 
 export interface UsersLoginDeviceFingerprintPostRequest {
     xApiKey?: string;
@@ -99,31 +130,6 @@ export interface UsersRequestCodePostOperationRequest {
     usersRequestCodePostRequest?: UsersRequestCodePostRequest;
 }
 
-export interface UsersUserIdCardsCardIdDeleteRequest {
-    userId: string;
-    cardId: string;
-    authorization?: string;
-}
-
-export interface UsersUserIdCardsCardIdGetRequest {
-    userId: string;
-    cardId: string;
-    authorization?: string;
-}
-
-export interface UsersUserIdCardsGetRequest {
-    userId: string;
-    authorization?: string;
-    xMerchantID?: string;
-}
-
-export interface UsersUserIdCardsPostOperationRequest {
-    userId: string;
-    authorization?: string;
-    xMerchantID?: string;
-    usersUserIdCardsPostRequest?: UsersUserIdCardsPostRequest;
-}
-
 /**
  * UsersApi - interface
  * 
@@ -131,6 +137,97 @@ export interface UsersUserIdCardsPostOperationRequest {
  * @interface UsersApiInterface
  */
 export interface UsersApiInterface {
+    /**
+     * Get all user cards
+     * @summary Get all user cards
+     * @param {string} userId 
+     * @param {string} cardId 
+     * @param {string} [] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApiInterface
+     */
+    paymentsCardsUsersUserIdCardsCardIdDeleteRaw(requestParameters: PaymentsCardsUsersUserIdCardsCardIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     */
+    paymentsCardsUsersUserIdCardsCardIdDelete(requestParameters: PaymentsCardsUsersUserIdCardsCardIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+
+    /**
+     * Obtain a card by its identifier.
+     * @summary Obtain a card by its identifier.
+     * @param {string} userId 
+     * @param {string} cardId 
+     * @param {string} [] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApiInterface
+     */
+    paymentsCardsUsersUserIdCardsCardIdGetRaw(requestParameters: PaymentsCardsUsersUserIdCardsCardIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaymentsCardsUsersUserIdCardsPost200Response>>;
+
+    /**
+     * Obtain a card by its identifier.
+     * Obtain a card by its identifier.
+     */
+    paymentsCardsUsersUserIdCardsCardIdGet(requestParameters: PaymentsCardsUsersUserIdCardsCardIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaymentsCardsUsersUserIdCardsPost200Response>;
+
+    /**
+     * Get all user cards
+     * @summary Get all user cards
+     * @param {string} userId 
+     * @param {string} [] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApiInterface
+     */
+    paymentsCardsUsersUserIdCardsGetRaw(requestParameters: PaymentsCardsUsersUserIdCardsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PaymentsCardsUsersUserIdCardsGet200ResponseInner>>>;
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     */
+    paymentsCardsUsersUserIdCardsGet(requestParameters: PaymentsCardsUsersUserIdCardsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PaymentsCardsUsersUserIdCardsGet200ResponseInner>>;
+
+    /**
+     * Get all user cards
+     * @summary Get all user cards
+     * @param {string} userId 
+     * @param {string} [] 
+     * @param {PaymentsCardsUsersUserIdCardsPostRequest} [paymentsCardsUsersUserIdCardsPostRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApiInterface
+     */
+    paymentsCardsUsersUserIdCardsPostRaw(requestParameters: PaymentsCardsUsersUserIdCardsPostOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaymentsCardsUsersUserIdCardsPost200Response>>;
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     */
+    paymentsCardsUsersUserIdCardsPost(requestParameters: PaymentsCardsUsersUserIdCardsPostOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaymentsCardsUsersUserIdCardsPost200Response>;
+
+    /**
+     * Get If User Exists
+     * @summary Get If User Exists
+     * @param {string} [xApiKey] 
+     * @param {string} [xMerchantId] 
+     * @param {string} [xDeviceId] 
+     * @param {string} [authorization] 
+     * @param {string} [email] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApiInterface
+     */
+    usersGetRaw(requestParameters: UsersGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+
+    /**
+     * Get If User Exists
+     * Get If User Exists
+     */
+    usersGet(requestParameters: UsersGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+
     /**
      * Login User
      * @summary Login User
@@ -235,85 +332,233 @@ export interface UsersApiInterface {
      */
     usersRequestCodePost(requestParameters: UsersRequestCodePostOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
-    /**
-     * Remove card by identifier
-     * @summary Remove card by identifier
-     * @param {string} userId 
-     * @param {string} cardId 
-     * @param {string} [authorization] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApiInterface
-     */
-    usersUserIdCardsCardIdDeleteRaw(requestParameters: UsersUserIdCardsCardIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
-
-    /**
-     * Remove card by identifier
-     * Remove card by identifier
-     */
-    usersUserIdCardsCardIdDelete(requestParameters: UsersUserIdCardsCardIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
-
-    /**
-     * Obtain a card by its identifier.
-     * @summary Obtain a card by its identifier.
-     * @param {string} userId 
-     * @param {string} cardId 
-     * @param {string} [authorization] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApiInterface
-     */
-    usersUserIdCardsCardIdGetRaw(requestParameters: UsersUserIdCardsCardIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsersUserIdCardsPost200Response>>;
-
-    /**
-     * Obtain a card by its identifier.
-     * Obtain a card by its identifier.
-     */
-    usersUserIdCardsCardIdGet(requestParameters: UsersUserIdCardsCardIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsersUserIdCardsPost200Response>;
-
-    /**
-     * Get all user cards
-     * @summary Get all user cards
-     * @param {string} userId 
-     * @param {string} [authorization] 
-     * @param {string} [xMerchantID] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApiInterface
-     */
-    usersUserIdCardsGetRaw(requestParameters: UsersUserIdCardsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<UsersUserIdCardsGet200ResponseInner>>>;
-
-    /**
-     * Get all user cards
-     * Get all user cards
-     */
-    usersUserIdCardsGet(requestParameters: UsersUserIdCardsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<UsersUserIdCardsGet200ResponseInner>>;
-
-    /**
-     * Register user card
-     * @summary Register user card
-     * @param {string} userId 
-     * @param {string} [authorization] 
-     * @param {string} [xMerchantID] 
-     * @param {UsersUserIdCardsPostRequest} [usersUserIdCardsPostRequest] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApiInterface
-     */
-    usersUserIdCardsPostRaw(requestParameters: UsersUserIdCardsPostOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsersUserIdCardsPost200Response>>;
-
-    /**
-     * Register user card
-     * Register user card
-     */
-    usersUserIdCardsPost(requestParameters: UsersUserIdCardsPostOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsersUserIdCardsPost200Response>;
-
 }
 
 /**
  * 
  */
 export class UsersApi extends runtime.BaseAPI implements UsersApiInterface {
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     */
+    async paymentsCardsUsersUserIdCardsCardIdDeleteRaw(requestParameters: PaymentsCardsUsersUserIdCardsCardIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling paymentsCardsUsersUserIdCardsCardIdDelete.');
+        }
+
+        if (requestParameters.cardId === null || requestParameters.cardId === undefined) {
+            throw new runtime.RequiredError('cardId','Required parameter requestParameters.cardId was null or undefined when calling paymentsCardsUsersUserIdCardsCardIdDelete.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters. !== undefined && requestParameters. !== null) {
+            headerParameters['*'] = String(requestParameters.);
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Api-Key"] = this.configuration.apiKey("X-Api-Key"); // X-Api-Key authentication
+        }
+
+        const response = await this.request({
+            path: `/payments-cards/users/{user_id}/cards/{card_id}`.replace(`{${"user_id"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"card_id"}}`, encodeURIComponent(String(requestParameters.cardId))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     */
+    async paymentsCardsUsersUserIdCardsCardIdDelete(requestParameters: PaymentsCardsUsersUserIdCardsCardIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.paymentsCardsUsersUserIdCardsCardIdDeleteRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Obtain a card by its identifier.
+     * Obtain a card by its identifier.
+     */
+    async paymentsCardsUsersUserIdCardsCardIdGetRaw(requestParameters: PaymentsCardsUsersUserIdCardsCardIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaymentsCardsUsersUserIdCardsPost200Response>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling paymentsCardsUsersUserIdCardsCardIdGet.');
+        }
+
+        if (requestParameters.cardId === null || requestParameters.cardId === undefined) {
+            throw new runtime.RequiredError('cardId','Required parameter requestParameters.cardId was null or undefined when calling paymentsCardsUsersUserIdCardsCardIdGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters. !== undefined && requestParameters. !== null) {
+            headerParameters['*'] = String(requestParameters.);
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Api-Key"] = this.configuration.apiKey("X-Api-Key"); // X-Api-Key authentication
+        }
+
+        const response = await this.request({
+            path: `/payments-cards/users/{user_id}/cards/{card_id}`.replace(`{${"user_id"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"card_id"}}`, encodeURIComponent(String(requestParameters.cardId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PaymentsCardsUsersUserIdCardsPost200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Obtain a card by its identifier.
+     * Obtain a card by its identifier.
+     */
+    async paymentsCardsUsersUserIdCardsCardIdGet(requestParameters: PaymentsCardsUsersUserIdCardsCardIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaymentsCardsUsersUserIdCardsPost200Response> {
+        const response = await this.paymentsCardsUsersUserIdCardsCardIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     */
+    async paymentsCardsUsersUserIdCardsGetRaw(requestParameters: PaymentsCardsUsersUserIdCardsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PaymentsCardsUsersUserIdCardsGet200ResponseInner>>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling paymentsCardsUsersUserIdCardsGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters. !== undefined && requestParameters. !== null) {
+            headerParameters['*'] = String(requestParameters.);
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Api-Key"] = this.configuration.apiKey("X-Api-Key"); // X-Api-Key authentication
+        }
+
+        const response = await this.request({
+            path: `/payments-cards/users/{user_id}/cards`.replace(`{${"user_id"}}`, encodeURIComponent(String(requestParameters.userId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PaymentsCardsUsersUserIdCardsGet200ResponseInnerFromJSON));
+    }
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     */
+    async paymentsCardsUsersUserIdCardsGet(requestParameters: PaymentsCardsUsersUserIdCardsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PaymentsCardsUsersUserIdCardsGet200ResponseInner>> {
+        const response = await this.paymentsCardsUsersUserIdCardsGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     */
+    async paymentsCardsUsersUserIdCardsPostRaw(requestParameters: PaymentsCardsUsersUserIdCardsPostOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaymentsCardsUsersUserIdCardsPost200Response>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling paymentsCardsUsersUserIdCardsPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters. !== undefined && requestParameters. !== null) {
+            headerParameters['*'] = String(requestParameters.);
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Api-Key"] = this.configuration.apiKey("X-Api-Key"); // X-Api-Key authentication
+        }
+
+        const response = await this.request({
+            path: `/payments-cards/users/{user_id}/cards`.replace(`{${"user_id"}}`, encodeURIComponent(String(requestParameters.userId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PaymentsCardsUsersUserIdCardsPostRequestToJSON(requestParameters.paymentsCardsUsersUserIdCardsPostRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PaymentsCardsUsersUserIdCardsPost200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     */
+    async paymentsCardsUsersUserIdCardsPost(requestParameters: PaymentsCardsUsersUserIdCardsPostOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaymentsCardsUsersUserIdCardsPost200Response> {
+        const response = await this.paymentsCardsUsersUserIdCardsPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get If User Exists
+     * Get If User Exists
+     */
+    async usersGetRaw(requestParameters: UsersGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.email !== undefined) {
+            queryParameters['email'] = requestParameters.email;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xApiKey !== undefined && requestParameters.xApiKey !== null) {
+            headerParameters['X-Api-Key'] = String(requestParameters.xApiKey);
+        }
+
+        if (requestParameters.xMerchantId !== undefined && requestParameters.xMerchantId !== null) {
+            headerParameters['X-Merchant-Id'] = String(requestParameters.xMerchantId);
+        }
+
+        if (requestParameters.xDeviceId !== undefined && requestParameters.xDeviceId !== null) {
+            headerParameters['X-Device-Id'] = String(requestParameters.xDeviceId);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['Authorization'] = String(requestParameters.authorization);
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Api-Key"] = this.configuration.apiKey("X-Api-Key"); // X-Api-Key authentication
+        }
+
+        const response = await this.request({
+            path: `/users`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Get If User Exists
+     * Get If User Exists
+     */
+    async usersGet(requestParameters: UsersGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.usersGetRaw(requestParameters, initOverrides);
+    }
 
     /**
      * Login User
@@ -625,184 +870,6 @@ export class UsersApi extends runtime.BaseAPI implements UsersApiInterface {
      */
     async usersRequestCodePost(requestParameters: UsersRequestCodePostOperationRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.usersRequestCodePostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     * Remove card by identifier
-     * Remove card by identifier
-     */
-    async usersUserIdCardsCardIdDeleteRaw(requestParameters: UsersUserIdCardsCardIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling usersUserIdCardsCardIdDelete.');
-        }
-
-        if (requestParameters.cardId === null || requestParameters.cardId === undefined) {
-            throw new runtime.RequiredError('cardId','Required parameter requestParameters.cardId was null or undefined when calling usersUserIdCardsCardIdDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-Api-Key"] = this.configuration.apiKey("X-Api-Key"); // X-Api-Key authentication
-        }
-
-        const response = await this.request({
-            path: `/users/{user_id}/cards/{card_id}`.replace(`{${"user_id"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"card_id"}}`, encodeURIComponent(String(requestParameters.cardId))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * Remove card by identifier
-     * Remove card by identifier
-     */
-    async usersUserIdCardsCardIdDelete(requestParameters: UsersUserIdCardsCardIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.usersUserIdCardsCardIdDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     * Obtain a card by its identifier.
-     * Obtain a card by its identifier.
-     */
-    async usersUserIdCardsCardIdGetRaw(requestParameters: UsersUserIdCardsCardIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsersUserIdCardsPost200Response>> {
-        if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling usersUserIdCardsCardIdGet.');
-        }
-
-        if (requestParameters.cardId === null || requestParameters.cardId === undefined) {
-            throw new runtime.RequiredError('cardId','Required parameter requestParameters.cardId was null or undefined when calling usersUserIdCardsCardIdGet.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-Api-Key"] = this.configuration.apiKey("X-Api-Key"); // X-Api-Key authentication
-        }
-
-        const response = await this.request({
-            path: `/users/{user_id}/cards/{card_id}`.replace(`{${"user_id"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"card_id"}}`, encodeURIComponent(String(requestParameters.cardId))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => UsersUserIdCardsPost200ResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Obtain a card by its identifier.
-     * Obtain a card by its identifier.
-     */
-    async usersUserIdCardsCardIdGet(requestParameters: UsersUserIdCardsCardIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsersUserIdCardsPost200Response> {
-        const response = await this.usersUserIdCardsCardIdGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Get all user cards
-     * Get all user cards
-     */
-    async usersUserIdCardsGetRaw(requestParameters: UsersUserIdCardsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<UsersUserIdCardsGet200ResponseInner>>> {
-        if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling usersUserIdCardsGet.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.xMerchantID !== undefined && requestParameters.xMerchantID !== null) {
-            headerParameters['X-Merchant-ID'] = String(requestParameters.xMerchantID);
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-Api-Key"] = this.configuration.apiKey("X-Api-Key"); // X-Api-Key authentication
-        }
-
-        const response = await this.request({
-            path: `/users/{user_id}/cards`.replace(`{${"user_id"}}`, encodeURIComponent(String(requestParameters.userId))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(UsersUserIdCardsGet200ResponseInnerFromJSON));
-    }
-
-    /**
-     * Get all user cards
-     * Get all user cards
-     */
-    async usersUserIdCardsGet(requestParameters: UsersUserIdCardsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<UsersUserIdCardsGet200ResponseInner>> {
-        const response = await this.usersUserIdCardsGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Register user card
-     * Register user card
-     */
-    async usersUserIdCardsPostRaw(requestParameters: UsersUserIdCardsPostOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsersUserIdCardsPost200Response>> {
-        if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling usersUserIdCardsPost.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.xMerchantID !== undefined && requestParameters.xMerchantID !== null) {
-            headerParameters['X-Merchant-ID'] = String(requestParameters.xMerchantID);
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-Api-Key"] = this.configuration.apiKey("X-Api-Key"); // X-Api-Key authentication
-        }
-
-        const response = await this.request({
-            path: `/users/{user_id}/cards`.replace(`{${"user_id"}}`, encodeURIComponent(String(requestParameters.userId))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: UsersUserIdCardsPostRequestToJSON(requestParameters.usersUserIdCardsPostRequest),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => UsersUserIdCardsPost200ResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Register user card
-     * Register user card
-     */
-    async usersUserIdCardsPost(requestParameters: UsersUserIdCardsPostOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsersUserIdCardsPost200Response> {
-        const response = await this.usersUserIdCardsPostRaw(requestParameters, initOverrides);
-        return await response.value();
     }
 
 }

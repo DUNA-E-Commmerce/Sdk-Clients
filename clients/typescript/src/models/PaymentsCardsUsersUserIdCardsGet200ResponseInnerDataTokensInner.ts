@@ -16,67 +16,67 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface UsersUserIdCardsGet200ResponseInnerDataTokensInner
+ * @interface PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner
  */
-export interface UsersUserIdCardsGet200ResponseInnerDataTokensInner {
+export interface PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner {
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseInnerDataTokensInner
+     * @memberof PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner
      */
     cardId?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseInnerDataTokensInner
+     * @memberof PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner
      */
     createdAt?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseInnerDataTokensInner
+     * @memberof PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner
      */
     deletedAt?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseInnerDataTokensInner
+     * @memberof PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseInnerDataTokensInner
+     * @memberof PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner
      */
     token?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseInnerDataTokensInner
+     * @memberof PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner
      */
     updatedAt?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseInnerDataTokensInner
+     * @memberof PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner
      */
     vaultName?: string;
 }
 
 /**
- * Check if a given object implements the UsersUserIdCardsGet200ResponseInnerDataTokensInner interface.
+ * Check if a given object implements the PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner interface.
  */
-export function instanceOfUsersUserIdCardsGet200ResponseInnerDataTokensInner(value: object): boolean {
+export function instanceOfPaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function UsersUserIdCardsGet200ResponseInnerDataTokensInnerFromJSON(json: any): UsersUserIdCardsGet200ResponseInnerDataTokensInner {
-    return UsersUserIdCardsGet200ResponseInnerDataTokensInnerFromJSONTyped(json, false);
+export function PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInnerFromJSON(json: any): PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner {
+    return PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInnerFromJSONTyped(json, false);
 }
 
-export function UsersUserIdCardsGet200ResponseInnerDataTokensInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): UsersUserIdCardsGet200ResponseInnerDataTokensInner {
+export function PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -92,7 +92,7 @@ export function UsersUserIdCardsGet200ResponseInnerDataTokensInnerFromJSONTyped(
     };
 }
 
-export function UsersUserIdCardsGet200ResponseInnerDataTokensInnerToJSON(value?: UsersUserIdCardsGet200ResponseInnerDataTokensInner | null): any {
+export function PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInnerToJSON(value?: PaymentsCardsUsersUserIdCardsGet200ResponseInnerDataTokensInner | null): any {
     if (value === undefined) {
         return undefined;
     }
