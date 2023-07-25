@@ -22,18 +22,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param description 
- * @param financialInstitution 
+ * @param refreshToken 
+ * @param token 
  */
 
 
-data class MerchantsTransactionsPurchasePostRequestSpecificFields (
+data class UsersLoginPost200Response (
 
-    @Json(name = "description")
-    var description: kotlin.String? = null,
+    @Json(name = "refresh_token")
+    var refreshToken: kotlin.String? = null,
 
-    @Json(name = "financial_institution")
-    var financialInstitution: kotlin.String? = null
+    @Json(name = "token")
+    var token: kotlin.String? = null
 
 )
 

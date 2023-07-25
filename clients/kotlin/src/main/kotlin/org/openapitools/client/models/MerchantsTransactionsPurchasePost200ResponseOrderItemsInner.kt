@@ -15,9 +15,9 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerWeight
 import org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount
 import org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+import org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -32,6 +32,7 @@ import com.squareup.moshi.JsonClass
  * @param detailsUrl 
  * @param id 
  * @param imageUrl 
+ * @param includedInSubscription 
  * @param isbn 
  * @param manufacturer 
  * @param name 
@@ -39,13 +40,14 @@ import com.squareup.moshi.JsonClass
  * @param quantity 
  * @param propertySize 
  * @param sku 
+ * @param subscriptionId 
+ * @param taxAmount 
  * @param taxable 
+ * @param totalAmount 
  * @param type 
+ * @param unitPrice 
  * @param uom 
  * @param upc 
- * @param taxAmount 
- * @param totalAmount 
- * @param unitPrice 
  * @param weight 
  */
 
@@ -53,70 +55,76 @@ import com.squareup.moshi.JsonClass
 data class MerchantsTransactionsPurchasePost200ResponseOrderItemsInner (
 
     @Json(name = "brand")
-    var brand: kotlin.String,
+    var brand: kotlin.String? = null,
 
     @Json(name = "category")
-    var category: kotlin.String,
+    var category: kotlin.String? = null,
 
     @Json(name = "color")
-    var color: kotlin.String,
+    var color: kotlin.String? = null,
 
     @Json(name = "description")
-    var description: kotlin.String,
+    var description: kotlin.String? = null,
 
     @Json(name = "details_url")
-    var detailsUrl: kotlin.String,
+    var detailsUrl: kotlin.String? = null,
 
     @Json(name = "id")
-    var id: kotlin.String,
+    var id: kotlin.String? = null,
 
     @Json(name = "image_url")
-    var imageUrl: kotlin.String,
+    var imageUrl: kotlin.String? = null,
+
+    @Json(name = "included_in_subscription")
+    var includedInSubscription: kotlin.Boolean? = null,
 
     @Json(name = "isbn")
-    var isbn: kotlin.String,
+    var isbn: kotlin.String? = null,
 
     @Json(name = "manufacturer")
-    var manufacturer: kotlin.String,
+    var manufacturer: kotlin.String? = null,
 
     @Json(name = "name")
-    var name: kotlin.String,
+    var name: kotlin.String? = null,
 
     @Json(name = "options")
-    var options: kotlin.String,
+    var options: kotlin.String? = null,
 
     @Json(name = "quantity")
-    var quantity: java.math.BigDecimal,
+    var quantity: kotlin.Int? = null,
 
     @Json(name = "size")
-    var propertySize: kotlin.String,
+    var propertySize: kotlin.String? = null,
 
     @Json(name = "sku")
-    var sku: kotlin.String,
+    var sku: kotlin.String? = null,
 
-    @Json(name = "taxable")
-    var taxable: kotlin.Boolean,
-
-    @Json(name = "type")
-    var type: kotlin.String,
-
-    @Json(name = "uom")
-    var uom: kotlin.String,
-
-    @Json(name = "upc")
-    var upc: kotlin.String,
+    @Json(name = "subscription_id")
+    var subscriptionId: kotlin.String? = null,
 
     @Json(name = "tax_amount")
     var taxAmount: MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount? = null,
 
+    @Json(name = "taxable")
+    var taxable: kotlin.Boolean? = null,
+
     @Json(name = "total_amount")
     var totalAmount: MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount? = null,
+
+    @Json(name = "type")
+    var type: kotlin.String? = null,
 
     @Json(name = "unit_price")
     var unitPrice: MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount? = null,
 
+    @Json(name = "uom")
+    var uom: kotlin.String? = null,
+
+    @Json(name = "upc")
+    var upc: kotlin.String? = null,
+
     @Json(name = "weight")
-    var weight: MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerWeight? = null
+    var weight: MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight? = null
 
 )
 

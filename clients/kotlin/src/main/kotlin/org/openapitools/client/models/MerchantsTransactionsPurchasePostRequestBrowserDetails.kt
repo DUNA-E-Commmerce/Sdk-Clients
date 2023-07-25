@@ -22,18 +22,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param description 
- * @param financialInstitution 
+ * @param screenHeight 
+ * @param screenWidth 
  */
 
 
-data class MerchantsTransactionsPurchasePostRequestSpecificFields (
+data class MerchantsTransactionsPurchasePostRequestBrowserDetails (
 
-    @Json(name = "description")
-    var description: kotlin.String? = null,
+    @Json(name = "screen_height")
+    var screenHeight: kotlin.Int? = null,
 
-    @Json(name = "financial_institution")
-    var financialInstitution: kotlin.String? = null
+    @Json(name = "screen_width")
+    var screenWidth: kotlin.Int? = null
 
 )
 

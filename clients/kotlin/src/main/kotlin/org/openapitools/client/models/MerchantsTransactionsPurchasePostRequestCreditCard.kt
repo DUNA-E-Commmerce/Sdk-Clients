@@ -31,6 +31,7 @@ import com.squareup.moshi.JsonClass
  * @param country 
  * @param expiryMonth 
  * @param expiryYear 
+ * @param installments 
  * @param phone 
  * @param state 
  * @param zip 
@@ -40,40 +41,43 @@ import com.squareup.moshi.JsonClass
 data class MerchantsTransactionsPurchasePostRequestCreditCard (
 
     @Json(name = "address1")
-    var address1: kotlin.String,
+    var address1: kotlin.String? = null,
 
     @Json(name = "card_cvv")
-    var cardCvv: kotlin.String,
+    var cardCvv: kotlin.String? = null,
 
     @Json(name = "card_holder")
-    var cardHolder: kotlin.String,
+    var cardHolder: kotlin.String? = null,
 
     @Json(name = "card_holder_dni")
-    var cardHolderDni: kotlin.String,
+    var cardHolderDni: kotlin.String? = null,
 
     @Json(name = "card_number")
-    var cardNumber: kotlin.String,
+    var cardNumber: kotlin.String? = null,
 
     @Json(name = "city")
-    var city: kotlin.String,
+    var city: kotlin.String? = null,
 
     @Json(name = "country")
-    var country: kotlin.String,
+    var country: kotlin.String? = null,
 
     @Json(name = "expiry_month")
-    var expiryMonth: kotlin.String,
+    var expiryMonth: kotlin.String? = null,
 
     @Json(name = "expiry_year")
-    var expiryYear: kotlin.String,
+    var expiryYear: kotlin.String? = null,
+
+    @Json(name = "installments")
+    var installments: kotlin.String? = null,
 
     @Json(name = "phone")
-    var phone: kotlin.String,
+    var phone: kotlin.String? = null,
 
     @Json(name = "state")
-    var state: kotlin.String,
+    var state: kotlin.String? = null,
 
     @Json(name = "zip")
-    var zip: kotlin.String
+    var zip: kotlin.String? = null
 
 )
 

@@ -32,16 +32,16 @@ import com.squareup.moshi.JsonClass
 data class MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount (
 
     @Json(name = "amount")
-    var amount: java.math.BigDecimal,
+    var amount: kotlin.Int? = null,
 
     @Json(name = "currency")
-    var currency: kotlin.String,
+    var currency: kotlin.String? = null,
 
     @Json(name = "currency_symbol")
-    var currencySymbol: kotlin.String,
+    var currencySymbol: kotlin.String? = null,
 
     @Json(name = "display_amount")
-    var displayAmount: kotlin.String
+    var displayAmount: kotlin.String? = null
 
 )
 

@@ -4,7 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**financialInstitution** | **kotlin.String** |  | 
+**description** | **kotlin.String** |  |  [optional]
+**financialInstitution** | **kotlin.String** |  |  [optional]
 
 
 

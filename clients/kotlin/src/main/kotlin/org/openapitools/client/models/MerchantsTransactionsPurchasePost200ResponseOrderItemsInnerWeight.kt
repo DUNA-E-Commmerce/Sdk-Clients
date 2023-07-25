@@ -22,18 +22,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param description 
- * @param financialInstitution 
+ * @param unit 
+ * @param weight 
  */
 
 
-data class MerchantsTransactionsPurchasePostRequestSpecificFields (
+data class MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight (
 
-    @Json(name = "description")
-    var description: kotlin.String? = null,
+    @Json(name = "unit")
+    var unit: kotlin.String? = null,
 
-    @Json(name = "financial_institution")
-    var financialInstitution: kotlin.String? = null
+    @Json(name = "weight")
+    var weight: kotlin.Int? = null
 
 )
 

@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.UsersUserIdCardsCardIdGet200ResponseData
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -22,18 +23,14 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param description 
- * @param financialInstitution 
+ * @param `data` 
  */
 
 
-data class MerchantsTransactionsPurchasePostRequestSpecificFields (
+data class UsersUserIdCardsCardIdGet200Response (
 
-    @Json(name = "description")
-    var description: kotlin.String? = null,
-
-    @Json(name = "financial_institution")
-    var financialInstitution: kotlin.String? = null
+    @Json(name = "data")
+    var `data`: UsersUserIdCardsCardIdGet200ResponseData? = null
 
 )
 

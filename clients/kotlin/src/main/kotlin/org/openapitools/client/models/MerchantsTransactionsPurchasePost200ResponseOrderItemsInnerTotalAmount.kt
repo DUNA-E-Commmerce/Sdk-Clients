@@ -27,29 +27,37 @@ import com.squareup.moshi.JsonClass
  * @param currencySymbol 
  * @param displayAmount 
  * @param displayOriginalAmount 
+ * @param displayTotalDiscount 
  * @param originalAmount 
+ * @param totalDiscount 
  */
 
 
 data class MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount (
 
     @Json(name = "amount")
-    var amount: java.math.BigDecimal,
+    var amount: kotlin.Int? = null,
 
     @Json(name = "currency")
-    var currency: kotlin.String,
+    var currency: kotlin.String? = null,
 
     @Json(name = "currency_symbol")
-    var currencySymbol: kotlin.String,
+    var currencySymbol: kotlin.String? = null,
 
     @Json(name = "display_amount")
-    var displayAmount: kotlin.String,
+    var displayAmount: kotlin.String? = null,
 
     @Json(name = "display_original_amount")
     var displayOriginalAmount: kotlin.String? = null,
 
+    @Json(name = "display_total_discount")
+    var displayTotalDiscount: kotlin.String? = null,
+
     @Json(name = "original_amount")
-    var originalAmount: java.math.BigDecimal? = null
+    var originalAmount: kotlin.Int? = null,
+
+    @Json(name = "total_discount")
+    var totalDiscount: kotlin.Int? = null
 
 )
 

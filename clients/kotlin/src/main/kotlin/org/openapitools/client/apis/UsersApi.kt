@@ -20,7 +20,12 @@ import okhttp3.OkHttpClient
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.UsersLoginDeviceFingerprintPost200Response
+import org.openapitools.client.models.UsersLoginPost200Response
+import org.openapitools.client.models.UsersLoginPost403Response
+import org.openapitools.client.models.UsersLoginPostRequest
 import org.openapitools.client.models.UsersMeGet200Response
+import org.openapitools.client.models.UsersUserIdCardsCardIdGet200Response
+import org.openapitools.client.models.UsersUserIdCardsGet200Response
 
 import com.squareup.moshi.Json
 
@@ -151,6 +156,116 @@ class UsersApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
     }
 
     /**
+     * Allows logging in with the OTP code sent to the user&#39;s email or phone. This must be specified in the query param.
+     * Allows logging in with the OTP code sent to the user&#39;s email or phone. This must be specified in the query param.
+     * @param xApiKey  (optional)
+     * @param xMerchantId  (optional)
+     * @param xDeviceId  (optional)
+     * @param xSessionID  (optional)
+     * @param authorization  (optional)
+     * @param xRecaptchaToken  (optional)
+     * @param type  (optional)
+     * @param loadProfileData  (optional)
+     * @param usersLoginPostRequest  (optional)
+     * @return UsersLoginPost200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun usersLoginPost(xApiKey: kotlin.String? = null, xMerchantId: kotlin.String? = null, xDeviceId: kotlin.String? = null, xSessionID: kotlin.String? = null, authorization: kotlin.String? = null, xRecaptchaToken: kotlin.String? = null, type: kotlin.String? = null, loadProfileData: kotlin.String? = null, usersLoginPostRequest: UsersLoginPostRequest? = null) : UsersLoginPost200Response = withContext(Dispatchers.IO) {
+        val localVarResponse = usersLoginPostWithHttpInfo(xApiKey = xApiKey, xMerchantId = xMerchantId, xDeviceId = xDeviceId, xSessionID = xSessionID, authorization = authorization, xRecaptchaToken = xRecaptchaToken, type = type, loadProfileData = loadProfileData, usersLoginPostRequest = usersLoginPostRequest)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as UsersLoginPost200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Allows logging in with the OTP code sent to the user&#39;s email or phone. This must be specified in the query param.
+     * Allows logging in with the OTP code sent to the user&#39;s email or phone. This must be specified in the query param.
+     * @param xApiKey  (optional)
+     * @param xMerchantId  (optional)
+     * @param xDeviceId  (optional)
+     * @param xSessionID  (optional)
+     * @param authorization  (optional)
+     * @param xRecaptchaToken  (optional)
+     * @param type  (optional)
+     * @param loadProfileData  (optional)
+     * @param usersLoginPostRequest  (optional)
+     * @return ApiResponse<UsersLoginPost200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun usersLoginPostWithHttpInfo(xApiKey: kotlin.String?, xMerchantId: kotlin.String?, xDeviceId: kotlin.String?, xSessionID: kotlin.String?, authorization: kotlin.String?, xRecaptchaToken: kotlin.String?, type: kotlin.String?, loadProfileData: kotlin.String?, usersLoginPostRequest: UsersLoginPostRequest?) : ApiResponse<UsersLoginPost200Response?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = usersLoginPostRequestConfig(xApiKey = xApiKey, xMerchantId = xMerchantId, xDeviceId = xDeviceId, xSessionID = xSessionID, authorization = authorization, xRecaptchaToken = xRecaptchaToken, type = type, loadProfileData = loadProfileData, usersLoginPostRequest = usersLoginPostRequest)
+
+        return@withContext request<UsersLoginPostRequest, UsersLoginPost200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation usersLoginPost
+     *
+     * @param xApiKey  (optional)
+     * @param xMerchantId  (optional)
+     * @param xDeviceId  (optional)
+     * @param xSessionID  (optional)
+     * @param authorization  (optional)
+     * @param xRecaptchaToken  (optional)
+     * @param type  (optional)
+     * @param loadProfileData  (optional)
+     * @param usersLoginPostRequest  (optional)
+     * @return RequestConfig
+     */
+    fun usersLoginPostRequestConfig(xApiKey: kotlin.String?, xMerchantId: kotlin.String?, xDeviceId: kotlin.String?, xSessionID: kotlin.String?, authorization: kotlin.String?, xRecaptchaToken: kotlin.String?, type: kotlin.String?, loadProfileData: kotlin.String?, usersLoginPostRequest: UsersLoginPostRequest?) : RequestConfig<UsersLoginPostRequest> {
+        val localVariableBody = usersLoginPostRequest
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (type != null) {
+                    put("type", listOf(type.toString()))
+                }
+                if (loadProfileData != null) {
+                    put("load_profile_data", listOf(loadProfileData.toString()))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        xApiKey?.apply { localVariableHeaders["X-Api-Key"] = this.toString() }
+        xMerchantId?.apply { localVariableHeaders["X-Merchant-Id"] = this.toString() }
+        xDeviceId?.apply { localVariableHeaders["X-Device-Id"] = this.toString() }
+        xSessionID?.apply { localVariableHeaders["X-Session-ID"] = this.toString() }
+        authorization?.apply { localVariableHeaders["Authorization"] = this.toString() }
+        xRecaptchaToken?.apply { localVariableHeaders["X-Recaptcha-Token"] = this.toString() }
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/users/login",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * Get User Information
      * Get User Information
      * @param xApiKey  (optional)
@@ -227,6 +342,239 @@ class UsersApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/users/me",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Remove card by identifier
+     * Remove card by identifier
+     * @param userId 
+     * @param cardId 
+     * @param authorization  (optional)
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun usersUserIdCardsCardIdDelete(userId: kotlin.String, cardId: kotlin.String, authorization: kotlin.String? = null) : Unit = withContext(Dispatchers.IO) {
+        val localVarResponse = usersUserIdCardsCardIdDeleteWithHttpInfo(userId = userId, cardId = cardId, authorization = authorization)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Remove card by identifier
+     * Remove card by identifier
+     * @param userId 
+     * @param cardId 
+     * @param authorization  (optional)
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun usersUserIdCardsCardIdDeleteWithHttpInfo(userId: kotlin.String?, cardId: kotlin.String?, authorization: kotlin.String?) : ApiResponse<Unit?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = usersUserIdCardsCardIdDeleteRequestConfig(userId = userId, cardId = cardId, authorization = authorization)
+
+        return@withContext request<Unit, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation usersUserIdCardsCardIdDelete
+     *
+     * @param userId 
+     * @param cardId 
+     * @param authorization  (optional)
+     * @return RequestConfig
+     */
+    fun usersUserIdCardsCardIdDeleteRequestConfig(userId: kotlin.String?, cardId: kotlin.String?, authorization: kotlin.String?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        authorization?.apply { localVariableHeaders["Authorization"] = this.toString() }
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/users/{user_id}/cards/{card_id}".replace("{"+"user_id"+"}", encodeURIComponent(userId.toString())).replace("{"+"card_id"+"}", encodeURIComponent(cardId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Obtain a card by its identifier.
+     * Obtain a card by its identifier.
+     * @param userId 
+     * @param cardId 
+     * @param authorization  (optional)
+     * @return UsersUserIdCardsCardIdGet200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun usersUserIdCardsCardIdGet(userId: kotlin.String, cardId: kotlin.String, authorization: kotlin.String? = null) : UsersUserIdCardsCardIdGet200Response = withContext(Dispatchers.IO) {
+        val localVarResponse = usersUserIdCardsCardIdGetWithHttpInfo(userId = userId, cardId = cardId, authorization = authorization)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as UsersUserIdCardsCardIdGet200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Obtain a card by its identifier.
+     * Obtain a card by its identifier.
+     * @param userId 
+     * @param cardId 
+     * @param authorization  (optional)
+     * @return ApiResponse<UsersUserIdCardsCardIdGet200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun usersUserIdCardsCardIdGetWithHttpInfo(userId: kotlin.String?, cardId: kotlin.String?, authorization: kotlin.String?) : ApiResponse<UsersUserIdCardsCardIdGet200Response?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = usersUserIdCardsCardIdGetRequestConfig(userId = userId, cardId = cardId, authorization = authorization)
+
+        return@withContext request<Unit, UsersUserIdCardsCardIdGet200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation usersUserIdCardsCardIdGet
+     *
+     * @param userId 
+     * @param cardId 
+     * @param authorization  (optional)
+     * @return RequestConfig
+     */
+    fun usersUserIdCardsCardIdGetRequestConfig(userId: kotlin.String?, cardId: kotlin.String?, authorization: kotlin.String?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        authorization?.apply { localVariableHeaders["Authorization"] = this.toString() }
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/users/{user_id}/cards/{card_id}".replace("{"+"user_id"+"}", encodeURIComponent(userId.toString())).replace("{"+"card_id"+"}", encodeURIComponent(cardId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     * @param userId 
+     * @param authorization  (optional)
+     * @param xMerchantID  (optional)
+     * @return UsersUserIdCardsGet200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    suspend fun usersUserIdCardsGet(userId: kotlin.String, authorization: kotlin.String? = null, xMerchantID: kotlin.String? = null) : UsersUserIdCardsGet200Response = withContext(Dispatchers.IO) {
+        val localVarResponse = usersUserIdCardsGetWithHttpInfo(userId = userId, authorization = authorization, xMerchantID = xMerchantID)
+
+        return@withContext when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as UsersUserIdCardsGet200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Get all user cards
+     * Get all user cards
+     * @param userId 
+     * @param authorization  (optional)
+     * @param xMerchantID  (optional)
+     * @return ApiResponse<UsersUserIdCardsGet200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    suspend fun usersUserIdCardsGetWithHttpInfo(userId: kotlin.String?, authorization: kotlin.String?, xMerchantID: kotlin.String?) : ApiResponse<UsersUserIdCardsGet200Response?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = usersUserIdCardsGetRequestConfig(userId = userId, authorization = authorization, xMerchantID = xMerchantID)
+
+        return@withContext request<Unit, UsersUserIdCardsGet200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation usersUserIdCardsGet
+     *
+     * @param userId 
+     * @param authorization  (optional)
+     * @param xMerchantID  (optional)
+     * @return RequestConfig
+     */
+    fun usersUserIdCardsGetRequestConfig(userId: kotlin.String?, authorization: kotlin.String?, xMerchantID: kotlin.String?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        authorization?.apply { localVariableHeaders["Authorization"] = this.toString() }
+        xMerchantID?.apply { localVariableHeaders["X-Merchant-ID"] = this.toString() }
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/users/{user_id}/cards".replace("{"+"user_id"+"}", encodeURIComponent(userId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

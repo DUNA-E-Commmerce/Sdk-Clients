@@ -4,27 +4,44 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**currency** | **kotlin.String** |  | 
-**discounts** | [**kotlin.collections.MutableSet&lt;MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner&gt;**](MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner.md) |  | 
-**displayItemsTotalAmount** | **kotlin.String** |  | 
-**displayShippingAmount** | **kotlin.String** |  | 
-**displaySubTotal** | **kotlin.String** |  | 
-**displayTaxAmount** | **kotlin.String** |  | 
-**displayTotalAmount** | **kotlin.String** |  | 
-**items** | [**kotlin.collections.MutableSet&lt;MerchantsTransactionsPurchasePost200ResponseOrderItemsInner&gt;**](MerchantsTransactionsPurchasePost200ResponseOrderItemsInner.md) |  | 
-**itemsTotalAmount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
-**metadata** | [**MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata**](MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata.md) |  | 
-**orderId** | **kotlin.String** |  | 
-**payment** | [**MerchantsTransactionsPurchasePost200ResponseOrderPayment**](MerchantsTransactionsPurchasePost200ResponseOrderPayment.md) |  | 
-**shippingAddress** | [**MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress**](MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress.md) |  | 
-**shippingAmount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
-**status** | **kotlin.String** |  | 
-**storeCode** | **kotlin.String** |  | 
-**subTotal** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
-**taxAmount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
-**totalAmount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
-**userInstructions** | **kotlin.String** |  | 
-**shippingOptions** | [**kotlin.Any**](.md) |  |  [optional]
+**billingAddress** | [**kotlin.collections.MutableList&lt;MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner&gt;**](MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner.md) |  |  [optional]
+**cashChange** | **kotlin.Int** |  |  [optional]
+**currency** | **kotlin.String** |  |  [optional]
+**displayItemsTotalAmount** | **kotlin.String** |  |  [optional]
+**displayShippingAmount** | **kotlin.String** |  |  [optional]
+**displayShippingTaxAmount** | **kotlin.String** |  |  [optional]
+**displaySubTotal** | **kotlin.String** |  |  [optional]
+**displayTaxAmount** | **kotlin.String** |  |  [optional]
+**displayTotalAmount** | **kotlin.String** |  |  [optional]
+**displayTotalDiscount** | **kotlin.String** |  |  [optional]
+**displayTotalTaxAmount** | **kotlin.String** |  |  [optional]
+**giftCard** | [**kotlin.collections.MutableList&lt;kotlin.Any&gt;**](kotlin.Any.md) |  |  [optional]
+**includePaymentOptions** | [**kotlin.collections.MutableList&lt;kotlin.Any&gt;**](kotlin.Any.md) |  |  [optional]
+**items** | [**kotlin.collections.MutableList&lt;MerchantsTransactionsPurchasePost200ResponseOrderItemsInner&gt;**](MerchantsTransactionsPurchasePost200ResponseOrderItemsInner.md) |  |  [optional]
+**itemsTotalAmount** | **kotlin.Int** |  |  [optional]
+**metadata** | [**kotlin.Any**](.md) |  |  [optional]
+**orderId** | **kotlin.String** |  |  [optional]
+**paymentLink** | **kotlin.String** |  |  [optional]
+**redirectUrl** | **kotlin.String** |  |  [optional]
+**scheduledAt** | **kotlin.String** |  |  [optional]
+**shipping** | **kotlin.String** |  |  [optional]
+**shippingAddress** | [**kotlin.collections.MutableList&lt;MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner&gt;**](MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner.md) |  |  [optional]
+**shippingAmount** | **kotlin.Int** |  |  [optional]
+**shippingMethod** | **kotlin.String** |  |  [optional]
+**shippingMethods** | [**kotlin.collections.MutableList&lt;kotlin.Any&gt;**](kotlin.Any.md) |  |  [optional]
+**shippingOptions** | [**kotlin.collections.MutableList&lt;kotlin.Any&gt;**](kotlin.Any.md) |  |  [optional]
+**shippingTaxAmount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  |  [optional]
+**status** | **kotlin.String** |  |  [optional]
+**storeCode** | **kotlin.String** |  |  [optional]
+**subTotal** | **kotlin.Int** |  |  [optional]
+**taxAmount** | **kotlin.Int** |  |  [optional]
+**timezone** | **kotlin.String** |  |  [optional]
+**totalAmount** | **kotlin.Int** |  |  [optional]
+**totalDiscount** | **kotlin.Int** |  |  [optional]
+**totalTaxAmount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  |  [optional]
+**userId** | **kotlin.String** |  |  [optional]
+**userInstructions** | **kotlin.String** |  |  [optional]
+**webhookUrls** | **kotlin.String** |  |  [optional]
 
 
 

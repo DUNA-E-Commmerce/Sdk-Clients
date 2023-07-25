@@ -4,10 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
-**currency** | **kotlin.String** |  | 
-**currencySymbol** | **kotlin.String** |  | 
-**displayAmount** | **kotlin.String** |  | 
+**amount** | **kotlin.Int** |  |  [optional]
+**currency** | **kotlin.String** |  |  [optional]
+**currencySymbol** | **kotlin.String** |  |  [optional]
+**displayAmount** | **kotlin.String** |  |  [optional]
 
 
 

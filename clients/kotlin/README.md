@@ -45,108 +45,42 @@ All URIs are relative to *https://staging-apigw.getduna.com:443*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExternalMerchantAPIApi* | [**merchantsExternalOrdersOrderTokenCouponsCouponCodeDelete**](docs/ExternalMerchantAPIApi.md#merchantsexternalordersordertokencouponscouponcodedelete) | **DELETE** /merchants/external-orders/{order_token}/coupons/{coupon_code} | Remove Coupon
-*ExternalMerchantAPIApi* | [**merchantsExternalOrdersOrderTokenCouponsPost**](docs/ExternalMerchantAPIApi.md#merchantsexternalordersordertokencouponspost) | **POST** /merchants/external-orders/{order_token}/coupons | Apply Coupon
-*ExternalMerchantAPIApi* | [**merchantsExternalOrdersOrderTokenGiftCardsPost**](docs/ExternalMerchantAPIApi.md#merchantsexternalordersordertokengiftcardspost) | **POST** /merchants/external-orders/{order_token}/gift-cards | Apply Gift Card
-*ExternalMerchantAPIApi* | [**merchantsExternalOrdersOrderTokenShippingMethodsCodePatch**](docs/ExternalMerchantAPIApi.md#merchantsexternalordersordertokenshippingmethodscodepatch) | **PATCH** /merchants/external-orders/{order_token}/shipping-methods/{code} | Update the selected shipping method
-*ExternalMerchantAPIApi* | [**merchantsExternalOrdersOrderTokenShippingMethodsPost**](docs/ExternalMerchantAPIApi.md#merchantsexternalordersordertokenshippingmethodspost) | **POST** /merchants/external-orders/{order_token}/shipping-methods | Get shipping methods
-*ExternalMerchantAPIApi* | [**merchantsExternalOrdersOrderTokenShippingRatePost**](docs/ExternalMerchantAPIApi.md#merchantsexternalordersordertokenshippingratepost) | **POST** /merchants/external-orders/{order_token}/shipping-rate | Shipping Rate
-*ExternalMerchantAPIApi* | [**merchantsOrdersOrderTokenGet**](docs/ExternalMerchantAPIApi.md#merchantsordersordertokenget) | **GET** /merchants/orders/{order_token} | Get order
-*ExternalMerchantAPIApi* | [**merchantsOrdersOrderTokenPaymentsMethodsGet**](docs/ExternalMerchantAPIApi.md#merchantsordersordertokenpaymentsmethodsget) | **GET** /merchants/orders/{order_token}/payments-methods | Payment Methods
-*ExternalMerchantAPIApi* | [**merchantsOrdersOrderTokenTransactionsVerifyPost**](docs/ExternalMerchantAPIApi.md#merchantsordersordertokentransactionsverifypost) | **POST** /merchants/orders/{order_token}/transactions/verify | Verify OTP Dinners
-*ExternalMerchantAPIApi* | [**merchantsOrdersPost**](docs/ExternalMerchantAPIApi.md#merchantsorderspost) | **POST** /merchants/orders | Create Order
-*ExternalMerchantAPIApi* | [**merchantsTransactionsPurchasePost**](docs/ExternalMerchantAPIApi.md#merchantstransactionspurchasepost) | **POST** /merchants/transactions/purchase | Purchase
+*MerchantsApi* | [**merchantsTransactionsPurchasePost**](docs/MerchantsApi.md#merchantstransactionspurchasepost) | **POST** /merchants/transactions/purchase | Make the payment of the order.
 *UsersApi* | [**usersLoginDeviceFingerprintPost**](docs/UsersApi.md#userslogindevicefingerprintpost) | **POST** /users/login/device-fingerprint | Login User
+*UsersApi* | [**usersLoginPost**](docs/UsersApi.md#usersloginpost) | **POST** /users/login | Allows logging in with the OTP code sent to the user's email or phone. This must be specified in the query param.
 *UsersApi* | [**usersMeGet**](docs/UsersApi.md#usersmeget) | **GET** /users/me | Get User Information
+*UsersApi* | [**usersUserIdCardsCardIdDelete**](docs/UsersApi.md#usersuseridcardscardiddelete) | **DELETE** /users/{user_id}/cards/{card_id} | Remove card by identifier
+*UsersApi* | [**usersUserIdCardsCardIdGet**](docs/UsersApi.md#usersuseridcardscardidget) | **GET** /users/{user_id}/cards/{card_id} | Obtain a card by its identifier.
+*UsersApi* | [**usersUserIdCardsGet**](docs/UsersApi.md#usersuseridcardsget) | **GET** /users/{user_id}/cards | Get all user cards
 
 
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200Response](docs/MerchantsExternalOrdersOrderTokenCouponsPost200Response.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrder](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrder.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInnerFreeShipping](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInnerFreeShipping.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInner](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInner.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTaxAmount](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTaxAmount.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTotalAmount](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerTotalAmount.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerWeight](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderItemsInnerWeight.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptions](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptions.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetails](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetails.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsContact](docs/MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingOptionsDetailsContact.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPostRequest](docs/MerchantsExternalOrdersOrderTokenCouponsPostRequest.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200Response](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200Response.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrder](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrder.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInner](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInner.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInnerFreeShipping](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderDiscountsInnerFreeShipping.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderGiftCardInner](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderGiftCardInner.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInner](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInner.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTaxAmount](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTaxAmount.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTotalAmount](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerTotalAmount.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerWeight](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderItemsInnerWeight.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderMetadata](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderMetadata.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingAddress](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingAddress.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptions](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptions.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetails](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetails.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAdditionalDetails.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsAddressCoordinates.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsContact](docs/MerchantsExternalOrdersOrderTokenGiftCardsPost200ResponseOrderShippingOptionsDetailsContact.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenGiftCardsPostRequest](docs/MerchantsExternalOrdersOrderTokenGiftCardsPostRequest.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response](docs/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200Response.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrder](docs/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrder.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrderShippingOptions](docs/MerchantsExternalOrdersOrderTokenShippingMethodsCodePatch200ResponseOrderShippingOptions.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response](docs/MerchantsExternalOrdersOrderTokenShippingMethodsPost200Response.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrder](docs/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrder.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderDiscountsInner](docs/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderDiscountsInner.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingAddress](docs/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingAddress.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptions](docs/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptions.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptionsDetails](docs/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseOrderShippingOptionsDetails.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseShippingMethodsInner](docs/MerchantsExternalOrdersOrderTokenShippingMethodsPost200ResponseShippingMethodsInner.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest](docs/MerchantsExternalOrdersOrderTokenShippingMethodsPostRequest.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePost200Response](docs/MerchantsExternalOrdersOrderTokenShippingRatePost200Response.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrder](docs/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrder.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInner](docs/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInner.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInnerFreeShipping](docs/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderDiscountsInnerFreeShipping.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInner](docs/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInner.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTaxAmount](docs/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTaxAmount.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTotalAmount](docs/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderItemsInnerTotalAmount.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderShippingAddress](docs/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseOrderShippingAddress.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseShippingOption](docs/MerchantsExternalOrdersOrderTokenShippingRatePost200ResponseShippingOption.md)
- - [org.openapitools.client.models.MerchantsExternalOrdersOrderTokenShippingRatePostRequest](docs/MerchantsExternalOrdersOrderTokenShippingRatePostRequest.md)
- - [org.openapitools.client.models.MerchantsOrdersOrderTokenPaymentsMethodsGet200Response](docs/MerchantsOrdersOrderTokenPaymentsMethodsGet200Response.md)
- - [org.openapitools.client.models.MerchantsOrdersOrderTokenPaymentsMethodsGet200ResponseDataInner](docs/MerchantsOrdersOrderTokenPaymentsMethodsGet200ResponseDataInner.md)
- - [org.openapitools.client.models.MerchantsOrdersOrderTokenTransactionsVerifyPost200Response](docs/MerchantsOrdersOrderTokenTransactionsVerifyPost200Response.md)
- - [org.openapitools.client.models.MerchantsOrdersOrderTokenTransactionsVerifyPostRequest](docs/MerchantsOrdersOrderTokenTransactionsVerifyPostRequest.md)
- - [org.openapitools.client.models.MerchantsOrdersPostRequest](docs/MerchantsOrdersPostRequest.md)
- - [org.openapitools.client.models.MerchantsOrdersPostRequestOrder](docs/MerchantsOrdersPostRequestOrder.md)
- - [org.openapitools.client.models.MerchantsOrdersPostRequestOrderDiscountsInner](docs/MerchantsOrdersPostRequestOrderDiscountsInner.md)
- - [org.openapitools.client.models.MerchantsOrdersPostRequestOrderItemsInner](docs/MerchantsOrdersPostRequestOrderItemsInner.md)
- - [org.openapitools.client.models.MerchantsOrdersPostRequestOrderItemsInnerTotalAmount](docs/MerchantsOrdersPostRequestOrderItemsInnerTotalAmount.md)
- - [org.openapitools.client.models.MerchantsOrdersPostRequestOrderShippingAddress](docs/MerchantsOrdersPostRequestOrderShippingAddress.md)
- - [org.openapitools.client.models.MerchantsOrdersPostRequestOrderShippingOptions](docs/MerchantsOrdersPostRequestOrderShippingOptions.md)
- - [org.openapitools.client.models.MerchantsOrdersPostRequestOrderShippingOptionsDetails](docs/MerchantsOrdersPostRequestOrderShippingOptionsDetails.md)
- - [org.openapitools.client.models.MerchantsOrdersPostRequestOrderShippingOptionsDetailsContact](docs/MerchantsOrdersPostRequestOrderShippingOptionsDetailsContact.md)
  - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200Response](docs/MerchantsTransactionsPurchasePost200Response.md)
  - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrder](docs/MerchantsTransactionsPurchasePost200ResponseOrder.md)
+ - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner](docs/MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner.md)
  - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInner](docs/MerchantsTransactionsPurchasePost200ResponseOrderItemsInner.md)
  - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount](docs/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount.md)
  - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount](docs/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderPayment](docs/MerchantsTransactionsPurchasePost200ResponseOrderPayment.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderPaymentData](docs/MerchantsTransactionsPurchasePost200ResponseOrderPaymentData.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataAmount](docs/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataAmount.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataCustomer](docs/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataCustomer.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataFromCard](docs/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataFromCard.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataMerchant](docs/MerchantsTransactionsPurchasePost200ResponseOrderPaymentDataMerchant.md)
+ - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight](docs/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight.md)
+ - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner](docs/MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner.md)
  - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequest](docs/MerchantsTransactionsPurchasePostRequest.md)
+ - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestBillingAddress](docs/MerchantsTransactionsPurchasePostRequestBillingAddress.md)
+ - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestBrowserDetails](docs/MerchantsTransactionsPurchasePostRequestBrowserDetails.md)
  - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestCreditCard](docs/MerchantsTransactionsPurchasePostRequestCreditCard.md)
+ - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestShippingAddress](docs/MerchantsTransactionsPurchasePostRequestShippingAddress.md)
  - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestSpecificFields](docs/MerchantsTransactionsPurchasePostRequestSpecificFields.md)
  - [org.openapitools.client.models.UsersLoginDeviceFingerprintPost200Response](docs/UsersLoginDeviceFingerprintPost200Response.md)
+ - [org.openapitools.client.models.UsersLoginPost200Response](docs/UsersLoginPost200Response.md)
+ - [org.openapitools.client.models.UsersLoginPost403Response](docs/UsersLoginPost403Response.md)
+ - [org.openapitools.client.models.UsersLoginPostRequest](docs/UsersLoginPostRequest.md)
  - [org.openapitools.client.models.UsersMeGet200Response](docs/UsersMeGet200Response.md)
  - [org.openapitools.client.models.UsersMeGet200ResponseIdentityProvidersInner](docs/UsersMeGet200ResponseIdentityProvidersInner.md)
+ - [org.openapitools.client.models.UsersUserIdCardsCardIdGet200Response](docs/UsersUserIdCardsCardIdGet200Response.md)
+ - [org.openapitools.client.models.UsersUserIdCardsCardIdGet200ResponseData](docs/UsersUserIdCardsCardIdGet200ResponseData.md)
+ - [org.openapitools.client.models.UsersUserIdCardsGet200Response](docs/UsersUserIdCardsGet200Response.md)
+ - [org.openapitools.client.models.UsersUserIdCardsGet200ResponseDataInner](docs/UsersUserIdCardsGet200ResponseDataInner.md)
 
 
 <a id="documentation-for-authorization"></a>

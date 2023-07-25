@@ -15,11 +15,9 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner
-import org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata
-import org.openapitools.client.models.MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress
+import org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
 import org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
-import org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderPayment
+import org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -27,94 +25,162 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param billingAddress 
+ * @param cashChange 
  * @param currency 
- * @param discounts 
  * @param displayItemsTotalAmount 
  * @param displayShippingAmount 
+ * @param displayShippingTaxAmount 
  * @param displaySubTotal 
  * @param displayTaxAmount 
  * @param displayTotalAmount 
+ * @param displayTotalDiscount 
+ * @param displayTotalTaxAmount 
+ * @param giftCard 
+ * @param includePaymentOptions 
  * @param items 
  * @param itemsTotalAmount 
  * @param metadata 
  * @param orderId 
- * @param payment 
+ * @param paymentLink 
+ * @param redirectUrl 
+ * @param scheduledAt 
+ * @param shipping 
  * @param shippingAddress 
  * @param shippingAmount 
+ * @param shippingMethod 
+ * @param shippingMethods 
+ * @param shippingOptions 
+ * @param shippingTaxAmount 
  * @param status 
  * @param storeCode 
  * @param subTotal 
  * @param taxAmount 
+ * @param timezone 
  * @param totalAmount 
+ * @param totalDiscount 
+ * @param totalTaxAmount 
+ * @param userId 
  * @param userInstructions 
- * @param shippingOptions 
+ * @param webhookUrls 
  */
 
 
 data class MerchantsTransactionsPurchasePost200ResponseOrder (
 
-    @Json(name = "currency")
-    var currency: kotlin.String,
+    @Json(name = "billing_address")
+    var billingAddress: kotlin.collections.MutableList<MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner>? = null,
 
-    @Json(name = "discounts")
-    var discounts: kotlin.collections.MutableSet<MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderDiscountsInner>,
+    @Json(name = "cash_change")
+    var cashChange: kotlin.Int? = null,
+
+    @Json(name = "currency")
+    var currency: kotlin.String? = null,
 
     @Json(name = "display_items_total_amount")
-    var displayItemsTotalAmount: kotlin.String,
+    var displayItemsTotalAmount: kotlin.String? = null,
 
     @Json(name = "display_shipping_amount")
-    var displayShippingAmount: kotlin.String,
+    var displayShippingAmount: kotlin.String? = null,
+
+    @Json(name = "display_shipping_tax_amount")
+    var displayShippingTaxAmount: kotlin.String? = null,
 
     @Json(name = "display_sub_total")
-    var displaySubTotal: kotlin.String,
+    var displaySubTotal: kotlin.String? = null,
 
     @Json(name = "display_tax_amount")
-    var displayTaxAmount: kotlin.String,
+    var displayTaxAmount: kotlin.String? = null,
 
     @Json(name = "display_total_amount")
-    var displayTotalAmount: kotlin.String,
+    var displayTotalAmount: kotlin.String? = null,
+
+    @Json(name = "display_total_discount")
+    var displayTotalDiscount: kotlin.String? = null,
+
+    @Json(name = "display_total_tax_amount")
+    var displayTotalTaxAmount: kotlin.String? = null,
+
+    @Json(name = "gift_card")
+    var giftCard: kotlin.collections.MutableList<kotlin.Any>? = null,
+
+    @Json(name = "include_payment_options")
+    var includePaymentOptions: kotlin.collections.MutableList<kotlin.Any>? = null,
 
     @Json(name = "items")
-    var items: kotlin.collections.MutableSet<MerchantsTransactionsPurchasePost200ResponseOrderItemsInner>,
+    var items: kotlin.collections.MutableList<MerchantsTransactionsPurchasePost200ResponseOrderItemsInner>? = null,
 
     @Json(name = "items_total_amount")
-    var itemsTotalAmount: java.math.BigDecimal,
+    var itemsTotalAmount: kotlin.Int? = null,
 
     @Json(name = "metadata")
-    var metadata: MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderMetadata,
+    var metadata: kotlin.Any? = null,
 
     @Json(name = "order_id")
-    var orderId: kotlin.String,
+    var orderId: kotlin.String? = null,
 
-    @Json(name = "payment")
-    var payment: MerchantsTransactionsPurchasePost200ResponseOrderPayment,
+    @Json(name = "payment_link")
+    var paymentLink: kotlin.String? = null,
+
+    @Json(name = "redirect_url")
+    var redirectUrl: kotlin.String? = null,
+
+    @Json(name = "scheduled_at")
+    var scheduledAt: kotlin.String? = null,
+
+    @Json(name = "shipping")
+    var shipping: kotlin.String? = null,
 
     @Json(name = "shipping_address")
-    var shippingAddress: MerchantsExternalOrdersOrderTokenCouponsPost200ResponseOrderShippingAddress,
+    var shippingAddress: kotlin.collections.MutableList<MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner>? = null,
 
     @Json(name = "shipping_amount")
-    var shippingAmount: java.math.BigDecimal,
+    var shippingAmount: kotlin.Int? = null,
 
-    @Json(name = "status")
-    var status: kotlin.String,
+    @Json(name = "shipping_method")
+    var shippingMethod: kotlin.String? = null,
 
-    @Json(name = "store_code")
-    var storeCode: kotlin.String,
-
-    @Json(name = "sub_total")
-    var subTotal: java.math.BigDecimal,
-
-    @Json(name = "tax_amount")
-    var taxAmount: java.math.BigDecimal,
-
-    @Json(name = "total_amount")
-    var totalAmount: java.math.BigDecimal,
-
-    @Json(name = "user_instructions")
-    var userInstructions: kotlin.String,
+    @Json(name = "shipping_methods")
+    var shippingMethods: kotlin.collections.MutableList<kotlin.Any>? = null,
 
     @Json(name = "shipping_options")
-    var shippingOptions: kotlin.Any? = null
+    var shippingOptions: kotlin.collections.MutableList<kotlin.Any>? = null,
+
+    @Json(name = "shipping_tax_amount")
+    var shippingTaxAmount: java.math.BigDecimal? = null,
+
+    @Json(name = "status")
+    var status: kotlin.String? = null,
+
+    @Json(name = "store_code")
+    var storeCode: kotlin.String? = null,
+
+    @Json(name = "sub_total")
+    var subTotal: kotlin.Int? = null,
+
+    @Json(name = "tax_amount")
+    var taxAmount: kotlin.Int? = null,
+
+    @Json(name = "timezone")
+    var timezone: kotlin.String? = null,
+
+    @Json(name = "total_amount")
+    var totalAmount: kotlin.Int? = null,
+
+    @Json(name = "total_discount")
+    var totalDiscount: kotlin.Int? = null,
+
+    @Json(name = "total_tax_amount")
+    var totalTaxAmount: java.math.BigDecimal? = null,
+
+    @Json(name = "user_id")
+    var userId: kotlin.String? = null,
+
+    @Json(name = "user_instructions")
+    var userInstructions: kotlin.String? = null,
+
+    @Json(name = "webhook_urls")
+    var webhookUrls: kotlin.String? = null
 
 )
 

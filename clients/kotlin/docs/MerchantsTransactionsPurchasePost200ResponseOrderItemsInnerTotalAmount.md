@@ -4,12 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
-**currency** | **kotlin.String** |  | 
-**currencySymbol** | **kotlin.String** |  | 
-**displayAmount** | **kotlin.String** |  | 
+**amount** | **kotlin.Int** |  |  [optional]
+**currency** | **kotlin.String** |  |  [optional]
+**currencySymbol** | **kotlin.String** |  |  [optional]
+**displayAmount** | **kotlin.String** |  |  [optional]
 **displayOriginalAmount** | **kotlin.String** |  |  [optional]
-**originalAmount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  |  [optional]
+**displayTotalDiscount** | **kotlin.String** |  |  [optional]
+**originalAmount** | **kotlin.Int** |  |  [optional]
+**totalDiscount** | **kotlin.Int** |  |  [optional]
 
 
 
