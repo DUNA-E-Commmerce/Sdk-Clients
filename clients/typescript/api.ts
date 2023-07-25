@@ -26,1220 +26,1393 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePost200Response
+ * @interface GetUserInformation200Response
  */
-export interface MerchantsTransactionsPurchasePost200Response {
+export interface GetUserInformation200Response {
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePost200ResponseOrder}
-     * @memberof MerchantsTransactionsPurchasePost200Response
+     * @type {string}
+     * @memberof GetUserInformation200Response
      */
-    'order'?: MerchantsTransactionsPurchasePost200ResponseOrder;
+    'created_at'?: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof GetUserInformation200Response
+     */
+    'deleted_at'?: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetUserInformation200Response
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetUserInformation200Response
+     */
+    'first_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetUserInformation200Response
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {Set<GetUserInformation200ResponseIdentityProvidersInner>}
+     * @memberof GetUserInformation200Response
+     */
+    'identity_providers'?: Set<GetUserInformation200ResponseIdentityProvidersInner>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetUserInformation200Response
+     */
+    'is_guest'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetUserInformation200Response
+     */
+    'is_phone_verified'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetUserInformation200Response
+     */
+    'last_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetUserInformation200Response
+     */
+    'merchant_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetUserInformation200Response
+     */
+    'phone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetUserInformation200Response
+     */
+    'updated_at'?: string;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePost200ResponseOrder
+ * @interface GetUserInformation200ResponseIdentityProvidersInner
  */
-export interface MerchantsTransactionsPurchasePost200ResponseOrder {
+export interface GetUserInformation200ResponseIdentityProvidersInner {
     /**
      * 
-     * @type {Array<MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner>}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @type {string}
+     * @memberof GetUserInformation200ResponseIdentityProvidersInner
      */
-    'billing_address'?: Array<MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner>;
+    'created_at'?: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof GetUserInformation200ResponseIdentityProvidersInner
+     */
+    'deleted_at'?: any;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof GetUserInformation200ResponseIdentityProvidersInner
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetUserInformation200ResponseIdentityProvidersInner
+     */
+    'provider_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetUserInformation200ResponseIdentityProvidersInner
+     */
+    'updated_at'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface Login200Response
+ */
+export interface Login200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof Login200Response
+     */
+    'refresh_token'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Login200Response
+     */
+    'token'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface Login403Response
+ */
+export interface Login403Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof Login403Response
+     */
+    'code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Login403Response
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface LoginRequest
+ */
+export interface LoginRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRequest
+     */
+    'email': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRequest
+     */
+    'otp'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface Purchase200Response
+ */
+export interface Purchase200Response {
+    /**
+     * 
+     * @type {Purchase200ResponseOrder}
+     * @memberof Purchase200Response
+     */
+    'order'?: Purchase200ResponseOrder;
+}
+/**
+ * 
+ * @export
+ * @interface Purchase200ResponseOrder
+ */
+export interface Purchase200ResponseOrder {
+    /**
+     * 
+     * @type {Array<Purchase200ResponseOrderBillingAddressInner>}
+     * @memberof Purchase200ResponseOrder
+     */
+    'billing_address'?: Array<Purchase200ResponseOrderBillingAddressInner>;
+    /**
+     * 
+     * @type {number}
+     * @memberof Purchase200ResponseOrder
      */
     'cash_change'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'currency'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'display_items_total_amount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'display_shipping_amount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'display_shipping_tax_amount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'display_sub_total'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'display_tax_amount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'display_total_amount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'display_total_discount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'display_total_tax_amount'?: string;
     /**
      * 
      * @type {Array<any>}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'gift_card'?: Array<any>;
     /**
      * 
      * @type {Array<any>}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'include_payment_options'?: Array<any>;
     /**
      * 
-     * @type {Array<MerchantsTransactionsPurchasePost200ResponseOrderItemsInner>}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @type {Array<Purchase200ResponseOrderItemsInner>}
+     * @memberof Purchase200ResponseOrder
      */
-    'items'?: Array<MerchantsTransactionsPurchasePost200ResponseOrderItemsInner>;
+    'items'?: Array<Purchase200ResponseOrderItemsInner>;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'items_total_amount'?: number;
     /**
      * 
      * @type {object}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'metadata'?: object;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'order_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'payment_link'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'redirect_url'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'scheduled_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'shipping'?: string;
     /**
      * 
-     * @type {Array<MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner>}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @type {Array<Purchase200ResponseOrderShippingAddressInner>}
+     * @memberof Purchase200ResponseOrder
      */
-    'shipping_address'?: Array<MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner>;
+    'shipping_address'?: Array<Purchase200ResponseOrderShippingAddressInner>;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'shipping_amount'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'shipping_method'?: string;
     /**
      * 
      * @type {Array<any>}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'shipping_methods'?: Array<any>;
     /**
      * 
      * @type {Array<any>}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'shipping_options'?: Array<any>;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'shipping_tax_amount'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'status'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'store_code'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'sub_total'?: number;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'tax_amount'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'timezone'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'total_amount'?: number;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'total_discount'?: number;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'total_tax_amount'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'user_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'user_instructions'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrder
+     * @memberof Purchase200ResponseOrder
      */
     'webhook_urls'?: string;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+ * @interface Purchase200ResponseOrderBillingAddressInner
  */
-export interface MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner {
+export interface Purchase200ResponseOrderBillingAddressInner {
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'additional_description'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'address1'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'address2'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'address_type'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'city'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'country_code'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'created_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'email'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'first_name'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'id'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'identity_document'?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'is_default'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'last_name'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'lat'?: number;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'lng'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'phone'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'state_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'updated_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'user_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner
+     * @memberof Purchase200ResponseOrderBillingAddressInner
      */
     'zipcode'?: string;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+ * @interface Purchase200ResponseOrderItemsInner
  */
-export interface MerchantsTransactionsPurchasePost200ResponseOrderItemsInner {
+export interface Purchase200ResponseOrderItemsInner {
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'brand'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'category'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'color'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'description'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'details_url'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'image_url'?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'included_in_subscription'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'isbn'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'manufacturer'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'options'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'quantity'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'size'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'sku'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'subscription_id'?: string;
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @type {Purchase200ResponseOrderItemsInnerTaxAmount}
+     * @memberof Purchase200ResponseOrderItemsInner
      */
-    'tax_amount'?: MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount;
+    'tax_amount'?: Purchase200ResponseOrderItemsInnerTaxAmount;
     /**
      * 
      * @type {boolean}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'taxable'?: boolean;
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @type {Purchase200ResponseOrderItemsInnerTotalAmount}
+     * @memberof Purchase200ResponseOrderItemsInner
      */
-    'total_amount'?: MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount;
+    'total_amount'?: Purchase200ResponseOrderItemsInnerTotalAmount;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'type'?: string;
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @type {Purchase200ResponseOrderItemsInnerTaxAmount}
+     * @memberof Purchase200ResponseOrderItemsInner
      */
-    'unit_price'?: MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount;
+    'unit_price'?: Purchase200ResponseOrderItemsInnerTaxAmount;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'uom'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @memberof Purchase200ResponseOrderItemsInner
      */
     'upc'?: string;
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInner
+     * @type {Purchase200ResponseOrderItemsInnerWeight}
+     * @memberof Purchase200ResponseOrderItemsInner
      */
-    'weight'?: MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight;
+    'weight'?: Purchase200ResponseOrderItemsInnerWeight;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount
+ * @interface Purchase200ResponseOrderItemsInnerTaxAmount
  */
-export interface MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount {
+export interface Purchase200ResponseOrderItemsInnerTaxAmount {
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTaxAmount
      */
     'amount'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTaxAmount
      */
     'currency'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTaxAmount
      */
     'currency_symbol'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTaxAmount
      */
     'display_amount'?: string;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+ * @interface Purchase200ResponseOrderItemsInnerTotalAmount
  */
-export interface MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount {
+export interface Purchase200ResponseOrderItemsInnerTotalAmount {
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
      */
     'amount'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
      */
     'currency'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
      */
     'currency_symbol'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
      */
     'display_amount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
      */
     'display_original_amount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
      */
     'display_total_discount'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
      */
     'original_amount'?: number;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount
+     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
      */
     'total_discount'?: number;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight
+ * @interface Purchase200ResponseOrderItemsInnerWeight
  */
-export interface MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight {
+export interface Purchase200ResponseOrderItemsInnerWeight {
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight
+     * @memberof Purchase200ResponseOrderItemsInnerWeight
      */
     'unit'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight
+     * @memberof Purchase200ResponseOrderItemsInnerWeight
      */
     'weight'?: number;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+ * @interface Purchase200ResponseOrderShippingAddressInner
  */
-export interface MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner {
+export interface Purchase200ResponseOrderShippingAddressInner {
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'additional_description'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'address1'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'address2'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'address_type'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'city'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'country_code'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'created_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'first_name'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'id'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'identity_document'?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'is_default'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'last_name'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'lat'?: number;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'lng'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'phone'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'state_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'updated_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'user_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner
+     * @memberof Purchase200ResponseOrderShippingAddressInner
      */
     'zipcode'?: string;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePostRequest
+ * @interface PurchaseRequest
  */
-export interface MerchantsTransactionsPurchasePostRequest {
+export interface PurchaseRequest {
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePostRequestBillingAddress}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @type {PurchaseRequestBillingAddress}
+     * @memberof PurchaseRequest
      */
-    'billing_address'?: MerchantsTransactionsPurchasePostRequestBillingAddress;
+    'billing_address'?: PurchaseRequestBillingAddress;
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePostRequestBrowserDetails}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @type {PurchaseRequestBrowserDetails}
+     * @memberof PurchaseRequest
      */
-    'browser_details'?: MerchantsTransactionsPurchasePostRequestBrowserDetails;
+    'browser_details'?: PurchaseRequestBrowserDetails;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @memberof PurchaseRequest
      */
     'captcha_token'?: string;
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePostRequestCreditCard}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @type {PurchaseRequestCreditCard}
+     * @memberof PurchaseRequest
      */
-    'credit_card'?: MerchantsTransactionsPurchasePostRequestCreditCard;
+    'credit_card'?: PurchaseRequestCreditCard;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @memberof PurchaseRequest
      */
     'device_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @memberof PurchaseRequest
      */
     'email'?: string;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @memberof PurchaseRequest
      */
     'installments'?: number;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @memberof PurchaseRequest
      */
     'method_type'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @memberof PurchaseRequest
      */
     'processor_name': string;
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePostRequestShippingAddress}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @type {PurchaseRequestShippingAddress}
+     * @memberof PurchaseRequest
      */
-    'shipping_address'?: MerchantsTransactionsPurchasePostRequestShippingAddress;
+    'shipping_address'?: PurchaseRequestShippingAddress;
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePostRequestSpecificFields}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @type {PurchaseRequestSpecificFields}
+     * @memberof PurchaseRequest
      */
-    'specific_fields'?: MerchantsTransactionsPurchasePostRequestSpecificFields;
+    'specific_fields'?: PurchaseRequestSpecificFields;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @memberof PurchaseRequest
      */
     'store_code'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequest
+     * @memberof PurchaseRequest
      */
     'token': string;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePostRequestBillingAddress
+ * @interface PurchaseRequestBillingAddress
  */
-export interface MerchantsTransactionsPurchasePostRequestBillingAddress {
+export interface PurchaseRequestBillingAddress {
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'additional_description'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'address1'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'address2'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'address_type'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'city'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'country'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'country_code'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'created_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'email'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'first_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'identity_document'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'is_default'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'last_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'lat'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'lng'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'phone'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'state_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'updated_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'user_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestBillingAddress
+     * @memberof PurchaseRequestBillingAddress
      */
     'zipcode'?: string;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePostRequestBrowserDetails
+ * @interface PurchaseRequestBrowserDetails
  */
-export interface MerchantsTransactionsPurchasePostRequestBrowserDetails {
+export interface PurchaseRequestBrowserDetails {
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePostRequestBrowserDetails
+     * @memberof PurchaseRequestBrowserDetails
      */
     'screen_height'?: number;
     /**
      * 
      * @type {number}
-     * @memberof MerchantsTransactionsPurchasePostRequestBrowserDetails
+     * @memberof PurchaseRequestBrowserDetails
      */
     'screen_width'?: number;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePostRequestCreditCard
+ * @interface PurchaseRequestCreditCard
  */
-export interface MerchantsTransactionsPurchasePostRequestCreditCard {
+export interface PurchaseRequestCreditCard {
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'address1'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'card_cvv'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'card_holder'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'card_holder_dni'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'card_number'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'city'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'country'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'expiry_month'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'expiry_year'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'installments'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'phone'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'state'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestCreditCard
+     * @memberof PurchaseRequestCreditCard
      */
     'zip'?: string;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePostRequestShippingAddress
+ * @interface PurchaseRequestShippingAddress
  */
-export interface MerchantsTransactionsPurchasePostRequestShippingAddress {
+export interface PurchaseRequestShippingAddress {
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'additional_description'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'address1'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'address2'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'address_type'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'city'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'country'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'country_code'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'created_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'first_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'identity_document'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'is_default'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'last_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'lat'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'lng'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'phone'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'state_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'updated_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'user_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestShippingAddress
+     * @memberof PurchaseRequestShippingAddress
      */
     'zipcode'?: string;
 }
 /**
  * 
  * @export
- * @interface MerchantsTransactionsPurchasePostRequestSpecificFields
+ * @interface PurchaseRequestSpecificFields
  */
-export interface MerchantsTransactionsPurchasePostRequestSpecificFields {
+export interface PurchaseRequestSpecificFields {
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestSpecificFields
+     * @memberof PurchaseRequestSpecificFields
      */
     'description'?: string;
     /**
      * 
      * @type {string}
-     * @memberof MerchantsTransactionsPurchasePostRequestSpecificFields
+     * @memberof PurchaseRequestSpecificFields
      */
     'financial_institution'?: string;
 }
@@ -1267,179 +1440,6 @@ export interface UsersLoginDeviceFingerprintPost200Response {
      * @memberof UsersLoginDeviceFingerprintPost200Response
      */
     'user-deuna'?: boolean;
-}
-/**
- * 
- * @export
- * @interface UsersLoginPost200Response
- */
-export interface UsersLoginPost200Response {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersLoginPost200Response
-     */
-    'refresh_token'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersLoginPost200Response
-     */
-    'token'?: string;
-}
-/**
- * 
- * @export
- * @interface UsersLoginPost403Response
- */
-export interface UsersLoginPost403Response {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersLoginPost403Response
-     */
-    'code'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersLoginPost403Response
-     */
-    'message'?: string;
-}
-/**
- * 
- * @export
- * @interface UsersLoginPostRequest
- */
-export interface UsersLoginPostRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersLoginPostRequest
-     */
-    'email': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersLoginPostRequest
-     */
-    'otp'?: string;
-}
-/**
- * 
- * @export
- * @interface UsersMeGet200Response
- */
-export interface UsersMeGet200Response {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200Response
-     */
-    'created_at'?: string;
-    /**
-     * 
-     * @type {any}
-     * @memberof UsersMeGet200Response
-     */
-    'deleted_at'?: any;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200Response
-     */
-    'email'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200Response
-     */
-    'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200Response
-     */
-    'id'?: string;
-    /**
-     * 
-     * @type {Set<UsersMeGet200ResponseIdentityProvidersInner>}
-     * @memberof UsersMeGet200Response
-     */
-    'identity_providers'?: Set<UsersMeGet200ResponseIdentityProvidersInner>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UsersMeGet200Response
-     */
-    'is_guest'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UsersMeGet200Response
-     */
-    'is_phone_verified'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200Response
-     */
-    'last_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200Response
-     */
-    'merchant_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200Response
-     */
-    'phone'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200Response
-     */
-    'updated_at'?: string;
-}
-/**
- * 
- * @export
- * @interface UsersMeGet200ResponseIdentityProvidersInner
- */
-export interface UsersMeGet200ResponseIdentityProvidersInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200ResponseIdentityProvidersInner
-     */
-    'created_at'?: string;
-    /**
-     * 
-     * @type {any}
-     * @memberof UsersMeGet200ResponseIdentityProvidersInner
-     */
-    'deleted_at'?: any;
-    /**
-     * 
-     * @type {number}
-     * @memberof UsersMeGet200ResponseIdentityProvidersInner
-     */
-    'id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200ResponseIdentityProvidersInner
-     */
-    'provider_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersMeGet200ResponseIdentityProvidersInner
-     */
-    'updated_at'?: string;
 }
 /**
  * 
@@ -1636,11 +1636,11 @@ export const MerchantsApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} [xDeviceId] 
          * @param {string} [xSessionId] 
          * @param {string} [userAgent] 
-         * @param {MerchantsTransactionsPurchasePostRequest} [merchantsTransactionsPurchasePostRequest] 
+         * @param {PurchaseRequest} [purchaseRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        merchantsTransactionsPurchasePost: async (authorization?: string, xApiKey?: string, xMerchantID?: string, xStoreCode?: string, xDeviceId?: string, xSessionId?: string, userAgent?: string, merchantsTransactionsPurchasePostRequest?: MerchantsTransactionsPurchasePostRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        purchase: async (authorization?: string, xApiKey?: string, xMerchantID?: string, xStoreCode?: string, xDeviceId?: string, xSessionId?: string, userAgent?: string, purchaseRequest?: PurchaseRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/merchants/transactions/purchase`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1695,7 +1695,7 @@ export const MerchantsApiAxiosParamCreator = function (configuration?: Configura
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(merchantsTransactionsPurchasePostRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(purchaseRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1722,12 +1722,12 @@ export const MerchantsApiFp = function(configuration?: Configuration) {
          * @param {string} [xDeviceId] 
          * @param {string} [xSessionId] 
          * @param {string} [userAgent] 
-         * @param {MerchantsTransactionsPurchasePostRequest} [merchantsTransactionsPurchasePostRequest] 
+         * @param {PurchaseRequest} [purchaseRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async merchantsTransactionsPurchasePost(authorization?: string, xApiKey?: string, xMerchantID?: string, xStoreCode?: string, xDeviceId?: string, xSessionId?: string, userAgent?: string, merchantsTransactionsPurchasePostRequest?: MerchantsTransactionsPurchasePostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MerchantsTransactionsPurchasePost200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.merchantsTransactionsPurchasePost(authorization, xApiKey, xMerchantID, xStoreCode, xDeviceId, xSessionId, userAgent, merchantsTransactionsPurchasePostRequest, options);
+        async purchase(authorization?: string, xApiKey?: string, xMerchantID?: string, xStoreCode?: string, xDeviceId?: string, xSessionId?: string, userAgent?: string, purchaseRequest?: PurchaseRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Purchase200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.purchase(authorization, xApiKey, xMerchantID, xStoreCode, xDeviceId, xSessionId, userAgent, purchaseRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1743,77 +1743,77 @@ export const MerchantsApiFactory = function (configuration?: Configuration, base
         /**
          * Make the payment of the order.
          * @summary Make the payment of the order.
-         * @param {MerchantsApiMerchantsTransactionsPurchasePostRequest} requestParameters Request parameters.
+         * @param {MerchantsApiPurchaseRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        merchantsTransactionsPurchasePost(requestParameters: MerchantsApiMerchantsTransactionsPurchasePostRequest = {}, options?: AxiosRequestConfig): AxiosPromise<MerchantsTransactionsPurchasePost200Response> {
-            return localVarFp.merchantsTransactionsPurchasePost(requestParameters.authorization, requestParameters.xApiKey, requestParameters.xMerchantID, requestParameters.xStoreCode, requestParameters.xDeviceId, requestParameters.xSessionId, requestParameters.userAgent, requestParameters.merchantsTransactionsPurchasePostRequest, options).then((request) => request(axios, basePath));
+        purchase(requestParameters: MerchantsApiPurchaseRequest = {}, options?: AxiosRequestConfig): AxiosPromise<Purchase200Response> {
+            return localVarFp.purchase(requestParameters.authorization, requestParameters.xApiKey, requestParameters.xMerchantID, requestParameters.xStoreCode, requestParameters.xDeviceId, requestParameters.xSessionId, requestParameters.userAgent, requestParameters.purchaseRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for merchantsTransactionsPurchasePost operation in MerchantsApi.
+ * Request parameters for purchase operation in MerchantsApi.
  * @export
- * @interface MerchantsApiMerchantsTransactionsPurchasePostRequest
+ * @interface MerchantsApiPurchaseRequest
  */
-export interface MerchantsApiMerchantsTransactionsPurchasePostRequest {
+export interface MerchantsApiPurchaseRequest {
     /**
      * 
      * @type {string}
-     * @memberof MerchantsApiMerchantsTransactionsPurchasePost
+     * @memberof MerchantsApiPurchase
      */
     readonly authorization?: string
 
     /**
      * 
      * @type {string}
-     * @memberof MerchantsApiMerchantsTransactionsPurchasePost
+     * @memberof MerchantsApiPurchase
      */
     readonly xApiKey?: string
 
     /**
      * 
      * @type {string}
-     * @memberof MerchantsApiMerchantsTransactionsPurchasePost
+     * @memberof MerchantsApiPurchase
      */
     readonly xMerchantID?: string
 
     /**
      * 
      * @type {string}
-     * @memberof MerchantsApiMerchantsTransactionsPurchasePost
+     * @memberof MerchantsApiPurchase
      */
     readonly xStoreCode?: string
 
     /**
      * 
      * @type {string}
-     * @memberof MerchantsApiMerchantsTransactionsPurchasePost
+     * @memberof MerchantsApiPurchase
      */
     readonly xDeviceId?: string
 
     /**
      * 
      * @type {string}
-     * @memberof MerchantsApiMerchantsTransactionsPurchasePost
+     * @memberof MerchantsApiPurchase
      */
     readonly xSessionId?: string
 
     /**
      * 
      * @type {string}
-     * @memberof MerchantsApiMerchantsTransactionsPurchasePost
+     * @memberof MerchantsApiPurchase
      */
     readonly userAgent?: string
 
     /**
      * 
-     * @type {MerchantsTransactionsPurchasePostRequest}
-     * @memberof MerchantsApiMerchantsTransactionsPurchasePost
+     * @type {PurchaseRequest}
+     * @memberof MerchantsApiPurchase
      */
-    readonly merchantsTransactionsPurchasePostRequest?: MerchantsTransactionsPurchasePostRequest
+    readonly purchaseRequest?: PurchaseRequest
 }
 
 /**
@@ -1826,13 +1826,13 @@ export class MerchantsApi extends BaseAPI {
     /**
      * Make the payment of the order.
      * @summary Make the payment of the order.
-     * @param {MerchantsApiMerchantsTransactionsPurchasePostRequest} requestParameters Request parameters.
+     * @param {MerchantsApiPurchaseRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MerchantsApi
      */
-    public merchantsTransactionsPurchasePost(requestParameters: MerchantsApiMerchantsTransactionsPurchasePostRequest = {}, options?: AxiosRequestConfig) {
-        return MerchantsApiFp(this.configuration).merchantsTransactionsPurchasePost(requestParameters.authorization, requestParameters.xApiKey, requestParameters.xMerchantID, requestParameters.xStoreCode, requestParameters.xDeviceId, requestParameters.xSessionId, requestParameters.userAgent, requestParameters.merchantsTransactionsPurchasePostRequest, options).then((request) => request(this.axios, this.basePath));
+    public purchase(requestParameters: MerchantsApiPurchaseRequest = {}, options?: AxiosRequestConfig) {
+        return MerchantsApiFp(this.configuration).purchase(requestParameters.authorization, requestParameters.xApiKey, requestParameters.xMerchantID, requestParameters.xStoreCode, requestParameters.xDeviceId, requestParameters.xSessionId, requestParameters.userAgent, requestParameters.purchaseRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -1844,20 +1844,22 @@ export class MerchantsApi extends BaseAPI {
 export const UsersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Login User
-         * @summary Login User
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantId] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [xSessionID] 
+         * Remove card by identifier
+         * @summary Remove card by identifier
+         * @param {string} userId 
+         * @param {string} cardId 
          * @param {string} [authorization] 
-         * @param {string} [type] 
-         * @param {string} [loadProfileData] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersLoginDeviceFingerprintPost: async (xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, type?: string, loadProfileData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/users/login/device-fingerprint`;
+        deleteUserCardById: async (userId: string, cardId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('deleteUserCardById', 'userId', userId)
+            // verify required parameter 'cardId' is not null or undefined
+            assertParamExists('deleteUserCardById', 'cardId', cardId)
+            const localVarPath = `/users/{user_id}/cards/{card_id}`
+                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)))
+                .replace(`{${"card_id"}}`, encodeURIComponent(String(cardId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1865,7 +1867,48 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication X-Api-Key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+            if (authorization != null) {
+                localVarHeaderParameter['Authorization'] = String(authorization);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get User Information
+         * @summary Get User Information
+         * @param {string} [xApiKey] 
+         * @param {string} [xMerchantId] 
+         * @param {string} [xDeviceId] 
+         * @param {string} [authorization] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserInformation: async (xApiKey?: string, xMerchantId?: string, xDeviceId?: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/users/me`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1875,14 +1918,6 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
 
             // authentication X-Api-Key required
             await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
-
-            if (type !== undefined) {
-                localVarQueryParameter['type'] = type;
-            }
-
-            if (loadProfileData !== undefined) {
-                localVarQueryParameter['load_profile_data'] = loadProfileData;
-            }
 
             if (xApiKey != null) {
                 localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
@@ -1894,10 +1929,6 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
 
             if (xDeviceId != null) {
                 localVarHeaderParameter['X-Device-Id'] = String(xDeviceId);
-            }
-
-            if (xSessionID != null) {
-                localVarHeaderParameter['X-Session-ID'] = String(xSessionID);
             }
 
             if (authorization != null) {
@@ -1926,11 +1957,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {string} [xRecaptchaToken] 
          * @param {string} [type] 
          * @param {string} [loadProfileData] 
-         * @param {UsersLoginPostRequest} [usersLoginPostRequest] 
+         * @param {LoginRequest} [loginRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersLoginPost: async (xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, xRecaptchaToken?: string, type?: string, loadProfileData?: string, usersLoginPostRequest?: UsersLoginPostRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        login: async (xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, xRecaptchaToken?: string, type?: string, loadProfileData?: string, loginRequest?: LoginRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/users/login`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1989,7 +2020,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(usersLoginPostRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(loginRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1997,17 +2028,20 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
-         * Get User Information
-         * @summary Get User Information
+         * Login User
+         * @summary Login User
          * @param {string} [xApiKey] 
          * @param {string} [xMerchantId] 
          * @param {string} [xDeviceId] 
+         * @param {string} [xSessionID] 
          * @param {string} [authorization] 
+         * @param {string} [type] 
+         * @param {string} [loadProfileData] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersMeGet: async (xApiKey?: string, xMerchantId?: string, xDeviceId?: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/users/me`;
+        usersLoginDeviceFingerprintPost: async (xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, type?: string, loadProfileData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/users/login/device-fingerprint`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2015,7 +2049,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -2025,6 +2059,14 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
 
             // authentication X-Api-Key required
             await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+
+            if (loadProfileData !== undefined) {
+                localVarQueryParameter['load_profile_data'] = loadProfileData;
+            }
 
             if (xApiKey != null) {
                 localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
@@ -2038,51 +2080,9 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
                 localVarHeaderParameter['X-Device-Id'] = String(xDeviceId);
             }
 
-            if (authorization != null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
+            if (xSessionID != null) {
+                localVarHeaderParameter['X-Session-ID'] = String(xSessionID);
             }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Remove card by identifier
-         * @summary Remove card by identifier
-         * @param {string} userId 
-         * @param {string} cardId 
-         * @param {string} [authorization] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUserIdCardsCardIdDelete: async (userId: string, cardId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('usersUserIdCardsCardIdDelete', 'userId', userId)
-            // verify required parameter 'cardId' is not null or undefined
-            assertParamExists('usersUserIdCardsCardIdDelete', 'cardId', cardId)
-            const localVarPath = `/users/{user_id}/cards/{card_id}`
-                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)))
-                .replace(`{${"card_id"}}`, encodeURIComponent(String(cardId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication X-Api-Key required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
 
             if (authorization != null) {
                 localVarHeaderParameter['Authorization'] = String(authorization);
@@ -2203,6 +2203,52 @@ export const UsersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = UsersApiAxiosParamCreator(configuration)
     return {
         /**
+         * Remove card by identifier
+         * @summary Remove card by identifier
+         * @param {string} userId 
+         * @param {string} cardId 
+         * @param {string} [authorization] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteUserCardById(userId: string, cardId: string, authorization?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserCardById(userId, cardId, authorization, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Get User Information
+         * @summary Get User Information
+         * @param {string} [xApiKey] 
+         * @param {string} [xMerchantId] 
+         * @param {string} [xDeviceId] 
+         * @param {string} [authorization] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUserInformation(xApiKey?: string, xMerchantId?: string, xDeviceId?: string, authorization?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUserInformation200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserInformation(xApiKey, xMerchantId, xDeviceId, authorization, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
+         * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
+         * @param {string} [xApiKey] 
+         * @param {string} [xMerchantId] 
+         * @param {string} [xDeviceId] 
+         * @param {string} [xSessionID] 
+         * @param {string} [authorization] 
+         * @param {string} [xRecaptchaToken] 
+         * @param {string} [type] 
+         * @param {string} [loadProfileData] 
+         * @param {LoginRequest} [loginRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async login(xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, xRecaptchaToken?: string, type?: string, loadProfileData?: string, loginRequest?: LoginRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Login200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.login(xApiKey, xMerchantId, xDeviceId, xSessionID, authorization, xRecaptchaToken, type, loadProfileData, loginRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Login User
          * @summary Login User
          * @param {string} [xApiKey] 
@@ -2217,52 +2263,6 @@ export const UsersApiFp = function(configuration?: Configuration) {
          */
         async usersLoginDeviceFingerprintPost(xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, type?: string, loadProfileData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersLoginDeviceFingerprintPost200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.usersLoginDeviceFingerprintPost(xApiKey, xMerchantId, xDeviceId, xSessionID, authorization, type, loadProfileData, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantId] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [xSessionID] 
-         * @param {string} [authorization] 
-         * @param {string} [xRecaptchaToken] 
-         * @param {string} [type] 
-         * @param {string} [loadProfileData] 
-         * @param {UsersLoginPostRequest} [usersLoginPostRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async usersLoginPost(xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, xRecaptchaToken?: string, type?: string, loadProfileData?: string, usersLoginPostRequest?: UsersLoginPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersLoginPost200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.usersLoginPost(xApiKey, xMerchantId, xDeviceId, xSessionID, authorization, xRecaptchaToken, type, loadProfileData, usersLoginPostRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Get User Information
-         * @summary Get User Information
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantId] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [authorization] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async usersMeGet(xApiKey?: string, xMerchantId?: string, xDeviceId?: string, authorization?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersMeGet200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.usersMeGet(xApiKey, xMerchantId, xDeviceId, authorization, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Remove card by identifier
-         * @summary Remove card by identifier
-         * @param {string} userId 
-         * @param {string} cardId 
-         * @param {string} [authorization] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async usersUserIdCardsCardIdDelete(userId: string, cardId: string, authorization?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.usersUserIdCardsCardIdDelete(userId, cardId, authorization, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2302,6 +2302,36 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
     const localVarFp = UsersApiFp(configuration)
     return {
         /**
+         * Remove card by identifier
+         * @summary Remove card by identifier
+         * @param {UsersApiDeleteUserCardByIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteUserCardById(requestParameters: UsersApiDeleteUserCardByIdRequest, options?: AxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.deleteUserCardById(requestParameters.userId, requestParameters.cardId, requestParameters.authorization, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get User Information
+         * @summary Get User Information
+         * @param {UsersApiGetUserInformationRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserInformation(requestParameters: UsersApiGetUserInformationRequest = {}, options?: AxiosRequestConfig): AxiosPromise<GetUserInformation200Response> {
+            return localVarFp.getUserInformation(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.authorization, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
+         * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
+         * @param {UsersApiLoginRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        login(requestParameters: UsersApiLoginRequest = {}, options?: AxiosRequestConfig): AxiosPromise<Login200Response> {
+            return localVarFp.login(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.xRecaptchaToken, requestParameters.type, requestParameters.loadProfileData, requestParameters.loginRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Login User
          * @summary Login User
          * @param {UsersApiUsersLoginDeviceFingerprintPostRequest} requestParameters Request parameters.
@@ -2310,36 +2340,6 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          */
         usersLoginDeviceFingerprintPost(requestParameters: UsersApiUsersLoginDeviceFingerprintPostRequest = {}, options?: AxiosRequestConfig): AxiosPromise<UsersLoginDeviceFingerprintPost200Response> {
             return localVarFp.usersLoginDeviceFingerprintPost(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.type, requestParameters.loadProfileData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @param {UsersApiUsersLoginPostRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersLoginPost(requestParameters: UsersApiUsersLoginPostRequest = {}, options?: AxiosRequestConfig): AxiosPromise<UsersLoginPost200Response> {
-            return localVarFp.usersLoginPost(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.xRecaptchaToken, requestParameters.type, requestParameters.loadProfileData, requestParameters.usersLoginPostRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Get User Information
-         * @summary Get User Information
-         * @param {UsersApiUsersMeGetRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersMeGet(requestParameters: UsersApiUsersMeGetRequest = {}, options?: AxiosRequestConfig): AxiosPromise<UsersMeGet200Response> {
-            return localVarFp.usersMeGet(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.authorization, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Remove card by identifier
-         * @summary Remove card by identifier
-         * @param {UsersApiUsersUserIdCardsCardIdDeleteRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUserIdCardsCardIdDelete(requestParameters: UsersApiUsersUserIdCardsCardIdDeleteRequest, options?: AxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.usersUserIdCardsCardIdDelete(requestParameters.userId, requestParameters.cardId, requestParameters.authorization, options).then((request) => request(axios, basePath));
         },
         /**
          * Obtain a card by its identifier.
@@ -2363,6 +2363,139 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
     };
 };
+
+/**
+ * Request parameters for deleteUserCardById operation in UsersApi.
+ * @export
+ * @interface UsersApiDeleteUserCardByIdRequest
+ */
+export interface UsersApiDeleteUserCardByIdRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiDeleteUserCardById
+     */
+    readonly userId: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiDeleteUserCardById
+     */
+    readonly cardId: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiDeleteUserCardById
+     */
+    readonly authorization?: string
+}
+
+/**
+ * Request parameters for getUserInformation operation in UsersApi.
+ * @export
+ * @interface UsersApiGetUserInformationRequest
+ */
+export interface UsersApiGetUserInformationRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiGetUserInformation
+     */
+    readonly xApiKey?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiGetUserInformation
+     */
+    readonly xMerchantId?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiGetUserInformation
+     */
+    readonly xDeviceId?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiGetUserInformation
+     */
+    readonly authorization?: string
+}
+
+/**
+ * Request parameters for login operation in UsersApi.
+ * @export
+ * @interface UsersApiLoginRequest
+ */
+export interface UsersApiLoginRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiLogin
+     */
+    readonly xApiKey?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiLogin
+     */
+    readonly xMerchantId?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiLogin
+     */
+    readonly xDeviceId?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiLogin
+     */
+    readonly xSessionID?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiLogin
+     */
+    readonly authorization?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiLogin
+     */
+    readonly xRecaptchaToken?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiLogin
+     */
+    readonly type?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersApiLogin
+     */
+    readonly loadProfileData?: string
+
+    /**
+     * 
+     * @type {LoginRequest}
+     * @memberof UsersApiLogin
+     */
+    readonly loginRequest?: LoginRequest
+}
 
 /**
  * Request parameters for usersLoginDeviceFingerprintPost operation in UsersApi.
@@ -2418,139 +2551,6 @@ export interface UsersApiUsersLoginDeviceFingerprintPostRequest {
      * @memberof UsersApiUsersLoginDeviceFingerprintPost
      */
     readonly loadProfileData?: string
-}
-
-/**
- * Request parameters for usersLoginPost operation in UsersApi.
- * @export
- * @interface UsersApiUsersLoginPostRequest
- */
-export interface UsersApiUsersLoginPostRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginPost
-     */
-    readonly xApiKey?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginPost
-     */
-    readonly xMerchantId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginPost
-     */
-    readonly xDeviceId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginPost
-     */
-    readonly xSessionID?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginPost
-     */
-    readonly authorization?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginPost
-     */
-    readonly xRecaptchaToken?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginPost
-     */
-    readonly type?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginPost
-     */
-    readonly loadProfileData?: string
-
-    /**
-     * 
-     * @type {UsersLoginPostRequest}
-     * @memberof UsersApiUsersLoginPost
-     */
-    readonly usersLoginPostRequest?: UsersLoginPostRequest
-}
-
-/**
- * Request parameters for usersMeGet operation in UsersApi.
- * @export
- * @interface UsersApiUsersMeGetRequest
- */
-export interface UsersApiUsersMeGetRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersMeGet
-     */
-    readonly xApiKey?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersMeGet
-     */
-    readonly xMerchantId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersMeGet
-     */
-    readonly xDeviceId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersMeGet
-     */
-    readonly authorization?: string
-}
-
-/**
- * Request parameters for usersUserIdCardsCardIdDelete operation in UsersApi.
- * @export
- * @interface UsersApiUsersUserIdCardsCardIdDeleteRequest
- */
-export interface UsersApiUsersUserIdCardsCardIdDeleteRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersUserIdCardsCardIdDelete
-     */
-    readonly userId: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersUserIdCardsCardIdDelete
-     */
-    readonly cardId: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersUserIdCardsCardIdDelete
-     */
-    readonly authorization?: string
 }
 
 /**
@@ -2617,6 +2617,42 @@ export interface UsersApiUsersUserIdCardsGetRequest {
  */
 export class UsersApi extends BaseAPI {
     /**
+     * Remove card by identifier
+     * @summary Remove card by identifier
+     * @param {UsersApiDeleteUserCardByIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public deleteUserCardById(requestParameters: UsersApiDeleteUserCardByIdRequest, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).deleteUserCardById(requestParameters.userId, requestParameters.cardId, requestParameters.authorization, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Get User Information
+     * @summary Get User Information
+     * @param {UsersApiGetUserInformationRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getUserInformation(requestParameters: UsersApiGetUserInformationRequest = {}, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getUserInformation(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.authorization, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
+     * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
+     * @param {UsersApiLoginRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public login(requestParameters: UsersApiLoginRequest = {}, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).login(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.xRecaptchaToken, requestParameters.type, requestParameters.loadProfileData, requestParameters.loginRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Login User
      * @summary Login User
      * @param {UsersApiUsersLoginDeviceFingerprintPostRequest} requestParameters Request parameters.
@@ -2626,42 +2662,6 @@ export class UsersApi extends BaseAPI {
      */
     public usersLoginDeviceFingerprintPost(requestParameters: UsersApiUsersLoginDeviceFingerprintPostRequest = {}, options?: AxiosRequestConfig) {
         return UsersApiFp(this.configuration).usersLoginDeviceFingerprintPost(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.type, requestParameters.loadProfileData, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-     * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-     * @param {UsersApiUsersLoginPostRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersLoginPost(requestParameters: UsersApiUsersLoginPostRequest = {}, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).usersLoginPost(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.xRecaptchaToken, requestParameters.type, requestParameters.loadProfileData, requestParameters.usersLoginPostRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Get User Information
-     * @summary Get User Information
-     * @param {UsersApiUsersMeGetRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersMeGet(requestParameters: UsersApiUsersMeGetRequest = {}, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).usersMeGet(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.authorization, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Remove card by identifier
-     * @summary Remove card by identifier
-     * @param {UsersApiUsersUserIdCardsCardIdDeleteRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersUserIdCardsCardIdDelete(requestParameters: UsersApiUsersUserIdCardsCardIdDeleteRequest, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).usersUserIdCardsCardIdDelete(requestParameters.userId, requestParameters.cardId, requestParameters.authorization, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

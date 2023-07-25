@@ -4,12 +4,12 @@ All URIs are relative to *https://staging-apigw.getduna.com:443*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**merchantsTransactionsPurchasePost**](MerchantsApi.md#merchantsTransactionsPurchasePost) | **POST** /merchants/transactions/purchase | Make the payment of the order.
+[**purchase**](MerchantsApi.md#purchase) | **POST** /merchants/transactions/purchase | Make the payment of the order.
 
 
-<a id="merchantsTransactionsPurchasePost"></a>
-# **merchantsTransactionsPurchasePost**
-> MerchantsTransactionsPurchasePost200Response merchantsTransactionsPurchasePost(authorization, xApiKey, xMerchantID, xStoreCode, xDeviceId, xSessionId, userAgent, merchantsTransactionsPurchasePostRequest)
+<a id="purchase"></a>
+# **purchase**
+> Purchase200Response purchase(authorization, xApiKey, xMerchantID, xStoreCode, xDeviceId, xSessionId, userAgent, purchaseRequest)
 
 Make the payment of the order.
 
@@ -29,15 +29,15 @@ val xStoreCode : kotlin.String = xStoreCode_example // kotlin.String |
 val xDeviceId : kotlin.String = xDeviceId_example // kotlin.String | 
 val xSessionId : kotlin.String = xSessionId_example // kotlin.String | 
 val userAgent : kotlin.String = userAgent_example // kotlin.String | 
-val merchantsTransactionsPurchasePostRequest : MerchantsTransactionsPurchasePostRequest =  // MerchantsTransactionsPurchasePostRequest | 
+val purchaseRequest : PurchaseRequest =  // PurchaseRequest | 
 try {
-    val result : MerchantsTransactionsPurchasePost200Response = apiInstance.merchantsTransactionsPurchasePost(authorization, xApiKey, xMerchantID, xStoreCode, xDeviceId, xSessionId, userAgent, merchantsTransactionsPurchasePostRequest)
+    val result : Purchase200Response = apiInstance.purchase(authorization, xApiKey, xMerchantID, xStoreCode, xDeviceId, xSessionId, userAgent, purchaseRequest)
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling MerchantsApi#merchantsTransactionsPurchasePost")
+    println("4xx response calling MerchantsApi#purchase")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling MerchantsApi#merchantsTransactionsPurchasePost")
+    println("5xx response calling MerchantsApi#purchase")
     e.printStackTrace()
 }
 ```
@@ -53,11 +53,11 @@ Name | Type | Description  | Notes
  **xDeviceId** | **kotlin.String**|  | [optional]
  **xSessionId** | **kotlin.String**|  | [optional]
  **userAgent** | **kotlin.String**|  | [optional]
- **merchantsTransactionsPurchasePostRequest** | [**MerchantsTransactionsPurchasePostRequest**](MerchantsTransactionsPurchasePostRequest.md)|  | [optional]
+ **purchaseRequest** | [**PurchaseRequest**](PurchaseRequest.md)|  | [optional]
 
 ### Return type
 
-[**MerchantsTransactionsPurchasePost200Response**](MerchantsTransactionsPurchasePost200Response.md)
+[**Purchase200Response**](Purchase200Response.md)
 
 ### Authorization
 

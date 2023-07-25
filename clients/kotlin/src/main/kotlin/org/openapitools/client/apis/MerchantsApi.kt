@@ -19,8 +19,8 @@ import java.io.IOException
 import okhttp3.OkHttpClient
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.MerchantsTransactionsPurchasePost200Response
-import org.openapitools.client.models.MerchantsTransactionsPurchasePostRequest
+import org.openapitools.client.models.Purchase200Response
+import org.openapitools.client.models.PurchaseRequest
 
 import com.squareup.moshi.Json
 
@@ -58,8 +58,8 @@ class MerchantsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param xDeviceId  (optional)
      * @param xSessionId  (optional)
      * @param userAgent  (optional)
-     * @param merchantsTransactionsPurchasePostRequest  (optional)
-     * @return MerchantsTransactionsPurchasePost200Response
+     * @param purchaseRequest  (optional)
+     * @return Purchase200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -68,11 +68,11 @@ class MerchantsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    suspend fun merchantsTransactionsPurchasePost(authorization: kotlin.String? = null, xApiKey: kotlin.String? = null, xMerchantID: kotlin.String? = null, xStoreCode: kotlin.String? = null, xDeviceId: kotlin.String? = null, xSessionId: kotlin.String? = null, userAgent: kotlin.String? = null, merchantsTransactionsPurchasePostRequest: MerchantsTransactionsPurchasePostRequest? = null) : MerchantsTransactionsPurchasePost200Response = withContext(Dispatchers.IO) {
-        val localVarResponse = merchantsTransactionsPurchasePostWithHttpInfo(authorization = authorization, xApiKey = xApiKey, xMerchantID = xMerchantID, xStoreCode = xStoreCode, xDeviceId = xDeviceId, xSessionId = xSessionId, userAgent = userAgent, merchantsTransactionsPurchasePostRequest = merchantsTransactionsPurchasePostRequest)
+    suspend fun purchase(authorization: kotlin.String? = null, xApiKey: kotlin.String? = null, xMerchantID: kotlin.String? = null, xStoreCode: kotlin.String? = null, xDeviceId: kotlin.String? = null, xSessionId: kotlin.String? = null, userAgent: kotlin.String? = null, purchaseRequest: PurchaseRequest? = null) : Purchase200Response = withContext(Dispatchers.IO) {
+        val localVarResponse = purchaseWithHttpInfo(authorization = authorization, xApiKey = xApiKey, xMerchantID = xMerchantID, xStoreCode = xStoreCode, xDeviceId = xDeviceId, xSessionId = xSessionId, userAgent = userAgent, purchaseRequest = purchaseRequest)
 
         return@withContext when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as MerchantsTransactionsPurchasePost200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as Purchase200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -96,23 +96,23 @@ class MerchantsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param xDeviceId  (optional)
      * @param xSessionId  (optional)
      * @param userAgent  (optional)
-     * @param merchantsTransactionsPurchasePostRequest  (optional)
-     * @return ApiResponse<MerchantsTransactionsPurchasePost200Response?>
+     * @param purchaseRequest  (optional)
+     * @return ApiResponse<Purchase200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    suspend fun merchantsTransactionsPurchasePostWithHttpInfo(authorization: kotlin.String?, xApiKey: kotlin.String?, xMerchantID: kotlin.String?, xStoreCode: kotlin.String?, xDeviceId: kotlin.String?, xSessionId: kotlin.String?, userAgent: kotlin.String?, merchantsTransactionsPurchasePostRequest: MerchantsTransactionsPurchasePostRequest?) : ApiResponse<MerchantsTransactionsPurchasePost200Response?> = withContext(Dispatchers.IO) {
-        val localVariableConfig = merchantsTransactionsPurchasePostRequestConfig(authorization = authorization, xApiKey = xApiKey, xMerchantID = xMerchantID, xStoreCode = xStoreCode, xDeviceId = xDeviceId, xSessionId = xSessionId, userAgent = userAgent, merchantsTransactionsPurchasePostRequest = merchantsTransactionsPurchasePostRequest)
+    suspend fun purchaseWithHttpInfo(authorization: kotlin.String?, xApiKey: kotlin.String?, xMerchantID: kotlin.String?, xStoreCode: kotlin.String?, xDeviceId: kotlin.String?, xSessionId: kotlin.String?, userAgent: kotlin.String?, purchaseRequest: PurchaseRequest?) : ApiResponse<Purchase200Response?> = withContext(Dispatchers.IO) {
+        val localVariableConfig = purchaseRequestConfig(authorization = authorization, xApiKey = xApiKey, xMerchantID = xMerchantID, xStoreCode = xStoreCode, xDeviceId = xDeviceId, xSessionId = xSessionId, userAgent = userAgent, purchaseRequest = purchaseRequest)
 
-        return@withContext request<MerchantsTransactionsPurchasePostRequest, MerchantsTransactionsPurchasePost200Response>(
+        return@withContext request<PurchaseRequest, Purchase200Response>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation merchantsTransactionsPurchasePost
+     * To obtain the request config of the operation purchase
      *
      * @param authorization  (optional)
      * @param xApiKey  (optional)
@@ -121,11 +121,11 @@ class MerchantsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param xDeviceId  (optional)
      * @param xSessionId  (optional)
      * @param userAgent  (optional)
-     * @param merchantsTransactionsPurchasePostRequest  (optional)
+     * @param purchaseRequest  (optional)
      * @return RequestConfig
      */
-    fun merchantsTransactionsPurchasePostRequestConfig(authorization: kotlin.String?, xApiKey: kotlin.String?, xMerchantID: kotlin.String?, xStoreCode: kotlin.String?, xDeviceId: kotlin.String?, xSessionId: kotlin.String?, userAgent: kotlin.String?, merchantsTransactionsPurchasePostRequest: MerchantsTransactionsPurchasePostRequest?) : RequestConfig<MerchantsTransactionsPurchasePostRequest> {
-        val localVariableBody = merchantsTransactionsPurchasePostRequest
+    fun purchaseRequestConfig(authorization: kotlin.String?, xApiKey: kotlin.String?, xMerchantID: kotlin.String?, xStoreCode: kotlin.String?, xDeviceId: kotlin.String?, xSessionId: kotlin.String?, userAgent: kotlin.String?, purchaseRequest: PurchaseRequest?) : RequestConfig<PurchaseRequest> {
+        val localVariableBody = purchaseRequest
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         authorization?.apply { localVariableHeaders["Authorization"] = this.toString() }

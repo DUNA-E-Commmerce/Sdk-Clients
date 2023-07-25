@@ -45,11 +45,11 @@ All URIs are relative to *https://staging-apigw.getduna.com:443*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MerchantsApi* | [**merchantsTransactionsPurchasePost**](docs/MerchantsApi.md#merchantstransactionspurchasepost) | **POST** /merchants/transactions/purchase | Make the payment of the order.
+*MerchantsApi* | [**purchase**](docs/MerchantsApi.md#purchase) | **POST** /merchants/transactions/purchase | Make the payment of the order.
+*UsersApi* | [**deleteUserCardById**](docs/UsersApi.md#deleteusercardbyid) | **DELETE** /users/{user_id}/cards/{card_id} | Remove card by identifier
+*UsersApi* | [**getUserInformation**](docs/UsersApi.md#getuserinformation) | **GET** /users/me | Get User Information
+*UsersApi* | [**login**](docs/UsersApi.md#login) | **POST** /users/login | Allows logging in with the OTP code sent to the user's email or phone. This must be specified in the query param.
 *UsersApi* | [**usersLoginDeviceFingerprintPost**](docs/UsersApi.md#userslogindevicefingerprintpost) | **POST** /users/login/device-fingerprint | Login User
-*UsersApi* | [**usersLoginPost**](docs/UsersApi.md#usersloginpost) | **POST** /users/login | Allows logging in with the OTP code sent to the user's email or phone. This must be specified in the query param.
-*UsersApi* | [**usersMeGet**](docs/UsersApi.md#usersmeget) | **GET** /users/me | Get User Information
-*UsersApi* | [**usersUserIdCardsCardIdDelete**](docs/UsersApi.md#usersuseridcardscardiddelete) | **DELETE** /users/{user_id}/cards/{card_id} | Remove card by identifier
 *UsersApi* | [**usersUserIdCardsCardIdGet**](docs/UsersApi.md#usersuseridcardscardidget) | **GET** /users/{user_id}/cards/{card_id} | Obtain a card by its identifier.
 *UsersApi* | [**usersUserIdCardsGet**](docs/UsersApi.md#usersuseridcardsget) | **GET** /users/{user_id}/cards | Get all user cards
 
@@ -57,26 +57,26 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200Response](docs/MerchantsTransactionsPurchasePost200Response.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrder](docs/MerchantsTransactionsPurchasePost200ResponseOrder.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner](docs/MerchantsTransactionsPurchasePost200ResponseOrderBillingAddressInner.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInner](docs/MerchantsTransactionsPurchasePost200ResponseOrderItemsInner.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount](docs/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTaxAmount.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount](docs/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerTotalAmount.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight](docs/MerchantsTransactionsPurchasePost200ResponseOrderItemsInnerWeight.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner](docs/MerchantsTransactionsPurchasePost200ResponseOrderShippingAddressInner.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequest](docs/MerchantsTransactionsPurchasePostRequest.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestBillingAddress](docs/MerchantsTransactionsPurchasePostRequestBillingAddress.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestBrowserDetails](docs/MerchantsTransactionsPurchasePostRequestBrowserDetails.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestCreditCard](docs/MerchantsTransactionsPurchasePostRequestCreditCard.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestShippingAddress](docs/MerchantsTransactionsPurchasePostRequestShippingAddress.md)
- - [org.openapitools.client.models.MerchantsTransactionsPurchasePostRequestSpecificFields](docs/MerchantsTransactionsPurchasePostRequestSpecificFields.md)
+ - [org.openapitools.client.models.GetUserInformation200Response](docs/GetUserInformation200Response.md)
+ - [org.openapitools.client.models.GetUserInformation200ResponseIdentityProvidersInner](docs/GetUserInformation200ResponseIdentityProvidersInner.md)
+ - [org.openapitools.client.models.Login200Response](docs/Login200Response.md)
+ - [org.openapitools.client.models.Login403Response](docs/Login403Response.md)
+ - [org.openapitools.client.models.LoginRequest](docs/LoginRequest.md)
+ - [org.openapitools.client.models.Purchase200Response](docs/Purchase200Response.md)
+ - [org.openapitools.client.models.Purchase200ResponseOrder](docs/Purchase200ResponseOrder.md)
+ - [org.openapitools.client.models.Purchase200ResponseOrderBillingAddressInner](docs/Purchase200ResponseOrderBillingAddressInner.md)
+ - [org.openapitools.client.models.Purchase200ResponseOrderItemsInner](docs/Purchase200ResponseOrderItemsInner.md)
+ - [org.openapitools.client.models.Purchase200ResponseOrderItemsInnerTaxAmount](docs/Purchase200ResponseOrderItemsInnerTaxAmount.md)
+ - [org.openapitools.client.models.Purchase200ResponseOrderItemsInnerTotalAmount](docs/Purchase200ResponseOrderItemsInnerTotalAmount.md)
+ - [org.openapitools.client.models.Purchase200ResponseOrderItemsInnerWeight](docs/Purchase200ResponseOrderItemsInnerWeight.md)
+ - [org.openapitools.client.models.Purchase200ResponseOrderShippingAddressInner](docs/Purchase200ResponseOrderShippingAddressInner.md)
+ - [org.openapitools.client.models.PurchaseRequest](docs/PurchaseRequest.md)
+ - [org.openapitools.client.models.PurchaseRequestBillingAddress](docs/PurchaseRequestBillingAddress.md)
+ - [org.openapitools.client.models.PurchaseRequestBrowserDetails](docs/PurchaseRequestBrowserDetails.md)
+ - [org.openapitools.client.models.PurchaseRequestCreditCard](docs/PurchaseRequestCreditCard.md)
+ - [org.openapitools.client.models.PurchaseRequestShippingAddress](docs/PurchaseRequestShippingAddress.md)
+ - [org.openapitools.client.models.PurchaseRequestSpecificFields](docs/PurchaseRequestSpecificFields.md)
  - [org.openapitools.client.models.UsersLoginDeviceFingerprintPost200Response](docs/UsersLoginDeviceFingerprintPost200Response.md)
- - [org.openapitools.client.models.UsersLoginPost200Response](docs/UsersLoginPost200Response.md)
- - [org.openapitools.client.models.UsersLoginPost403Response](docs/UsersLoginPost403Response.md)
- - [org.openapitools.client.models.UsersLoginPostRequest](docs/UsersLoginPostRequest.md)
- - [org.openapitools.client.models.UsersMeGet200Response](docs/UsersMeGet200Response.md)
- - [org.openapitools.client.models.UsersMeGet200ResponseIdentityProvidersInner](docs/UsersMeGet200ResponseIdentityProvidersInner.md)
  - [org.openapitools.client.models.UsersUserIdCardsCardIdGet200Response](docs/UsersUserIdCardsCardIdGet200Response.md)
  - [org.openapitools.client.models.UsersUserIdCardsCardIdGet200ResponseData](docs/UsersUserIdCardsCardIdGet200ResponseData.md)
  - [org.openapitools.client.models.UsersUserIdCardsGet200Response](docs/UsersUserIdCardsGet200Response.md)
