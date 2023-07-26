@@ -12,8 +12,8 @@ project.ext {
     codeArtifactAuthToken = ""
 }
 
-if (project.hasProperty('repository')) {
-    project.ext.repository = repository
+if (project.hasProperty('Repo')) {
+    project.ext.repository = Repo
     println("La propiedad 'repository' está definida.")
 }
 
@@ -32,9 +32,9 @@ if (project.hasProperty('awsRegion')) {
     println("La propiedad 'awsRegion' está definida.")
 }
 
-if (project.hasProperty('codeArtifactAuthToken')) {
-    println("$codeArtifactAuthToken")
-    project.ext.codeArtifactAuthToken = codeArtifactAuthToken
+if (project.hasProperty('CODEARTIFACT_AUTH_TOKEN')) {
+    println("$CODEARTIFACT_AUTH_TOKEN")
+    project.ext.codeArtifactAuthToken = CODEARTIFACT_AUTH_TOKEN
     println("La propiedad 'codeArtifactAuthToken' está definida.")
 }
 
@@ -74,7 +74,7 @@ publishing {
     }
     repositories {
         maven {
-            url "https://getduna-com-661995054732.d.codeartifact.us-east-2.amazonaws.com/maven/kotlin-store/"
+            url uri(project.ext.repository)
             credentials {
                 username "aws"
                 password project.ext.codeArtifactAuthToken
