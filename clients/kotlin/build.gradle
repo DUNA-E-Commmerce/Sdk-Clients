@@ -73,7 +73,7 @@ publishing {
     }
     repositories {
         maven {
-            url "https://getduna-com.d.codeartifact.us-east-2.amazonaws.com/maven/kotlin-store/"
+            url "https://getduna-com-661995054732.d.codeartifact.us-east-2.amazonaws.com/maven/kotlin-store/"
             credentials {
                 username "aws"
                 password project.ext.codeArtifactAuthToken
