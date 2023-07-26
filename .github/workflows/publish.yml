@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies and publish
         run: |
           export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain getduna-com --domain kotlin-store --domain-owner 661995054732 --region us-east-2 --query authorizationToken --output text`
-          export REPO=`aws codeartifact get-repository-endpoint --domain some-domain --repository some-repositiory --format maven --query repositoryEndpoint --output text`
+          export REPO=`aws codeartifact get-repository-endpoint --domain getduna-com --repository kotlin-store --format maven --domain-owner 661995054732 --query repositoryEndpoint --output text`
           echo "CODEARTIFACT_AUTH_TOKEN: ${CODEARTIFACT_AUTH_TOKEN}" 
           echo "REPO: ${REPO}"
           cd ./clients/kotlin && chmod +x ./gradlew && ./gradlew -PCODEARTIFACT_AUTH_TOKEN=${CODEARTIFACT_AUTH_TOKEN} -PRepo=${REPO} clean build publish
