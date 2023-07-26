@@ -21,16 +21,12 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Install and configure AWS CLI
         run: |
-          pip install awscli
-      - name: Get CodeArtifact authorization token
-        env:
-          ROLE_TO_ASSUME: ${{ steps.configure-aws.outputs.role_arn }}
-        run: |
-          export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain getduna-com --domain-owner 661995054732 --region us-east-2 --query authorizationToken --output text`
+          pip install awscli       
       - name: Install dependencies and publish
         env:
           CODEARTIFACT_AUTH_TOKEN: ${{ env.CODEARTIFACT_AUTH_TOKEN }}
         run: |
+          export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain getduna-com --domain-owner 661995054732 --region us-east-2 --query authorizationToken --output text`
           aws configure set region ${{ secrets.AWS_REGION }}    
           cd ./clients/kotlin && chmod +x ./gradlew && ./gradlew -PCODEARTIFACT_AUTH_TOKEN=${CODEARTIFACT_AUTH_TOKEN} clean build publish
 
