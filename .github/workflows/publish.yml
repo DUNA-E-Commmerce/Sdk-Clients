@@ -28,7 +28,7 @@ jobs:
       - name: Configure AWS and Publish package to CodeArtifact
         run: |
           aws configure set region ${{ secrets.AWS_REGION }}    
-          cd ./clients/kotlin && ./gradlew publish
+          cd ./clients/kotlin && ./gradlew -Prepository="getduna-com"  -ProleArn="arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService" -PprojectGroup="kotlin-store" -PawsRegion=us-east-2 publish
       # - name: Install dependencies
       #   run: |
       #     cd ./clients/typescript && npm install
