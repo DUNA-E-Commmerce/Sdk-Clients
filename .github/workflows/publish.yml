@@ -24,9 +24,16 @@ jobs:
           pip install awscli
       - name: Install dependencies
         run: |
-          cd ./clients/typescript && npm install
+          cd ./clients/kotlin && chdmod +x ./gradlew && ./gradlew clean build
       - name: Configure AWS and Publish package to CodeArtifact
         run: |
           aws configure set region ${{ secrets.AWS_REGION }}    
-          aws codeartifact login --tool npm --repository ${{ secrets.ARTIFACT_REPOSITORY }} --domain ${{ secrets.ARTIFACT_DOMAIN }} --domain-owner ${{ secrets.DOMAIN_OWNER }} --region ${{ secrets.AWS_REGION }}
-          cd ./clients/typescript && npm publish
+          cd ./clients/kotlin && ./gradlew publish
+      # - name: Install dependencies
+      #   run: |
+      #     cd ./clients/typescript && npm install
+      # - name: Configure AWS and Publish package to CodeArtifact
+      #   run: |
+      #     aws configure set region ${{ secrets.AWS_REGION }}    
+      #     aws codeartifact login --tool npm --repository ${{ secrets.ARTIFACT_REPOSITORY }} --domain ${{ secrets.ARTIFACT_DOMAIN }} --domain-owner ${{ secrets.DOMAIN_OWNER }} --region ${{ secrets.AWS_REGION }}
+      #     cd ./clients/typescript && npm publish

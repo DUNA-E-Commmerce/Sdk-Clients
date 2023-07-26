@@ -1,5 +1,31 @@
+import com.amazonaws.services.securitytoken.model.AssumeRoleRequest
+import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder
+
 group 'io.deuna.apigw_kotlin_sdk'
 version '0.1.71'
+
+project.ext {
+    repository = ""
+    roleArn = ""
+    projectGroup = ""
+    awsRegion = ""
+}
+
+if (project.hasProperty('repository')) {
+    project.ext.repository = repository
+}
+
+if (project.hasProperty('roleArn')) {
+    project.ext.roleArn = roleArn
+}
+
+if (project.hasProperty('projectGroup')) {
+    project.ext.projectGroup = projectGroup
+}
+
+if (project.hasProperty('awsRegion')) {
+    project.ext.awsRegion = awsRegion
+}
 
 wrapper {
     gradleVersion = '7.5'
@@ -14,18 +40,51 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.amazonaws:aws-java-sdk-sts:1.11.977'
     }
 }
 
 apply plugin: 'kotlin'
 apply plugin: 'maven-publish'
 
-repositories {
-    maven { url "https://repo1.maven.org/maven2" }
-}
-
 test {
     useJUnitPlatform()
+}
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "https://${project.ext.repository}.d.codeartifact.${project.ext.awsRegion}.amazonaws.com/maven/${project.ext.projectGroup}/"
+            credentials(AwsCredentials) {
+                def sts = AWSSecurityTokenServiceClientBuilder.standard()
+                        .withRegion('${project.ext.awsRegion}')
+                        .build()
+                def result = sts.assumeRole(new AssumeRoleRequest()
+                        .withRoleArn('${project.ext.roleArn}')
+                        .withRoleSessionName('RoleForGithubPushCodeArtifactAllService'))
+                accessKey = result.credentials.accessKeyId
+                secretKey = result.credentials.secretAccessKey
+                sessionToken = result.credentials.sessionToken
+                println "AssumeRole result: $result"
+            }
+        }
+    }
+}
+
+tasks.named("publish") {
+    dependsOn("publishToMavenLocal")
+    doLast {
+        println "Artifacts published to remote repository"
+    }
 }
 
 dependencies {
@@ -34,7 +93,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
     implementation "com.squareup.moshi:moshi-adapters:1.13.0"
+    implementation 'com.amazonaws:aws-java-sdk-sts:1.12.514'
     implementation "com.google.code.gson:gson:2.10.1"
+    implementation 'com.amazonaws:aws-java-sdk-sts:1.11.977'
     implementation "com.squareup.okhttp3:okhttp:4.10.0"
     testImplementation "io.kotlintest:kotlintest-runner-junit5:3.4.2"
 }
