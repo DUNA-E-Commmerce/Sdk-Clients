@@ -23,8 +23,6 @@ jobs:
         run: |
           pip install awscli       
       - name: Install dependencies and publish
-        env:
-          CODEARTIFACT_AUTH_TOKEN: ${{ env.CODEARTIFACT_AUTH_TOKEN }}
         run: |
           export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain getduna-com --domain kotlin-store --domain-owner 661995054732 --region us-east-2 --query authorizationToken --output text`
           export REPO=`aws codeartifact get-repository-endpoint --domain some-domain --repository some-repositiory --format maven --query repositoryEndpoint --output text`
