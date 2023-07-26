@@ -2,7 +2,7 @@ import com.amazonaws.services.securitytoken.model.AssumeRoleRequest
 import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder
 
 group 'io.deuna.apigw_kotlin_sdk'
-version '0.1.71'
+version '0.1.72'
 
 project.ext {
     repository = ""
