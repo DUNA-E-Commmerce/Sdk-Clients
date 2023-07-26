@@ -67,13 +67,13 @@ publishing {
     }
     repositories {
         maven {
-            url "https://${project.ext.repository}.d.codeartifact.${project.ext.awsRegion}.amazonaws.com/maven/${project.ext.projectGroup}/"
+            url "https://getduna-com.d.codeartifact.us-east-2.amazonaws.com/maven/kotlin-store/"
             credentials(AwsCredentials) {
                 def sts = AWSSecurityTokenServiceClientBuilder.standard()
                         .withRegion(project.ext.awsRegion)
                         .build()
                 def result = sts.assumeRole(new AssumeRoleRequest()
-                        .withRoleArn(project.ext.roleArn)
+                        .withRoleArn("arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService")
                         .withRoleSessionName('RoleForGithubPushCodeArtifactAllService'))
                 accessKey = result.credentials.accessKeyId
                 secretKey = result.credentials.secretAccessKey
