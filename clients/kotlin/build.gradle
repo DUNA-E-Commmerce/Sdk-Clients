@@ -79,6 +79,24 @@ publishing {
                 username "aws"
                 password project.ext.codeArtifactAuthToken
             }
+            om {
+                name = 'kotlin-store'
+                description = 'Kotlin Store'
+                url = 'https://github.com/deuna-io/kotlin-store'
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'deuna-io'
+                        name = 'Deuna'
+                        email = 'info@deuna.io'
+                    }
+                }
+            }
         }
     }
 }
