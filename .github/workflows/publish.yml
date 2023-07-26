@@ -22,13 +22,10 @@ jobs:
       - name: Install and configure AWS CLI
         run: |
           pip install awscli
-      - name: Install dependencies
-        run: |
-          cd ./clients/kotlin && chmod +x ./gradlew && ./gradlew clean build
-      - name: Configure AWS and Publish package to CodeArtifact
+      - name: Install dependencies and publish
         run: |
           aws configure set region ${{ secrets.AWS_REGION }}    
-          cd ./clients/kotlin && ./gradlew -Prepository=getduna-com  -ProleArn=arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService -PprojectGroup=kotlin-store -PawsRegion=us-east-2 publish
+          cd ./clients/kotlin && chmod +x ./gradlew && ./gradlew -Prepository=getduna-com  -ProleArn=arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService -PprojectGroup=kotlin-store -PawsRegion=us-east-2 clean build publish
       # - name: Install dependencies
       #   run: |
       #     cd ./clients/typescript && npm install
