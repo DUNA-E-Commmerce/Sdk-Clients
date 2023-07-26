@@ -90,7 +90,6 @@ publishing {
 }
 
 tasks.named("publish") {
-    dependsOn("publishToMavenLocal")
     doLast {
         println "Artifacts published to remote repository"
     }
