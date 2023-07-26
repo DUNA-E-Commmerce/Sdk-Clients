@@ -31,6 +31,11 @@ if (project.hasProperty('awsRegion')) {
     println("La propiedad 'awsRegion' está definida.")
 }
 
+if (project.hasProperty('codeArtifactAuthToken')) {
+    project.ext.codeArtifactAuthToken = codeArtifactAuthToken
+    println("La propiedad 'codeArtifactAuthToken' está definida.")
+}
+
 wrapper {
     gradleVersion = '7.5'
     distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
@@ -68,22 +73,9 @@ publishing {
     repositories {
         maven {
             url "https://getduna-com.d.codeartifact.us-east-2.amazonaws.com/maven/kotlin-store/"
-            credentials(AwsCredentials) {
-                def sts = AWSSecurityTokenServiceClientBuilder.standard()
-                        .withRegion("us-east-2")
-                        .build()
-                def result
-                try {
-                    result = sts.assumeRole(new AssumeRoleRequest()
-                            .withRoleArn("arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService").withRoleSessionName("RoleForGithubPushCodeArtifactAllService"))
-                } catch (Exception e) {
-                    println "Error al asumir el rol: $e.message"
-                    throw e
-                }
-                println "AssumeRole result: $result"
-                accessKey = result.credentials.accessKeyId
-                secretKey = result.credentials.secretAccessKey
-                sessionToken = result.credentials.sessionToken
+            credentials {
+                username "aws"
+                password project.ext.codeArtifactAuthToken
             }
         }
     }
