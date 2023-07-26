@@ -27,10 +27,10 @@ jobs:
           CODEARTIFACT_AUTH_TOKEN: ${{ env.CODEARTIFACT_AUTH_TOKEN }}
         run: |
           export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain getduna-com --domain-owner 661995054732 --region us-east-2 --query authorizationToken --output text`
-          aws configure set region ${{ secrets.AWS_REGION }}    
+          echo "CODEARTIFACT_AUTH_TOKEN: ${CODEARTIFACT_AUTH_TOKEN}" 
           cd ./clients/kotlin && chmod +x ./gradlew && ./gradlew -PCODEARTIFACT_AUTH_TOKEN=${CODEARTIFACT_AUTH_TOKEN} clean build publish
 
-      # - name: Install dependencies
+      # - name: Install dependenciesz
       #   run: |
       #     cd ./clients/typescript && npm install
       # - name: Configure AWS and Publish package to CodeArtifact
