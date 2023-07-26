@@ -33,6 +33,7 @@ if (project.hasProperty('awsRegion')) {
 }
 
 if (project.hasProperty('codeArtifactAuthToken')) {
+    println("$codeArtifactAuthToken")
     project.ext.codeArtifactAuthToken = codeArtifactAuthToken
     println("La propiedad 'codeArtifactAuthToken' está definida.")
 }
