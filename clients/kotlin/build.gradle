@@ -1,5 +1,5 @@
-group 'io.deuna.apigw-kotlin-sdk'
-version '0.1.70'
+group 'io.deuna.apigw_kotlin_sdk'
+version '0.1.71'
 
 wrapper {
     gradleVersion = '7.5'
