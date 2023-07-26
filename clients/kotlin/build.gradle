@@ -33,6 +33,7 @@ if (project.hasProperty('awsRegion')) {
 }
 
 if (project.hasProperty('CODEARTIFACT_AUTH_TOKEN')) {
+    println("$CODEARTIFACT_AUTH_TOKEN")
     project.ext.codeArtifactAuthToken = CODEARTIFACT_AUTH_TOKEN
     println("La propiedad 'codeArtifactAuthToken' está definida.")
 }
@@ -47,13 +48,13 @@ buildscript {
 
     repositories {
         maven {
-            url uri(project.ext.repository)
-            credentials {
-                username "aws"
-                password project.ext.codeArtifactAuthToken
-            }
+        url uri(project.ext.repository)
+        credentials {
+            username "aws"
+            password project.ext.codeArtifactAuthToken
         }
     }
+}
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.amazonaws:aws-java-sdk-sts:1.11.977'
