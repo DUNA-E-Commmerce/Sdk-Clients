@@ -1,4 +1,4 @@
-# org.openapitools.client - Kotlin client library for API Gateway
+# io.deuna.apigw-kotlin-sdk - Kotlin client library for API Gateway
 
 API Gateway
 
@@ -57,30 +57,30 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
- - [org.openapitools.client.models.GetUserInformation200Response](docs/GetUserInformation200Response.md)
- - [org.openapitools.client.models.GetUserInformation200ResponseIdentityProvidersInner](docs/GetUserInformation200ResponseIdentityProvidersInner.md)
- - [org.openapitools.client.models.Login200Response](docs/Login200Response.md)
- - [org.openapitools.client.models.Login403Response](docs/Login403Response.md)
- - [org.openapitools.client.models.LoginRequest](docs/LoginRequest.md)
- - [org.openapitools.client.models.Purchase200Response](docs/Purchase200Response.md)
- - [org.openapitools.client.models.Purchase200ResponseOrder](docs/Purchase200ResponseOrder.md)
- - [org.openapitools.client.models.Purchase200ResponseOrderBillingAddressInner](docs/Purchase200ResponseOrderBillingAddressInner.md)
- - [org.openapitools.client.models.Purchase200ResponseOrderItemsInner](docs/Purchase200ResponseOrderItemsInner.md)
- - [org.openapitools.client.models.Purchase200ResponseOrderItemsInnerTaxAmount](docs/Purchase200ResponseOrderItemsInnerTaxAmount.md)
- - [org.openapitools.client.models.Purchase200ResponseOrderItemsInnerTotalAmount](docs/Purchase200ResponseOrderItemsInnerTotalAmount.md)
- - [org.openapitools.client.models.Purchase200ResponseOrderItemsInnerWeight](docs/Purchase200ResponseOrderItemsInnerWeight.md)
- - [org.openapitools.client.models.Purchase200ResponseOrderShippingAddressInner](docs/Purchase200ResponseOrderShippingAddressInner.md)
- - [org.openapitools.client.models.PurchaseRequest](docs/PurchaseRequest.md)
- - [org.openapitools.client.models.PurchaseRequestBillingAddress](docs/PurchaseRequestBillingAddress.md)
- - [org.openapitools.client.models.PurchaseRequestBrowserDetails](docs/PurchaseRequestBrowserDetails.md)
- - [org.openapitools.client.models.PurchaseRequestCreditCard](docs/PurchaseRequestCreditCard.md)
- - [org.openapitools.client.models.PurchaseRequestShippingAddress](docs/PurchaseRequestShippingAddress.md)
- - [org.openapitools.client.models.PurchaseRequestSpecificFields](docs/PurchaseRequestSpecificFields.md)
- - [org.openapitools.client.models.UsersLoginDeviceFingerprintPost200Response](docs/UsersLoginDeviceFingerprintPost200Response.md)
- - [org.openapitools.client.models.UsersUserIdCardsCardIdGet200Response](docs/UsersUserIdCardsCardIdGet200Response.md)
- - [org.openapitools.client.models.UsersUserIdCardsCardIdGet200ResponseData](docs/UsersUserIdCardsCardIdGet200ResponseData.md)
- - [org.openapitools.client.models.UsersUserIdCardsGet200Response](docs/UsersUserIdCardsGet200Response.md)
- - [org.openapitools.client.models.UsersUserIdCardsGet200ResponseDataInner](docs/UsersUserIdCardsGet200ResponseDataInner.md)
+ - [io.deuna.apigw-kotlin-sdk.models.GetUserInformation200Response](docs/GetUserInformation200Response.md)
+ - [io.deuna.apigw-kotlin-sdk.models.GetUserInformation200ResponseIdentityProvidersInner](docs/GetUserInformation200ResponseIdentityProvidersInner.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Login200Response](docs/Login200Response.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Login403Response](docs/Login403Response.md)
+ - [io.deuna.apigw-kotlin-sdk.models.LoginRequest](docs/LoginRequest.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Purchase200Response](docs/Purchase200Response.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Purchase200ResponseOrder](docs/Purchase200ResponseOrder.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Purchase200ResponseOrderBillingAddressInner](docs/Purchase200ResponseOrderBillingAddressInner.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Purchase200ResponseOrderItemsInner](docs/Purchase200ResponseOrderItemsInner.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Purchase200ResponseOrderItemsInnerTaxAmount](docs/Purchase200ResponseOrderItemsInnerTaxAmount.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Purchase200ResponseOrderItemsInnerTotalAmount](docs/Purchase200ResponseOrderItemsInnerTotalAmount.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Purchase200ResponseOrderItemsInnerWeight](docs/Purchase200ResponseOrderItemsInnerWeight.md)
+ - [io.deuna.apigw-kotlin-sdk.models.Purchase200ResponseOrderShippingAddressInner](docs/Purchase200ResponseOrderShippingAddressInner.md)
+ - [io.deuna.apigw-kotlin-sdk.models.PurchaseRequest](docs/PurchaseRequest.md)
+ - [io.deuna.apigw-kotlin-sdk.models.PurchaseRequestBillingAddress](docs/PurchaseRequestBillingAddress.md)
+ - [io.deuna.apigw-kotlin-sdk.models.PurchaseRequestBrowserDetails](docs/PurchaseRequestBrowserDetails.md)
+ - [io.deuna.apigw-kotlin-sdk.models.PurchaseRequestCreditCard](docs/PurchaseRequestCreditCard.md)
+ - [io.deuna.apigw-kotlin-sdk.models.PurchaseRequestShippingAddress](docs/PurchaseRequestShippingAddress.md)
+ - [io.deuna.apigw-kotlin-sdk.models.PurchaseRequestSpecificFields](docs/PurchaseRequestSpecificFields.md)
+ - [io.deuna.apigw-kotlin-sdk.models.UsersLoginDeviceFingerprintPost200Response](docs/UsersLoginDeviceFingerprintPost200Response.md)
+ - [io.deuna.apigw-kotlin-sdk.models.UsersUserIdCardsCardIdGet200Response](docs/UsersUserIdCardsCardIdGet200Response.md)
+ - [io.deuna.apigw-kotlin-sdk.models.UsersUserIdCardsCardIdGet200ResponseData](docs/UsersUserIdCardsCardIdGet200ResponseData.md)
+ - [io.deuna.apigw-kotlin-sdk.models.UsersUserIdCardsGet200Response](docs/UsersUserIdCardsGet200Response.md)
+ - [io.deuna.apigw-kotlin-sdk.models.UsersUserIdCardsGet200ResponseDataInner](docs/UsersUserIdCardsGet200ResponseDataInner.md)
 
 
 <a id="documentation-for-authorization"></a>

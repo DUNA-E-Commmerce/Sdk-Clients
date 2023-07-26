@@ -23,8 +23,8 @@ Remove card by identifier
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
+//import io.deuna.apigw-kotlin-sdk.infrastructure.*
+//import io.deuna.apigw-kotlin-sdk.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -76,8 +76,8 @@ Get User Information
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
+//import io.deuna.apigw-kotlin-sdk.infrastructure.*
+//import io.deuna.apigw-kotlin-sdk.models.*
 
 val apiInstance = UsersApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -134,8 +134,8 @@ Allows logging in with the OTP code sent to the user&#39;s email or phone. This 
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
+//import io.deuna.apigw-kotlin-sdk.infrastructure.*
+//import io.deuna.apigw-kotlin-sdk.models.*
 
 val apiInstance = UsersApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -202,8 +202,8 @@ Login User
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
+//import io.deuna.apigw-kotlin-sdk.infrastructure.*
+//import io.deuna.apigw-kotlin-sdk.models.*
 
 val apiInstance = UsersApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -266,8 +266,8 @@ Obtain a card by its identifier.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
+//import io.deuna.apigw-kotlin-sdk.infrastructure.*
+//import io.deuna.apigw-kotlin-sdk.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -320,8 +320,8 @@ Get all user cards
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
+//import io.deuna.apigw-kotlin-sdk.infrastructure.*
+//import io.deuna.apigw-kotlin-sdk.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 

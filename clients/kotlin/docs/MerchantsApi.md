@@ -18,8 +18,8 @@ Make the payment of the order.
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
+//import io.deuna.apigw-kotlin-sdk.infrastructure.*
+//import io.deuna.apigw-kotlin-sdk.models.*
 
 val apiInstance = MerchantsApi()
 val authorization : kotlin.String = authorization_example // kotlin.String | 
