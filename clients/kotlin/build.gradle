@@ -72,13 +72,18 @@ publishing {
                 def sts = AWSSecurityTokenServiceClientBuilder.standard()
                         .withRegion("us-east-2")
                         .build()
-                def result = sts.assumeRole(new AssumeRoleRequest()
-                        .withRoleArn("arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService")
-                        .withRoleSessionName('RoleForGithubPushCodeArtifactAllService'))
+                def result
+                try {
+                    result = sts.assumeRole(new AssumeRoleRequest()
+                            .withRoleArn("arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService"))
+                } catch (Exception e) {
+                    println "Error al asumir el rol: $e.message"
+                    throw e
+                }
+                println "AssumeRole result: $result"
                 accessKey = result.credentials.accessKeyId
                 secretKey = result.credentials.secretAccessKey
                 sessionToken = result.credentials.sessionToken
-                println "AssumeRole result: $result"
             }
         }
     }
