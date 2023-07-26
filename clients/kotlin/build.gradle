@@ -70,7 +70,7 @@ publishing {
             url "https://getduna-com.d.codeartifact.us-east-2.amazonaws.com/maven/kotlin-store/"
             credentials(AwsCredentials) {
                 def sts = AWSSecurityTokenServiceClientBuilder.standard()
-                        .withRegion(project.ext.awsRegion)
+                        .withRegion("us-east-2")
                         .build()
                 def result = sts.assumeRole(new AssumeRoleRequest()
                         .withRoleArn("arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService")
