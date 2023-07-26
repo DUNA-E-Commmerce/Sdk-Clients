@@ -79,7 +79,7 @@ publishing {
                 username "aws"
                 password project.ext.codeArtifactAuthToken
             }
-            om {
+            pom {
                 name = 'kotlin-store'
                 description = 'Kotlin Store'
                 url = 'https://github.com/deuna-io/kotlin-store'
