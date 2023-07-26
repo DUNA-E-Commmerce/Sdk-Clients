@@ -13,18 +13,22 @@ project.ext {
 
 if (project.hasProperty('repository')) {
     project.ext.repository = repository
+    println("La propiedad 'repository' está definida.")
 }
 
 if (project.hasProperty('roleArn')) {
     project.ext.roleArn = roleArn
+    println("La propiedad 'roleArn' está definida.")
 }
 
 if (project.hasProperty('projectGroup')) {
     project.ext.projectGroup = projectGroup
+    println("La propiedad 'projectGroup' está definida.")
 }
 
 if (project.hasProperty('awsRegion')) {
     project.ext.awsRegion = awsRegion
+    println("La propiedad 'awsRegion' está definida.")
 }
 
 wrapper {
