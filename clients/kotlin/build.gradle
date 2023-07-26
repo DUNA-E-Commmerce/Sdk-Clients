@@ -47,7 +47,13 @@ buildscript {
     ext.kotlin_version = '1.7.21'
 
     repositories {
-        maven { url "https://repo1.maven.org/maven2" }
+        maven {
+            url uri(project.ext.repository)
+            credentials {
+                username "aws"
+                password project.ext.codeArtifactAuthToken
+            }
+        }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -62,8 +68,15 @@ test {
     useJUnitPlatform()
 }
 
+
 repositories {
-    mavenCentral()
+    maven {
+        url uri(project.ext.repository)
+        credentials {
+            username "aws"
+            password project.ext.codeArtifactAuthToken
+        }
+    }
 }
 
 publishing {
