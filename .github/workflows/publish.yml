@@ -24,7 +24,7 @@ jobs:
           pip install awscli
       - name: Install dependencies
         run: |
-          cd ./clients/kotlin && chdmod +x ./gradlew && ./gradlew clean build
+          cd ./clients/kotlin && chmod +x ./gradlew && ./gradlew clean build
       - name: Configure AWS and Publish package to CodeArtifact
         run: |
           aws configure set region ${{ secrets.AWS_REGION }}    
