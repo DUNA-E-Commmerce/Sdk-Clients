@@ -70,10 +70,10 @@ publishing {
             url "https://${project.ext.repository}.d.codeartifact.${project.ext.awsRegion}.amazonaws.com/maven/${project.ext.projectGroup}/"
             credentials(AwsCredentials) {
                 def sts = AWSSecurityTokenServiceClientBuilder.standard()
-                        .withRegion(${project.ext.awsRegion})
+                        .withRegion(project.ext.awsRegion)
                         .build()
                 def result = sts.assumeRole(new AssumeRoleRequest()
-                        .withRoleArn(${project.ext.roleArn})
+                        .withRoleArn(project.ext.roleArn)
                         .withRoleSessionName('RoleForGithubPushCodeArtifactAllService'))
                 accessKey = result.credentials.accessKeyId
                 secretKey = result.credentials.secretAccessKey
