@@ -75,7 +75,7 @@ publishing {
                 def result
                 try {
                     result = sts.assumeRole(new AssumeRoleRequest()
-                            .withRoleArn("arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService"))
+                            .withRoleArn("arn:aws:iam::661995054732:role/RoleForGithubPushCodeArtifactAllService").withRoleSessionName("RoleForGithubPushCodeArtifactAllService"))
                 } catch (Exception e) {
                     println "Error al asumir el rol: $e.message"
                     throw e
