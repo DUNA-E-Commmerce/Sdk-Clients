@@ -1,7 +1,7 @@
 import com.amazonaws.services.securitytoken.model.AssumeRoleRequest
 import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder
 group 'io.deuna.apigw_kotlin_sdk'
-version '0.1.74'
+version '0.1.75'
 
 wrapper {
     gradleVersion = '7.5'
