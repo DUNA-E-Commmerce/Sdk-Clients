@@ -104,7 +104,6 @@
             if(this.tokenStateUserId.exists()) {
                 config.userId = this.tokenStateUserId.get();
             }
-                console.log("Configuracion nueva: ", config);
                 return config;
             }
     }
@@ -4198,7 +4197,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async getBin(requestParameters: CardsApiGetBinRequest, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = CardsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.getBin(requestParameters.bin, requestParameters.xApiKey, options);
@@ -4539,7 +4537,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async createApplication(requestParameters: MerchantApplicationApiCreateApplicationRequest, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.createApplication(requestParameters.merchantId, requestParameters.authorization, requestParameters.createApplicationRequest, options);
@@ -4568,7 +4565,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async getApplication(requestParameters: MerchantApplicationApiGetApplicationRequest, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.getApplication(requestParameters.merchantId, requestParameters.applicationId, requestParameters.authorization, options);
@@ -4597,7 +4593,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async getApplications(requestParameters: MerchantApplicationApiGetApplicationsRequest, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.getApplications(requestParameters.merchantId, requestParameters.authorization, options);
@@ -4626,7 +4621,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async validateApplication(requestParameters: MerchantApplicationApiValidateApplicationRequest = {}, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.validateApplication(requestParameters.xApiKey, options);
@@ -5653,7 +5647,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async cancel(requestParameters: MerchantsApiCancelRequest, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.cancel(requestParameters.orderToken, requestParameters.xApiKey, requestParameters.cancelRequest, options);
@@ -5682,7 +5675,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async createMerchant(requestParameters: MerchantsApiCreateMerchantRequest = {}, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.createMerchant(requestParameters.authorization, requestParameters.createMerchantRequest, options);
@@ -5711,7 +5703,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async createMerchantStore(requestParameters: MerchantsApiCreateMerchantStoreRequest, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.createMerchantStore(requestParameters.merchantId, requestParameters.authorization, requestParameters.xApiKey, requestParameters.createMerchantStoreRequest, options);
@@ -5740,7 +5731,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async getAllMerchants(requestParameters: MerchantsApiGetAllMerchantsRequest = {}, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.getAllMerchants(requestParameters.authorization, requestParameters.xApiKey, requestParameters.page, requestParameters.pageSize, options);
@@ -5769,7 +5759,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async getMerchantToken(requestParameters: MerchantsApiGetMerchantTokenRequest = {}, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.getMerchantToken(requestParameters.authorization, options);
@@ -5798,7 +5787,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async getMerchantUsers(requestParameters: MerchantsApiGetMerchantUsersRequest = {}, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.getMerchantUsers(requestParameters.authorization, requestParameters.getMerchantUsersRequest, options);
@@ -5827,7 +5815,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async getOrder(requestParameters: MerchantsApiGetOrderRequest, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.getOrder(requestParameters.orderToken, requestParameters.xApiKey, options);
@@ -5856,7 +5843,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async login(requestParameters: MerchantsApiLoginRequest = {}, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.login(requestParameters.loginRequest, options);
@@ -5885,7 +5871,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async purchase(requestParameters: MerchantsApiPurchaseRequest = {}, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.purchase(requestParameters.authorization, requestParameters.xApiKey, requestParameters.xMerchantID, requestParameters.xStoreCode, requestParameters.xDeviceId, requestParameters.xSessionId, requestParameters.userAgent, requestParameters.purchaseRequest, options);
@@ -5914,7 +5899,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async registerMerchantUser(requestParameters: MerchantsApiRegisterMerchantUserRequest = {}, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.registerMerchantUser(requestParameters.authorization, requestParameters.getMerchantUsersRequest, options);
@@ -5943,7 +5927,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async success(requestParameters: MerchantsApiSuccessRequest, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.success(requestParameters.orderToken, requestParameters.xApiKey, requestParameters.cancelRequest, options);
@@ -5972,7 +5955,6 @@ export interface ValidateApplication200Response {
             */
 
                 public async tokenizeOrder(requestParameters: MerchantsApiTokenizeOrderRequest = {}, options?: AxiosRequestConfig) {
-                console.log(this.configuration);
                 const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
                 try {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.tokenizeOrder(requestParameters.xApiKey, requestParameters.authorization, requestParameters.tokenizeOrderRequest, options);
