@@ -380,6 +380,12 @@ export interface CreateMerchantRequest {
      * @type {string}
      * @memberof CreateMerchantRequest
      */
+    'country'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantRequest
+     */
     'currency'?: string;
     /**
      * 
