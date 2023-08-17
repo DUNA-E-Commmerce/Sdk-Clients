@@ -13,133 +13,1929 @@
  */
 
 
-import type { Configuration } from './configuration';
-import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
-import globalAxios from 'axios';
-// Some imports not used depending on template conditions
-// @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from './common';
-import type { RequestArgs } from './base';
-// @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
+    import type { Configuration } from './configuration';
+    import type { AxiosPromise, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+    import globalAxios from 'axios';
+    // Some imports not used depending on template conditions
+    // @ts-ignore
+    import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from './common';
+    import type { RequestArgs } from './base';
+    // @ts-ignore
+    import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
 
-/**
+
+
+    class DeUnaApi extends BaseAPI {
+        tokenStateToken = this.useStateToken(null);
+        tokenStateUserId = this.useStateUserId(null);
+
+        useStateToken(initialValue: any) {
+            let state = initialValue;
+
+            function getValue() {
+                return state;
+            }
+
+            function setValue(newValue: any) {
+                state = newValue;
+            }
+
+            function exists() {
+                return state !== undefined && state !== null;
+            }
+
+            return {
+                get: getValue,
+                set: setValue,
+                exists: exists,
+            };
+        }
+
+        useStateUserId(initialValue: any) {
+            let state = initialValue;
+
+            function getValue() {
+                return state;
+            }
+
+            function setValue(newValue: any) {
+                state = newValue;
+            }
+
+            function exists() {
+                return state !== undefined && state !== null;
+            }
+
+            return {
+                get: getValue,
+                set: setValue,
+                exists: exists,
+            };
+        }
+
+        setToken(token: any) {
+            if (!this.tokenStateToken.exists()) {
+                this.tokenStateToken.set(token);
+                this.configuration.accessToken = token;
+            }
+        }
+
+        getToken() {
+            return this.tokenStateToken.get();
+        }
+
+        setUserId(userId: any) {
+            if (!this.tokenStateUserId.exists()) {
+                this.tokenStateUserId.set(userId);
+                this.configuration.userId = userId;
+            }
+        }
+
+        getUserId() {
+            return this.tokenStateUserId.get();
+        }
+
+        refreshConfiguration(config: Configuration) {
+
+            if(this.tokenStateToken.exists()) {
+            config.accessToken = this.tokenStateToken.get();
+            }
+
+            if(this.tokenStateUserId.exists()) {
+                config.userId = this.tokenStateUserId.get();
+            }
+                console.log("Configuracion nueva: ", config);
+                return config;
+            }
+    }
+
+    const customAPI = new DeUnaApi();
+
+    const axiosInstance = globalAxios.create();
+
+    axiosInstance.interceptors.response.use(response => {
+
+        if (response.data && 'token' in response.data && response.data && 'refreshToken' in response.data) {
+            const token = response.data.token;
+            customAPI.setToken(token);
+        }
+
+        if(response.data && 'id' in response.data && response.data && 'email' in response.data) {
+            const userId = response.data.id;
+            customAPI.setUserId(userId);
+        }
+        return response;
+    });
+
+
+        /**
  * 
  * @export
- * @interface GetUserInformation200Response
+ * @interface Cancel400Response
  */
-export interface GetUserInformation200Response {
+export interface Cancel400Response {
     /**
      * 
      * @type {string}
-     * @memberof GetUserInformation200Response
+     * @memberof Cancel400Response
+     */
+    'data'?: string;
+    /**
+     * 
+     * @type {GetOrder400ResponseError}
+     * @memberof Cancel400Response
+     */
+    'error'?: GetOrder400ResponseError;
+}
+        /**
+ * 
+ * @export
+ * @interface CancelRequest
+ */
+export interface CancelRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CancelRequest
+     */
+    'reason'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface CreateApplication200Response
+ */
+export interface CreateApplication200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateApplication200Response
      */
     'created_at'?: string;
     /**
      * 
-     * @type {any}
-     * @memberof GetUserInformation200Response
-     */
-    'deleted_at'?: any;
-    /**
-     * 
      * @type {string}
-     * @memberof GetUserInformation200Response
-     */
-    'email'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetUserInformation200Response
-     */
-    'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetUserInformation200Response
+     * @memberof CreateApplication200Response
      */
     'id'?: string;
     /**
      * 
-     * @type {Set<GetUserInformation200ResponseIdentityProvidersInner>}
-     * @memberof GetUserInformation200Response
-     */
-    'identity_providers'?: Set<GetUserInformation200ResponseIdentityProvidersInner>;
-    /**
-     * 
      * @type {boolean}
-     * @memberof GetUserInformation200Response
+     * @memberof CreateApplication200Response
      */
-    'is_guest'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GetUserInformation200Response
-     */
-    'is_phone_verified'?: boolean;
+    'is_sandbox'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof GetUserInformation200Response
+     * @memberof CreateApplication200Response
      */
-    'last_name'?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetUserInformation200Response
+     * @memberof CreateApplication200Response
      */
-    'merchant_id'?: string;
+    'private_key'?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetUserInformation200Response
+     * @memberof CreateApplication200Response
      */
-    'phone'?: string;
+    'public_key'?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetUserInformation200Response
+     * @memberof CreateApplication200Response
+     */
+    'signing_secret'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateApplication200Response
+     */
+    'status'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateApplication200Response
      */
     'updated_at'?: string;
 }
-/**
+        /**
  * 
  * @export
- * @interface GetUserInformation200ResponseIdentityProvidersInner
+ * @interface CreateApplicationRequest
  */
-export interface GetUserInformation200ResponseIdentityProvidersInner {
+export interface CreateApplicationRequest {
     /**
      * 
      * @type {string}
-     * @memberof GetUserInformation200ResponseIdentityProvidersInner
+     * @memberof CreateApplicationRequest
+     */
+    'expire_at'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateApplicationRequest
+     */
+    'is_sandbox'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateApplicationRequest
+     */
+    'name'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface CreateMerchant200Response
+ */
+export interface CreateMerchant200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
+     */
+    'city'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
+     */
+    'country'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
      */
     'created_at'?: string;
     /**
      * 
-     * @type {any}
-     * @memberof GetUserInformation200ResponseIdentityProvidersInner
+     * @type {string}
+     * @memberof CreateMerchant200Response
      */
-    'deleted_at'?: any;
+    'currency'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateMerchant200Response
+     */
+    'managed_by_duna'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
+     */
+    'privacy_policies_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
+     */
+    'short_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
+     */
+    'term_and_conditions_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
+     */
+    'timezone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant200Response
+     */
+    'updated_at'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface CreateMerchant400Response
+ */
+export interface CreateMerchant400Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant400Response
+     */
+    'data'?: string;
+    /**
+     * 
+     * @type {CreateMerchant400ResponseError}
+     * @memberof CreateMerchant400Response
+     */
+    'error'?: CreateMerchant400ResponseError;
+}
+        /**
+ * 
+ * @export
+ * @interface CreateMerchant400ResponseError
+ */
+export interface CreateMerchant400ResponseError {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant400ResponseError
+     */
+    'code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchant400ResponseError
+     */
+    'description'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface CreateMerchantRequest
+ */
+export interface CreateMerchantRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantRequest
+     */
+    'city'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantRequest
+     */
+    'currency'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateMerchantRequest
+     */
+    'managed_by_duna'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantRequest
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantRequest
+     */
+    'short_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantRequest
+     */
+    'timezone'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface CreateMerchantStore200Response
+ */
+export interface CreateMerchantStore200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantStore200Response
+     */
+    'address'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantStore200Response
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantStore200Response
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateMerchantStore200Response
+     */
+    'is_default'?: boolean;
     /**
      * 
      * @type {number}
-     * @memberof GetUserInformation200ResponseIdentityProvidersInner
+     * @memberof CreateMerchantStore200Response
+     */
+    'latitude'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateMerchantStore200Response
+     */
+    'longitude'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantStore200Response
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantStore200Response
+     */
+    'updated_at'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface CreateMerchantStoreRequest
+ */
+export interface CreateMerchantStoreRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantStoreRequest
+     */
+    'address'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateMerchantStoreRequest
+     */
+    'latitude'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateMerchantStoreRequest
+     */
+    'longitude'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMerchantStoreRequest
+     */
+    'name'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetAllMerchants200Response
+ */
+export interface GetAllMerchants200Response {
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAllMerchants200Response
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {Array<GetAllMerchants200ResponseDataInner>}
+     * @memberof GetAllMerchants200Response
+     */
+    'data'?: Array<GetAllMerchants200ResponseDataInner>;
+}
+        /**
+ * 
+ * @export
+ * @interface GetAllMerchants200ResponseDataInner
+ */
+export interface GetAllMerchants200ResponseDataInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'CreatedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'DeletedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'ID'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'UpdatedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'account_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'account_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'amplitude_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'api_key'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'auto_approve_order_in_core'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'bank_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'business_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'city'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'country'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'currency'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'domain'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'gtm_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'industry'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'logo'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'managed_by_duna'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'merchant_category_code'?: string;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'merchant_events'?: Array<any>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'onboarding_step'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'order_api_port'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'order_api_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'order_pickup_api_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'pickup_token_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'platform'?: string;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'policies'?: Array<any>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'privacy_policies_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'service'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'short_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'status_changes_notification_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'storefront_base_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'storefront_private_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'term_and_conditions_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'timezone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'token'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'use_duna_send'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAllMerchants200ResponseDataInner
+     */
+    'vendor_id'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetApplications200Response
+ */
+export interface GetApplications200Response {
+    /**
+     * 
+     * @type {Set<GetApplications200ResponseDataInner>}
+     * @memberof GetApplications200Response
+     */
+    'data'?: Set<GetApplications200ResponseDataInner>;
+}
+        /**
+ * 
+ * @export
+ * @interface GetApplications200ResponseDataInner
+ */
+export interface GetApplications200ResponseDataInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetApplications200ResponseDataInner
+     */
+    'channel'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetApplications200ResponseDataInner
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetApplications200ResponseDataInner
+     */
+    'id': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetApplications200ResponseDataInner
+     */
+    'is_sandbox': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetApplications200ResponseDataInner
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetApplications200ResponseDataInner
+     */
+    'status': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetApplications200ResponseDataInner
+     */
+    'updated_at': string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetBin200Response
+ */
+export interface GetBin200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBin200Response
+     */
+    'bank'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBin200Response
+     */
+    'bin'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBin200Response
+     */
+    'branch'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBin200Response
+     */
+    'card_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBin200Response
+     */
+    'country'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetBin200Response
+     */
+    'country_iso'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBin200Response
+     */
+    'currency'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetBin400Response
+ */
+export interface GetBin400Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBin400Response
+     */
+    'error'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetMerchantToken200Response
+ */
+export interface GetMerchantToken200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantToken200Response
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetMerchantToken200Response
      */
     'id'?: number;
     /**
      * 
      * @type {string}
-     * @memberof GetUserInformation200ResponseIdentityProvidersInner
+     * @memberof GetMerchantToken200Response
      */
-    'provider_name'?: string;
+    'merchant_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetUserInformation200ResponseIdentityProvidersInner
+     * @memberof GetMerchantToken200Response
+     */
+    'merchant_name'?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetMerchantToken200Response
+     */
+    'modules'?: Array<string>;
+}
+        /**
+ * 
+ * @export
+ * @interface GetMerchantUsers200Response
+ */
+export interface GetMerchantUsers200Response {
+    /**
+     * 
+     * @type {GetMerchantUsers200ResponseData}
+     * @memberof GetMerchantUsers200Response
+     */
+    'data'?: GetMerchantUsers200ResponseData;
+}
+        /**
+ * 
+ * @export
+ * @interface GetMerchantUsers200ResponseData
+ */
+export interface GetMerchantUsers200ResponseData {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'deleted_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'last_updated'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'merchant_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'phone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'role'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers200ResponseData
+     */
+    'store_code'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetMerchantUsers400Response
+ */
+export interface GetMerchantUsers400Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers400Response
+     */
+    'code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers400Response
+     */
+    'message'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetMerchantUsers500Response
+ */
+export interface GetMerchantUsers500Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers500Response
+     */
+    'code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsers500Response
+     */
+    'message'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetMerchantUsersRequest
+ */
+export interface GetMerchantUsersRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsersRequest
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsersRequest
+     */
+    'merchant_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsersRequest
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsersRequest
+     */
+    'password'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsersRequest
+     */
+    'phone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantUsersRequest
+     */
+    'role'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200Response
+ */
+export interface GetOrder200Response {
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof GetOrder200Response
+     */
+    'checkout_modules'?: Array<object>;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof GetOrder200Response
+     */
+    'custom_fields'?: Array<object>;
+    /**
+     * 
+     * @type {GetOrder200ResponseOrder}
+     * @memberof GetOrder200Response
+     */
+    'order'?: GetOrder200ResponseOrder;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200Response
+     */
+    'order_type'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrder
+ */
+export interface GetOrder200ResponseOrder {
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderBillingAddress}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'billing_address'?: GetOrder200ResponseOrderBillingAddress;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'cash_change'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'currency'?: string;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'discounts'?: Array<object>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'display_items_total_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'display_shipping_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'display_shipping_tax_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'display_sub_total'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'display_tax_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'display_total_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'display_total_discount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'display_total_tax_amount'?: string;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'gift_card'?: Array<object>;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'include_payment_options'?: Array<object>;
+    /**
+     * 
+     * @type {Array<GetOrder200ResponseOrderItemsInner>}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'items'?: Array<GetOrder200ResponseOrderItemsInner>;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'items_total_amount'?: number;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderMetadata}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'metadata'?: TokenizeOrderRequestOrderMetadata;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'order_id'?: string;
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderPayment}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'payment'?: GetOrder200ResponseOrderPayment;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'payment_link'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'redirect_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'scheduled_at'?: string;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShipping}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'shipping'?: TokenizeOrderRequestOrderShipping;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingAddress}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'shipping_address'?: TokenizeOrderRequestOrderShippingAddress;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'shipping_amount'?: number;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingMethod}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'shipping_method'?: TokenizeOrderRequestOrderShippingMethod;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'shipping_methods'?: Array<object>;
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderShippingOptions}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'shipping_options'?: GetOrder200ResponseOrderShippingOptions;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'shipping_tax_amount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'status'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'store_code'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'sub_total'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'tax_amount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'timezone'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'total_amount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'total_discount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'total_tax_amount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'user_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'user_instructions'?: string;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof GetOrder200ResponseOrder
+     */
+    'webhook_urls'?: Array<any>;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderBillingAddress
+ */
+export interface GetOrder200ResponseOrderBillingAddress {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'additional_description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'address1'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'address2'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'address_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'city'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'country_code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'first_name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'identity_document'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'is_default'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'last_name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'lat'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'lng'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'phone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'state_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'updated_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'user_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderBillingAddress
+     */
+    'zipcode'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderItemsInner
+ */
+export interface GetOrder200ResponseOrderItemsInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'brand'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'category'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'color'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'details_url'?: string;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'discounts'?: Array<object>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'image_url'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'included_in_subscription'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'isbn'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'manufacturer'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'options'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'quantity'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'size'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'sku'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'subscription_id'?: string;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderItemsInnerTaxAmount}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'tax_amount'?: TokenizeOrderRequestOrderItemsInnerTaxAmount;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'taxable'?: boolean;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderItemsInnerTotalAmount}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'total_amount'?: TokenizeOrderRequestOrderItemsInnerTotalAmount;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'type'?: string;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderItemsInnerTaxAmount}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'unit_price'?: TokenizeOrderRequestOrderItemsInnerTaxAmount;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'uom'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'upc'?: string;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderItemsInnerWeight}
+     * @memberof GetOrder200ResponseOrderItemsInner
+     */
+    'weight'?: TokenizeOrderRequestOrderItemsInnerWeight;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderPayment
+ */
+export interface GetOrder200ResponseOrderPayment {
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderPaymentData}
+     * @memberof GetOrder200ResponseOrderPayment
+     */
+    'data'?: GetOrder200ResponseOrderPaymentData;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderPaymentData
+ */
+export interface GetOrder200ResponseOrderPaymentData {
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderPaymentDataAmount}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'amount'?: GetOrder200ResponseOrderPaymentDataAmount;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderPaymentDataCustomer}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'customer'?: GetOrder200ResponseOrderPaymentDataCustomer;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'external_transaction_id'?: string;
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderPaymentDataFromCard}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'from_card'?: GetOrder200ResponseOrderPaymentDataFromCard;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderPaymentDataMerchant}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'merchant'?: GetOrder200ResponseOrderPaymentDataMerchant;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'metadata'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'method_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'processor'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'reason'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentData
+     */
+    'status'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentData
      */
     'updated_at'?: string;
 }
-/**
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderPaymentDataAmount
+ */
+export interface GetOrder200ResponseOrderPaymentDataAmount {
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrder200ResponseOrderPaymentDataAmount
+     */
+    'amount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentDataAmount
+     */
+    'currency'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderPaymentDataCustomer
+ */
+export interface GetOrder200ResponseOrderPaymentDataCustomer {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentDataCustomer
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentDataCustomer
+     */
+    'id'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderPaymentDataFromCard
+ */
+export interface GetOrder200ResponseOrderPaymentDataFromCard {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentDataFromCard
+     */
+    'card_brand'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentDataFromCard
+     */
+    'first_six'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentDataFromCard
+     */
+    'last_four'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderPaymentDataMerchant
+ */
+export interface GetOrder200ResponseOrderPaymentDataMerchant {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentDataMerchant
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderPaymentDataMerchant
+     */
+    'store_code'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderShippingOptions
+ */
+export interface GetOrder200ResponseOrderShippingOptions {
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderShippingOptionsDetails}
+     * @memberof GetOrder200ResponseOrderShippingOptions
+     */
+    'details'?: GetOrder200ResponseOrderShippingOptionsDetails;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderShippingOptions
+     */
+    'type'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderShippingOptionsDetails
+ */
+export interface GetOrder200ResponseOrderShippingOptionsDetails {
+    /**
+     * 
+     * @type {GetOrder200ResponseOrderShippingOptionsDetailsAdditionalDetails}
+     * @memberof GetOrder200ResponseOrderShippingOptionsDetails
+     */
+    'additional_details'?: GetOrder200ResponseOrderShippingOptionsDetailsAdditionalDetails;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderShippingOptionsDetails
+     */
+    'address'?: string;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingOptionsDetailsAddressCoordinates}
+     * @memberof GetOrder200ResponseOrderShippingOptionsDetails
+     */
+    'address_coordinates'?: TokenizeOrderRequestOrderShippingOptionsDetailsAddressCoordinates;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingOptionsDetailsContact}
+     * @memberof GetOrder200ResponseOrderShippingOptionsDetails
+     */
+    'contact'?: TokenizeOrderRequestOrderShippingOptionsDetailsContact;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderShippingOptionsDetails
+     */
+    'store_name'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder200ResponseOrderShippingOptionsDetailsAdditionalDetails
+ */
+export interface GetOrder200ResponseOrderShippingOptionsDetailsAdditionalDetails {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderShippingOptionsDetailsAdditionalDetails
+     */
+    'pickup_time'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder200ResponseOrderShippingOptionsDetailsAdditionalDetails
+     */
+    'stock_location'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder400Response
+ */
+export interface GetOrder400Response {
+    /**
+     * 
+     * @type {object}
+     * @memberof GetOrder400Response
+     */
+    'data'?: object;
+    /**
+     * 
+     * @type {GetOrder400ResponseError}
+     * @memberof GetOrder400Response
+     */
+    'error'?: GetOrder400ResponseError;
+}
+        /**
+ * 
+ * @export
+ * @interface GetOrder400ResponseError
+ */
+export interface GetOrder400ResponseError {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder400ResponseError
+     */
+    'code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrder400ResponseError
+     */
+    'description'?: string;
+}
+        /**
  * 
  * @export
  * @interface Login200Response
@@ -147,10 +1943,16 @@ export interface GetUserInformation200ResponseIdentityProvidersInner {
 export interface Login200Response {
     /**
      * 
+     * @type {number}
+     * @memberof Login200Response
+     */
+    'code'?: number;
+    /**
+     * 
      * @type {string}
      * @memberof Login200Response
      */
-    'refresh_token'?: string;
+    'expire'?: string;
     /**
      * 
      * @type {string}
@@ -158,26 +1960,7 @@ export interface Login200Response {
      */
     'token'?: string;
 }
-/**
- * 
- * @export
- * @interface Login403Response
- */
-export interface Login403Response {
-    /**
-     * 
-     * @type {string}
-     * @memberof Login403Response
-     */
-    'code'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Login403Response
-     */
-    'message'?: string;
-}
-/**
+        /**
  * 
  * @export
  * @interface LoginRequest
@@ -188,15 +1971,15 @@ export interface LoginRequest {
      * @type {string}
      * @memberof LoginRequest
      */
-    'email': string;
+    'email'?: string;
     /**
      * 
      * @type {string}
      * @memberof LoginRequest
      */
-    'otp'?: string;
+    'password'?: string;
 }
-/**
+        /**
  * 
  * @export
  * @interface Purchase200Response
@@ -209,7 +1992,7 @@ export interface Purchase200Response {
      */
     'order'?: Purchase200ResponseOrder;
 }
-/**
+        /**
  * 
  * @export
  * @interface Purchase200ResponseOrder
@@ -439,12 +2222,12 @@ export interface Purchase200ResponseOrder {
     'user_instructions'?: string;
     /**
      * 
-     * @type {string}
+     * @type {Array<any>}
      * @memberof Purchase200ResponseOrder
      */
-    'webhook_urls'?: string;
+    'webhook_urls'?: Array<any>;
 }
-/**
+        /**
  * 
  * @export
  * @interface Purchase200ResponseOrderBillingAddressInner
@@ -571,7 +2354,7 @@ export interface Purchase200ResponseOrderBillingAddressInner {
      */
     'zipcode'?: string;
 }
-/**
+        /**
  * 
  * @export
  * @interface Purchase200ResponseOrderItemsInner
@@ -675,10 +2458,10 @@ export interface Purchase200ResponseOrderItemsInner {
     'subscription_id'?: string;
     /**
      * 
-     * @type {Purchase200ResponseOrderItemsInnerTaxAmount}
+     * @type {TokenizeOrderRequestOrderItemsInnerTaxAmount}
      * @memberof Purchase200ResponseOrderItemsInner
      */
-    'tax_amount'?: Purchase200ResponseOrderItemsInnerTaxAmount;
+    'tax_amount'?: TokenizeOrderRequestOrderItemsInnerTaxAmount;
     /**
      * 
      * @type {boolean}
@@ -687,10 +2470,10 @@ export interface Purchase200ResponseOrderItemsInner {
     'taxable'?: boolean;
     /**
      * 
-     * @type {Purchase200ResponseOrderItemsInnerTotalAmount}
+     * @type {TokenizeOrderRequestOrderItemsInnerTotalAmount}
      * @memberof Purchase200ResponseOrderItemsInner
      */
-    'total_amount'?: Purchase200ResponseOrderItemsInnerTotalAmount;
+    'total_amount'?: TokenizeOrderRequestOrderItemsInnerTotalAmount;
     /**
      * 
      * @type {string}
@@ -699,10 +2482,10 @@ export interface Purchase200ResponseOrderItemsInner {
     'type'?: string;
     /**
      * 
-     * @type {Purchase200ResponseOrderItemsInnerTaxAmount}
+     * @type {TokenizeOrderRequestOrderItemsInnerTaxAmount}
      * @memberof Purchase200ResponseOrderItemsInner
      */
-    'unit_price'?: Purchase200ResponseOrderItemsInnerTaxAmount;
+    'unit_price'?: TokenizeOrderRequestOrderItemsInnerTaxAmount;
     /**
      * 
      * @type {string}
@@ -717,117 +2500,12 @@ export interface Purchase200ResponseOrderItemsInner {
     'upc'?: string;
     /**
      * 
-     * @type {Purchase200ResponseOrderItemsInnerWeight}
+     * @type {TokenizeOrderRequestOrderItemsInnerWeight}
      * @memberof Purchase200ResponseOrderItemsInner
      */
-    'weight'?: Purchase200ResponseOrderItemsInnerWeight;
+    'weight'?: TokenizeOrderRequestOrderItemsInnerWeight;
 }
-/**
- * 
- * @export
- * @interface Purchase200ResponseOrderItemsInnerTaxAmount
- */
-export interface Purchase200ResponseOrderItemsInnerTaxAmount {
-    /**
-     * 
-     * @type {number}
-     * @memberof Purchase200ResponseOrderItemsInnerTaxAmount
-     */
-    'amount'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Purchase200ResponseOrderItemsInnerTaxAmount
-     */
-    'currency'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Purchase200ResponseOrderItemsInnerTaxAmount
-     */
-    'currency_symbol'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Purchase200ResponseOrderItemsInnerTaxAmount
-     */
-    'display_amount'?: string;
-}
-/**
- * 
- * @export
- * @interface Purchase200ResponseOrderItemsInnerTotalAmount
- */
-export interface Purchase200ResponseOrderItemsInnerTotalAmount {
-    /**
-     * 
-     * @type {number}
-     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
-     */
-    'amount'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
-     */
-    'currency'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
-     */
-    'currency_symbol'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
-     */
-    'display_amount'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
-     */
-    'display_original_amount'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
-     */
-    'display_total_discount'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
-     */
-    'original_amount'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Purchase200ResponseOrderItemsInnerTotalAmount
-     */
-    'total_discount'?: number;
-}
-/**
- * 
- * @export
- * @interface Purchase200ResponseOrderItemsInnerWeight
- */
-export interface Purchase200ResponseOrderItemsInnerWeight {
-    /**
-     * 
-     * @type {string}
-     * @memberof Purchase200ResponseOrderItemsInnerWeight
-     */
-    'unit'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Purchase200ResponseOrderItemsInnerWeight
-     */
-    'weight'?: number;
-}
-/**
+        /**
  * 
  * @export
  * @interface Purchase200ResponseOrderShippingAddressInner
@@ -948,7 +2626,7 @@ export interface Purchase200ResponseOrderShippingAddressInner {
      */
     'zipcode'?: string;
 }
-/**
+        /**
  * 
  * @export
  * @interface PurchaseRequest
@@ -1033,7 +2711,7 @@ export interface PurchaseRequest {
      */
     'token': string;
 }
-/**
+        /**
  * 
  * @export
  * @interface PurchaseRequestBillingAddress
@@ -1166,7 +2844,7 @@ export interface PurchaseRequestBillingAddress {
      */
     'zipcode'?: string;
 }
-/**
+        /**
  * 
  * @export
  * @interface PurchaseRequestBrowserDetails
@@ -1185,7 +2863,7 @@ export interface PurchaseRequestBrowserDetails {
      */
     'screen_width'?: number;
 }
-/**
+        /**
  * 
  * @export
  * @interface PurchaseRequestCreditCard
@@ -1220,7 +2898,7 @@ export interface PurchaseRequestCreditCard {
      * @type {string}
      * @memberof PurchaseRequestCreditCard
      */
-    'card_number'?: string;
+    'card_integer'?: string;
     /**
      * 
      * @type {string}
@@ -1270,7 +2948,7 @@ export interface PurchaseRequestCreditCard {
      */
     'zip'?: string;
 }
-/**
+        /**
  * 
  * @export
  * @interface PurchaseRequestShippingAddress
@@ -1397,7 +3075,7 @@ export interface PurchaseRequestShippingAddress {
      */
     'zipcode'?: string;
 }
-/**
+        /**
  * 
  * @export
  * @interface PurchaseRequestSpecificFields
@@ -1416,1277 +3094,2896 @@ export interface PurchaseRequestSpecificFields {
      */
     'financial_institution'?: string;
 }
-/**
+        /**
  * 
  * @export
- * @interface UsersLoginDeviceFingerprintPost200Response
+ * @interface TokenizeOrder200Response
  */
-export interface UsersLoginDeviceFingerprintPost200Response {
+export interface TokenizeOrder200Response {
     /**
      * 
-     * @type {string}
-     * @memberof UsersLoginDeviceFingerprintPost200Response
+     * @type {TokenizeOrderRequestOrder}
+     * @memberof TokenizeOrder200Response
      */
-    'refresh_token'?: string;
+    'order'?: TokenizeOrderRequestOrder;
     /**
      * 
      * @type {string}
-     * @memberof UsersLoginDeviceFingerprintPost200Response
+     * @memberof TokenizeOrder200Response
+     */
+    'order_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrder200Response
      */
     'token'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UsersLoginDeviceFingerprintPost200Response
-     */
-    'user-deuna'?: boolean;
 }
-/**
+        /**
  * 
  * @export
- * @interface UsersUserIdCardsCardIdGet200Response
+ * @interface TokenizeOrderRequest
  */
-export interface UsersUserIdCardsCardIdGet200Response {
+export interface TokenizeOrderRequest {
     /**
      * 
-     * @type {UsersUserIdCardsCardIdGet200ResponseData}
-     * @memberof UsersUserIdCardsCardIdGet200Response
+     * @type {TokenizeOrderRequestOrder}
+     * @memberof TokenizeOrderRequest
      */
-    'data'?: UsersUserIdCardsCardIdGet200ResponseData;
+    'order'?: TokenizeOrderRequestOrder;
 }
-/**
+        /**
  * 
  * @export
- * @interface UsersUserIdCardsCardIdGet200ResponseData
+ * @interface TokenizeOrderRequestOrder
  */
-export interface UsersUserIdCardsCardIdGet200ResponseData {
+export interface TokenizeOrderRequestOrder {
     /**
      * 
-     * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @type {TokenizeOrderRequestOrderBillingAddress}
+     * @memberof TokenizeOrderRequestOrder
      */
-    'card_holder'?: string;
+    'billing_address'?: TokenizeOrderRequestOrderBillingAddress;
     /**
      * 
-     * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrder
      */
-    'card_holder_dni'?: string;
+    'cash_change'?: number;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @memberof TokenizeOrderRequestOrder
      */
-    'company'?: string;
+    'currency'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @type {Array<object>}
+     * @memberof TokenizeOrderRequestOrder
      */
-    'deleted_at'?: string;
+    'discounts'?: Array<object>;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @memberof TokenizeOrderRequestOrder
      */
-    'expiration_date'?: string;
+    'display_items_total_amount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @memberof TokenizeOrderRequestOrder
      */
-    'first_six'?: string;
+    'display_shipping_amount'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'display_shipping_tax_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'display_sub_total'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'display_tax_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'display_total_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'display_total_discount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'display_total_tax_amount'?: string;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'gift_card'?: Array<object>;
+    /**
+     * 
+     * @type {Array<TokenizeOrderRequestOrderItemsInner>}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'items'?: Array<TokenizeOrderRequestOrderItemsInner>;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'items_total_amount'?: number;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderMetadata}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'metadata'?: TokenizeOrderRequestOrderMetadata;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'order_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'payment_link'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'redirect_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'scheduled_at'?: string;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShipping}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'shipping'?: TokenizeOrderRequestOrderShipping;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingAddress}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'shipping_address'?: TokenizeOrderRequestOrderShippingAddress;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'shipping_amount'?: number;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingMethod}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'shipping_method'?: TokenizeOrderRequestOrderShippingMethod;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'shipping_methods'?: Array<object>;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingOptions}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'shipping_options'?: TokenizeOrderRequestOrderShippingOptions;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'shipping_tax_amount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'status'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'store_code'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'sub_total'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'tax_amount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'timezone'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'total_amount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'total_discount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'total_tax_amount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'user_instructions'?: string;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof TokenizeOrderRequestOrder
+     */
+    'webhook_urls'?: Array<any>;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderBillingAddress
+ */
+export interface TokenizeOrderRequestOrderBillingAddress {
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'additional_description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'address1'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'address2'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'address_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'city'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'country'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'first_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'identity_document'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'last_name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'lat'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'lng'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'phone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'state_code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'state_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderBillingAddress
+     */
+    'zipcode'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderItemsInner
+ */
+export interface TokenizeOrderRequestOrderItemsInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInner
+     */
+    'brand'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInner
+     */
+    'category'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInner
+     */
+    'color'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInner
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInner
+     */
+    'details_url'?: string;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof TokenizeOrderRequestOrderItemsInner
+     */
+    'discounts'?: Array<object>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
     'id'?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'is_valid'?: boolean;
+    'image_url'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'last_four'?: string;
+    'isbn'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'verified_at'?: string;
+    'manufacturer'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsCardIdGet200ResponseData
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'verified_by'?: string;
-}
-/**
- * 
- * @export
- * @interface UsersUserIdCardsGet200Response
- */
-export interface UsersUserIdCardsGet200Response {
-    /**
-     * 
-     * @type {Array<UsersUserIdCardsGet200ResponseDataInner>}
-     * @memberof UsersUserIdCardsGet200Response
-     */
-    'data'?: Array<UsersUserIdCardsGet200ResponseDataInner>;
-}
-/**
- * 
- * @export
- * @interface UsersUserIdCardsGet200ResponseDataInner
- */
-export interface UsersUserIdCardsGet200ResponseDataInner {
+    'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'card_holder'?: string;
+    'options'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderItemsInner
+     */
+    'quantity'?: number;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'card_holder_dni'?: string;
+    'size'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'company'?: string;
+    'sku'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
+     * @type {TokenizeOrderRequestOrderItemsInnerTaxAmount}
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'deleted_at'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
-     */
-    'expiration_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
-     */
-    'first_six'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
-     */
-    'id'?: string;
+    'tax_amount'?: TokenizeOrderRequestOrderItemsInnerTaxAmount;
     /**
      * 
      * @type {boolean}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'is_valid'?: boolean;
+    'taxable'?: boolean;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderItemsInnerTotalAmount}
+     * @memberof TokenizeOrderRequestOrderItemsInner
+     */
+    'total_amount'?: TokenizeOrderRequestOrderItemsInnerTotalAmount;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'last_four'?: string;
+    'type'?: string;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderItemsInnerTaxAmount}
+     * @memberof TokenizeOrderRequestOrderItemsInner
+     */
+    'unit_price'?: TokenizeOrderRequestOrderItemsInnerTaxAmount;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'token'?: string;
+    'uom'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'verified_at'?: string;
+    'upc'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UsersUserIdCardsGet200ResponseDataInner
+     * @type {TokenizeOrderRequestOrderItemsInnerWeight}
+     * @memberof TokenizeOrderRequestOrderItemsInner
      */
-    'verified_by'?: string;
+    'weight'?: TokenizeOrderRequestOrderItemsInnerWeight;
 }
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderItemsInnerTaxAmount
+ */
+export interface TokenizeOrderRequestOrderItemsInnerTaxAmount {
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTaxAmount
+     */
+    'amount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTaxAmount
+     */
+    'currency'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTaxAmount
+     */
+    'currency_symbol'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTaxAmount
+     */
+    'display_amount'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderItemsInnerTotalAmount
+ */
+export interface TokenizeOrderRequestOrderItemsInnerTotalAmount {
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTotalAmount
+     */
+    'amount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTotalAmount
+     */
+    'currency'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTotalAmount
+     */
+    'currency_symbol'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTotalAmount
+     */
+    'display_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTotalAmount
+     */
+    'display_original_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTotalAmount
+     */
+    'display_total_discount'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTotalAmount
+     */
+    'original_amount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderItemsInnerTotalAmount
+     */
+    'total_discount'?: number;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderItemsInnerWeight
+ */
+export interface TokenizeOrderRequestOrderItemsInnerWeight {
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderItemsInnerWeight
+     */
+    'unit'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderItemsInnerWeight
+     */
+    'weight'?: number;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderMetadata
+ */
+export interface TokenizeOrderRequestOrderMetadata {
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderMetadata
+     */
+    'channelId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderMetadata
+     */
+    'orderId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderMetadata
+     */
+    'seqVal'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderMetadata
+     */
+    'uid'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderMetadata
+     */
+    'vendorId'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderShipping
+ */
+export interface TokenizeOrderRequestOrderShipping {
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof TokenizeOrderRequestOrderShipping
+     */
+    'discounts'?: Array<object>;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderShipping
+     */
+    'original_amount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderShipping
+     */
+    'total_discount'?: number;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderShippingAddress
+ */
+export interface TokenizeOrderRequestOrderShippingAddress {
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'additional_description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'address1'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'address2'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'address_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'city'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'country_code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'first_name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'identity_document'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'is_default'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'last_name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'lat'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'lng'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'phone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'state_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'updated_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'user_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingAddress
+     */
+    'zipcode'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderShippingMethod
+ */
+export interface TokenizeOrderRequestOrderShippingMethod {
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingMethod
+     */
+    'code'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderShippingMethod
+     */
+    'cost'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingMethod
+     */
+    'display_cost'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingMethod
+     */
+    'display_tax_amount'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingMethod
+     */
+    'max_delivery_date'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingMethod
+     */
+    'min_delivery_date'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingMethod
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof TokenizeOrderRequestOrderShippingMethod
+     */
+    'scheduler'?: Array<object>;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderShippingMethod
+     */
+    'tax_amount'?: number;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderShippingOptions
+ */
+export interface TokenizeOrderRequestOrderShippingOptions {
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingOptionsDetails}
+     * @memberof TokenizeOrderRequestOrderShippingOptions
+     */
+    'details'?: TokenizeOrderRequestOrderShippingOptionsDetails;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingOptions
+     */
+    'type'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderShippingOptionsDetails
+ */
+export interface TokenizeOrderRequestOrderShippingOptionsDetails {
+    /**
+     * 
+     * @type {object}
+     * @memberof TokenizeOrderRequestOrderShippingOptionsDetails
+     */
+    'additional_details'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingOptionsDetails
+     */
+    'address'?: string;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingOptionsDetailsAddressCoordinates}
+     * @memberof TokenizeOrderRequestOrderShippingOptionsDetails
+     */
+    'address_coordinates'?: TokenizeOrderRequestOrderShippingOptionsDetailsAddressCoordinates;
+    /**
+     * 
+     * @type {TokenizeOrderRequestOrderShippingOptionsDetailsContact}
+     * @memberof TokenizeOrderRequestOrderShippingOptionsDetails
+     */
+    'contact'?: TokenizeOrderRequestOrderShippingOptionsDetailsContact;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingOptionsDetails
+     */
+    'store_name'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderShippingOptionsDetailsAddressCoordinates
+ */
+export interface TokenizeOrderRequestOrderShippingOptionsDetailsAddressCoordinates {
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderShippingOptionsDetailsAddressCoordinates
+     */
+    'lat'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenizeOrderRequestOrderShippingOptionsDetailsAddressCoordinates
+     */
+    'lng'?: number;
+}
+        /**
+ * 
+ * @export
+ * @interface TokenizeOrderRequestOrderShippingOptionsDetailsContact
+ */
+export interface TokenizeOrderRequestOrderShippingOptionsDetailsContact {
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingOptionsDetailsContact
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenizeOrderRequestOrderShippingOptionsDetailsContact
+     */
+    'phone'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface ValidateApplication200Response
+ */
+export interface ValidateApplication200Response {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ValidateApplication200Response
+     */
+    'is_sandbox'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidateApplication200Response
+     */
+    'key_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidateApplication200Response
+     */
+    'merchant_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidateApplication200Response
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidateApplication200Response
+     */
+    'status'?: string;
+}
+    
+        
 
-/**
- * MerchantsApi - axios parameter creator
- * @export
- */
-export const MerchantsApiAxiosParamCreator = function (configuration?: Configuration) {
+    /**
+    * CardsApi - axios parameter creator
+    * @export
+    */
+
+    export const CardsApiAxiosParamCreator = function (configuration?: Configuration) {
+    customAPI.refreshConfiguration(configuration);
     return {
         /**
-         * Make the payment of the order.
-         * @summary Make the payment of the order.
-         * @param {string} [authorization] 
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantID] 
-         * @param {string} [xStoreCode] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [xSessionId] 
-         * @param {string} [userAgent] 
-         * @param {PurchaseRequest} [purchaseRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
+        * Get Bin
+            * @summary Bin detector
+            * @param {string} bin 
+            * @param {string} [xApiKey] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        getBin: async (bin: string, xApiKey?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'bin' is not null or undefined
+                    assertParamExists('getBin', 'bin', configuration.bin);
+            const localVarPath = `/cards/bin/{bin}`
+                .replace(`{${"bin"}}`, encodeURIComponent(String(bin)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (xApiKey != null) {
+                        localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        }
+        };
+
+
+
+                    /**
+                    * Request parameters for getBin operation in CardsApi.
+                    * @export
+                    * @interface CardsApiGetBinRequest
+                    */
+                    export interface CardsApiGetBinRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof CardsApiGetBin
+                        */
+                    bin: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof CardsApiGetBin
+                        */
+                    xApiKey?: string
+                    }
+
+        /**
+        * CardsApi - object-oriented interface
+        * @export
+        * @class CardsApi
+        * @extends {BaseAPI}
+        */
+            export class CardsApi extends BaseAPI {
+            /**
+            * Get Bin
+                * @summary Bin detector
+                    * @param {CardsApiGetBinRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof CardsApi
+            */
+
+                public async getBin(requestParameters: CardsApiGetBinRequest, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = CardsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.getBin(requestParameters.bin, requestParameters.xApiKey, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetBin200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+        }
+
+    
+        
+
+    /**
+    * MerchantApplicationApi - axios parameter creator
+    * @export
+    */
+
+    export const MerchantApplicationApiAxiosParamCreator = function (configuration?: Configuration) {
+    customAPI.refreshConfiguration(configuration);
+    return {
+        /**
+        * Create application
+            * @summary Create Application
+            * @param {string} merchantId 
+            * @param {string} [authorization] 
+            * @param {CreateApplicationRequest} [createApplicationRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        createApplication: async (merchantId: string, authorization?: string, createApplicationRequest?: CreateApplicationRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('createApplication', 'merchantId', configuration.merchantId);
+            const localVarPath = `/merchants/{merchant_id}/applications`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(createApplicationRequest, localVarRequestOptions, configuration)
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Get application by ID
+            * @summary Get Application
+            * @param {string} merchantId 
+            * @param {string} applicationId 
+            * @param {string} [authorization] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        getApplication: async (merchantId: string, applicationId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('getApplication', 'merchantId', configuration.merchantId);
+                    // verify required parameter 'applicationId' is not null or undefined
+                    assertParamExists('getApplication', 'applicationId', configuration.applicationId);
+            const localVarPath = `/merchants/{merchant_id}/applications/{application_id}`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
+                .replace(`{${"application_id"}}`, encodeURIComponent(String(applicationId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Get applications of merchant
+            * @summary Get Applications
+            * @param {string} merchantId 
+            * @param {string} [authorization] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        getApplications: async (merchantId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('getApplications', 'merchantId', configuration.merchantId);
+            const localVarPath = `/merchants/{merchant_id}/applications`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Validate application
+            * @summary Validate Application
+            * @param {string} [xApiKey] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        validateApplication: async (xApiKey?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchants/applications/validate`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (xApiKey != null) {
+                        localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        }
+        };
+
+
+
+                    /**
+                    * Request parameters for createApplication operation in MerchantApplicationApi.
+                    * @export
+                    * @interface MerchantApplicationApiCreateApplicationRequest
+                    */
+                    export interface MerchantApplicationApiCreateApplicationRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiCreateApplication
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiCreateApplication
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {CreateApplicationRequest}
+                        * @memberof MerchantApplicationApiCreateApplication
+                        */
+                    createApplicationRequest?: CreateApplicationRequest
+                    }
+
+                    /**
+                    * Request parameters for getApplication operation in MerchantApplicationApi.
+                    * @export
+                    * @interface MerchantApplicationApiGetApplicationRequest
+                    */
+                    export interface MerchantApplicationApiGetApplicationRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiGetApplication
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiGetApplication
+                        */
+                    applicationId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiGetApplication
+                        */
+                    authorization?: string
+                    }
+
+                    /**
+                    * Request parameters for getApplications operation in MerchantApplicationApi.
+                    * @export
+                    * @interface MerchantApplicationApiGetApplicationsRequest
+                    */
+                    export interface MerchantApplicationApiGetApplicationsRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiGetApplications
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiGetApplications
+                        */
+                    authorization?: string
+                    }
+
+                    /**
+                    * Request parameters for validateApplication operation in MerchantApplicationApi.
+                    * @export
+                    * @interface MerchantApplicationApiValidateApplicationRequest
+                    */
+                    export interface MerchantApplicationApiValidateApplicationRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiValidateApplication
+                        */
+                    xApiKey?: string
+                    }
+
+        /**
+        * MerchantApplicationApi - object-oriented interface
+        * @export
+        * @class MerchantApplicationApi
+        * @extends {BaseAPI}
+        */
+            export class MerchantApplicationApi extends BaseAPI {
+            /**
+            * Create application
+                * @summary Create Application
+                    * @param {MerchantApplicationApiCreateApplicationRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantApplicationApi
+            */
+
+                public async createApplication(requestParameters: MerchantApplicationApiCreateApplicationRequest, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.createApplication(requestParameters.merchantId, requestParameters.authorization, requestParameters.createApplicationRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<CreateApplication200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Get application by ID
+                * @summary Get Application
+                    * @param {MerchantApplicationApiGetApplicationRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantApplicationApi
+            */
+
+                public async getApplication(requestParameters: MerchantApplicationApiGetApplicationRequest, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.getApplication(requestParameters.merchantId, requestParameters.applicationId, requestParameters.authorization, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<CreateApplication200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Get applications of merchant
+                * @summary Get Applications
+                    * @param {MerchantApplicationApiGetApplicationsRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantApplicationApi
+            */
+
+                public async getApplications(requestParameters: MerchantApplicationApiGetApplicationsRequest, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.getApplications(requestParameters.merchantId, requestParameters.authorization, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetApplications200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Validate application
+                * @summary Validate Application
+                    * @param {MerchantApplicationApiValidateApplicationRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantApplicationApi
+            */
+
+                public async validateApplication(requestParameters: MerchantApplicationApiValidateApplicationRequest = {}, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.validateApplication(requestParameters.xApiKey, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<ValidateApplication200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+        }
+
+    
+        
+
+    /**
+    * MerchantsApi - axios parameter creator
+    * @export
+    */
+
+    export const MerchantsApiAxiosParamCreator = function (configuration?: Configuration) {
+    customAPI.refreshConfiguration(configuration);
+    return {
+        /**
+        * Canceling an order
+            * @summary Cancel an order
+            * @param {string} orderToken 
+            * @param {string} [xApiKey] 
+            * @param {CancelRequest} [cancelRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        cancel: async (orderToken: string, xApiKey?: string, cancelRequest?: CancelRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'orderToken' is not null or undefined
+                    assertParamExists('cancel', 'orderToken', configuration.orderToken);
+            const localVarPath = `/merchants/orders/{order_token}/cancel`
+                .replace(`{${"order_token"}}`, encodeURIComponent(String(orderToken)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (xApiKey != null) {
+                        localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(cancelRequest, localVarRequestOptions, configuration)
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Create merchant
+            * @summary Create merchant
+            * @param {string} [authorization] 
+            * @param {CreateMerchantRequest} [createMerchantRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        createMerchant: async (authorization?: string, createMerchantRequest?: CreateMerchantRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchants`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(createMerchantRequest, localVarRequestOptions, configuration)
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Create Merchant Store
+            * @summary Create Merchant Store
+            * @param {string} merchantId 
+            * @param {string} [authorization] 
+            * @param {string} [xApiKey] 
+            * @param {CreateMerchantStoreRequest} [createMerchantStoreRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        createMerchantStore: async (merchantId: string, authorization?: string, xApiKey?: string, createMerchantStoreRequest?: CreateMerchantStoreRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('createMerchantStore', 'merchantId', configuration.merchantId);
+            const localVarPath = `/merchants/{merchant_id}/stores`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+                    if (xApiKey != null) {
+                        localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(createMerchantStoreRequest, localVarRequestOptions, configuration)
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Get All Merchants
+            * @summary Get All Merchants
+            * @param {string} [authorization] 
+            * @param {string} [xApiKey] 
+            * @param {string} [page] 
+            * @param {string} [pageSize] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        getAllMerchants: async (authorization?: string, xApiKey?: string, page?: string, pageSize?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchants-all`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                    if (page !== undefined) {
+                            localVarQueryParameter['page'] = page;
+                    }
+
+                    if (pageSize !== undefined) {
+                            localVarQueryParameter['page_size'] = pageSize;
+                    }
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+                    if (xApiKey != null) {
+                        localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Getting Merchant Information
+            * @summary Get Information
+            * @param {string} [authorization] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        getMerchantToken: async (authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchants-tokens/me`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Register Merchant User
+            * @summary Register Merchant User
+            * @param {string} [authorization] 
+            * @param {GetMerchantUsersRequest} [getMerchantUsersRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        getMerchantUsers: async (authorization?: string, getMerchantUsersRequest?: GetMerchantUsersRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchant-users`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(getMerchantUsersRequest, localVarRequestOptions, configuration)
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Getting an order by token
+            * @summary Get an order
+            * @param {string} orderToken 
+            * @param {string} [xApiKey] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        getOrder: async (orderToken: string, xApiKey?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'orderToken' is not null or undefined
+                    assertParamExists('getOrder', 'orderToken', configuration.orderToken);
+            const localVarPath = `/merchants/orders/{order_token}`
+                .replace(`{${"order_token"}}`, encodeURIComponent(String(orderToken)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (xApiKey != null) {
+                        localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Make a Merchant Login
+            * @summary Login
+            * @param {LoginRequest} [loginRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        login: async (loginRequest?: LoginRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchants/login`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(loginRequest, localVarRequestOptions, configuration)
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Make the payment of the order.
+            * @summary Make the payment of the order.
+            * @param {string} [authorization] 
+            * @param {string} [xApiKey] 
+            * @param {string} [xMerchantID] 
+            * @param {string} [xStoreCode] 
+            * @param {string} [xDeviceId] 
+            * @param {string} [xSessionId] 
+            * @param {string} [userAgent] 
+            * @param {PurchaseRequest} [purchaseRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
         purchase: async (authorization?: string, xApiKey?: string, xMerchantID?: string, xStoreCode?: string, xDeviceId?: string, xSessionId?: string, userAgent?: string, purchaseRequest?: PurchaseRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/merchants/transactions/purchase`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
-                baseOptions = configuration.baseOptions;
+            baseOptions = configuration.baseOptions;
             }
 
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Authorization required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication X-Api-Key required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
-
-            if (authorization != null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
-
-            if (xApiKey != null) {
-                localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
-            }
-
-            if (xMerchantID != null) {
-                localVarHeaderParameter['X-Merchant-ID'] = String(xMerchantID);
-            }
-
-            if (xStoreCode != null) {
-                localVarHeaderParameter['X-Store-Code'] = String(xStoreCode);
-            }
-
-            if (xDeviceId != null) {
-                localVarHeaderParameter['X-Device-Id'] = String(xDeviceId);
-            }
-
-            if (xSessionId != null) {
-                localVarHeaderParameter['X-Session-Id'] = String(xSessionId);
-            }
-
-            if (userAgent != null) {
-                localVarHeaderParameter['User-Agent'] = String(userAgent);
-            }
+                // authentication Authorization required
 
 
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+                    if (xApiKey != null) {
+                        localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+                    if (xMerchantID != null) {
+                        localVarHeaderParameter['X-Merchant-ID'] = String(xMerchantID);
+                    }
+
+                    if (xStoreCode != null) {
+                        localVarHeaderParameter['X-Store-Code'] = String(xStoreCode);
+                    }
+
+                    if (xDeviceId != null) {
+                        localVarHeaderParameter['X-Device-Id'] = String(xDeviceId);
+                    }
+
+                    if (xSessionId != null) {
+                        localVarHeaderParameter['X-Session-Id'] = String(xSessionId);
+                    }
+
+                    if (userAgent != null) {
+                        localVarHeaderParameter['User-Agent'] = String(userAgent);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(purchaseRequest, localVarRequestOptions, configuration)
+                localVarRequestOptions.data = serializeDataIfNeeded(purchaseRequest, localVarRequestOptions, configuration)
 
             return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
             };
-        },
-    }
-};
-
-/**
- * MerchantsApi - functional programming interface
- * @export
- */
-export const MerchantsApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(configuration)
-    return {
+            },
         /**
-         * Make the payment of the order.
-         * @summary Make the payment of the order.
-         * @param {string} [authorization] 
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantID] 
-         * @param {string} [xStoreCode] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [xSessionId] 
-         * @param {string} [userAgent] 
-         * @param {PurchaseRequest} [purchaseRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async purchase(authorization?: string, xApiKey?: string, xMerchantID?: string, xStoreCode?: string, xDeviceId?: string, xSessionId?: string, userAgent?: string, purchaseRequest?: PurchaseRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Purchase200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.purchase(authorization, xApiKey, xMerchantID, xStoreCode, xDeviceId, xSessionId, userAgent, purchaseRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-    }
-};
-
-/**
- * MerchantsApi - factory interface
- * @export
- */
-export const MerchantsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = MerchantsApiFp(configuration)
-    return {
-        /**
-         * Make the payment of the order.
-         * @summary Make the payment of the order.
-         * @param {MerchantsApiPurchaseRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        purchase(requestParameters: MerchantsApiPurchaseRequest = {}, options?: AxiosRequestConfig): AxiosPromise<Purchase200Response> {
-            return localVarFp.purchase(requestParameters.authorization, requestParameters.xApiKey, requestParameters.xMerchantID, requestParameters.xStoreCode, requestParameters.xDeviceId, requestParameters.xSessionId, requestParameters.userAgent, requestParameters.purchaseRequest, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * Request parameters for purchase operation in MerchantsApi.
- * @export
- * @interface MerchantsApiPurchaseRequest
- */
-export interface MerchantsApiPurchaseRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof MerchantsApiPurchase
-     */
-    readonly authorization?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof MerchantsApiPurchase
-     */
-    readonly xApiKey?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof MerchantsApiPurchase
-     */
-    readonly xMerchantID?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof MerchantsApiPurchase
-     */
-    readonly xStoreCode?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof MerchantsApiPurchase
-     */
-    readonly xDeviceId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof MerchantsApiPurchase
-     */
-    readonly xSessionId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof MerchantsApiPurchase
-     */
-    readonly userAgent?: string
-
-    /**
-     * 
-     * @type {PurchaseRequest}
-     * @memberof MerchantsApiPurchase
-     */
-    readonly purchaseRequest?: PurchaseRequest
-}
-
-/**
- * MerchantsApi - object-oriented interface
- * @export
- * @class MerchantsApi
- * @extends {BaseAPI}
- */
-export class MerchantsApi extends BaseAPI {
-    /**
-     * Make the payment of the order.
-     * @summary Make the payment of the order.
-     * @param {MerchantsApiPurchaseRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MerchantsApi
-     */
-    public purchase(requestParameters: MerchantsApiPurchaseRequest = {}, options?: AxiosRequestConfig) {
-        return MerchantsApiFp(this.configuration).purchase(requestParameters.authorization, requestParameters.xApiKey, requestParameters.xMerchantID, requestParameters.xStoreCode, requestParameters.xDeviceId, requestParameters.xSessionId, requestParameters.userAgent, requestParameters.purchaseRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-/**
- * UsersApi - axios parameter creator
- * @export
- */
-export const UsersApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * Remove card by identifier
-         * @summary Remove card by identifier
-         * @param {string} userId 
-         * @param {string} cardId 
-         * @param {string} [authorization] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteUserCardById: async (userId: string, cardId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('deleteUserCardById', 'userId', userId)
-            // verify required parameter 'cardId' is not null or undefined
-            assertParamExists('deleteUserCardById', 'cardId', cardId)
-            const localVarPath = `/users/{user_id}/cards/{card_id}`
-                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)))
-                .replace(`{${"card_id"}}`, encodeURIComponent(String(cardId)));
+        * Register Merchant User
+            * @summary Register Merchant User
+            * @param {string} [authorization] 
+            * @param {GetMerchantUsersRequest} [getMerchantUsersRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        registerMerchantUser: async (authorization?: string, getMerchantUsersRequest?: GetMerchantUsersRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchants/users`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication X-Api-Key required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
-
-            if (authorization != null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get User Information
-         * @summary Get User Information
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantId] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [authorization] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserInformation: async (xApiKey?: string, xMerchantId?: string, xDeviceId?: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/users/me`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Authorization required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication X-Api-Key required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
-
-            if (xApiKey != null) {
-                localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
-            }
-
-            if (xMerchantId != null) {
-                localVarHeaderParameter['X-Merchant-Id'] = String(xMerchantId);
-            }
-
-            if (xDeviceId != null) {
-                localVarHeaderParameter['X-Device-Id'] = String(xDeviceId);
-            }
-
-            if (authorization != null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantId] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [xSessionID] 
-         * @param {string} [authorization] 
-         * @param {string} [xRecaptchaToken] 
-         * @param {string} [type] 
-         * @param {string} [loadProfileData] 
-         * @param {LoginRequest} [loginRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        login: async (xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, xRecaptchaToken?: string, type?: string, loadProfileData?: string, loginRequest?: LoginRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/users/login`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
+            baseOptions = configuration.baseOptions;
             }
 
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Authorization required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication X-Api-Key required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
-
-            if (type !== undefined) {
-                localVarQueryParameter['type'] = type;
-            }
-
-            if (loadProfileData !== undefined) {
-                localVarQueryParameter['load_profile_data'] = loadProfileData;
-            }
-
-            if (xApiKey != null) {
-                localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
-            }
-
-            if (xMerchantId != null) {
-                localVarHeaderParameter['X-Merchant-Id'] = String(xMerchantId);
-            }
-
-            if (xDeviceId != null) {
-                localVarHeaderParameter['X-Device-Id'] = String(xDeviceId);
-            }
-
-            if (xSessionID != null) {
-                localVarHeaderParameter['X-Session-ID'] = String(xSessionID);
-            }
-
-            if (authorization != null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
-
-            if (xRecaptchaToken != null) {
-                localVarHeaderParameter['X-Recaptcha-Token'] = String(xRecaptchaToken);
-            }
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
 
 
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(loginRequest, localVarRequestOptions, configuration)
+                localVarRequestOptions.data = serializeDataIfNeeded(getMerchantUsersRequest, localVarRequestOptions, configuration)
 
             return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
             };
-        },
+            },
         /**
-         * Login User
-         * @summary Login User
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantId] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [xSessionID] 
-         * @param {string} [authorization] 
-         * @param {string} [type] 
-         * @param {string} [loadProfileData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersLoginDeviceFingerprintPost: async (xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, type?: string, loadProfileData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/users/login/device-fingerprint`;
+        * Succesing an order
+            * @summary Success an order
+            * @param {string} orderToken 
+            * @param {string} [xApiKey] 
+            * @param {CancelRequest} [cancelRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        success: async (orderToken: string, xApiKey?: string, cancelRequest?: CancelRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'orderToken' is not null or undefined
+                    assertParamExists('success', 'orderToken', configuration.orderToken);
+            const localVarPath = `/merchants/orders/{order_token}/success`
+                .replace(`{${"order_token"}}`, encodeURIComponent(String(orderToken)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
-                baseOptions = configuration.baseOptions;
+            baseOptions = configuration.baseOptions;
             }
 
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Authorization required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication X-Api-Key required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
-
-            if (type !== undefined) {
-                localVarQueryParameter['type'] = type;
-            }
-
-            if (loadProfileData !== undefined) {
-                localVarQueryParameter['load_profile_data'] = loadProfileData;
-            }
-
-            if (xApiKey != null) {
-                localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
-            }
-
-            if (xMerchantId != null) {
-                localVarHeaderParameter['X-Merchant-Id'] = String(xMerchantId);
-            }
-
-            if (xDeviceId != null) {
-                localVarHeaderParameter['X-Device-Id'] = String(xDeviceId);
-            }
-
-            if (xSessionID != null) {
-                localVarHeaderParameter['X-Session-ID'] = String(xSessionID);
-            }
-
-            if (authorization != null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
 
 
-    
+                    if (xApiKey != null) {
+                        localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(cancelRequest, localVarRequestOptions, configuration)
 
             return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
             };
-        },
+            },
         /**
-         * Obtain a card by its identifier.
-         * @summary Obtain a card by its identifier.
-         * @param {string} userId 
-         * @param {string} cardId 
-         * @param {string} [authorization] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUserIdCardsCardIdGet: async (userId: string, cardId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('usersUserIdCardsCardIdGet', 'userId', userId)
-            // verify required parameter 'cardId' is not null or undefined
-            assertParamExists('usersUserIdCardsCardIdGet', 'cardId', cardId)
-            const localVarPath = `/users/{user_id}/cards/{card_id}`
-                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)))
-                .replace(`{${"card_id"}}`, encodeURIComponent(String(cardId)));
+        * Tokenize an order
+            * @summary Tokenize an order
+            * @param {string} [xApiKey] 
+            * @param {string} [authorization] 
+            * @param {TokenizeOrderRequest} [tokenizeOrderRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        tokenizeOrder: async (xApiKey?: string, authorization?: string, tokenizeOrderRequest?: TokenizeOrderRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchants/orders`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
-                baseOptions = configuration.baseOptions;
+            baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication X-Api-Key required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
-
-            if (authorization != null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
 
 
-    
+                    if (xApiKey != null) {
+                        localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(tokenizeOrderRequest, localVarRequestOptions, configuration)
 
             return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
             };
-        },
+            },
+        }
+        };
+
+
+
+                    /**
+                    * Request parameters for cancel operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiCancelRequest
+                    */
+                    export interface MerchantsApiCancelRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiCancel
+                        */
+                    orderToken: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiCancel
+                        */
+                    xApiKey?: string
+
+                        /**
+                        * 
+                        * @type {CancelRequest}
+                        * @memberof MerchantsApiCancel
+                        */
+                    cancelRequest?: CancelRequest
+                    }
+
+                    /**
+                    * Request parameters for createMerchant operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiCreateMerchantRequest
+                    */
+                    export interface MerchantsApiCreateMerchantRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiCreateMerchant
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {CreateMerchantRequest}
+                        * @memberof MerchantsApiCreateMerchant
+                        */
+                    createMerchantRequest?: CreateMerchantRequest
+                    }
+
+                    /**
+                    * Request parameters for createMerchantStore operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiCreateMerchantStoreRequest
+                    */
+                    export interface MerchantsApiCreateMerchantStoreRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiCreateMerchantStore
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiCreateMerchantStore
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiCreateMerchantStore
+                        */
+                    xApiKey?: string
+
+                        /**
+                        * 
+                        * @type {CreateMerchantStoreRequest}
+                        * @memberof MerchantsApiCreateMerchantStore
+                        */
+                    createMerchantStoreRequest?: CreateMerchantStoreRequest
+                    }
+
+                    /**
+                    * Request parameters for getAllMerchants operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiGetAllMerchantsRequest
+                    */
+                    export interface MerchantsApiGetAllMerchantsRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetAllMerchants
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetAllMerchants
+                        */
+                    xApiKey?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetAllMerchants
+                        */
+                    page?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetAllMerchants
+                        */
+                    pageSize?: string
+                    }
+
+                    /**
+                    * Request parameters for getMerchantToken operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiGetMerchantTokenRequest
+                    */
+                    export interface MerchantsApiGetMerchantTokenRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetMerchantToken
+                        */
+                    authorization?: string
+                    }
+
+                    /**
+                    * Request parameters for getMerchantUsers operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiGetMerchantUsersRequest
+                    */
+                    export interface MerchantsApiGetMerchantUsersRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetMerchantUsers
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {GetMerchantUsersRequest}
+                        * @memberof MerchantsApiGetMerchantUsers
+                        */
+                    getMerchantUsersRequest?: GetMerchantUsersRequest
+                    }
+
+                    /**
+                    * Request parameters for getOrder operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiGetOrderRequest
+                    */
+                    export interface MerchantsApiGetOrderRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetOrder
+                        */
+                    orderToken: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetOrder
+                        */
+                    xApiKey?: string
+                    }
+
+                    /**
+                    * Request parameters for login operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiLoginRequest
+                    */
+                    export interface MerchantsApiLoginRequest {
+                        /**
+                        * 
+                        * @type {LoginRequest}
+                        * @memberof MerchantsApiLogin
+                        */
+                    loginRequest?: LoginRequest
+                    }
+
+                    /**
+                    * Request parameters for purchase operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiPurchaseRequest
+                    */
+                    export interface MerchantsApiPurchaseRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiPurchase
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiPurchase
+                        */
+                    xApiKey?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiPurchase
+                        */
+                    xMerchantID?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiPurchase
+                        */
+                    xStoreCode?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiPurchase
+                        */
+                    xDeviceId?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiPurchase
+                        */
+                    xSessionId?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiPurchase
+                        */
+                    userAgent?: string
+
+                        /**
+                        * 
+                        * @type {PurchaseRequest}
+                        * @memberof MerchantsApiPurchase
+                        */
+                    purchaseRequest?: PurchaseRequest
+                    }
+
+                    /**
+                    * Request parameters for registerMerchantUser operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiRegisterMerchantUserRequest
+                    */
+                    export interface MerchantsApiRegisterMerchantUserRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiRegisterMerchantUser
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {GetMerchantUsersRequest}
+                        * @memberof MerchantsApiRegisterMerchantUser
+                        */
+                    getMerchantUsersRequest?: GetMerchantUsersRequest
+                    }
+
+                    /**
+                    * Request parameters for success operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiSuccessRequest
+                    */
+                    export interface MerchantsApiSuccessRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiSuccess
+                        */
+                    orderToken: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiSuccess
+                        */
+                    xApiKey?: string
+
+                        /**
+                        * 
+                        * @type {CancelRequest}
+                        * @memberof MerchantsApiSuccess
+                        */
+                    cancelRequest?: CancelRequest
+                    }
+
+                    /**
+                    * Request parameters for tokenizeOrder operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiTokenizeOrderRequest
+                    */
+                    export interface MerchantsApiTokenizeOrderRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiTokenizeOrder
+                        */
+                    xApiKey?: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiTokenizeOrder
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {TokenizeOrderRequest}
+                        * @memberof MerchantsApiTokenizeOrder
+                        */
+                    tokenizeOrderRequest?: TokenizeOrderRequest
+                    }
+
         /**
-         * Get all user cards
-         * @summary Get all user cards
-         * @param {string} userId 
-         * @param {string} [authorization] 
-         * @param {string} [xMerchantID] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUserIdCardsGet: async (userId: string, authorization?: string, xMerchantID?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('usersUserIdCardsGet', 'userId', userId)
-            const localVarPath = `/users/{user_id}/cards`
-                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
+        * MerchantsApi - object-oriented interface
+        * @export
+        * @class MerchantsApi
+        * @extends {BaseAPI}
+        */
+            export class MerchantsApi extends BaseAPI {
+            /**
+            * Canceling an order
+                * @summary Cancel an order
+                    * @param {MerchantsApiCancelRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+                public async cancel(requestParameters: MerchantsApiCancelRequest, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.cancel(requestParameters.orderToken, requestParameters.xApiKey, requestParameters.cancelRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<void>(axiosRequestArgs);
 
-            // authentication X-Api-Key required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
 
-            if (authorization != null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
 
-            if (xMerchantID != null) {
-                localVarHeaderParameter['X-Merchant-ID'] = String(xMerchantID);
-            }
+            /**
+            * Create merchant
+                * @summary Create merchant
+                    * @param {MerchantsApiCreateMerchantRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
 
+                public async createMerchant(requestParameters: MerchantsApiCreateMerchantRequest = {}, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.createMerchant(requestParameters.authorization, requestParameters.createMerchantRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<CreateMerchant200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Create Merchant Store
+                * @summary Create Merchant Store
+                    * @param {MerchantsApiCreateMerchantStoreRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async createMerchantStore(requestParameters: MerchantsApiCreateMerchantStoreRequest, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.createMerchantStore(requestParameters.merchantId, requestParameters.authorization, requestParameters.xApiKey, requestParameters.createMerchantStoreRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<CreateMerchantStore200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Get All Merchants
+                * @summary Get All Merchants
+                    * @param {MerchantsApiGetAllMerchantsRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async getAllMerchants(requestParameters: MerchantsApiGetAllMerchantsRequest = {}, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.getAllMerchants(requestParameters.authorization, requestParameters.xApiKey, requestParameters.page, requestParameters.pageSize, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetAllMerchants200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Getting Merchant Information
+                * @summary Get Information
+                    * @param {MerchantsApiGetMerchantTokenRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async getMerchantToken(requestParameters: MerchantsApiGetMerchantTokenRequest = {}, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.getMerchantToken(requestParameters.authorization, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetMerchantToken200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Register Merchant User
+                * @summary Register Merchant User
+                    * @param {MerchantsApiGetMerchantUsersRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async getMerchantUsers(requestParameters: MerchantsApiGetMerchantUsersRequest = {}, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.getMerchantUsers(requestParameters.authorization, requestParameters.getMerchantUsersRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetMerchantUsers200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Getting an order by token
+                * @summary Get an order
+                    * @param {MerchantsApiGetOrderRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async getOrder(requestParameters: MerchantsApiGetOrderRequest, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.getOrder(requestParameters.orderToken, requestParameters.xApiKey, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetOrder200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Make a Merchant Login
+                * @summary Login
+                    * @param {MerchantsApiLoginRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async login(requestParameters: MerchantsApiLoginRequest = {}, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.login(requestParameters.loginRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<Login200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Make the payment of the order.
+                * @summary Make the payment of the order.
+                    * @param {MerchantsApiPurchaseRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async purchase(requestParameters: MerchantsApiPurchaseRequest = {}, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.purchase(requestParameters.authorization, requestParameters.xApiKey, requestParameters.xMerchantID, requestParameters.xStoreCode, requestParameters.xDeviceId, requestParameters.xSessionId, requestParameters.userAgent, requestParameters.purchaseRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<Purchase200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Register Merchant User
+                * @summary Register Merchant User
+                    * @param {MerchantsApiRegisterMerchantUserRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async registerMerchantUser(requestParameters: MerchantsApiRegisterMerchantUserRequest = {}, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.registerMerchantUser(requestParameters.authorization, requestParameters.getMerchantUsersRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetMerchantUsers200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Succesing an order
+                * @summary Success an order
+                    * @param {MerchantsApiSuccessRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async success(requestParameters: MerchantsApiSuccessRequest, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.success(requestParameters.orderToken, requestParameters.xApiKey, requestParameters.cancelRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<void>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Tokenize an order
+                * @summary Tokenize an order
+                    * @param {MerchantsApiTokenizeOrderRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async tokenizeOrder(requestParameters: MerchantsApiTokenizeOrderRequest = {}, options?: AxiosRequestConfig) {
+                console.log(this.configuration);
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.tokenizeOrder(requestParameters.xApiKey, requestParameters.authorization, requestParameters.tokenizeOrderRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<TokenizeOrder200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+        }
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * UsersApi - functional programming interface
- * @export
- */
-export const UsersApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = UsersApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * Remove card by identifier
-         * @summary Remove card by identifier
-         * @param {string} userId 
-         * @param {string} cardId 
-         * @param {string} [authorization] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteUserCardById(userId: string, cardId: string, authorization?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserCardById(userId, cardId, authorization, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Get User Information
-         * @summary Get User Information
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantId] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [authorization] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserInformation(xApiKey?: string, xMerchantId?: string, xDeviceId?: string, authorization?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUserInformation200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserInformation(xApiKey, xMerchantId, xDeviceId, authorization, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantId] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [xSessionID] 
-         * @param {string} [authorization] 
-         * @param {string} [xRecaptchaToken] 
-         * @param {string} [type] 
-         * @param {string} [loadProfileData] 
-         * @param {LoginRequest} [loginRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async login(xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, xRecaptchaToken?: string, type?: string, loadProfileData?: string, loginRequest?: LoginRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Login200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.login(xApiKey, xMerchantId, xDeviceId, xSessionID, authorization, xRecaptchaToken, type, loadProfileData, loginRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Login User
-         * @summary Login User
-         * @param {string} [xApiKey] 
-         * @param {string} [xMerchantId] 
-         * @param {string} [xDeviceId] 
-         * @param {string} [xSessionID] 
-         * @param {string} [authorization] 
-         * @param {string} [type] 
-         * @param {string} [loadProfileData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async usersLoginDeviceFingerprintPost(xApiKey?: string, xMerchantId?: string, xDeviceId?: string, xSessionID?: string, authorization?: string, type?: string, loadProfileData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersLoginDeviceFingerprintPost200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.usersLoginDeviceFingerprintPost(xApiKey, xMerchantId, xDeviceId, xSessionID, authorization, type, loadProfileData, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Obtain a card by its identifier.
-         * @summary Obtain a card by its identifier.
-         * @param {string} userId 
-         * @param {string} cardId 
-         * @param {string} [authorization] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async usersUserIdCardsCardIdGet(userId: string, cardId: string, authorization?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersUserIdCardsCardIdGet200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.usersUserIdCardsCardIdGet(userId, cardId, authorization, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Get all user cards
-         * @summary Get all user cards
-         * @param {string} userId 
-         * @param {string} [authorization] 
-         * @param {string} [xMerchantID] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async usersUserIdCardsGet(userId: string, authorization?: string, xMerchantID?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersUserIdCardsGet200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.usersUserIdCardsGet(userId, authorization, xMerchantID, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-    }
-};
-
-/**
- * UsersApi - factory interface
- * @export
- */
-export const UsersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = UsersApiFp(configuration)
-    return {
-        /**
-         * Remove card by identifier
-         * @summary Remove card by identifier
-         * @param {UsersApiDeleteUserCardByIdRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteUserCardById(requestParameters: UsersApiDeleteUserCardByIdRequest, options?: AxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.deleteUserCardById(requestParameters.userId, requestParameters.cardId, requestParameters.authorization, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Get User Information
-         * @summary Get User Information
-         * @param {UsersApiGetUserInformationRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserInformation(requestParameters: UsersApiGetUserInformationRequest = {}, options?: AxiosRequestConfig): AxiosPromise<GetUserInformation200Response> {
-            return localVarFp.getUserInformation(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.authorization, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-         * @param {UsersApiLoginRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        login(requestParameters: UsersApiLoginRequest = {}, options?: AxiosRequestConfig): AxiosPromise<Login200Response> {
-            return localVarFp.login(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.xRecaptchaToken, requestParameters.type, requestParameters.loadProfileData, requestParameters.loginRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Login User
-         * @summary Login User
-         * @param {UsersApiUsersLoginDeviceFingerprintPostRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersLoginDeviceFingerprintPost(requestParameters: UsersApiUsersLoginDeviceFingerprintPostRequest = {}, options?: AxiosRequestConfig): AxiosPromise<UsersLoginDeviceFingerprintPost200Response> {
-            return localVarFp.usersLoginDeviceFingerprintPost(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.type, requestParameters.loadProfileData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Obtain a card by its identifier.
-         * @summary Obtain a card by its identifier.
-         * @param {UsersApiUsersUserIdCardsCardIdGetRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUserIdCardsCardIdGet(requestParameters: UsersApiUsersUserIdCardsCardIdGetRequest, options?: AxiosRequestConfig): AxiosPromise<UsersUserIdCardsCardIdGet200Response> {
-            return localVarFp.usersUserIdCardsCardIdGet(requestParameters.userId, requestParameters.cardId, requestParameters.authorization, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Get all user cards
-         * @summary Get all user cards
-         * @param {UsersApiUsersUserIdCardsGetRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUserIdCardsGet(requestParameters: UsersApiUsersUserIdCardsGetRequest, options?: AxiosRequestConfig): AxiosPromise<UsersUserIdCardsGet200Response> {
-            return localVarFp.usersUserIdCardsGet(requestParameters.userId, requestParameters.authorization, requestParameters.xMerchantID, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * Request parameters for deleteUserCardById operation in UsersApi.
- * @export
- * @interface UsersApiDeleteUserCardByIdRequest
- */
-export interface UsersApiDeleteUserCardByIdRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiDeleteUserCardById
-     */
-    readonly userId: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiDeleteUserCardById
-     */
-    readonly cardId: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiDeleteUserCardById
-     */
-    readonly authorization?: string
-}
-
-/**
- * Request parameters for getUserInformation operation in UsersApi.
- * @export
- * @interface UsersApiGetUserInformationRequest
- */
-export interface UsersApiGetUserInformationRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiGetUserInformation
-     */
-    readonly xApiKey?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiGetUserInformation
-     */
-    readonly xMerchantId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiGetUserInformation
-     */
-    readonly xDeviceId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiGetUserInformation
-     */
-    readonly authorization?: string
-}
-
-/**
- * Request parameters for login operation in UsersApi.
- * @export
- * @interface UsersApiLoginRequest
- */
-export interface UsersApiLoginRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiLogin
-     */
-    readonly xApiKey?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiLogin
-     */
-    readonly xMerchantId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiLogin
-     */
-    readonly xDeviceId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiLogin
-     */
-    readonly xSessionID?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiLogin
-     */
-    readonly authorization?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiLogin
-     */
-    readonly xRecaptchaToken?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiLogin
-     */
-    readonly type?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiLogin
-     */
-    readonly loadProfileData?: string
-
-    /**
-     * 
-     * @type {LoginRequest}
-     * @memberof UsersApiLogin
-     */
-    readonly loginRequest?: LoginRequest
-}
-
-/**
- * Request parameters for usersLoginDeviceFingerprintPost operation in UsersApi.
- * @export
- * @interface UsersApiUsersLoginDeviceFingerprintPostRequest
- */
-export interface UsersApiUsersLoginDeviceFingerprintPostRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginDeviceFingerprintPost
-     */
-    readonly xApiKey?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginDeviceFingerprintPost
-     */
-    readonly xMerchantId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginDeviceFingerprintPost
-     */
-    readonly xDeviceId?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginDeviceFingerprintPost
-     */
-    readonly xSessionID?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginDeviceFingerprintPost
-     */
-    readonly authorization?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginDeviceFingerprintPost
-     */
-    readonly type?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersLoginDeviceFingerprintPost
-     */
-    readonly loadProfileData?: string
-}
-
-/**
- * Request parameters for usersUserIdCardsCardIdGet operation in UsersApi.
- * @export
- * @interface UsersApiUsersUserIdCardsCardIdGetRequest
- */
-export interface UsersApiUsersUserIdCardsCardIdGetRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersUserIdCardsCardIdGet
-     */
-    readonly userId: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersUserIdCardsCardIdGet
-     */
-    readonly cardId: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersUserIdCardsCardIdGet
-     */
-    readonly authorization?: string
-}
-
-/**
- * Request parameters for usersUserIdCardsGet operation in UsersApi.
- * @export
- * @interface UsersApiUsersUserIdCardsGetRequest
- */
-export interface UsersApiUsersUserIdCardsGetRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersUserIdCardsGet
-     */
-    readonly userId: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersUserIdCardsGet
-     */
-    readonly authorization?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersApiUsersUserIdCardsGet
-     */
-    readonly xMerchantID?: string
-}
-
-/**
- * UsersApi - object-oriented interface
- * @export
- * @class UsersApi
- * @extends {BaseAPI}
- */
-export class UsersApi extends BaseAPI {
-    /**
-     * Remove card by identifier
-     * @summary Remove card by identifier
-     * @param {UsersApiDeleteUserCardByIdRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public deleteUserCardById(requestParameters: UsersApiDeleteUserCardByIdRequest, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).deleteUserCardById(requestParameters.userId, requestParameters.cardId, requestParameters.authorization, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Get User Information
-     * @summary Get User Information
-     * @param {UsersApiGetUserInformationRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public getUserInformation(requestParameters: UsersApiGetUserInformationRequest = {}, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).getUserInformation(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.authorization, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-     * @summary Allows logging in with the OTP code sent to the user\'s email or phone. This must be specified in the query param.
-     * @param {UsersApiLoginRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public login(requestParameters: UsersApiLoginRequest = {}, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).login(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.xRecaptchaToken, requestParameters.type, requestParameters.loadProfileData, requestParameters.loginRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Login User
-     * @summary Login User
-     * @param {UsersApiUsersLoginDeviceFingerprintPostRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersLoginDeviceFingerprintPost(requestParameters: UsersApiUsersLoginDeviceFingerprintPostRequest = {}, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).usersLoginDeviceFingerprintPost(requestParameters.xApiKey, requestParameters.xMerchantId, requestParameters.xDeviceId, requestParameters.xSessionID, requestParameters.authorization, requestParameters.type, requestParameters.loadProfileData, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Obtain a card by its identifier.
-     * @summary Obtain a card by its identifier.
-     * @param {UsersApiUsersUserIdCardsCardIdGetRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersUserIdCardsCardIdGet(requestParameters: UsersApiUsersUserIdCardsCardIdGetRequest, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).usersUserIdCardsCardIdGet(requestParameters.userId, requestParameters.cardId, requestParameters.authorization, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Get all user cards
-     * @summary Get all user cards
-     * @param {UsersApiUsersUserIdCardsGetRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public usersUserIdCardsGet(requestParameters: UsersApiUsersUserIdCardsGetRequest, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).usersUserIdCardsGet(requestParameters.userId, requestParameters.authorization, requestParameters.xMerchantID, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-

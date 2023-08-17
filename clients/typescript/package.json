@@ -1,6 +1,6 @@
 {
   "name": "apigw-sdk",
-  "version": "0.1.74",
+  "version": "0.1.75",
   "description": "OpenAPI client for apigw-sdk",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
