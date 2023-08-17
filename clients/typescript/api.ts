@@ -130,6 +130,68 @@
         /**
  * 
  * @export
+ * @interface BinDetector200Response
+ */
+export interface BinDetector200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof BinDetector200Response
+     */
+    'bank'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BinDetector200Response
+     */
+    'bin'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BinDetector200Response
+     */
+    'branch'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BinDetector200Response
+     */
+    'card_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BinDetector200Response
+     */
+    'country'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BinDetector200Response
+     */
+    'country_iso'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof BinDetector200Response
+     */
+    'currency'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface BinDetector400Response
+ */
+export interface BinDetector400Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof BinDetector400Response
+     */
+    'error'?: string;
+}
+        /**
+ * 
+ * @export
  * @interface Cancel400Response
  */
 export interface Cancel400Response {
@@ -158,92 +220,6 @@ export interface CancelRequest {
      * @memberof CancelRequest
      */
     'reason'?: string;
-}
-        /**
- * 
- * @export
- * @interface CreateApplication200Response
- */
-export interface CreateApplication200Response {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplication200Response
-     */
-    'created_at'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplication200Response
-     */
-    'id'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateApplication200Response
-     */
-    'is_sandbox'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplication200Response
-     */
-    'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplication200Response
-     */
-    'private_key'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplication200Response
-     */
-    'public_key'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplication200Response
-     */
-    'signing_secret'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplication200Response
-     */
-    'status'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplication200Response
-     */
-    'updated_at'?: string;
-}
-        /**
- * 
- * @export
- * @interface CreateApplicationRequest
- */
-export interface CreateApplicationRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplicationRequest
-     */
-    'expire_at'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateApplicationRequest
-     */
-    'is_sandbox'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateApplicationRequest
-     */
-    'name'?: string;
 }
         /**
  * 
@@ -379,12 +355,6 @@ export interface CreateMerchantRequest {
      * @type {string}
      * @memberof CreateMerchantRequest
      */
-    'country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMerchantRequest
-     */
     'currency'?: string;
     /**
      * 
@@ -496,6 +466,19 @@ export interface CreateMerchantStoreRequest {
      * @memberof CreateMerchantStoreRequest
      */
     'name'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface CreatePublicKey201Response
+ */
+export interface CreatePublicKey201Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePublicKey201Response
+     */
+    'data'?: string;
 }
         /**
  * 
@@ -828,64 +811,119 @@ export interface GetApplications200ResponseDataInner {
         /**
  * 
  * @export
- * @interface GetBin200Response
+ * @interface GetMerchant200Response
  */
-export interface GetBin200Response {
+export interface GetMerchant200Response {
     /**
      * 
-     * @type {string}
-     * @memberof GetBin200Response
+     * @type {IdentityToken200Response}
+     * @memberof GetMerchant200Response
      */
-    'bank'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBin200Response
-     */
-    'bin'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBin200Response
-     */
-    'branch'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBin200Response
-     */
-    'card_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBin200Response
-     */
-    'country'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GetBin200Response
-     */
-    'country_iso'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBin200Response
-     */
-    'currency'?: string;
+    'data'?: IdentityToken200Response;
 }
         /**
  * 
  * @export
- * @interface GetBin400Response
+ * @interface GetMerchantStores200Response
  */
-export interface GetBin400Response {
+export interface GetMerchantStores200Response {
     /**
      * 
      * @type {string}
-     * @memberof GetBin400Response
+     * @memberof GetMerchantStores200Response
      */
-    'error'?: string;
+    'country'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantStores200Response
+     */
+    'currency'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantStores200Response
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantStores200Response
+     */
+    'logo_url'?: string;
+    /**
+     * 
+     * @type {Array<GetMerchantStores200ResponseStoresInner>}
+     * @memberof GetMerchantStores200Response
+     */
+    'stores'?: Array<GetMerchantStores200ResponseStoresInner>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantStores200Response
+     */
+    'term_and_conditions_url'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetMerchantStores200Response
+     */
+    'use_duna_send'?: boolean;
+}
+        /**
+ * 
+ * @export
+ * @interface GetMerchantStores200ResponseStoresInner
+ */
+export interface GetMerchantStores200ResponseStoresInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantStores200ResponseStoresInner
+     */
+    'address'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantStores200ResponseStoresInner
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantStores200ResponseStoresInner
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetMerchantStores200ResponseStoresInner
+     */
+    'is_default'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetMerchantStores200ResponseStoresInner
+     */
+    'latitude'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetMerchantStores200ResponseStoresInner
+     */
+    'longitude'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantStores200ResponseStoresInner
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerchantStores200ResponseStoresInner
+     */
+    'updated_at'?: string;
 }
         /**
  * 
@@ -1943,6 +1981,296 @@ export interface GetOrder400ResponseError {
         /**
  * 
  * @export
+ * @interface IdentityToken200Response
+ */
+export interface IdentityToken200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'CreatedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'DeletedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'ID'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'UpdatedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'account_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'account_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'amplitude_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'api_key'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof IdentityToken200Response
+     */
+    'auto_approve_order_in_core'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'bank_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'business_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'city'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'country'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'currency'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'domain'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'gtm_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'industry'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'logo'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof IdentityToken200Response
+     */
+    'managed_by_duna'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'merchant_category_code'?: string;
+    /**
+     * 
+     * @type {Array<IdentityToken200ResponseMerchantEventsInner>}
+     * @memberof IdentityToken200Response
+     */
+    'merchant_events'?: Array<IdentityToken200ResponseMerchantEventsInner>;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof IdentityToken200Response
+     */
+    'onboarding_step'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof IdentityToken200Response
+     */
+    'order_api_port'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'order_api_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'order_pickup_api_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'pickup_token_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'platform'?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof IdentityToken200Response
+     */
+    'policies'?: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'privacy_policies_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'service'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'short_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'status_changes_notification_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'storefront_base_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'storefront_private_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'term_and_conditions_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'timezone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'token'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof IdentityToken200Response
+     */
+    'use_duna_send'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200Response
+     */
+    'vendor_id'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface IdentityToken200ResponseMerchantEventsInner
+ */
+export interface IdentityToken200ResponseMerchantEventsInner {
+    /**
+     * 
+     * @type {number}
+     * @memberof IdentityToken200ResponseMerchantEventsInner
+     */
+    'ID'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200ResponseMerchantEventsInner
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200ResponseMerchantEventsInner
+     */
+    'deleted_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200ResponseMerchantEventsInner
+     */
+    'event'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200ResponseMerchantEventsInner
+     */
+    'merchant_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentityToken200ResponseMerchantEventsInner
+     */
+    'updated_at'?: string;
+}
+        /**
+ * 
+ * @export
  * @interface Login200Response
  */
 export interface Login200Response {
@@ -1983,6 +2311,92 @@ export interface LoginRequest {
      * @memberof LoginRequest
      */
     'password'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface MerchantsMerchantIdApplicationsPost200Response
+ */
+export interface MerchantsMerchantIdApplicationsPost200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPost200Response
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPost200Response
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MerchantsMerchantIdApplicationsPost200Response
+     */
+    'is_sandbox'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPost200Response
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPost200Response
+     */
+    'private_key'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPost200Response
+     */
+    'public_key'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPost200Response
+     */
+    'signing_secret'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPost200Response
+     */
+    'status'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPost200Response
+     */
+    'updated_at'?: string;
+}
+        /**
+ * 
+ * @export
+ * @interface MerchantsMerchantIdApplicationsPostRequest
+ */
+export interface MerchantsMerchantIdApplicationsPostRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPostRequest
+     */
+    'expire_at'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MerchantsMerchantIdApplicationsPostRequest
+     */
+    'is_sandbox'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof MerchantsMerchantIdApplicationsPostRequest
+     */
+    'name'?: string;
 }
         /**
  * 
@@ -3102,6 +3516,19 @@ export interface PurchaseRequestSpecificFields {
         /**
  * 
  * @export
+ * @interface RegisterMerchantToken200Response
+ */
+export interface RegisterMerchantToken200Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof RegisterMerchantToken200Response
+     */
+    'data'?: string;
+}
+        /**
+ * 
+ * @export
  * @interface TokenizeOrder200Response
  */
 export interface TokenizeOrder200Response {
@@ -4060,6 +4487,121 @@ export interface TokenizeOrderRequestOrderShippingOptionsDetailsContact {
         /**
  * 
  * @export
+ * @interface UpdateMerchantRequest
+ */
+export interface UpdateMerchantRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'amplitude_id'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateMerchantRequest
+     */
+    'auto_approve_order_in_core'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'city'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'country'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'domain'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'gtm_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'logo'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateMerchantRequest
+     */
+    'managed_by_duna'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateMerchantRequest
+     */
+    'order_api_port'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'order_api_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'short_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'status_changes_notification_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'storefront_base_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'storefront_private_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'timezone'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateMerchantRequest
+     */
+    'token'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateMerchantRequest
+     */
+    'use_duna_send'?: boolean;
+}
+        /**
+ * 
+ * @export
  * @interface ValidateApplication200Response
  */
 export interface ValidateApplication200Response {
@@ -4113,9 +4655,9 @@ export interface ValidateApplication200Response {
         * @param {*} [options] Override http request option.
         * @throws {RequiredError}
         */
-        getBin: async (bin: string, xApiKey?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        binDetector: async (bin: string, xApiKey?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
                     // verify required parameter 'bin' is not null or undefined
-                    assertParamExists('getBin', 'bin', configuration.bin);
+                    assertParamExists('binDetector', 'bin', configuration.bin);
             const localVarPath = `/cards/bin/{bin}`
                 .replace(`{${"bin"}}`, encodeURIComponent(String(bin)));
             if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
@@ -4160,22 +4702,22 @@ export interface ValidateApplication200Response {
 
 
                     /**
-                    * Request parameters for getBin operation in CardsApi.
+                    * Request parameters for binDetector operation in CardsApi.
                     * @export
-                    * @interface CardsApiGetBinRequest
+                    * @interface CardsApiBinDetectorRequest
                     */
-                    export interface CardsApiGetBinRequest {
+                    export interface CardsApiBinDetectorRequest {
                         /**
                         * 
                         * @type {string}
-                        * @memberof CardsApiGetBin
+                        * @memberof CardsApiBinDetector
                         */
                     bin: string
 
                         /**
                         * 
                         * @type {string}
-                        * @memberof CardsApiGetBin
+                        * @memberof CardsApiBinDetector
                         */
                     xApiKey?: string
                     }
@@ -4190,21 +4732,21 @@ export interface ValidateApplication200Response {
             /**
             * Get Bin
                 * @summary Bin detector
-                    * @param {CardsApiGetBinRequest} requestParameters Request parameters.
+                    * @param {CardsApiBinDetectorRequest} requestParameters Request parameters.
             * @param {*} [options] Override http request option.
             * @throws {RequiredError}
             * @memberof CardsApi
             */
 
-                public async getBin(requestParameters: CardsApiGetBinRequest, options?: AxiosRequestConfig) {
+                public async binDetector(requestParameters: CardsApiBinDetectorRequest, options?: AxiosRequestConfig) {
                 const localVarAxiosParamCreator = CardsApiAxiosParamCreator(this.configuration);
                 try {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.getBin(requestParameters.bin, requestParameters.xApiKey, options);
+                const localVarAxiosArgs = await localVarAxiosParamCreator.binDetector(requestParameters.bin, requestParameters.xApiKey, options);
                 const axiosRequestArgs = {
                 ...localVarAxiosArgs.options,
                 url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
                 };
-                const response = await axiosInstance.request<GetBin200Response>(axiosRequestArgs);
+                const response = await axiosInstance.request<BinDetector200Response>(axiosRequestArgs);
 
                 return {data : response.data};
                 } catch(e) {
@@ -4227,58 +4769,6 @@ export interface ValidateApplication200Response {
     export const MerchantApplicationApiAxiosParamCreator = function (configuration?: Configuration) {
     customAPI.refreshConfiguration(configuration);
     return {
-        /**
-        * Create application
-            * @summary Create Application
-            * @param {string} merchantId 
-            * @param {string} [authorization] 
-            * @param {CreateApplicationRequest} [createApplicationRequest] 
-        * @param {*} [options] Override http request option.
-        * @throws {RequiredError}
-        */
-        createApplication: async (merchantId: string, authorization?: string, createApplicationRequest?: CreateApplicationRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-                    // verify required parameter 'merchantId' is not null or undefined
-                    assertParamExists('createApplication', 'merchantId', configuration.merchantId);
-            const localVarPath = `/merchants/{merchant_id}/applications`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
-            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
-            options.headers  = {
-            'Authorization': `Bearer ${customAPI.getToken()}`,
-            ...options.headers
-            }
-            }
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-            baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-                // authentication Authorization required
-
-
-                    if (authorization != null) {
-                        localVarHeaderParameter['Authorization'] = String(authorization);
-                    }
-
-
-        
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-                localVarRequestOptions.data = serializeDataIfNeeded(createApplicationRequest, localVarRequestOptions, configuration)
-
-            return {
-            url: toPathString(localVarUrlObj),
-            options: localVarRequestOptions,
-            };
-            },
         /**
         * Get application by ID
             * @summary Get Application
@@ -4380,6 +4870,58 @@ export interface ValidateApplication200Response {
             };
             },
         /**
+        * Create application
+            * @summary Create Application
+            * @param {string} merchantId 
+            * @param {string} [authorization] 
+            * @param {MerchantsMerchantIdApplicationsPostRequest} [merchantsMerchantIdApplicationsPostRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        merchantsMerchantIdApplicationsPost: async (merchantId: string, authorization?: string, merchantsMerchantIdApplicationsPostRequest?: MerchantsMerchantIdApplicationsPostRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('merchantsMerchantIdApplicationsPost', 'merchantId', configuration.merchantId);
+            const localVarPath = `/merchants/{merchant_id}/applications`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(merchantsMerchantIdApplicationsPostRequest, localVarRequestOptions, configuration)
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
         * Validate application
             * @summary Validate Application
             * @param {string} [xApiKey] 
@@ -4428,34 +4970,6 @@ export interface ValidateApplication200Response {
         };
 
 
-
-                    /**
-                    * Request parameters for createApplication operation in MerchantApplicationApi.
-                    * @export
-                    * @interface MerchantApplicationApiCreateApplicationRequest
-                    */
-                    export interface MerchantApplicationApiCreateApplicationRequest {
-                        /**
-                        * 
-                        * @type {string}
-                        * @memberof MerchantApplicationApiCreateApplication
-                        */
-                    merchantId: string
-
-                        /**
-                        * 
-                        * @type {string}
-                        * @memberof MerchantApplicationApiCreateApplication
-                        */
-                    authorization?: string
-
-                        /**
-                        * 
-                        * @type {CreateApplicationRequest}
-                        * @memberof MerchantApplicationApiCreateApplication
-                        */
-                    createApplicationRequest?: CreateApplicationRequest
-                    }
 
                     /**
                     * Request parameters for getApplication operation in MerchantApplicationApi.
@@ -4507,6 +5021,34 @@ export interface ValidateApplication200Response {
                     }
 
                     /**
+                    * Request parameters for merchantsMerchantIdApplicationsPost operation in MerchantApplicationApi.
+                    * @export
+                    * @interface MerchantApplicationApiMerchantsMerchantIdApplicationsPostRequest
+                    */
+                    export interface MerchantApplicationApiMerchantsMerchantIdApplicationsPostRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiMerchantsMerchantIdApplicationsPost
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantApplicationApiMerchantsMerchantIdApplicationsPost
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {MerchantsMerchantIdApplicationsPostRequest}
+                        * @memberof MerchantApplicationApiMerchantsMerchantIdApplicationsPost
+                        */
+                    merchantsMerchantIdApplicationsPostRequest?: MerchantsMerchantIdApplicationsPostRequest
+                    }
+
+                    /**
                     * Request parameters for validateApplication operation in MerchantApplicationApi.
                     * @export
                     * @interface MerchantApplicationApiValidateApplicationRequest
@@ -4528,34 +5070,6 @@ export interface ValidateApplication200Response {
         */
             export class MerchantApplicationApi extends BaseAPI {
             /**
-            * Create application
-                * @summary Create Application
-                    * @param {MerchantApplicationApiCreateApplicationRequest} requestParameters Request parameters.
-            * @param {*} [options] Override http request option.
-            * @throws {RequiredError}
-            * @memberof MerchantApplicationApi
-            */
-
-                public async createApplication(requestParameters: MerchantApplicationApiCreateApplicationRequest, options?: AxiosRequestConfig) {
-                const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
-                try {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.createApplication(requestParameters.merchantId, requestParameters.authorization, requestParameters.createApplicationRequest, options);
-                const axiosRequestArgs = {
-                ...localVarAxiosArgs.options,
-                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
-                };
-                const response = await axiosInstance.request<CreateApplication200Response>(axiosRequestArgs);
-
-                return {data : response.data};
-                } catch(e) {
-                return {
-                error: e
-                }
-                }
-                }
-
-
-            /**
             * Get application by ID
                 * @summary Get Application
                     * @param {MerchantApplicationApiGetApplicationRequest} requestParameters Request parameters.
@@ -4572,7 +5086,7 @@ export interface ValidateApplication200Response {
                 ...localVarAxiosArgs.options,
                 url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
                 };
-                const response = await axiosInstance.request<CreateApplication200Response>(axiosRequestArgs);
+                const response = await axiosInstance.request<MerchantsMerchantIdApplicationsPost200Response>(axiosRequestArgs);
 
                 return {data : response.data};
                 } catch(e) {
@@ -4601,6 +5115,34 @@ export interface ValidateApplication200Response {
                 url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
                 };
                 const response = await axiosInstance.request<GetApplications200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Create application
+                * @summary Create Application
+                    * @param {MerchantApplicationApiMerchantsMerchantIdApplicationsPostRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantApplicationApi
+            */
+
+                public async merchantsMerchantIdApplicationsPost(requestParameters: MerchantApplicationApiMerchantsMerchantIdApplicationsPostRequest, options?: AxiosRequestConfig) {
+                const localVarAxiosParamCreator = MerchantApplicationApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.merchantsMerchantIdApplicationsPost(requestParameters.merchantId, requestParameters.authorization, requestParameters.merchantsMerchantIdApplicationsPostRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<MerchantsMerchantIdApplicationsPost200Response>(axiosRequestArgs);
 
                 return {data : response.data};
                 } catch(e) {
@@ -4815,6 +5357,55 @@ export interface ValidateApplication200Response {
             };
             },
         /**
+        * Create Public Key
+            * @summary Create Public Key
+            * @param {string} merchantId 
+            * @param {string} [authorization] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        createPublicKey: async (merchantId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('createPublicKey', 'merchantId', configuration.merchantId);
+            const localVarPath = `/merchants/{merchant_id}/public-keys`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
         * Get All Merchants
             * @summary Get All Merchants
             * @param {string} [authorization] 
@@ -4860,6 +5451,107 @@ export interface ValidateApplication200Response {
 
                     if (xApiKey != null) {
                         localVarHeaderParameter['X-Api-Key'] = String(xApiKey);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Get merchant
+            * @summary Get merchant
+            * @param {string} merchantId 
+            * @param {string} [authorization] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        getMerchant: async (merchantId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('getMerchant', 'merchantId', configuration.merchantId);
+            const localVarPath = `/merchants/{merchant_id}`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Get Merchant Store
+            * @summary Get Merchant Stores
+            * @param {string} merchantId 
+            * @param {string} [authorization] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        getMerchantStores: async (merchantId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('getMerchantStores', 'merchantId', configuration.merchantId);
+            const localVarPath = `/merchants/{merchant_id}/stores`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
                     }
 
 
@@ -5015,6 +5707,50 @@ export interface ValidateApplication200Response {
             };
             },
         /**
+        * Identity Token
+            * @summary Identity Token
+            * @param {string} [authorization] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        identityToken: async (authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchants/identity-token`;
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
         * Make a Merchant Login
             * @summary Login
             * @param {LoginRequest} [loginRequest] 
@@ -5134,6 +5870,54 @@ export interface ValidateApplication200Response {
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
                 localVarRequestOptions.data = serializeDataIfNeeded(purchaseRequest, localVarRequestOptions, configuration)
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
+        /**
+        * Register Merchant Token
+            * @summary Register Merchant Token
+            * @param {string} merchantId 
+            * @param {string} [authorization] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        registerMerchantToken: async (merchantId: string, authorization?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('registerMerchantToken', 'merchantId', configuration.merchantId);
+            const localVarPath = `/merchants/{merchant_id}/tokens`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication Authorization required
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
             url: toPathString(localVarUrlObj),
@@ -5296,6 +6080,59 @@ export interface ValidateApplication200Response {
             options: localVarRequestOptions,
             };
             },
+        /**
+        * Update merchant
+            * @summary Update merchant
+            * @param {string} merchantId 
+            * @param {string} [authorization] 
+            * @param {UpdateMerchantRequest} [updateMerchantRequest] 
+        * @param {*} [options] Override http request option.
+        * @throws {RequiredError}
+        */
+        updateMerchant: async (merchantId: string, authorization?: string, updateMerchantRequest?: UpdateMerchantRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+                    // verify required parameter 'merchantId' is not null or undefined
+                    assertParamExists('updateMerchant', 'merchantId', configuration.merchantId);
+            const localVarPath = `/merchants/{merchant_id}`
+                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+            if(customAPI.getToken() !== null && customAPI.getToken() !== undefined){
+            options.headers  = {
+            'Authorization': `Bearer ${customAPI.getToken()}`,
+            ...options.headers
+            }
+            }
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+            baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+                // authentication X-Api-Key required
+                        await setApiKeyToObject(localVarHeaderParameter, "X-Api-Key", configuration)
+
+
+                    if (authorization != null) {
+                        localVarHeaderParameter['Authorization'] = String(authorization);
+                    }
+
+
+        
+                    localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+                localVarRequestOptions.data = serializeDataIfNeeded(updateMerchantRequest, localVarRequestOptions, configuration)
+
+            return {
+            url: toPathString(localVarUrlObj),
+            options: localVarRequestOptions,
+            };
+            },
         }
         };
 
@@ -5386,6 +6223,27 @@ export interface ValidateApplication200Response {
                     }
 
                     /**
+                    * Request parameters for createPublicKey operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiCreatePublicKeyRequest
+                    */
+                    export interface MerchantsApiCreatePublicKeyRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiCreatePublicKey
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiCreatePublicKey
+                        */
+                    authorization?: string
+                    }
+
+                    /**
                     * Request parameters for getAllMerchants operation in MerchantsApi.
                     * @export
                     * @interface MerchantsApiGetAllMerchantsRequest
@@ -5418,6 +6276,48 @@ export interface ValidateApplication200Response {
                         * @memberof MerchantsApiGetAllMerchants
                         */
                     pageSize?: string
+                    }
+
+                    /**
+                    * Request parameters for getMerchant operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiGetMerchantRequest
+                    */
+                    export interface MerchantsApiGetMerchantRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetMerchant
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetMerchant
+                        */
+                    authorization?: string
+                    }
+
+                    /**
+                    * Request parameters for getMerchantStores operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiGetMerchantStoresRequest
+                    */
+                    export interface MerchantsApiGetMerchantStoresRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetMerchantStores
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiGetMerchantStores
+                        */
+                    authorization?: string
                     }
 
                     /**
@@ -5474,6 +6374,20 @@ export interface ValidateApplication200Response {
                         * @memberof MerchantsApiGetOrder
                         */
                     xApiKey?: string
+                    }
+
+                    /**
+                    * Request parameters for identityToken operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiIdentityTokenRequest
+                    */
+                    export interface MerchantsApiIdentityTokenRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiIdentityToken
+                        */
+                    authorization?: string
                     }
 
                     /**
@@ -5554,6 +6468,27 @@ export interface ValidateApplication200Response {
                     }
 
                     /**
+                    * Request parameters for registerMerchantToken operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiRegisterMerchantTokenRequest
+                    */
+                    export interface MerchantsApiRegisterMerchantTokenRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiRegisterMerchantToken
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiRegisterMerchantToken
+                        */
+                    authorization?: string
+                    }
+
+                    /**
                     * Request parameters for registerMerchantUser operation in MerchantsApi.
                     * @export
                     * @interface MerchantsApiRegisterMerchantUserRequest
@@ -5628,6 +6563,34 @@ export interface ValidateApplication200Response {
                         * @memberof MerchantsApiTokenizeOrder
                         */
                     tokenizeOrderRequest?: TokenizeOrderRequest
+                    }
+
+                    /**
+                    * Request parameters for updateMerchant operation in MerchantsApi.
+                    * @export
+                    * @interface MerchantsApiUpdateMerchantRequest
+                    */
+                    export interface MerchantsApiUpdateMerchantRequest {
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiUpdateMerchant
+                        */
+                    merchantId: string
+
+                        /**
+                        * 
+                        * @type {string}
+                        * @memberof MerchantsApiUpdateMerchant
+                        */
+                    authorization?: string
+
+                        /**
+                        * 
+                        * @type {UpdateMerchantRequest}
+                        * @memberof MerchantsApiUpdateMerchant
+                        */
+                    updateMerchantRequest?: UpdateMerchantRequest
                     }
 
         /**
@@ -5722,6 +6685,34 @@ export interface ValidateApplication200Response {
 
 
             /**
+            * Create Public Key
+                * @summary Create Public Key
+                    * @param {MerchantsApiCreatePublicKeyRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async createPublicKey(requestParameters: MerchantsApiCreatePublicKeyRequest, options?: AxiosRequestConfig) {
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.createPublicKey(requestParameters.merchantId, requestParameters.authorization, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<CreatePublicKey201Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
             * Get All Merchants
                 * @summary Get All Merchants
                     * @param {MerchantsApiGetAllMerchantsRequest} requestParameters Request parameters.
@@ -5739,6 +6730,62 @@ export interface ValidateApplication200Response {
                 url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
                 };
                 const response = await axiosInstance.request<GetAllMerchants200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Get merchant
+                * @summary Get merchant
+                    * @param {MerchantsApiGetMerchantRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async getMerchant(requestParameters: MerchantsApiGetMerchantRequest, options?: AxiosRequestConfig) {
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.getMerchant(requestParameters.merchantId, requestParameters.authorization, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetMerchant200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Get Merchant Store
+                * @summary Get Merchant Stores
+                    * @param {MerchantsApiGetMerchantStoresRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async getMerchantStores(requestParameters: MerchantsApiGetMerchantStoresRequest, options?: AxiosRequestConfig) {
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.getMerchantStores(requestParameters.merchantId, requestParameters.authorization, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetMerchantStores200Response>(axiosRequestArgs);
 
                 return {data : response.data};
                 } catch(e) {
@@ -5834,6 +6881,34 @@ export interface ValidateApplication200Response {
 
 
             /**
+            * Identity Token
+                * @summary Identity Token
+                    * @param {MerchantsApiIdentityTokenRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async identityToken(requestParameters: MerchantsApiIdentityTokenRequest = {}, options?: AxiosRequestConfig) {
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.identityToken(requestParameters.authorization, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<IdentityToken200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
             * Make a Merchant Login
                 * @summary Login
                     * @param {MerchantsApiLoginRequest} requestParameters Request parameters.
@@ -5879,6 +6954,34 @@ export interface ValidateApplication200Response {
                 url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
                 };
                 const response = await axiosInstance.request<Purchase200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Register Merchant Token
+                * @summary Register Merchant Token
+                    * @param {MerchantsApiRegisterMerchantTokenRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async registerMerchantToken(requestParameters: MerchantsApiRegisterMerchantTokenRequest, options?: AxiosRequestConfig) {
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.registerMerchantToken(requestParameters.merchantId, requestParameters.authorization, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<RegisterMerchantToken200Response>(axiosRequestArgs);
 
                 return {data : response.data};
                 } catch(e) {
@@ -5963,6 +7066,34 @@ export interface ValidateApplication200Response {
                 url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
                 };
                 const response = await axiosInstance.request<TokenizeOrder200Response>(axiosRequestArgs);
+
+                return {data : response.data};
+                } catch(e) {
+                return {
+                error: e
+                }
+                }
+                }
+
+
+            /**
+            * Update merchant
+                * @summary Update merchant
+                    * @param {MerchantsApiUpdateMerchantRequest} requestParameters Request parameters.
+            * @param {*} [options] Override http request option.
+            * @throws {RequiredError}
+            * @memberof MerchantsApi
+            */
+
+                public async updateMerchant(requestParameters: MerchantsApiUpdateMerchantRequest, options?: AxiosRequestConfig) {
+                const localVarAxiosParamCreator = MerchantsApiAxiosParamCreator(this.configuration);
+                try {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.updateMerchant(requestParameters.merchantId, requestParameters.authorization, requestParameters.updateMerchantRequest, options);
+                const axiosRequestArgs = {
+                ...localVarAxiosArgs.options,
+                url: (this.basePath || BASE_PATH) + localVarAxiosArgs.url
+                };
+                const response = await axiosInstance.request<GetMerchant200Response>(axiosRequestArgs);
 
                 return {data : response.data};
                 } catch(e) {

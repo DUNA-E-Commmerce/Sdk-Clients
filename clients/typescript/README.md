@@ -1,45 +1,51 @@
-## apigw-sdk@
+## Ejemplo de integración
 
-This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
-Environment
-* Node.js
-* Webpack
-* Browserify
+## Instalación
 
-Language level
-* ES5 - you must have a Promises/A+ library installed
-* ES6
+``` npm install apigw-sdk ```
 
-Module system
-* CommonJS
-* ES6 module system
+## Integración Ejemplo
+```import express from 'express';
+import {Login200Response, MerchantsApi} from "apigw-sdk";
+const app = express();
+const port = 3000;
 
-It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
+const merchantApi = new MerchantsApi();
 
-### Building
+const login = async (username: string, password: string) => {
+    const {data, error} = await merchantApi.login({
+        loginRequest: {
+            email: username,
+            password: password
+        }
+    });
+    return data
 
-To build and compile the typescript sources to javascript use:
+}
+const createMerchant = async () => {
+    const {data, error} = await merchantApi.createMerchant({
+        createMerchantRequest: {
+            country: "HU",
+            city: "Budapest",
+            name: "Example Merchant",
+            short_name: "Example",
+            timezone: "Europe/Budapest",
+            currency: "HUF",
+            managed_by_duna: true,
+        }
+    });
+    return data;
+}
+
+
+app.get('/', async (req, res) => {
+    const responseLogin = await login("", "");
+    const responseCreateMerchant = await createMerchant();
+    res.json(responseCreateMerchant);
+});
+
+app.listen(port, () => {
+  return console.log(`Express is listening at http://localhost:${port}`);
+});
 ```
-npm install
-npm run build
-```
-
-### Publishing
-
-First build the package then run ```npm publish```
-
-### Consuming
-
-navigate to the folder of your consuming project and run one of the following commands.
-
-_published:_
-
-```
-npm install apigw-sdk@ --save
-```
-
-_unPublished (not recommended):_
-
-```
-npm install PATH_TO_GENERATED_PACKAGE --save
