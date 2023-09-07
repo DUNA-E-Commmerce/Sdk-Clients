@@ -83,17 +83,36 @@ open class ApiClient(val baseUrl: String, val client: OkHttpClient = defaultClie
         return contentType ?: "application/octet-stream"
     }
 
-    fun startPayment(webView: WebView, order: OrderTokenRequest, xApiKey: String) {
+
+    fun startPayment(webView: WebView, order: OrderTokenRequest, onSuccess: (Boolean, String) -> Unit, onError: (Boolean, String) -> Unit) {
         val cookieManager = CookieManager.getInstance()
         val instance = OrderApi(client = this.client)
-        val responseCreateOrder = instance.orderToken(xApiKey = xApiKey, orderTokenRequest = order)
+        val responseCreateOrder = instance.orderToken(orderTokenRequest = order)
         if (responseCreateOrder.token != "") {
             cookieManager.setAcceptCookie(true)
-            webView.setWebViewClient(WebViewClient())
+            webView.setWebViewClient(object : WebViewClient() {
+                override fun onPageFinished(view: WebView?, url: String?) {
+                    super.onPageFinished(view, url)
+                    onSuccess(true, "Se ha cargado la página de pago")
+                }
+
+                @Suppress("OverridingDeprecatedMember")
+                override fun onReceivedError(
+                    view: WebView?,
+                    errorCode: Int,
+                    description: String?,
+                    failingUrl: String?
+                ) {
+                    super.onReceivedError(view, errorCode, description, failingUrl)
+                    onError(true, "Error al cargar la página de pago")
+                }
+            })
             webView.settings.domStorageEnabled = true
             webView.settings.javaScriptEnabled = true
             webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
             webView.loadUrl(responseCreateOrder.order!!.paymentLink)
+        } else {
+            onError(false, "Error al crear la orden")
         }
     }
 
