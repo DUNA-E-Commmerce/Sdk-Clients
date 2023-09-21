@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **displayInstallmentsAmount** | **kotlin.String** |  |  [optional]
 **displayInstallmentsRate** | **kotlin.String** |  |  [optional]
 **installmentRate** | **kotlin.Int** |  |  [optional]
-**installmentRateCollector** | [**kotlin.collections.MutableList&lt;kotlin.Any&gt;**](kotlin.Any.md) |  |  [optional]
+**installmentRateCollector** | [**kotlin.collections.List&lt;kotlin.Any&gt;**](kotlin.Any.md) |  |  [optional]
 **installments** | **kotlin.Int** |  |  [optional]
 **installmentsAmount** | **kotlin.Int** |  |  [optional]
 

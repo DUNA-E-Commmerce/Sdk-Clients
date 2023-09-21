@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **kotlin.Int** |  |  [optional]
 **merchantId** | **kotlin.String** |  |  [optional]
 **merchantName** | **kotlin.String** |  |  [optional]
-**modules** | **kotlin.collections.MutableList&lt;kotlin.String&gt;** |  |  [optional]
+**modules** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional]
 
 
 

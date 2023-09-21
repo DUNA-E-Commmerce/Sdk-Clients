@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **category** | **kotlin.String** | Categoría del producto |  [optional]
 **color** | **kotlin.String** | Color del producto |  [optional]
 **detailsUrl** | **kotlin.String** | URL del producto dentro en la página del comercio |  [optional]
-**discounts** | [**kotlin.collections.MutableSet&lt;OrderTokenRequestOrderItemsInnerDiscountsInner&gt;**](OrderTokenRequestOrderItemsInnerDiscountsInner.md) | Referencia de los descuentos aplicados en la orden |  [optional]
+**discounts** | [**kotlin.collections.Set&lt;OrderTokenRequestOrderItemsInnerDiscountsInner&gt;**](OrderTokenRequestOrderItemsInnerDiscountsInner.md) | Referencia de los descuentos aplicados en la orden |  [optional]
 **imageUrl** | **kotlin.String** | URL donde se encuentra alojada la imagen del producto  |  [optional]
 **isbn** | **kotlin.String** | Sistema internacional de numeración de libros (International Standard Book Number) |  [optional]
 **manufacturer** | **kotlin.String** | Fabricante del producto |  [optional]

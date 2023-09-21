@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**financialInstitutions** | [**kotlin.collections.MutableList&lt;GetPaymentMethods200ResponseDataInnerSpecificFieldsFinancialInstitutionsInner&gt;**](GetPaymentMethods200ResponseDataInnerSpecificFieldsFinancialInstitutionsInner.md) |  |  [optional]
+**financialInstitutions** | [**kotlin.collections.List&lt;GetPaymentMethods200ResponseDataInnerSpecificFieldsFinancialInstitutionsInner&gt;**](GetPaymentMethods200ResponseDataInnerSpecificFieldsFinancialInstitutionsInner.md) |  |  [optional]
 
 
 

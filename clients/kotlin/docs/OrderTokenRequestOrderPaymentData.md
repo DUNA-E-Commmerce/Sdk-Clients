@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Enum: status
 Name | Value
 ---- | -----
-status | processing, pending, denied, cancelled, void, refunded
+status | processed, processing, pending, denied, cancelled, void, refunded
 
 
 

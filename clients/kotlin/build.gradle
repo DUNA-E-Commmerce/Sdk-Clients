@@ -1,7 +1,7 @@
 import com.amazonaws.services.securitytoken.model.AssumeRoleRequest
 import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder
-group 'io.deuna.deuna-android-sdk'
-version '0.1.76-rc7'
+group 'org.openapitools'
+version '1.0.0'
 
 wrapper {
     gradleVersion = '7.5'
@@ -100,7 +100,7 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
     implementation "com.squareup.moshi:moshi-adapters:1.13.0"
     implementation "com.google.code.gson:gson:2.10.1"
-    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation "com.squareup.okhttp3:okhttp:3.12.13"
     testImplementation "io.kotlintest:kotlintest-runner-junit5:3.4.2"
     implementation 'com.google.android:android:4.1.1.4'
 }

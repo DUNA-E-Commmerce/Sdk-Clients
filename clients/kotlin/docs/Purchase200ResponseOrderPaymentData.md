@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **amount** | [**OrderTokenRequestOrderPaymentDataAmount**](OrderTokenRequestOrderPaymentDataAmount.md) |  |  [optional]
 **createdAt** | **kotlin.String** | Fecha de creación |  [optional]
 **customer** | [**OrderTokenRequestOrderPaymentDataCustomer**](OrderTokenRequestOrderPaymentDataCustomer.md) |  |  [optional]
-**fromCard** | [**OrderTokenRequestOrderPaymentDataFromCard**](OrderTokenRequestOrderPaymentDataFromCard.md) |  |  [optional]
+**fromCard** | [**OrderToken200ResponseOrderPaymentDataFromCard**](OrderToken200ResponseOrderPaymentDataFromCard.md) |  |  [optional]
 **id** | **kotlin.String** |  |  [optional]
 **merchant** | [**OrderTokenRequestOrderPaymentDataMerchant**](OrderTokenRequestOrderPaymentDataMerchant.md) |  |  [optional]
 **metadata** | [**kotlin.Any**](.md) |  |  [optional]

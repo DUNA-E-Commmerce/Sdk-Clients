@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Enum: card_brand
 Name | Value
 ---- | -----
-cardBrand | Visa, Mastercard, American Express, Diners
+cardBrand | visa, mastercard, amex, diners
 
 
 

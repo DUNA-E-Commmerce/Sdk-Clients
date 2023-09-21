@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **email** | **kotlin.String** |  |  [optional]
 **firstName** | **kotlin.String** |  |  [optional]
 **id** | **kotlin.String** |  |  [optional]
-**identityProviders** | [**kotlin.collections.MutableSet&lt;GetUserInformation200ResponseIdentityProvidersInner&gt;**](GetUserInformation200ResponseIdentityProvidersInner.md) |  |  [optional]
+**identityProviders** | [**kotlin.collections.Set&lt;GetUserInformation200ResponseIdentityProvidersInner&gt;**](GetUserInformation200ResponseIdentityProvidersInner.md) |  |  [optional]
 **isGuest** | **kotlin.Boolean** |  |  [optional]
 **isPhoneVerified** | **kotlin.Boolean** |  |  [optional]
 **lastName** | **kotlin.String** |  |  [optional]

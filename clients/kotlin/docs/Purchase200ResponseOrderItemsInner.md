@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **color** | **kotlin.String** | Color del producto |  [optional]
 **description** | **kotlin.String** | Descripción del producto |  [optional]
 **detailsUrl** | **kotlin.String** | URL del descuento en la página |  [optional]
-**discounts** | [**kotlin.collections.MutableList&lt;kotlin.Any&gt;**](kotlin.Any.md) | son los descuentos aplicados al producto |  [optional]
+**discounts** | [**kotlin.collections.List&lt;kotlin.Any&gt;**](kotlin.Any.md) | son los descuentos aplicados al producto |  [optional]
 **id** | **kotlin.String** | Identificador del producto del comercio |  [optional]
 **imageUrl** | **kotlin.String** | URL donde se encuentra alojada la imagen de tu producto  |  [optional]
 **isbn** | **kotlin.String** | Sistema internacional de numeración de libros (International Standard Book Number) |  [optional]

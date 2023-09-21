@@ -24,8 +24,8 @@ Cancela una orden identificada por el token de la orden.
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = OrderApi()
 val orderToken : kotlin.String = orderToken_example // kotlin.String | 
@@ -77,8 +77,8 @@ Obtener Installments para Orden
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = OrderApi()
 val orderToken : kotlin.String = orderToken_example // kotlin.String | 
@@ -133,8 +133,8 @@ Obtener orden por token
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = OrderApi()
 val orderToken : kotlin.String = orderToken_example // kotlin.String | 
@@ -185,8 +185,8 @@ Generar una orden tokenizada en DEUNA, este deberá ser usado para el resto de p
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = OrderApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -237,8 +237,8 @@ Este request crea un reembolso de una orden identificada por el token de la orde
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = OrderApi()
 val orderToken : kotlin.String = orderToken_example // kotlin.String | 
@@ -290,8 +290,8 @@ Si se quiere aprobar una orden para notificar una orden de pago asíncrona como 
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = OrderApi()
 val orderToken : kotlin.String = orderToken_example // kotlin.String | 
@@ -343,8 +343,8 @@ Se utiliza este método cuando se quiere anular el pago de una orden
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = OrderApi()
 val orderToken : kotlin.String = orderToken_example // kotlin.String | 

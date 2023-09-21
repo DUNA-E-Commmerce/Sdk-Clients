@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **currency** | **kotlin.String** |  |  [optional]
 **id** | **kotlin.String** |  |  [optional]
 **logoUrl** | **kotlin.String** |  |  [optional]
-**stores** | [**kotlin.collections.MutableList&lt;GetMerchantStores200ResponseStoresInner&gt;**](GetMerchantStores200ResponseStoresInner.md) |  |  [optional]
+**stores** | [**kotlin.collections.List&lt;GetMerchantStores200ResponseStoresInner&gt;**](GetMerchantStores200ResponseStoresInner.md) |  |  [optional]
 **termAndConditionsUrl** | **kotlin.String** |  |  [optional]
 **useDunaSend** | **kotlin.Boolean** |  |  [optional]
 

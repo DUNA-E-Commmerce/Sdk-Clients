@@ -35,8 +35,8 @@ Permite crear una dirección para el usuario
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -89,8 +89,8 @@ Remove card by identifier
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -142,8 +142,8 @@ Permite eliminar una dirección del usuario dado su identificador
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -194,8 +194,8 @@ Permite eliminar un usuario de la red DEUNA.
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -245,8 +245,8 @@ Editing User
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -298,8 +298,8 @@ Entregar de forma segura un token autorizado por DEUNA ONE y el cliente.
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -352,8 +352,8 @@ Obtener un nuevo token de forma segura a partir de un refresh_token autorizado p
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -406,8 +406,8 @@ Obtener todas direcciones del usuario
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -457,8 +457,8 @@ Obtain a card by its identifier.
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -511,8 +511,8 @@ Get all user cards
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -563,8 +563,8 @@ Get User Information
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -617,8 +617,8 @@ Permite iniciar sesión con el código OTP enviado al correo o al teléfono del 
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val loginWithOtpRequest : LoginWithOtpRequest = {"email":"jhondoe@email.com","otp":"123456"} // LoginWithOtpRequest | 
@@ -664,8 +664,8 @@ Permite actualizar los datos de una dirección mediante el id del mismo
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -716,8 +716,8 @@ Allow register user
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val registerUserRequest : RegisterUserRequest =  // RegisterUserRequest | Ejemplo de requestBody
@@ -768,8 +768,8 @@ Enviar el OTP (One time password) al correo o teléfono del usuario. **Esto se d
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val requestOtpRequest : RequestOtpRequest = {"email":"jhondoe@email.com"} // RequestOtpRequest | 
@@ -814,8 +814,8 @@ Get if user exists
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -865,8 +865,8 @@ Login User
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -919,8 +919,8 @@ Registrar un usuario de tu comercio, este usuario una vez registrado pertenecera
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = UsersApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 

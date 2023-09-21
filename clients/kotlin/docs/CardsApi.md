@@ -22,8 +22,8 @@ Get Bin
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = CardsApi()
 val bin : kotlin.String = bin_example // kotlin.String | 
@@ -74,8 +74,8 @@ Eliminar una tarjeta.
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = CardsApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -126,8 +126,8 @@ Obtener todas las tarjetas del usuario
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = CardsApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -177,8 +177,8 @@ Obtener una tarjeta por su identificador.
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = CardsApi()
 val userId : kotlin.String = userId_example // kotlin.String | 
@@ -230,8 +230,8 @@ Crear una tarjeta para el usuario.
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = CardsApi()
 val userId : kotlin.String = userId_example // kotlin.String | 

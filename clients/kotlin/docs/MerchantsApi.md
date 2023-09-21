@@ -30,8 +30,8 @@ Create merchant
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -82,8 +82,8 @@ Create Merchant Store
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | 
@@ -140,8 +140,8 @@ Create Public Key
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | 
@@ -192,8 +192,8 @@ Get All Merchants
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val authorization : kotlin.String = authorization_example // kotlin.String | 
@@ -241,8 +241,8 @@ Get merchant
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | 
@@ -293,8 +293,8 @@ Get Merchant Store
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | 
@@ -349,8 +349,8 @@ Identity Token
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val authorization : kotlin.String = authorization_example // kotlin.String | 
@@ -398,8 +398,8 @@ Make a Merchant Login
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -450,8 +450,8 @@ Getting Merchant Information
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val authorization : kotlin.String = authorization_example // kotlin.String | 
@@ -499,8 +499,8 @@ Register Merchant Token
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | 
@@ -550,8 +550,8 @@ Register Merchant User
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -602,8 +602,8 @@ Register Merchant User
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val authorization : kotlin.String = authorization_example // kotlin.String | 
@@ -653,8 +653,8 @@ Update merchant
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MerchantsApi()
 val merchantId : kotlin.String = merchantId_example // kotlin.String | 

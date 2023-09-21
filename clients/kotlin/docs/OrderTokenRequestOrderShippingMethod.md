@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **maxDeliveryDate** | **kotlin.String** | Fecha máxima de delivery |  [optional]
 **minDeliveryDate** | **kotlin.String** | Fecha más cercana al delivery |  [optional]
 **name** | **kotlin.String** | Nombre del método de envío |  [optional]
-**scheduler** | [**kotlin.collections.MutableList&lt;OrderTokenRequestOrderShippingMethodSchedulerInner&gt;**](OrderTokenRequestOrderShippingMethodSchedulerInner.md) | Se usa para configurar un envío programado |  [optional]
+**scheduler** | [**kotlin.collections.List&lt;OrderTokenRequestOrderShippingMethodSchedulerInner&gt;**](OrderTokenRequestOrderShippingMethodSchedulerInner.md) | Se usa para configurar un envío programado |  [optional]
 **taxAmount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Monto de impuestos del envío |  [optional]
 
 

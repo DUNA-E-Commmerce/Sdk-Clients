@@ -22,8 +22,8 @@ La opción de **capturar un pago autorizado** te permite completar una transacci
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = PaymentsApi()
 val orderToken : kotlin.String = orderToken_example // kotlin.String | 
@@ -75,8 +75,8 @@ Obtiene los métodos disponibles que tiene el comercio para esa orden en especí
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = PaymentsApi()
 val orderToken : kotlin.String = orderToken_example // kotlin.String | 
@@ -131,8 +131,8 @@ Obtén los métodos de pago asociados al comercio y su respectiva información a
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = PaymentsApi()
 val authorization : kotlin.String = authorization_example // kotlin.String | 
@@ -180,8 +180,8 @@ Realiza el pago de la orden. Para los procesadores previamente configurados, al 
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = PaymentsApi()
 val xApiKey : kotlin.String = xApiKey_example // kotlin.String | 
@@ -240,8 +240,8 @@ Verificar el pago con el código OTP
 ### Example
 ```kotlin
 // Import classes:
-//import io.deuna.deuna-android-sdk.infrastructure.*
-//import io.deuna.deuna-android-sdk.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = PaymentsApi()
 val orderToken : kotlin.String = orderToken_example // kotlin.String | 
