@@ -1,7 +1,5 @@
-import android.content.Context
 import android.os.Handler
 import android.os.Looper
-import android.view.ViewGroup
 import android.webkit.CookieManager
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -9,9 +7,6 @@ import android.webkit.WebViewClient
 import kotlinx.coroutines.*
 import org.openapitools.client.apis.OrderApi
 import org.openapitools.client.models.OrderToken200Response
-import org.openapitools.client.models.OrderToken400Response
-import org.openapitools.client.models.OrderTokenRequest
-import org.openapitools.client.models.OrderTokenRequestOrder
 
 
 class DeUnaSdk {
