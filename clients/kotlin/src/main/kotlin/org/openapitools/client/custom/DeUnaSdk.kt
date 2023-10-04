@@ -1,5 +1,6 @@
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.webkit.CookieManager
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -7,6 +8,7 @@ import android.webkit.WebViewClient
 import kotlinx.coroutines.*
 import org.openapitools.client.apis.OrderApi
 import org.openapitools.client.models.OrderToken200Response
+import android.webkit.JavascriptInterface
 
 
 class DeUnaSdk {
@@ -18,6 +20,16 @@ class DeUnaSdk {
         var onSuccess: ((OrderToken200Response) -> Unit)? = null
         var onError: ((String) -> Unit)? = null
         var onClose: ((WebView) -> Unit)? = null
+    }
+
+      inner class JSBridge {
+        @android.webkit.JavascriptInterface
+        fun receiveMessage(message: String) {
+            // Manejar el mensaje recibido desde JavaScript
+            // `message` contiene el mensaje enviado desde el iframe
+            // Realiza las acciones necesarias aquí
+            Log.d("received message from webview", message)
+        }
     }
 
     companion object {
@@ -74,6 +86,7 @@ class DeUnaSdk {
                 webView.settings.javaScriptEnabled = true
                 webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
                 webView.loadUrl("https://develop.dlbinhdcmjzvl.amplifyapp.com/$orderToken")
+                webView.addJavascriptInterface(JSBridge(), "Android")
                 return callbacks
             }
         }
@@ -108,6 +121,7 @@ class DeUnaSdk {
                 webView.settings.javaScriptEnabled = true
                 webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
                 webView.loadUrl("https://develop.dlbinhdcmjzvl.amplifyapp.com/$orderToken")
+                webView.addJavascriptInterface(JSBridge(), "Android")
                 return callbacks
             }
         }
