@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library' version '8.0.2' apply true
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply true
+    id 'maven-publish'
 }
 
 android {
@@ -29,6 +30,41 @@ android {
     }
     buildFeatures {
         viewBinding true
+    }
+}
+
+task renameAar(type: Copy) {
+    from("$buildDir/outputs/aar/")
+    into("$buildDir/outputs/aar-deuna/")
+    include("*.aar")
+    rename(".*", "deuna-sdk.aar")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+afterEvaluate {
+    assembleDebug.finalizedBy(renameAar)
+    assembleRelease.finalizedBy(renameAar)
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.deuna'
+            artifactId 'DeUnaSdk'
+            version ''
+            artifact("$buildDir/outputs/aar-deuna/deuna-sdk.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            url "http://localhost:8081/repository/maven-releases/"
+            allowInsecureProtocol = true
+            credentials {
+                username = "admin"
+                password = "admin"
+            }
+        }
     }
 }
 
