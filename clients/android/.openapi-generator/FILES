@@ -3,6 +3,8 @@ README.md
 build.gradle
 consumer-rules.pro
 gradle.properties
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
 proguard-rules.pro
 settings.gradle
 src/main/AndroidManifest.xml

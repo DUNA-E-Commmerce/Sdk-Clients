@@ -33,46 +33,31 @@ android {
     }
 }
 
-task renameAar(type: Copy) {
-    from("$buildDir/outputs/aar/")
-    into("$buildDir/outputs/aar-deuna/")
-    include("*.aar")
-    rename(".*", "deuna-sdk.aar")
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
-
-afterEvaluate {
-    assembleDebug.finalizedBy(renameAar)
-    assembleRelease.finalizedBy(renameAar)
-}
-
 publishing {
     publications {
         maven(MavenPublication) {
             groupId 'com.deuna'
-            artifactId 'DeUnaSdk'
-            version ''
-            artifact("$buildDir/outputs/aar-deuna/deuna-sdk.aar")
+            artifactId 'deunasdk'
+            version '0.1.76-SNAPSHOT'
+            artifact("$buildDir/outputs/aar/android-debug.aar")
         }
     }
 
     repositories {
         maven {
-            url "http://localhost:8081/repository/maven-releases/"
-            allowInsecureProtocol = true
+        url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
             credentials {
-                username = "admin"
-                password = "admin"
+                username = "developersdeuna"
+                password = "J>y@RT]3>[v2%jM"
             }
         }
     }
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
