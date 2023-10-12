@@ -38,7 +38,7 @@ publishing {
         maven(MavenPublication) {
             groupId 'com.deuna'
             artifactId 'deunasdk'
-            version '0.1.76-SNAPSHOT'
+            version '0.2.0-rc2-SNAPSHOT'
             artifact("$buildDir/outputs/aar/android-debug.aar")
         }
     }
