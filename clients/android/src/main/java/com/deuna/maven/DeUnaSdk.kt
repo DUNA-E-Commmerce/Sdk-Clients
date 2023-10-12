@@ -1,6 +1,5 @@
-package com.deuna
+package com.deuna.maven
 
-import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -38,7 +37,8 @@ class DeUnaSdk {
     }
 
     enum class ElementType(val value: String) {
-        SAVE_CARD("saveCard")
+        SAVE_CARD("saveCard"),
+        EXAMPLE("example")
     }
 
     inner class JSBridge {
@@ -68,6 +68,11 @@ class DeUnaSdk {
                     this.userToken = userToken
                 }
                 this.environment = environment
+                if (this.environment == Environment.DEVELOPMENT) {
+                    this.elementURL = "https://pay.stg.deuna.com/elements"
+                } else {
+                    this.elementURL = "https://elements.deuna"
+                }
                 if (elementType != null) {
                     this.elementType = elementType
                 }
@@ -121,12 +126,14 @@ class DeUnaSdk {
 
         @OptIn(DelicateCoroutinesApi::class)
         fun initElements(
-            webView: WebView
+            view: View
         ): Callbacks {
             instance.apply {
                 val callbacks = Callbacks()
                 val cookieManager = CookieManager.getInstance()
                 cookieManager.setAcceptCookie(true)
+
+                val webView: WebView = view.findViewById(R.id.deuna_webview)
                 webView.webViewClient = object : WebViewClient() {
                     override fun onPageFinished(view: WebView?, url: String?) {
                         super.onPageFinished(view, url)

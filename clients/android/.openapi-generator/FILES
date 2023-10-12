@@ -8,7 +8,7 @@ gradle/wrapper/gradle-wrapper.properties
 proguard-rules.pro
 settings.gradle
 src/main/AndroidManifest.xml
-src/main/java/com/deuna/DeUnaFragment.kt
-src/main/java/com/deuna/DeUnaSdk.kt
+src/main/java/com/deuna/maven/DeUnaFragment.kt
+src/main/java/com/deuna/maven/DeUnaSdk.kt
 src/main/res/layout/fragment_de_una.xml
 src/main/res/values/strings.xml

@@ -1,4 +1,4 @@
-package com.deuna
+package com.deuna.maven
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

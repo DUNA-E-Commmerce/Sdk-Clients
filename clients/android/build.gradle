@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.deuna'
+    namespace 'com.deuna.maven'
     compileSdk 33
 
     defaultConfig {
@@ -36,9 +36,9 @@ android {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId 'com.deuna'
+            groupId 'com.deuna.maven'
             artifactId 'deunasdk'
-            version '0.2.0-rc2-SNAPSHOT'
+            version '0.2.0-SNAPSHOT'
             artifact("$buildDir/outputs/aar/android-debug.aar")
         }
     }
