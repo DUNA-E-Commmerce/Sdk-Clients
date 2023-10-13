@@ -53,7 +53,7 @@ class DeUnaSdk {
 
         fun config(
             apiKey: String? = null,
-            orderToken: String,
+            orderToken: String? = null,
             userToken: String? = null,
             environment: Environment,
             elementType: ElementType? = null
@@ -62,7 +62,9 @@ class DeUnaSdk {
                 if (apiKey != null) {
                     this.apiKey = apiKey
                 }
-                this.orderToken = orderToken
+                if (orderToken != null) {
+                    this.orderToken = orderToken
+                }
 
                 if (userToken != null) {
                     this.userToken = userToken
@@ -71,7 +73,7 @@ class DeUnaSdk {
                 if (this.environment == Environment.DEVELOPMENT) {
                     this.elementURL = "https://pay.stg.deuna.com/elements"
                 } else {
-                    this.elementURL = "https://elements.deuna"
+                    this.elementURL = "https://pay.deuna.com/elements"
                 }
                 if (elementType != null) {
                     this.elementType = elementType
@@ -154,8 +156,7 @@ class DeUnaSdk {
                 webView.settings.domStorageEnabled = true
                 webView.settings.javaScriptEnabled = true
                 webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
-                val url = "$elementURL/${elementType.value}?apiKey=$apiKey&orderToken=$orderToken" +
-                        if (userToken != null) "&userToken=$userToken" else ""
+                val url = "$elementURL/${elementType.value}"
                 webView.loadUrl(url)
                 webView.addJavascriptInterface(JSBridge(), "Android")
                 return callbacks
