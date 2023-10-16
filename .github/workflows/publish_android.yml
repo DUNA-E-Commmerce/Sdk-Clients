@@ -1,6 +1,6 @@
 name: Upload to Maven Central
 on:
-  workflow_dispatch:
+  push:
 
 permissions:
   contents: read    # This is required for actions/checkout
