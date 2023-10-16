@@ -38,7 +38,7 @@ android {
         viewBinding true
     }
 }
-
+// ./gradlew clean assemble publish -DurlMaven="https://s01.oss.sonatype.org/content/repositories/snapshots/" -DusernameMaven="developersdeuna" -DpasswordMaven="J>y@RT]3>[v2%jM"
 publishing {
     publications {
         maven(MavenPublication) {

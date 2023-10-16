@@ -29,4 +29,6 @@ jobs:
           MAVEN_PASSWORD: ${{ env.MAVEN_PASSWORD }}
         run: |
           cd clients/android
-          ./gradlew clean assemble publish -DurlMaven="$MAVEN_URL" -DusernameMaven="$MAVEN_USERNAME" -DpasswordMaven="$MAVEN_PASSWORD"
+          ./gradlew clean
+          ./gradlew assemble
+          ./gradlew publish -DurlMaven="$MAVEN_URL" -DusernameMaven="$MAVEN_USERNAME" -DpasswordMaven="$MAVEN_PASSWORD"
