@@ -4,13 +4,31 @@ plugins {
     id 'maven-publish'
 }
 
+if (project.hasProperty("urlMaven")) {
+    ext.urlMaven = project.getProperty("urlMaven")
+} else {
+    ext.urlMaven = ""
+}
+
+if (project.hasProperty("usernameMaven")) {
+    ext.usernameMaven = project.getProperty("usernameMaven")
+} else {
+    ext.usernameMaven = ""
+}
+
+
+if (project.hasProperty("passwordMaven")) {
+    ext.passwordMaven = project.getProperty("passwordMaven")
+} else {
+    ext.passwordMaven = ""
+}
+
 android {
     namespace 'com.deuna.maven'
     compileSdk 33
 
     defaultConfig {
         minSdk 33
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -38,17 +56,17 @@ publishing {
         maven(MavenPublication) {
             groupId 'com.deuna.maven'
             artifactId 'deunasdk'
-            version '0.2.0-SNAPSHOT'
+            version '0.2.4-SNAPSHOT'
             artifact("$buildDir/outputs/aar/android-debug.aar")
         }
     }
 
     repositories {
         maven {
-        url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+        url ext.urlMaven
             credentials {
-                username = "developersdeuna"
-                password = "J>y@RT]3>[v2%jM"
+                username = ext.usernameMaven
+                password = ext.passwordMaven
             }
         }
     }
