@@ -47,4 +47,4 @@ jobs:
         # Commit and push to the destination repo
         git commit -m "Release ${{ steps.get_version.outputs.VERSION }}"
         git remote add origin https://${{ env.DESTINATION_GITHUB_USERNAME }}:${{ secrets.DEUNA_PUBLIC_GITHUB_TOKEN }}@github.com/${{ env.DESTINATION_GITHUB_USERNAME }}/${{ env.DESTINATION_REPOSITORY_NAME }}.git
-        git push -u origin master --force
+        git push -u origin main --force
