@@ -1,4 +1,4 @@
-name: DEUNA ios client release
+name: DEUNA ios client release candidate
 
 on:
   push:
