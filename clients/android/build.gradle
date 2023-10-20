@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
 }
 
+
 ext {
     urlMaven = System.getProperty("urlMaven", "");
     usernameMaven = System.getProperty("usernameMaven", "");
@@ -11,12 +12,19 @@ ext {
 }
 
 
+if (project.hasProperty("passwordMaven")) {
+    ext.passwordMaven = project.getProperty("passwordMaven")
+} else {
+    ext.passwordMaven = ""
+}
+
 android {
     namespace 'com.deuna.maven'
     compileSdk 33
 
     defaultConfig {
         minSdk 33
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -38,14 +46,37 @@ android {
         viewBinding true
     }
 }
-// ./gradlew clean assemble publish -DurlMaven="https://s01.oss.sonatype.org/content/repositories/snapshots/" -DusernameMaven="developersdeuna" -DpasswordMaven="J>y@RT]3>[v2%jM"
+
 publishing {
     publications {
         maven(MavenPublication) {
             groupId 'com.deuna.maven'
             artifactId 'deunasdk'
-            version '0.2.5-SNAPSHOT'
+            version '0.3.0-SNAPSHOT'
             artifact("$buildDir/outputs/aar/android-debug.aar")
+            pom {
+                name = 'Android SDK DEUNA'
+                description = 'SDK for use in external merchants DEUNA'
+                url = 'https://github.com/DUNA-E-Commmerce/Sdk-Clients/tree/develop'
+                developers {
+                    developer {
+                        id = 'deunadevelopers'
+                        name = 'DEUNA Developers'
+                        email = 'developers@deuna.com'
+                    }
+                }
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/DUNA-E-Commmerce/Sdk-Clients.git'
+                    developerConnection = 'scm:git:ssh://ithub.com:DUNA-E-Commmerce/Sdk-Clients.git'
+                    url = 'https://github.com/DUNA-E-Commmerce/Sdk-Clients/tree/develop'
+                }
+            }
         }
     }
 
@@ -58,6 +89,10 @@ publishing {
             }
         }
     }
+}
+
+signing {
+    sign publishing.publications.maven
 }
 
 dependencies {
