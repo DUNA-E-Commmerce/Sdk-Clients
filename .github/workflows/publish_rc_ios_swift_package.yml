@@ -21,7 +21,7 @@ jobs:
 
     - name: Extract version from tag
       id: get_version
-      run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/ios-client-v}
+      run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/ios-client-rc}
 
     - name: Store the version in version.txt
       run: echo "${{ steps.get_version.outputs.VERSION }}" > ${{ env.SOURCE_DIRECTORY }}/version.txt

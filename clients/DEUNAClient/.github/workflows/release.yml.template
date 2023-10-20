@@ -39,18 +39,3 @@ jobs:
         prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-What this action does:
-
-Triggers on every push to main.
-Checks out the code.
-Reads the version from version.txt.
-Creates a new Git tag with that version.
-Pushes that tag to GitHub.
-Creates a new GitHub release using that tag.
-Remember to increment the version in version.txt every time you want to create a new release. The advantage of this approach is that you can manually control when to increment the version and which type of semantic versioning bump (major, minor, patch) you want to apply.
-
-
-
-
-
-
