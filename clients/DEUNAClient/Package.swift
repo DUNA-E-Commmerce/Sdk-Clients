@@ -27,7 +27,7 @@ let package = Package(
         .target(
             name: "DEUNAClient",
             dependencies: ["AnyCodable", ],
-            path: "src/APIs"
+            path: "src"
         ),
     ]
 )
