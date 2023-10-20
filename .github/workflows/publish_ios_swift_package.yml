@@ -43,5 +43,5 @@ jobs:
       with:
         source-directory: '${{ env.SOURCE_DIRECTORY }}'
         destination-github-username: '${{ env.DESTINATION_GITHUB_USERNAME }}'
-        destination-repository: '${{ env.DESTINATION_REPOSITORY_NAME }}'
+        destination-repository-name: '${{ env.DESTINATION_REPOSITORY_NAME }}'
         user-email: '${{ env.USER_EMAIL }}'
