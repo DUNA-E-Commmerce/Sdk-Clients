@@ -39,7 +39,7 @@ jobs:
 
         # Navigate to temp_dir and set up git
         cd temp_dir
-        git init
+        git init --initial-branch=main
         git config user.name "GitHub Action"
         git config user.email "${{ env.USER_EMAIL }}"
         git add . --all
