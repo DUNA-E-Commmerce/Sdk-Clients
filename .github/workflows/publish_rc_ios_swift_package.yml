@@ -3,13 +3,13 @@ name: DEUNA ios client release
 on:
   push:
     tags:
-      - 'ios-client-v*'
+      - 'ios-client-rc*'
 
 env:
   USER_EMAIL: ${{ secrets.USER_EMAIL }}
   SOURCE_DIRECTORY: ${{ secrets.SOURCE_DIRECTORY }}
-  DESTINATION_GITHUB_USERNAME: ${{ secrets.DESTINATION_GITHUB_USERNAME }}
-  DESTINATION_REPOSITORY_NAME: ${{ secrets.DESTINATION_REPOSITORY_NAME }}
+  DESTINATION_GITHUB_USERNAME: ${{ secrets.RC_DESTINATION_GITHUB_USERNAME }}
+  DESTINATION_REPOSITORY_NAME: ${{ secrets.RC_DESTINATION_REPOSITORY_NAME }}
 
 jobs:
   copy-to-repo:
