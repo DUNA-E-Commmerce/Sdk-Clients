@@ -1,0 +1,16 @@
+.openapi-generator-ignore
+README.md
+build.gradle
+consumer-rules.pro
+gradle.properties
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
+gradlew
+gradlew.bat
+proguard-rules.pro
+settings.gradle
+src/main/AndroidManifest.xml
+src/main/java/com/deuna/maven/DeUnaFragment.kt
+src/main/java/com/deuna/maven/DeUnaSdk.kt
+src/main/res/layout/fragment_de_una.xml
+src/main/res/values/strings.xml

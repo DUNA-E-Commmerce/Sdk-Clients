@@ -1,0 +1,50 @@
+name: DEUNA ios client release candidate
+
+on:
+  push:
+    tags:
+      - 'ios-client-rc*'
+
+env:
+  USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  SOURCE_DIRECTORY: ${{ secrets.SOURCE_DIRECTORY }}
+  DESTINATION_GITHUB_USERNAME: ${{ secrets.RC_DESTINATION_GITHUB_USERNAME }}
+  DESTINATION_REPOSITORY_NAME: ${{ secrets.RC_DESTINATION_REPOSITORY_NAME }}
+
+jobs:
+  copy-to-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Extract version from tag
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/ios-client-rc}
+
+    - name: Store the version in version.txt
+      run: echo "${{ steps.get_version.outputs.VERSION }}" > ${{ env.SOURCE_DIRECTORY }}/version.txt
+
+    - name: Rename release.yml.template to release.yml
+      run: mv "${{ env.SOURCE_DIRECTORY }}/.github/workflows/release.yml.template" ${{ env.SOURCE_DIRECTORY }}/.github/workflows/release.yml
+
+    - name: Push contents to destination repo
+      run: |
+        # Export contents to a temp directory
+        mkdir temp_dir
+        cp -r ${{ env.SOURCE_DIRECTORY }}/* temp_dir/
+        cp ${{ env.SOURCE_DIRECTORY }}/version.txt temp_dir/
+        cp -r ${{ env.SOURCE_DIRECTORY }}/.github temp_dir/
+
+        # Navigate to temp_dir and set up git
+        cd temp_dir
+        git init --initial-branch=main
+        git config user.name "GitHub Action"
+        git config user.email "${{ env.USER_EMAIL }}"
+        git add . --all
+
+        # Commit and push to the destination repo
+        git commit -m "Release ${{ steps.get_version.outputs.VERSION }}"
+        git remote add origin https://${{ env.DESTINATION_GITHUB_USERNAME }}:${{ secrets.DEUNA_PUBLIC_GITHUB_TOKEN }}@github.com/${{ env.DESTINATION_GITHUB_USERNAME }}/${{ env.DESTINATION_REPOSITORY_NAME }}.git
+        git push -u origin main --force
