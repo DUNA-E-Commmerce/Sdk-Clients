@@ -3,42 +3,32 @@ package com.deuna.maven.domain
 import org.json.JSONObject
 
 data class OrderErrorResponse(
-    val user: User,
-    val order: Order
+    val order: Order,
+    val metadata: Metadata
 ) {
-    data class User(
-        val id: String,
-        val is_guest: Boolean
+    data class Metadata(
+        val errorCode: String,
+        val errorMessage: String
     )
 
     data class Order(
         val order_id: String,
-        val currency: String,
-        val tax_amount: Int,
-        val shipping_amount: Int,
-        val items_total_amount: Int,
-        val sub_total: Int,
-        val total_amount: Int
+        val currency: String
     )
 
     companion object {
         fun fromJson(json: JSONObject): OrderErrorResponse {
-            val userData = json.getJSONObject("user")
+            val metadata = json.getJSONObject("metadata")
             val orderData = json.getJSONObject("order")
-            val user = User(
-                userData.getString("id"),
-                userData.getBoolean("is_guest")
+            val meta= Metadata(
+                metadata.getString("errorCode"),
+                metadata.getString("errorMessage")
             )
             val order = Order(
                 orderData.getString("order_id"),
                 orderData.getString("currency"),
-                orderData.getInt("tax_amount"),
-                orderData.getInt("shipping_amount"),
-                orderData.getInt("items_total_amount"),
-                orderData.getInt("sub_total"),
-                orderData.getInt("total_amount")
             )
-            return OrderErrorResponse(user, order)
+            return OrderErrorResponse(order, meta)
         }
     }
 }
