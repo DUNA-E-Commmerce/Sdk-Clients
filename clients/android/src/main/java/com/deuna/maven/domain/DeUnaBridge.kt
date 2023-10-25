@@ -2,10 +2,11 @@ package com.deuna.maven.domain
 
 import android.util.Log
 import android.webkit.JavascriptInterface
+import android.webkit.WebView
 import org.json.JSONException
 import org.json.JSONObject
 
-class DeUnaBridge(private val callbacks: Callbacks) {
+class DeUnaBridge(private val callbacks: Callbacks, private val webView: WebView) {
     @JavascriptInterface
     fun sendMessage(message: String) {
         try {
@@ -25,6 +26,11 @@ class DeUnaBridge(private val callbacks: Callbacks) {
                                 "data"
                             )
                         )
+                    )
+                }
+                CheckoutEvents.LINK_CLOSED.toString() -> {
+                    callbacks.onClose?.invoke(
+                        webView
                     )
                 }
             }

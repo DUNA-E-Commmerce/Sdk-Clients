@@ -105,7 +105,7 @@ class DeUnaSdk {
                 webView.settings.javaScriptEnabled = true
                 webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
                 webView.loadUrl("$baseUrl/$orderToken")
-                webView.addJavascriptInterface(DeUnaBridge(callbacks), "android")
+                webView.addJavascriptInterface(DeUnaBridge(callbacks, webView), "android")
                 return callbacks
             }
         }
@@ -142,7 +142,7 @@ class DeUnaSdk {
                 webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
                 val url = "$baseUrl/elements/${elementType.value}"
                 webView.loadUrl(url)
-                webView.addJavascriptInterface(DeUnaBridge(callbacks), "android")
+                webView.addJavascriptInterface(DeUnaBridge(callbacks, webView), "android")
                 return callbacks
             }
         }
