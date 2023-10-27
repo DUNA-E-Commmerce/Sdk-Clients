@@ -1,28 +1,23 @@
 package com.deuna.maven
 
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.net.Uri
 import android.view.View
 import android.webkit.CookieManager
-import android.webkit.JavascriptInterface
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Button
 import com.deuna.maven.domain.Callbacks
+import com.deuna.maven.domain.CheckoutEvents
 import com.deuna.maven.domain.DeUnaBridge
 import com.deuna.maven.domain.ElementType
 import com.deuna.maven.domain.Environment
-import com.deuna.maven.domain.OrderErrorResponse
-import com.deuna.maven.domain.OrderSuccessResponse
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import org.json.JSONException
-import org.json.JSONObject
 
 class DeUnaSdk {
     private lateinit var apiKey: String
@@ -32,6 +27,7 @@ class DeUnaSdk {
     private lateinit var userToken: String
     private var baseUrl: String = "https://elements.euna"
     private var actionMillisecods = 5000L
+    private var closeOnEvents: Array<CheckoutEvents>? = null
 
     companion object {
         private lateinit var instance: DeUnaSdk
@@ -41,7 +37,8 @@ class DeUnaSdk {
             orderToken: String? = null,
             userToken: String? = null,
             environment: Environment,
-            elementType: ElementType? = null
+            elementType: ElementType? = null,
+            closeOnEvents: Array<CheckoutEvents>? = null
         ) {
             instance = DeUnaSdk().apply {
                 if (apiKey != null) {
@@ -49,6 +46,10 @@ class DeUnaSdk {
                 }
                 if (orderToken != null) {
                     this.orderToken = orderToken
+                }
+
+                if (closeOnEvents != null) {
+                    this.closeOnEvents = closeOnEvents
                 }
 
                 if (userToken != null) {
@@ -66,6 +67,7 @@ class DeUnaSdk {
             }
         }
 
+
         @OptIn(DelicateCoroutinesApi::class)
         fun initCheckout(
             view: View
@@ -74,38 +76,11 @@ class DeUnaSdk {
                 val callbacks = Callbacks()
                 val cookieManager = CookieManager.getInstance()
                 cookieManager.setAcceptCookie(true)
-
                 val webView: WebView = view.findViewById(R.id.deuna_webview)
-
-                webView.webViewClient = object : WebViewClient() {
-                    override fun onPageFinished(view: WebView?, url: String?) {
-                        super.onPageFinished(view, url)
-
-                        GlobalScope.launch(Dispatchers.Main) {
-                            Handler(Looper.getMainLooper()).postDelayed({
-                                try {
-                                    callbacks.onClose?.invoke(webView)
-                                } catch (e: Exception) {
-                                    callbacks.onClose?.invoke(webView)
-                                    e.localizedMessage?.let { }
-                                }
-                            }, actionMillisecods)
-                        }
-                    }
-
-                    override fun onReceivedError(
-                        view: WebView?,
-                        request: WebResourceRequest?,
-                        error: WebResourceError?
-                    ) {
-                        super.onReceivedError(view, request, error)
-                    }
-                }
-                webView.settings.domStorageEnabled = true
-                webView.settings.javaScriptEnabled = true
-                webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
-                webView.loadUrl("$baseUrl/$orderToken")
-                webView.addJavascriptInterface(DeUnaBridge(callbacks, webView), "android")
+                configureWebViewClient(webView, callbacks, closeOnEvents)
+                configureWebView(webView)
+                addJavascriptInterface(webView, callbacks, closeOnEvents)
+                loadUrlWithNetworkCheck(webView, webView.context, "$baseUrl/$orderToken", callbacks)
                 return callbacks
             }
         }
@@ -118,32 +93,78 @@ class DeUnaSdk {
                 val callbacks = Callbacks()
                 val cookieManager = CookieManager.getInstance()
                 cookieManager.setAcceptCookie(true)
-
                 val webView: WebView = view.findViewById(R.id.deuna_webview)
-                webView.webViewClient = object : WebViewClient() {
-                    override fun onPageFinished(view: WebView?, url: String?) {
-                        super.onPageFinished(view, url)
-                        GlobalScope.launch(Dispatchers.Main) {
-
-                        }
-                    }
-
-                    override fun onReceivedError(
-                        view: WebView?,
-                        request: WebResourceRequest?,
-                        error: WebResourceError?
-                    ) {
-                        super.onReceivedError(view, request, error)
-                    }
-
+                configureWebViewClient(webView, callbacks, closeOnEvents)
+                val builder = Uri.parse("$baseUrl/elements/${elementType.value}").buildUpon()
+                if (userToken.isNotEmpty()) {
+                    builder.appendQueryParameter("userToken", userToken)
                 }
-                webView.settings.domStorageEnabled = true
-                webView.settings.javaScriptEnabled = true
-                webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
-                val url = "$baseUrl/elements/${elementType.value}"
-                webView.loadUrl(url)
-                webView.addJavascriptInterface(DeUnaBridge(callbacks, webView), "android")
+                val url = builder.build().toString()
+                configureWebViewClient(webView, callbacks, closeOnEvents)
+                configureWebView(webView)
+                addJavascriptInterface(webView, callbacks, closeOnEvents)
+                loadUrlWithNetworkCheck(webView, webView.context, url, callbacks)
+
                 return callbacks
+            }
+        }
+
+        private fun configureWebView(webView: WebView) {
+            webView.settings.apply {
+                domStorageEnabled = true
+                javaScriptEnabled = true
+                cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+            }
+        }
+
+
+        private fun configureWebViewClient(
+            webView: WebView,
+            callbacks: Callbacks,
+            closeOnEvents: Array<CheckoutEvents>?
+        ) {
+            webView.webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView?, url: String?) {
+                    super.onPageFinished(view, url)
+                }
+
+                override fun onReceivedError(
+                    view: WebView?,
+                    request: WebResourceRequest?,
+                    error: WebResourceError?
+                ) {
+                    super.onReceivedError(view, request, error)
+                }
+            }
+        }
+
+        private fun addJavascriptInterface(
+            webView: WebView,
+            callbacks: Callbacks,
+            closeOnEvents: Array<CheckoutEvents>?
+        ) {
+            webView.addJavascriptInterface(
+                DeUnaBridge(callbacks, webView, closeOnEvents),
+                "android"
+            )
+        }
+
+        private fun loadUrlWithNetworkCheck(
+            view: WebView,
+            context: Context,
+            url: String,
+            callbacks: Callbacks
+        ) {
+            val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val networkCapabilities =
+                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            if ((networkCapabilities != null) && networkCapabilities.hasCapability(
+                    NetworkCapabilities.NET_CAPABILITY_INTERNET
+                )
+            ) {
+                view.loadUrl(url)
+            } else {
             }
         }
     }
