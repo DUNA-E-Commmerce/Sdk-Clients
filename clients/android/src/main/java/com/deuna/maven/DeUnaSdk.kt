@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import android.webkit.CookieManager
 import android.webkit.WebResourceError
@@ -28,6 +29,7 @@ class DeUnaSdk {
     private var baseUrl: String = "https://elements.euna"
     private var actionMillisecods = 5000L
     private var closeOnEvents: Array<CheckoutEvents>? = null
+    private var loggingEnabled: Boolean? = false
 
     companion object {
         private lateinit var instance: DeUnaSdk
@@ -63,6 +65,10 @@ class DeUnaSdk {
                 }
                 if (elementType != null) {
                     this.elementType = elementType
+                }
+
+                if(loggingEnabled != null) {
+                    this.loggingEnabled = loggingEnabled
                 }
             }
         }
@@ -134,6 +140,7 @@ class DeUnaSdk {
                     error: WebResourceError?
                 ) {
                     super.onReceivedError(view, request, error)
+                    log("Error: ${error?.description}")
                 }
             }
         }
@@ -165,6 +172,13 @@ class DeUnaSdk {
             ) {
                 view.loadUrl(url)
             } else {
+                this.log("No internet connection")
+            }
+        }
+
+        private fun log(message: String) {
+            if(instance.loggingEnabled!! && instance.loggingEnabled == true) {
+                Log.d("[DeunaSDK]: ", message)
             }
         }
     }
