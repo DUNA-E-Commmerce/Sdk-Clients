@@ -22,7 +22,7 @@ open class PaymentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func capture(orderToken: String, xApiKey: String? = nil, captureRequest: CaptureRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func capture(orderToken: String, xApiKey: String? = nil, captureRequest: CaptureRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return captureWithRequestBuilder(orderToken: orderToken, xApiKey: xApiKey, captureRequest: captureRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -50,7 +50,7 @@ open class PaymentsAPI {
         let orderTokenPreEscape = "\(APIHelper.mapValueToPathItem(orderToken))"
         let orderTokenPostEscape = orderTokenPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{order_token}", with: orderTokenPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: captureRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -61,7 +61,7 @@ open class PaymentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -76,7 +76,7 @@ open class PaymentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMerchantsPaymentsMethods(orderToken: String, xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: GetMerchantsPaymentsMethods200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getMerchantsPaymentsMethods(orderToken: String, xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetMerchantsPaymentsMethods200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getMerchantsPaymentsMethodsWithRequestBuilder(orderToken: orderToken, xApiKey: xApiKey, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -107,7 +107,7 @@ open class PaymentsAPI {
         let orderTokenPreEscape = "\(APIHelper.mapValueToPathItem(orderToken))"
         let orderTokenPostEscape = orderTokenPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{order_token}", with: orderTokenPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -119,7 +119,7 @@ open class PaymentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<GetMerchantsPaymentsMethods200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetMerchantsPaymentsMethods200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -132,7 +132,7 @@ open class PaymentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getPaymentMethods(authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: GetPaymentMethods200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getPaymentMethods(authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetPaymentMethods200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getPaymentMethodsWithRequestBuilder(authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -155,7 +155,7 @@ open class PaymentsAPI {
      */
     open class func getPaymentMethodsWithRequestBuilder(authorization: String? = nil) -> RequestBuilder<GetPaymentMethods200Response> {
         let localVariablePath = "/transactions/payments-methods"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -166,7 +166,7 @@ open class PaymentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<GetPaymentMethods200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetPaymentMethods200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -183,7 +183,7 @@ open class PaymentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func purchase(xApiKey: String? = nil, authorization: String? = nil, xDeviceId: String? = nil, xSessionId: String? = nil, purchaseRequest: PurchaseRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Purchase200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func purchase(xApiKey: String? = nil, authorization: String? = nil, xDeviceId: String? = nil, xSessionId: String? = nil, purchaseRequest: PurchaseRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Purchase200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return purchaseWithRequestBuilder(xApiKey: xApiKey, authorization: authorization, xDeviceId: xDeviceId, xSessionId: xSessionId, purchaseRequest: purchaseRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -213,7 +213,7 @@ open class PaymentsAPI {
      */
     open class func purchaseWithRequestBuilder(xApiKey: String? = nil, authorization: String? = nil, xDeviceId: String? = nil, xSessionId: String? = nil, purchaseRequest: PurchaseRequest? = nil) -> RequestBuilder<Purchase200Response> {
         let localVariablePath = "/merchants/transactions/purchase"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: purchaseRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -227,7 +227,7 @@ open class PaymentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Purchase200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Purchase200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -243,7 +243,7 @@ open class PaymentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func verifyPaymentOtp(orderToken: String, xApiKey: String? = nil, authorization: String? = nil, verifyPaymentOtpRequest: VerifyPaymentOtpRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: OrderToken200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func verifyPaymentOtp(orderToken: String, xApiKey: String? = nil, authorization: String? = nil, verifyPaymentOtpRequest: VerifyPaymentOtpRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetOrder200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return verifyPaymentOtpWithRequestBuilder(orderToken: orderToken, xApiKey: xApiKey, authorization: authorization, verifyPaymentOtpRequest: verifyPaymentOtpRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -268,14 +268,14 @@ open class PaymentsAPI {
      - parameter xApiKey: (header)  (optional)
      - parameter authorization: (header)  (optional)
      - parameter verifyPaymentOtpRequest: (body)  (optional)
-     - returns: RequestBuilder<OrderToken200Response> 
+     - returns: RequestBuilder<GetOrder200Response> 
      */
-    open class func verifyPaymentOtpWithRequestBuilder(orderToken: String, xApiKey: String? = nil, authorization: String? = nil, verifyPaymentOtpRequest: VerifyPaymentOtpRequest? = nil) -> RequestBuilder<OrderToken200Response> {
+    open class func verifyPaymentOtpWithRequestBuilder(orderToken: String, xApiKey: String? = nil, authorization: String? = nil, verifyPaymentOtpRequest: VerifyPaymentOtpRequest? = nil) -> RequestBuilder<GetOrder200Response> {
         var localVariablePath = "/merchants/orders/{order_token}/transactions/verify"
         let orderTokenPreEscape = "\(APIHelper.mapValueToPathItem(orderToken))"
         let orderTokenPostEscape = orderTokenPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{order_token}", with: orderTokenPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: verifyPaymentOtpRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -287,7 +287,7 @@ open class PaymentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OrderToken200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetOrder200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

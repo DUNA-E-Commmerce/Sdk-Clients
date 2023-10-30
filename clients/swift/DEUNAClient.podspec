@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name = 'DeUnaSdk'
+  s.name = 'DEUNAClient'
   s.ios.deployment_target = '11.0'
   s.osx.deployment_target = '10.13'
   s.tvos.deployment_target = '11.0'
@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.authors = 'Developers DEUNA'
   s.license = 'Proprietary'
   s.homepage = 'https://github.com/OpenAPITools/openapi-generator'
-  s.summary = 'DeUnaSdk Swift SDK'
-  s.description = 'DeUnaSdk for Merchants'
+  s.summary = 'DEUNAClient Swift SDK'
+  s.description = 'DEUNAClient for Merchants'
   s.source_files = 'src/**/*.swift'
   s.dependency 'AnyCodable-FlightSchool', '~> 0.6'
 end

@@ -21,6 +21,7 @@ public struct OrderTokenRequestOrderItemsInnerTotalAmount: Codable, JSONEncodabl
         case brl = "BRL"
         case ars = "ARS"
         case pen = "PEN"
+        case empty = ""
     }
     public enum CurrencySymbol: String, Codable, CaseIterable {
         case dollar = "$"

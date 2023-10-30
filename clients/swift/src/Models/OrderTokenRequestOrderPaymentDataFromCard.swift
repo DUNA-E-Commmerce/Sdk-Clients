@@ -14,10 +14,10 @@ import AnyCodable
 public struct OrderTokenRequestOrderPaymentDataFromCard: Codable, JSONEncodable, Hashable {
 
     public enum CardBrand: String, Codable, CaseIterable {
-        case visa = "visa"
-        case mastercard = "mastercard"
-        case amex = "amex"
-        case diners = "diners"
+        case visa = "Visa"
+        case mastercard = "Mastercard"
+        case americanExpress = "American Express"
+        case diners = "Diners"
     }
     /** Procesador de la tarjeta */
     public var cardBrand: CardBrand?

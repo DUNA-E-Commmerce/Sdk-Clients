@@ -1,4 +1,4 @@
-# Swift5 API client for DeUnaSdk
+# Swift5 API client for DEUNAClient
 
 API Gateway
 
@@ -49,12 +49,12 @@ Class | Method | HTTP request | Description
 *MerchantsAPI* | [**registerMerchantUsers**](docs/MerchantsAPI.md#registermerchantusers) | **GET** /merchant-users | Register Merchant User
 *MerchantsAPI* | [**updateMerchant**](docs/MerchantsAPI.md#updatemerchant) | **PUT** /merchants/{merchant_id} | Update merchant
 *OrderAPI* | [**cancelOrder**](docs/OrderAPI.md#cancelorder) | **POST** /merchants/orders/{order_token}/cancel | Cancelar la orden
-*OrderAPI* | [**getInstallments**](docs/OrderAPI.md#getinstallments) | **GET** /merchants/transactions/orders/{order_token}/installments | Obtener Installments para Orden
 *OrderAPI* | [**getOrder**](docs/OrderAPI.md#getorder) | **GET** /merchants/orders/{order_token} | Obtener orden por token
 *OrderAPI* | [**orderToken**](docs/OrderAPI.md#ordertoken) | **POST** /merchants/orders | Crear token de orden
 *OrderAPI* | [**refundOrder**](docs/OrderAPI.md#refundorder) | **POST** /merchants/orders/{order_token}/refund | Reembolsar orden
 *OrderAPI* | [**successOrder**](docs/OrderAPI.md#successorder) | **POST** /merchants/orders/{order_token}/success | Aprobar orden
 *OrderAPI* | [**voidPaymentOrder**](docs/OrderAPI.md#voidpaymentorder) | **POST** /merchants/orders/{order_token}/void | Anular pago
+*OrdersAPI* | [**getInstallments**](docs/OrdersAPI.md#getinstallments) | **GET** /merchants/transactions/orders/{order_token}/installments | Obtener Installments para Orden
 *PaymentsAPI* | [**capture**](docs/PaymentsAPI.md#capture) | **POST** /merchants/orders/{order_token}/capture | Capturar un pago autorizado
 *PaymentsAPI* | [**getMerchantsPaymentsMethods**](docs/PaymentsAPI.md#getmerchantspaymentsmethods) | **GET** /merchants/orders/{order_token}/payments-methods | Métodos de pago
 *PaymentsAPI* | [**getPaymentMethods**](docs/PaymentsAPI.md#getpaymentmethods) | **GET** /transactions/payments-methods | Payment methods campos específicos
@@ -112,6 +112,11 @@ Class | Method | HTTP request | Description
  - [GetMerchantsPaymentsMethods200ResponseDataInnerSpecificFieldsFinancialInstitutionInner](docs/GetMerchantsPaymentsMethods200ResponseDataInnerSpecificFieldsFinancialInstitutionInner.md)
  - [GetMerchantsPaymentsMethods401Response](docs/GetMerchantsPaymentsMethods401Response.md)
  - [GetMerchantsPaymentsMethods500Response](docs/GetMerchantsPaymentsMethods500Response.md)
+ - [GetOrder200Response](docs/GetOrder200Response.md)
+ - [GetOrder200ResponseOrder](docs/GetOrder200ResponseOrder.md)
+ - [GetOrder200ResponseOrderPayment](docs/GetOrder200ResponseOrderPayment.md)
+ - [GetOrder200ResponseOrderPaymentData](docs/GetOrder200ResponseOrderPaymentData.md)
+ - [GetOrder200ResponseOrderPaymentDataAmount](docs/GetOrder200ResponseOrderPaymentDataAmount.md)
  - [GetPaymentMethods200Response](docs/GetPaymentMethods200Response.md)
  - [GetPaymentMethods200ResponseDataInner](docs/GetPaymentMethods200ResponseDataInner.md)
  - [GetPaymentMethods200ResponseDataInnerSpecificFields](docs/GetPaymentMethods200ResponseDataInnerSpecificFields.md)
@@ -157,6 +162,7 @@ Class | Method | HTTP request | Description
  - [OrderToken200ResponseOrderMetadata](docs/OrderToken200ResponseOrderMetadata.md)
  - [OrderToken200ResponseOrderPayment](docs/OrderToken200ResponseOrderPayment.md)
  - [OrderToken200ResponseOrderPaymentData](docs/OrderToken200ResponseOrderPaymentData.md)
+ - [OrderToken200ResponseOrderPaymentDataAmount](docs/OrderToken200ResponseOrderPaymentDataAmount.md)
  - [OrderToken200ResponseOrderPaymentDataFromCard](docs/OrderToken200ResponseOrderPaymentDataFromCard.md)
  - [OrderToken200ResponseOrderShipping](docs/OrderToken200ResponseOrderShipping.md)
  - [OrderToken200ResponseOrderShippingOptions](docs/OrderToken200ResponseOrderShippingOptions.md)

@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | [**OrderTokenRequestOrderPaymentDataAmount**](OrderTokenRequestOrderPaymentDataAmount.md) |  | [optional] 
+**amount** | [**GetOrder200ResponseOrderPaymentDataAmount**](GetOrder200ResponseOrderPaymentDataAmount.md) |  | [optional] 
 **createdAt** | **String** | Fecha de creación | [optional] 
 **customer** | [**OrderTokenRequestOrderPaymentDataCustomer**](OrderTokenRequestOrderPaymentDataCustomer.md) |  | [optional] 
-**fromCard** | [**OrderToken200ResponseOrderPaymentDataFromCard**](OrderToken200ResponseOrderPaymentDataFromCard.md) |  | [optional] 
+**fromCard** | [**OrderTokenRequestOrderPaymentDataFromCard**](OrderTokenRequestOrderPaymentDataFromCard.md) |  | [optional] 
 **id** | **String** |  | [optional] 
 **merchant** | [**OrderTokenRequestOrderPaymentDataMerchant**](OrderTokenRequestOrderPaymentDataMerchant.md) |  | [optional] 
 **metadata** | **AnyCodable** |  | [optional] 

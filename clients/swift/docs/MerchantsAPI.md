@@ -31,7 +31,7 @@ Create merchant
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let createMerchantRequest = createMerchant_request(city: "city_example", currency: "currency_example", managedByDuna: false, name: "name_example", shortName: "shortName_example", timezone: "timezone_example") // CreateMerchantRequest |  (optional)
@@ -83,7 +83,7 @@ Create Merchant Store
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let merchantId = "merchantId_example" // String | 
 let authorization = "authorization_example" // String |  (optional)
@@ -139,7 +139,7 @@ Create Public Key
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let merchantId = "merchantId_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -191,7 +191,7 @@ Get All Merchants
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let authorization = "authorization_example" // String |  (optional)
 
@@ -241,7 +241,7 @@ Get merchant
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let merchantId = "merchantId_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -293,7 +293,7 @@ Get Merchant Store
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let merchantId = "merchantId_example" // String | 
 let authorization = "authorization_example" // String |  (optional)
@@ -347,7 +347,7 @@ Identity Token
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let authorization = "authorization_example" // String |  (optional)
 
@@ -397,7 +397,7 @@ Make a Merchant Login
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let loginRequest = login_request(email: "email_example", password: "password_example") // LoginRequest |  (optional)
@@ -449,7 +449,7 @@ Getting Merchant Information
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let authorization = "authorization_example" // String |  (optional)
 
@@ -499,7 +499,7 @@ Register Merchant Token
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let merchantId = "merchantId_example" // String | 
 let authorization = "authorization_example" // String |  (optional)
@@ -551,7 +551,7 @@ Register Merchant User
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let registerMerchantUsersRequest = registerMerchantUsers_request(email: "email_example", merchantId: "merchantId_example", name: "name_example", password: "password_example", phone: "phone_example", role: "role_example") // RegisterMerchantUsersRequest |  (optional)
@@ -603,7 +603,7 @@ Register Merchant User
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let authorization = "authorization_example" // String |  (optional)
 let registerMerchantUsersRequest = registerMerchantUsers_request(email: "email_example", merchantId: "merchantId_example", name: "name_example", password: "password_example", phone: "phone_example", role: "role_example") // RegisterMerchantUsersRequest |  (optional)
@@ -655,7 +655,7 @@ Update merchant
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let merchantId = "merchantId_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)

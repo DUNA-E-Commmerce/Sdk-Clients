@@ -20,8 +20,9 @@ public struct OrderToken200ResponseOrderPaymentData: Codable, JSONEncodable, Has
         case cancelled = "cancelled"
         case void = "void"
         case refunded = "refunded"
+        case empty = ""
     }
-    public var amount: OrderTokenRequestOrderPaymentDataAmount?
+    public var amount: OrderToken200ResponseOrderPaymentDataAmount?
     /** Fecha de creación */
     public var createdAt: String?
     public var customer: OrderTokenRequestOrderPaymentDataCustomer?
@@ -38,7 +39,7 @@ public struct OrderToken200ResponseOrderPaymentData: Codable, JSONEncodable, Has
     public var status: Status?
     public var updatedAt: String?
 
-    public init(amount: OrderTokenRequestOrderPaymentDataAmount? = nil, createdAt: String? = nil, customer: OrderTokenRequestOrderPaymentDataCustomer? = nil, fromCard: OrderToken200ResponseOrderPaymentDataFromCard? = nil, id: String? = nil, merchant: OrderTokenRequestOrderPaymentDataMerchant? = nil, metadata: AnyCodable? = nil, methodType: String? = nil, processor: String? = nil, reason: String? = nil, status: Status? = nil, updatedAt: String? = nil) {
+    public init(amount: OrderToken200ResponseOrderPaymentDataAmount? = nil, createdAt: String? = nil, customer: OrderTokenRequestOrderPaymentDataCustomer? = nil, fromCard: OrderToken200ResponseOrderPaymentDataFromCard? = nil, id: String? = nil, merchant: OrderTokenRequestOrderPaymentDataMerchant? = nil, metadata: AnyCodable? = nil, methodType: String? = nil, processor: String? = nil, reason: String? = nil, status: Status? = nil, updatedAt: String? = nil) {
         self.amount = amount
         self.createdAt = createdAt
         self.customer = customer

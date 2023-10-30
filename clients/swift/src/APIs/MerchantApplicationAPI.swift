@@ -22,7 +22,7 @@ open class MerchantApplicationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getApplicationById(merchantId: String, applicationId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantsMerchantIdApplicationsPost200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getApplicationById(merchantId: String, applicationId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantsMerchantIdApplicationsPost200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getApplicationByIdWithRequestBuilder(merchantId: merchantId, applicationId: applicationId, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -53,7 +53,7 @@ open class MerchantApplicationAPI {
         let applicationIdPreEscape = "\(APIHelper.mapValueToPathItem(applicationId))"
         let applicationIdPostEscape = applicationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{application_id}", with: applicationIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -64,7 +64,7 @@ open class MerchantApplicationAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MerchantsMerchantIdApplicationsPost200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MerchantsMerchantIdApplicationsPost200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -77,7 +77,7 @@ open class MerchantApplicationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func merchantsApplicationsValidateGet(xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantsApplicationsValidateGet200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func merchantsApplicationsValidateGet(xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantsApplicationsValidateGet200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return merchantsApplicationsValidateGetWithRequestBuilder(xApiKey: xApiKey).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -100,7 +100,7 @@ open class MerchantApplicationAPI {
      */
     open class func merchantsApplicationsValidateGetWithRequestBuilder(xApiKey: String? = nil) -> RequestBuilder<MerchantsApplicationsValidateGet200Response> {
         let localVariablePath = "/merchants/applications/validate"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -111,7 +111,7 @@ open class MerchantApplicationAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MerchantsApplicationsValidateGet200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MerchantsApplicationsValidateGet200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -125,7 +125,7 @@ open class MerchantApplicationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func merchantsMerchantIdApplicationsGet(merchantId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantsMerchantIdApplicationsGet200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func merchantsMerchantIdApplicationsGet(merchantId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantsMerchantIdApplicationsGet200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return merchantsMerchantIdApplicationsGetWithRequestBuilder(merchantId: merchantId, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -152,7 +152,7 @@ open class MerchantApplicationAPI {
         let merchantIdPreEscape = "\(APIHelper.mapValueToPathItem(merchantId))"
         let merchantIdPostEscape = merchantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{merchant_id}", with: merchantIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -163,7 +163,7 @@ open class MerchantApplicationAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MerchantsMerchantIdApplicationsGet200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MerchantsMerchantIdApplicationsGet200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -178,7 +178,7 @@ open class MerchantApplicationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func merchantsMerchantIdApplicationsPost(merchantId: String, authorization: String? = nil, merchantsMerchantIdApplicationsPostRequest: MerchantsMerchantIdApplicationsPostRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantsMerchantIdApplicationsPost200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func merchantsMerchantIdApplicationsPost(merchantId: String, authorization: String? = nil, merchantsMerchantIdApplicationsPostRequest: MerchantsMerchantIdApplicationsPostRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: MerchantsMerchantIdApplicationsPost200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return merchantsMerchantIdApplicationsPostWithRequestBuilder(merchantId: merchantId, authorization: authorization, merchantsMerchantIdApplicationsPostRequest: merchantsMerchantIdApplicationsPostRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -206,7 +206,7 @@ open class MerchantApplicationAPI {
         let merchantIdPreEscape = "\(APIHelper.mapValueToPathItem(merchantId))"
         let merchantIdPostEscape = merchantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{merchant_id}", with: merchantIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: merchantsMerchantIdApplicationsPostRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -217,7 +217,7 @@ open class MerchantApplicationAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MerchantsMerchantIdApplicationsPost200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MerchantsMerchantIdApplicationsPost200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

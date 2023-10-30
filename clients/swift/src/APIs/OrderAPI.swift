@@ -22,7 +22,7 @@ open class OrderAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func cancelOrder(orderToken: String, xApiKey: String? = nil, cancelOrderRequest: CancelOrderRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func cancelOrder(orderToken: String, xApiKey: String? = nil, cancelOrderRequest: CancelOrderRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return cancelOrderWithRequestBuilder(orderToken: orderToken, xApiKey: xApiKey, cancelOrderRequest: cancelOrderRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -50,7 +50,7 @@ open class OrderAPI {
         let orderTokenPreEscape = "\(APIHelper.mapValueToPathItem(orderToken))"
         let orderTokenPostEscape = orderTokenPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{order_token}", with: orderTokenPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: cancelOrderRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -61,67 +61,9 @@ open class OrderAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-     Obtener Installments para Orden
-     
-     - parameter orderToken: (path)  
-     - parameter xApiKey: (header)  (optional)
-     - parameter authorization: (header)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getInstallments(orderToken: String, xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: GetInstallments200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return getInstallmentsWithRequestBuilder(orderToken: orderToken, xApiKey: xApiKey, authorization: authorization).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Obtener Installments para Orden
-     - GET /merchants/transactions/orders/{order_token}/installments
-     - Obtener Installments para Orden
-     - Bearer Token:
-       - type: http
-       - name: Authorization
-     - API Key:
-       - type: apiKey X-Api-Key (HEADER)
-       - name: X-Api-Key
-     - parameter orderToken: (path)  
-     - parameter xApiKey: (header)  (optional)
-     - parameter authorization: (header)  (optional)
-     - returns: RequestBuilder<GetInstallments200Response> 
-     */
-    open class func getInstallmentsWithRequestBuilder(orderToken: String, xApiKey: String? = nil, authorization: String? = nil) -> RequestBuilder<GetInstallments200Response> {
-        var localVariablePath = "/merchants/transactions/orders/{order_token}/installments"
-        let orderTokenPreEscape = "\(APIHelper.mapValueToPathItem(orderToken))"
-        let orderTokenPostEscape = orderTokenPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{order_token}", with: orderTokenPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "X-Api-Key": xApiKey?.encodeToJSON(),
-            "Authorization": authorization?.encodeToJSON(),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<GetInstallments200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -133,7 +75,7 @@ open class OrderAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOrder(orderToken: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: OrderToken200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOrder(orderToken: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetOrder200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getOrderWithRequestBuilder(orderToken: orderToken, xApiKey: xApiKey).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -153,14 +95,14 @@ open class OrderAPI {
        - name: X-Api-Key
      - parameter orderToken: (path)  
      - parameter xApiKey: (header)  (optional)
-     - returns: RequestBuilder<OrderToken200Response> 
+     - returns: RequestBuilder<GetOrder200Response> 
      */
-    open class func getOrderWithRequestBuilder(orderToken: String, xApiKey: String? = nil) -> RequestBuilder<OrderToken200Response> {
+    open class func getOrderWithRequestBuilder(orderToken: String, xApiKey: String? = nil) -> RequestBuilder<GetOrder200Response> {
         var localVariablePath = "/merchants/orders/{order_token}"
         let orderTokenPreEscape = "\(APIHelper.mapValueToPathItem(orderToken))"
         let orderTokenPostEscape = orderTokenPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{order_token}", with: orderTokenPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -171,7 +113,7 @@ open class OrderAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OrderToken200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetOrder200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -185,7 +127,7 @@ open class OrderAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func orderToken(xApiKey: String? = nil, orderTokenRequest: OrderTokenRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: OrderToken200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func orderToken(xApiKey: String? = nil, orderTokenRequest: OrderTokenRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrderToken200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return orderTokenWithRequestBuilder(xApiKey: xApiKey, orderTokenRequest: orderTokenRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -209,7 +151,7 @@ open class OrderAPI {
      */
     open class func orderTokenWithRequestBuilder(xApiKey: String? = nil, orderTokenRequest: OrderTokenRequest? = nil) -> RequestBuilder<OrderToken200Response> {
         let localVariablePath = "/merchants/orders"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: orderTokenRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -220,7 +162,7 @@ open class OrderAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OrderToken200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OrderToken200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -235,7 +177,7 @@ open class OrderAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func refundOrder(orderToken: String, xApiKey: String? = nil, refundOrderRequest: RefundOrderRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func refundOrder(orderToken: String, xApiKey: String? = nil, refundOrderRequest: RefundOrderRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return refundOrderWithRequestBuilder(orderToken: orderToken, xApiKey: xApiKey, refundOrderRequest: refundOrderRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -263,7 +205,7 @@ open class OrderAPI {
         let orderTokenPreEscape = "\(APIHelper.mapValueToPathItem(orderToken))"
         let orderTokenPostEscape = orderTokenPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{order_token}", with: orderTokenPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: refundOrderRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -274,7 +216,7 @@ open class OrderAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -289,7 +231,7 @@ open class OrderAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func successOrder(orderToken: String, xApiKey: String? = nil, successOrderRequest: SuccessOrderRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func successOrder(orderToken: String, xApiKey: String? = nil, successOrderRequest: SuccessOrderRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return successOrderWithRequestBuilder(orderToken: orderToken, xApiKey: xApiKey, successOrderRequest: successOrderRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -317,7 +259,7 @@ open class OrderAPI {
         let orderTokenPreEscape = "\(APIHelper.mapValueToPathItem(orderToken))"
         let orderTokenPostEscape = orderTokenPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{order_token}", with: orderTokenPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: successOrderRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -328,7 +270,7 @@ open class OrderAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -343,7 +285,7 @@ open class OrderAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func voidPaymentOrder(orderToken: String, xApiKey: String? = nil, successOrderRequest: SuccessOrderRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func voidPaymentOrder(orderToken: String, xApiKey: String? = nil, successOrderRequest: SuccessOrderRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return voidPaymentOrderWithRequestBuilder(orderToken: orderToken, xApiKey: xApiKey, successOrderRequest: successOrderRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -371,7 +313,7 @@ open class OrderAPI {
         let orderTokenPreEscape = "\(APIHelper.mapValueToPathItem(orderToken))"
         let orderTokenPostEscape = orderTokenPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{order_token}", with: orderTokenPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: successOrderRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -382,7 +324,7 @@ open class OrderAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

@@ -1,4 +1,4 @@
-# OrderToken200ResponseOrder
+# GetOrder200ResponseOrder
 
 ## Properties
 Name | Type | Description | Notes
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **itemsTotalAmount** | **Double** | Es el costo total de todos los items de la orden. | [optional] 
 **metadata** | [**OrderToken200ResponseOrderMetadata**](OrderToken200ResponseOrderMetadata.md) |  | [optional] 
 **orderId** | **String** | Representa al identificador de la orden dentro del comercio | [optional] 
-**payment** | [**OrderToken200ResponseOrderPayment**](OrderToken200ResponseOrderPayment.md) |  | [optional] 
+**payment** | [**GetOrder200ResponseOrderPayment**](GetOrder200ResponseOrderPayment.md) |  | [optional] 
 **paymentLink** | **String** | Es el link de pago generado al tokenizar la orden para efectuar el pago | [optional] 
 **redirectUrl** | **String** | Url donde se redireccionara al terminar la compra | [optional] 
 **scheduledAt** | **String** | Fecha de entrega | [optional] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **shippingMethod** | [**OrderTokenRequestOrderShippingMethod**](OrderTokenRequestOrderShippingMethod.md) |  | [optional] 
 **shippingMethods** | **[AnyCodable]** | Métodos de envío | [optional] 
 **shippingOptions** | [**OrderToken200ResponseOrderShippingOptions**](OrderToken200ResponseOrderShippingOptions.md) |  | [optional] 
-**shippingTaxAmount** | **Int64** | Es el monto total de los **impuestos** del envío aplicados en la orden que aparece en el checkout. | [optional] 
+**shippingTaxAmount** | **String** | Es el monto total de los **impuestos** del envío aplicados en la orden que aparece en el checkout. | [optional] 
 **status** | **String** | Estado de la orden  | [optional] 
 **storeCode** | **String** | Es el código de la tienda, por defecto el código de la tienda es all | [optional] 
 **subTotal** | **Double** | Es el subtotal de la compra, que comprende la suma de items_total_amount y shipping_amount. | [optional] [default to 4470]
@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 **timezone** | **String** | Representa la zona horario de tu comercio | [optional] 
 **totalAmount** | **Double** | Es el total de la orden esto comprende la suma del total de *items_total_amount*, *shipping_amount* y *tax_amount*. | [optional] 
 **totalDiscount** | **Double** | Monto de descuento total de la orden | [optional] 
-**totalTaxAmount** | **Int64** | Es el total de la orden esto comprende la suma del total de *shipping_tax_amount* y *tax_amount* que se mostrara en el checkout. | [optional] 
+**totalTaxAmount** | **String** | Es el total de la orden esto comprende la suma del total de *shipping_tax_amount* y *tax_amount* que se mostrara en el checkout. | [optional] 
 **userInstructions** | **String** | Son las instrucciones especiales que da el cliente en su compra, este valor se sustituye por el comentario en caso que el cliente lo coloque dentro del *checkout* | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

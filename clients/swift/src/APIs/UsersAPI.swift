@@ -22,7 +22,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createAddress(userId: String, xApiKey: String? = nil, createAddressRequest: CreateAddressRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: CreateAddress200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createAddress(userId: String, xApiKey: String? = nil, createAddressRequest: CreateAddressRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateAddress200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return createAddressWithRequestBuilder(userId: userId, xApiKey: xApiKey, createAddressRequest: createAddressRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -50,7 +50,7 @@ open class UsersAPI {
         let userIdPreEscape = "\(APIHelper.mapValueToPathItem(userId))"
         let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{user_id}", with: userIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createAddressRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -61,7 +61,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CreateAddress200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CreateAddress200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -76,7 +76,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteUserCardById(userId: String, cardId: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteUserCardById(userId: String, cardId: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteUserCardByIdWithRequestBuilder(userId: userId, cardId: cardId, xApiKey: xApiKey).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -107,7 +107,7 @@ open class UsersAPI {
         let cardIdPreEscape = "\(APIHelper.mapValueToPathItem(cardId))"
         let cardIdPostEscape = cardIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{card_id}", with: cardIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -118,7 +118,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -133,7 +133,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteUsersAddress(userId: String, addressId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteUsersAddress(userId: String, addressId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteUsersAddressWithRequestBuilder(userId: userId, addressId: addressId, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -164,7 +164,7 @@ open class UsersAPI {
         let addressIdPreEscape = "\(APIHelper.mapValueToPathItem(addressId))"
         let addressIdPostEscape = addressIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{address_id}", with: addressIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -175,7 +175,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -189,7 +189,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteUsersUserId(userId: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteUsersUserId(userId: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteUsersUserIdWithRequestBuilder(userId: userId, xApiKey: xApiKey).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -216,7 +216,7 @@ open class UsersAPI {
         let userIdPreEscape = "\(APIHelper.mapValueToPathItem(userId))"
         let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{user_id}", with: userIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -227,7 +227,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -242,7 +242,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func editUser(userId: String, registerUserRequest: RegisterUserRequest, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func editUser(userId: String, registerUserRequest: RegisterUserRequest, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return editUserWithRequestBuilder(userId: userId, registerUserRequest: registerUserRequest, xApiKey: xApiKey).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -270,7 +270,7 @@ open class UsersAPI {
         let userIdPreEscape = "\(APIHelper.mapValueToPathItem(userId))"
         let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{user_id}", with: userIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: registerUserRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -281,7 +281,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -295,7 +295,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func externalAuthorize(xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: ExternalAuthorize200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func externalAuthorize(xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExternalAuthorize200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return externalAuthorizeWithRequestBuilder(xApiKey: xApiKey, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -322,7 +322,7 @@ open class UsersAPI {
      */
     open class func externalAuthorizeWithRequestBuilder(xApiKey: String? = nil, authorization: String? = nil) -> RequestBuilder<ExternalAuthorize200Response> {
         let localVariablePath = "/users/external-authorize"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -334,7 +334,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ExternalAuthorize200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ExternalAuthorize200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -348,7 +348,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func externalAuthorizeRefresh(xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: ExternalAuthorizeRefresh200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func externalAuthorizeRefresh(xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExternalAuthorizeRefresh200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return externalAuthorizeRefreshWithRequestBuilder(xApiKey: xApiKey, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -375,7 +375,7 @@ open class UsersAPI {
      */
     open class func externalAuthorizeRefreshWithRequestBuilder(xApiKey: String? = nil, authorization: String? = nil) -> RequestBuilder<ExternalAuthorizeRefresh200Response> {
         let localVariablePath = "/users/authorize"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -387,7 +387,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ExternalAuthorizeRefresh200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ExternalAuthorizeRefresh200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -401,7 +401,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUserAddresses(userId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: GetUserAddresses200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUserAddresses(userId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetUserAddresses200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserAddressesWithRequestBuilder(userId: userId, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -428,7 +428,7 @@ open class UsersAPI {
         let userIdPreEscape = "\(APIHelper.mapValueToPathItem(userId))"
         let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{user_id}", with: userIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -439,7 +439,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<GetUserAddresses200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetUserAddresses200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -454,7 +454,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUserCardById(userId: String, cardId: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: GetUserCardById200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUserCardById(userId: String, cardId: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetUserCardById200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserCardByIdWithRequestBuilder(userId: userId, cardId: cardId, xApiKey: xApiKey).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -485,7 +485,7 @@ open class UsersAPI {
         let cardIdPreEscape = "\(APIHelper.mapValueToPathItem(cardId))"
         let cardIdPostEscape = cardIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{card_id}", with: cardIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -496,7 +496,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<GetUserCardById200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetUserCardById200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -510,7 +510,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUserCards(userId: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: GetUserCards200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUserCards(userId: String, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetUserCards200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserCardsWithRequestBuilder(userId: userId, xApiKey: xApiKey).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -537,7 +537,7 @@ open class UsersAPI {
         let userIdPreEscape = "\(APIHelper.mapValueToPathItem(userId))"
         let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{user_id}", with: userIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -548,7 +548,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<GetUserCards200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetUserCards200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -562,7 +562,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUserInformation(xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: GetUserInformation200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUserInformation(xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetUserInformation200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserInformationWithRequestBuilder(xApiKey: xApiKey, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -589,7 +589,7 @@ open class UsersAPI {
      */
     open class func getUserInformationWithRequestBuilder(xApiKey: String? = nil, authorization: String? = nil) -> RequestBuilder<GetUserInformation200Response> {
         let localVariablePath = "/users/me"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -601,7 +601,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<GetUserInformation200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetUserInformation200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -614,7 +614,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func loginWithOtp(loginWithOtpRequest: LoginWithOtpRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: LoginWithOtp200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func loginWithOtp(loginWithOtpRequest: LoginWithOtpRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: LoginWithOtp200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return loginWithOtpWithRequestBuilder(loginWithOtpRequest: loginWithOtpRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -634,7 +634,7 @@ open class UsersAPI {
      */
     open class func loginWithOtpWithRequestBuilder(loginWithOtpRequest: LoginWithOtpRequest? = nil) -> RequestBuilder<LoginWithOtp200Response> {
         let localVariablePath = "/users/login"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: loginWithOtpRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -645,7 +645,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<LoginWithOtp200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<LoginWithOtp200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -660,7 +660,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func patchUserAddress(userId: String, addressId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func patchUserAddress(userId: String, addressId: String, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return patchUserAddressWithRequestBuilder(userId: userId, addressId: addressId, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -691,7 +691,7 @@ open class UsersAPI {
         let addressIdPreEscape = "\(APIHelper.mapValueToPathItem(addressId))"
         let addressIdPostEscape = addressIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{address_id}", with: addressIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -702,7 +702,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -716,7 +716,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func registerUser(registerUserRequest: RegisterUserRequest, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: RegisterUser200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func registerUser(registerUserRequest: RegisterUserRequest, xApiKey: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: RegisterUser200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return registerUserWithRequestBuilder(registerUserRequest: registerUserRequest, xApiKey: xApiKey).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -740,7 +740,7 @@ open class UsersAPI {
      */
     open class func registerUserWithRequestBuilder(registerUserRequest: RegisterUserRequest, xApiKey: String? = nil) -> RequestBuilder<RegisterUser200Response> {
         let localVariablePath = "/users/signup"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: registerUserRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -751,7 +751,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<RegisterUser200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RegisterUser200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -764,7 +764,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func requestOtp(requestOtpRequest: RequestOtpRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func requestOtp(requestOtpRequest: RequestOtpRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return requestOtpWithRequestBuilder(requestOtpRequest: requestOtpRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -784,7 +784,7 @@ open class UsersAPI {
      */
     open class func requestOtpWithRequestBuilder(requestOtpRequest: RequestOtpRequest? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/users/request-code"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: requestOtpRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -795,7 +795,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -809,7 +809,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func userExists(xApiKey: String? = nil, email: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func userExists(xApiKey: String? = nil, email: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return userExistsWithRequestBuilder(xApiKey: xApiKey, email: email).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -833,7 +833,7 @@ open class UsersAPI {
      */
     open class func userExistsWithRequestBuilder(xApiKey: String? = nil, email: String? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/users"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -847,7 +847,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DeUnaSdkAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = DEUNAClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -861,7 +861,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func usersLoginDeviceFingerprintPost(xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: UsersLoginDeviceFingerprintPost200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func usersLoginDeviceFingerprintPost(xApiKey: String? = nil, authorization: String? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: UsersLoginDeviceFingerprintPost200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return usersLoginDeviceFingerprintPostWithRequestBuilder(xApiKey: xApiKey, authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -888,7 +888,7 @@ open class UsersAPI {
      */
     open class func usersLoginDeviceFingerprintPostWithRequestBuilder(xApiKey: String? = nil, authorization: String? = nil) -> RequestBuilder<UsersLoginDeviceFingerprintPost200Response> {
         let localVariablePath = "/users/login/device-fingerprint"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -900,7 +900,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UsersLoginDeviceFingerprintPost200Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UsersLoginDeviceFingerprintPost200Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -915,7 +915,7 @@ open class UsersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func usersRegister(xApiKey: String? = nil, authorization: String? = nil, usersRegisterRequest: UsersRegisterRequest? = nil, apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, completion: @escaping ((_ data: UsersRegister201Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func usersRegister(xApiKey: String? = nil, authorization: String? = nil, usersRegisterRequest: UsersRegisterRequest? = nil, apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, completion: @escaping ((_ data: UsersRegister201Response?, _ error: Error?) -> Void)) -> RequestTask {
         return usersRegisterWithRequestBuilder(xApiKey: xApiKey, authorization: authorization, usersRegisterRequest: usersRegisterRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -943,7 +943,7 @@ open class UsersAPI {
      */
     open class func usersRegisterWithRequestBuilder(xApiKey: String? = nil, authorization: String? = nil, usersRegisterRequest: UsersRegisterRequest? = nil) -> RequestBuilder<UsersRegister201Response> {
         let localVariablePath = "/users/register"
-        let localVariableURLString = DeUnaSdkAPI.basePath + localVariablePath
+        let localVariableURLString = DEUNAClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: usersRegisterRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -955,7 +955,7 @@ open class UsersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UsersRegister201Response>.Type = DeUnaSdkAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UsersRegister201Response>.Type = DEUNAClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

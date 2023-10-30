@@ -22,7 +22,7 @@ Get application by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let merchantId = "merchantId_example" // String | 
 let applicationId = "applicationId_example" // String | 
@@ -76,7 +76,7 @@ Validate application
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 
@@ -126,7 +126,7 @@ Get applications of merchant
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let merchantId = "merchantId_example" // String | 
 let authorization = "authorization_example" // String |  (optional)
@@ -178,7 +178,7 @@ Create application
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let merchantId = "merchantId_example" // String | 
 let authorization = "authorization_example" // String |  (optional)

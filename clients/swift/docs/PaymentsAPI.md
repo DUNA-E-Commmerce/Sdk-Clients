@@ -23,7 +23,7 @@ La opción de **capturar un pago autorizado** te permite completar una transacci
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let orderToken = "orderToken_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -77,7 +77,7 @@ Obtiene los métodos disponibles que tiene el comercio para esa orden en especí
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let orderToken = "orderToken_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -131,7 +131,7 @@ Obtén los métodos de pago asociados al comercio y su respectiva información a
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let authorization = "authorization_example" // String |  (optional)
 
@@ -181,7 +181,7 @@ Realiza el pago de la orden. Para los procesadores previamente configurados, al 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let authorization = "authorization_example" // String |  (optional)
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 # **verifyPaymentOtp**
 ```swift
-    open class func verifyPaymentOtp(orderToken: String, xApiKey: String? = nil, authorization: String? = nil, verifyPaymentOtpRequest: VerifyPaymentOtpRequest? = nil, completion: @escaping (_ data: OrderToken200Response?, _ error: Error?) -> Void)
+    open class func verifyPaymentOtp(orderToken: String, xApiKey: String? = nil, authorization: String? = nil, verifyPaymentOtpRequest: VerifyPaymentOtpRequest? = nil, completion: @escaping (_ data: GetOrder200Response?, _ error: Error?) -> Void)
 ```
 
 Verificar pago con OTP
@@ -239,7 +239,7 @@ Verificar el pago con el código OTP
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let orderToken = "orderToken_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrderToken200Response**](OrderToken200Response.md)
+[**GetOrder200Response**](GetOrder200Response.md)
 
 ### Authorization
 

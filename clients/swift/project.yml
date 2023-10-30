@@ -1,9 +1,9 @@
-name: DeUnaSdk
+name: DEUNAClient
 targets:
-  DeUnaSdk:
+  DEUNAClient:
     type: framework
     platform: iOS
-    deploymentTarget: "12.0"
+    deploymentTarget: "11.0"
     sources: [src]
     info:
       path: ./Info.plist

@@ -11,18 +11,10 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.deuna.maven.domain.Callbacks
-import com.deuna.maven.domain.DeUnaBridge
-import com.deuna.maven.domain.ElementType
-import com.deuna.maven.domain.Environment
-import com.deuna.maven.domain.OrderErrorResponse
-import com.deuna.maven.domain.OrderSuccessResponse
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.json.JSONException
-import org.json.JSONObject
 
 class DeUnaSdk {
     private lateinit var apiKey: String
@@ -30,8 +22,31 @@ class DeUnaSdk {
     private lateinit var environment: Environment
     private lateinit var elementType: ElementType
     private lateinit var userToken: String
-    private var baseUrl: String = "https://elements.euna"
+    private var elementURL: String = "https://elements.euna"
     private var actionMillisecods = 5000L
+
+    inner class Callbacks {
+        var onSuccess: ((String) -> Unit)? = null
+        var onError: ((String) -> Unit)? = null
+        var onClose: ((WebView) -> Unit)? = null
+    }
+
+    enum class Environment {
+        DEVELOPMENT,
+        PRODUCTION
+    }
+
+    enum class ElementType(val value: String) {
+        SAVE_CARD("saveCard"),
+        EXAMPLE("example")
+    }
+
+    inner class JSBridge {
+        @JavascriptInterface
+        fun receiveMessage(message: String) {
+            Log.d("received message from webview", message)
+        }
+    }
 
     companion object {
         private lateinit var instance: DeUnaSdk
@@ -56,9 +71,9 @@ class DeUnaSdk {
                 }
                 this.environment = environment
                 if (this.environment == Environment.DEVELOPMENT) {
-                    this.baseUrl = "https://pay.stg.deuna.com"
+                    this.elementURL = "https://pay.stg.deuna.com/elements"
                 } else {
-                    this.baseUrl = "https://pay.deuna.com"
+                    this.elementURL = "https://pay.deuna.com/elements"
                 }
                 if (elementType != null) {
                     this.elementType = elementType
@@ -85,9 +100,10 @@ class DeUnaSdk {
                             Handler(Looper.getMainLooper()).postDelayed({
                                 try {
                                     callbacks.onClose?.invoke(webView)
+                                    callbacks.onSuccess?.invoke("")
                                 } catch (e: Exception) {
                                     callbacks.onClose?.invoke(webView)
-                                    e.localizedMessage?.let { }
+                                    e.localizedMessage?.let { callbacks.onError?.invoke(it) }
                                 }
                             }, actionMillisecods)
                         }
@@ -104,8 +120,8 @@ class DeUnaSdk {
                 webView.settings.domStorageEnabled = true
                 webView.settings.javaScriptEnabled = true
                 webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
-                webView.loadUrl("$baseUrl/$orderToken")
-                webView.addJavascriptInterface(DeUnaBridge(callbacks), "android")
+                webView.loadUrl("https://develop.dlbinhdcmjzvl.amplifyapp.com/$orderToken")
+                webView.addJavascriptInterface(JSBridge(), "Android")
                 return callbacks
             }
         }
@@ -140,9 +156,9 @@ class DeUnaSdk {
                 webView.settings.domStorageEnabled = true
                 webView.settings.javaScriptEnabled = true
                 webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
-                val url = "$baseUrl/elements/${elementType.value}"
+                val url = "$elementURL/${elementType.value}"
                 webView.loadUrl(url)
-                webView.addJavascriptInterface(DeUnaBridge(callbacks), "android")
+                webView.addJavascriptInterface(JSBridge(), "Android")
                 return callbacks
             }
         }

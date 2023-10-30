@@ -2,7 +2,7 @@
 .openapi-generator-ignore
 .swiftformat
 Cartfile
-DeUnaSdk.podspec
+DEUNAClient.podspec
 Package.swift
 README.md
 docs/CancelOrderRequest.md
@@ -36,6 +36,11 @@ docs/GetMerchantsPaymentsMethods200ResponseDataInnerSpecificFields.md
 docs/GetMerchantsPaymentsMethods200ResponseDataInnerSpecificFieldsFinancialInstitutionInner.md
 docs/GetMerchantsPaymentsMethods401Response.md
 docs/GetMerchantsPaymentsMethods500Response.md
+docs/GetOrder200Response.md
+docs/GetOrder200ResponseOrder.md
+docs/GetOrder200ResponseOrderPayment.md
+docs/GetOrder200ResponseOrderPaymentData.md
+docs/GetOrder200ResponseOrderPaymentDataAmount.md
 docs/GetPaymentMethods200Response.md
 docs/GetPaymentMethods200ResponseDataInner.md
 docs/GetPaymentMethods200ResponseDataInnerSpecificFields.md
@@ -84,6 +89,7 @@ docs/OrderToken200ResponseOrderItemsInnerWeight.md
 docs/OrderToken200ResponseOrderMetadata.md
 docs/OrderToken200ResponseOrderPayment.md
 docs/OrderToken200ResponseOrderPaymentData.md
+docs/OrderToken200ResponseOrderPaymentDataAmount.md
 docs/OrderToken200ResponseOrderPaymentDataFromCard.md
 docs/OrderToken200ResponseOrderShipping.md
 docs/OrderToken200ResponseOrderShippingOptions.md
@@ -123,6 +129,7 @@ docs/OrderTokenRequestOrderShippingOptionsDetailsAdditionalDetails.md
 docs/OrderTokenRequestOrderShippingOptionsDetailsAddressCoordinates.md
 docs/OrderTokenRequestOrderShippingOptionsDetailsContact.md
 docs/OrderTokenRequestOrderWebhookUrls.md
+docs/OrdersAPI.md
 docs/PaymentsAPI.md
 docs/PostUsersUserIdCards201Response.md
 docs/PostUsersUserIdCards201ResponseData.md
@@ -171,6 +178,7 @@ src/APIs/CardsAPI.swift
 src/APIs/MerchantApplicationAPI.swift
 src/APIs/MerchantsAPI.swift
 src/APIs/OrderAPI.swift
+src/APIs/OrdersAPI.swift
 src/APIs/PaymentsAPI.swift
 src/APIs/UsersAPI.swift
 src/CodableHelper.swift
@@ -209,6 +217,11 @@ src/Models/GetMerchantsPaymentsMethods200ResponseDataInnerSpecificFields.swift
 src/Models/GetMerchantsPaymentsMethods200ResponseDataInnerSpecificFieldsFinancialInstitutionInner.swift
 src/Models/GetMerchantsPaymentsMethods401Response.swift
 src/Models/GetMerchantsPaymentsMethods500Response.swift
+src/Models/GetOrder200Response.swift
+src/Models/GetOrder200ResponseOrder.swift
+src/Models/GetOrder200ResponseOrderPayment.swift
+src/Models/GetOrder200ResponseOrderPaymentData.swift
+src/Models/GetOrder200ResponseOrderPaymentDataAmount.swift
 src/Models/GetPaymentMethods200Response.swift
 src/Models/GetPaymentMethods200ResponseDataInner.swift
 src/Models/GetPaymentMethods200ResponseDataInnerSpecificFields.swift
@@ -254,6 +267,7 @@ src/Models/OrderToken200ResponseOrderItemsInnerWeight.swift
 src/Models/OrderToken200ResponseOrderMetadata.swift
 src/Models/OrderToken200ResponseOrderPayment.swift
 src/Models/OrderToken200ResponseOrderPaymentData.swift
+src/Models/OrderToken200ResponseOrderPaymentDataAmount.swift
 src/Models/OrderToken200ResponseOrderPaymentDataFromCard.swift
 src/Models/OrderToken200ResponseOrderShipping.swift
 src/Models/OrderToken200ResponseOrderShippingOptions.swift

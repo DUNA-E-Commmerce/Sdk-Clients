@@ -23,7 +23,7 @@ Get Bin
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let bin = "bin_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -75,7 +75,7 @@ Eliminar una tarjeta.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let cardId = "cardId_example" // String | 
@@ -129,7 +129,7 @@ Obtener todas las tarjetas del usuario
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let authorization = "authorization_example" // String |  (optional)
@@ -181,7 +181,7 @@ Obtener una tarjeta por su identificador.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let cardId = "cardId_example" // String | 
@@ -235,7 +235,7 @@ Crear una tarjeta para el usuario.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let authorization = "authorization_example" // String |  (optional)

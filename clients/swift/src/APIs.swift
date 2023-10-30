@@ -8,7 +8,7 @@ import Foundation
 #if canImport(FoundationNetworking)
 import FoundationNetworking
 #endif
-open class DeUnaSdkAPI {
+open class DEUNAClientAPI {
     public static var basePath = "https://staging-apigw.getduna.com:443"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
@@ -35,7 +35,7 @@ open class RequestBuilder<T> {
         self.headers = headers
         self.requiresAuthentication = requiresAuthentication
 
-        addHeaders(DeUnaSdkAPI.customHeaders)
+        addHeaders(DEUNAClientAPI.customHeaders)
     }
 
     open func addHeaders(_ aHeaders: [String: String]) {
@@ -45,7 +45,7 @@ open class RequestBuilder<T> {
     }
 
     @discardableResult
-    open func execute(_ apiResponseQueue: DispatchQueue = DeUnaSdkAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
+    open func execute(_ apiResponseQueue: DispatchQueue = DEUNAClientAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
         return requestTask
     }
 
@@ -57,7 +57,7 @@ open class RequestBuilder<T> {
     }
 
     open func addCredential() -> Self {
-        credential = DeUnaSdkAPI.credential
+        credential = DEUNAClientAPI.credential
         return self
     }
 }

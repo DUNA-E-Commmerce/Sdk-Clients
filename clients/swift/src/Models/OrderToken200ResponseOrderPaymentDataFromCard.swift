@@ -13,20 +13,14 @@ import AnyCodable
 /** Objeto con la informacion de la tarjeta */
 public struct OrderToken200ResponseOrderPaymentDataFromCard: Codable, JSONEncodable, Hashable {
 
-    public enum CardBrand: String, Codable, CaseIterable {
-        case visa = "Visa"
-        case mastercard = "Mastercard"
-        case americanExpress = "American Express"
-        case diners = "Diners"
-    }
     /** Procesador de la tarjeta */
-    public var cardBrand: CardBrand?
+    public var cardBrand: String?
     /** Primeros 6 digitos de la tarjeta */
     public var firstSix: String?
     /** Ultimos 4 digitos de la tarjeta */
     public var lastFour: String?
 
-    public init(cardBrand: CardBrand? = nil, firstSix: String? = nil, lastFour: String? = nil) {
+    public init(cardBrand: String? = nil, firstSix: String? = nil, lastFour: String? = nil) {
         self.cardBrand = cardBrand
         self.firstSix = firstSix
         self.lastFour = lastFour

@@ -36,7 +36,7 @@ Permite crear una dirección para el usuario
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -90,7 +90,7 @@ Remove card by identifier
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let cardId = "cardId_example" // String | 
@@ -144,7 +144,7 @@ Permite eliminar una dirección del usuario dado su identificador
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let addressId = "addressId_example" // String | 
@@ -198,7 +198,7 @@ Permite eliminar un usuario de la red DEUNA.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -250,7 +250,7 @@ Editing User
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let registerUserRequest = registerUser_request(email: "email_example", firstName: "firstName_example", identityDocument: "identityDocument_example", lastName: "lastName_example", phone: "phone_example") // RegisterUserRequest | Ejemplo de requestBody
@@ -304,7 +304,7 @@ Entregar de forma segura un token autorizado por DEUNA ONE y el cliente.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let authorization = "authorization_example" // String |  (optional)
@@ -356,7 +356,7 @@ Obtener un nuevo token de forma segura a partir de un refresh_token autorizado p
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let authorization = "authorization_example" // String |  (optional)
@@ -408,7 +408,7 @@ Obtener todas direcciones del usuario
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let authorization = "authorization_example" // String |  (optional)
@@ -460,7 +460,7 @@ Obtain a card by its identifier.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let cardId = "cardId_example" // String | 
@@ -514,7 +514,7 @@ Get all user cards
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -566,7 +566,7 @@ Get User Information
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let authorization = "authorization_example" // String |  (optional)
@@ -618,7 +618,7 @@ Permite iniciar sesión con el código OTP enviado al correo o al teléfono del 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let loginWithOtpRequest = login_with_otp_request(email: "email_example", otp: "otp_example") // LoginWithOtpRequest |  (optional)
 
@@ -668,7 +668,7 @@ Permite actualizar los datos de una dirección mediante el id del mismo
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let userId = "userId_example" // String | 
 let addressId = "addressId_example" // String | 
@@ -722,7 +722,7 @@ Allow register user
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let registerUserRequest = registerUser_request(email: "email_example", firstName: "firstName_example", identityDocument: "identityDocument_example", lastName: "lastName_example", phone: "phone_example") // RegisterUserRequest | Ejemplo de requestBody
 let xApiKey = "xApiKey_example" // String |  (optional)
@@ -774,7 +774,7 @@ Enviar el OTP (One time password) al correo o teléfono del usuario. **Esto se d
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let requestOtpRequest = request_otp_request(email: "email_example") // RequestOtpRequest |  (optional)
 
@@ -824,7 +824,7 @@ Get if user exists
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let email = "email_example" // String |  (optional)
@@ -876,7 +876,7 @@ Login User
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let authorization = "authorization_example" // String |  (optional)
@@ -928,7 +928,7 @@ Registrar un usuario de tu comercio, este usuario una vez registrado pertenecera
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import DeUnaSdk
+import DEUNAClient
 
 let xApiKey = "xApiKey_example" // String |  (optional)
 let authorization = "authorization_example" // String |  (optional)

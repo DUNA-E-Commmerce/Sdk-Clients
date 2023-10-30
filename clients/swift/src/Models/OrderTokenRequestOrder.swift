@@ -20,6 +20,7 @@ public struct OrderTokenRequestOrder: Codable, JSONEncodable, Hashable {
         case brl = "BRL"
         case ars = "ARS"
         case pen = "PEN"
+        case empty = ""
     }
     public enum Status: String, Codable, CaseIterable {
         case pending = "pending"

@@ -14,7 +14,6 @@ import AnyCodable
 public struct OrderTokenRequestOrderPaymentData: Codable, JSONEncodable, Hashable {
 
     public enum Status: String, Codable, CaseIterable {
-        case processed = "processed"
         case processing = "processing"
         case pending = "pending"
         case denied = "denied"
